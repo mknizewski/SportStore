@@ -53,6 +53,9 @@ namespace SportStore.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            //Rejestracja konteneru wstrzykniecia
+            System.Web.Mvc.DependencyResolver.SetResolver(new
+                SportStore.Web.Infrastructure.NinjectDepedencyResolver(kernel));
         }        
     }
 }

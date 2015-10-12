@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sport Store - @ViewBag.Title</title>
+    <link href="~/Content/Css/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Css/bootstrap-theme.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Css/IndexCss/index-theme.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <p>Część odpowiedzialna za navi</p>
+    </div>
+
+    <div class="container body-content">
+        @* Tutaj renderbody do wypełniania diva *@
+        <p>Kontener</p>
+        @RenderBody()       
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>
