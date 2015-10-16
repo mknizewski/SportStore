@@ -7,18 +7,34 @@
     <link href="~/Content/Css/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/Css/bootstrap-theme.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/Css/IndexCss/index-theme.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,800,300,700&amp;subset=latin-ext" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic,700,700italic,900,900italic&amp;subset=latin-ext" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <p>Część odpowiedzialna za navi</p>
+    <div class="navi">
+        <div id="navi-banner">
+        </div>
+        <img src="~/Content/Images/Index/main-banner.png" alt="Logo główne" />
     </div>
 
-    <div class="container body-content">
-        @* Tutaj renderbody do wypełniania diva *@
-        <p>Kontener</p>
-        @RenderBody()       
+    <div class="container body-content">      
+        @RenderBody()
+    </div>
+
+    <div class="footer">
+        <table class="footer-table">
+            <tr>
+                <td> <img src="~/Content/Images/Index/banner-1.png" alt="banner1" /> </td>
+                <td> <img src="~/Content/Images/Index/banner-2.png" alt="banner2" /> </td>
+                <td> <img src="~/Content/Images/Index/banner-3.png" alt="banner3" /> </td>
+                <td> <img src="~/Content/Images/Index/banner-4.png" alt="banner4" /> </td>
+            </tr>
+        </table>
+        <div class="newsleeter">
+            @Html.ActionLink("Zapisz się", "SaveNewsletter");
+        </div>
     </div>
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
