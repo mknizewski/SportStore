@@ -1,6 +1,4 @@
-﻿@model SportStore.Web.Models.Home.Newsletter
-
-@{
+﻿@{
     Layout = null;
 }
 
@@ -36,10 +34,8 @@
         <tr>
             <td>
                 <div class="newsletter-details">
-                    <p style="font-size: 40px;"> Szczegóły </p>
-                    <p> E-mail: @Model.Email </p>
-                    <p> Dział: @Model.TypeOfNews </p>
-                    <p> Częstotliwość: @Model.Frequency </p>
+                    <p style="font-size: 40px;"> Newsletter będzie wysyłany na adres: </p>
+                    <p> E-mail: @ViewBag.Email </p>
                 </div>
             </td>
             <td>
@@ -48,7 +44,7 @@
                     <p> Powrót do poprzedniej strony </p>
                 </div>
             </td>
-        </tr>
+        </tr>+
     </table>
 
 </body>

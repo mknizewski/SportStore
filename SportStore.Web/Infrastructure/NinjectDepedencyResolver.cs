@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using Ninject;
 using SportStore.Web;
+using SportStore.Domain.Abstract;
+using SportStore.Domain.Respositories;
+using SportStore.Web.HtmlHelpers.Classes;
+using SportStore.Web.HtmlHelpers.Interfaces;
 
 namespace SportStore.Web.Infrastructure
 {
@@ -34,7 +38,8 @@ namespace SportStore.Web.Infrastructure
         /// </summary>
         private void AddBindings()
         {
-            
+            _iKernel.Bind<INewsletterRepository>().To<NewsletterRespository>();
+            _iKernel.Bind<INewsletterHelper>().To<NewsletterHelper>();
         }
     }
 }

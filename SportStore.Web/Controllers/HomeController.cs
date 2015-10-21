@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SportStore.Web.Models.Home;
+using SportStore.Domain.Abstract;
+using SportStore.Domain.Entities;
+using SportStore.Web.HtmlHelpers.Interfaces;
 
 namespace SportStore.Web.Controllers
 {
@@ -14,6 +17,13 @@ namespace SportStore.Web.Controllers
     /// </summary>
     public class HomeController : Controller
     {
+        private INewsletterHelper _newsletterHelper;
+
+        public HomeController(INewsletterHelper newsletterHelper)
+        {
+            _newsletterHelper = newsletterHelper;
+        }
+
         #region Metody Kontrolera
 
         /// <summary>
@@ -32,7 +42,7 @@ namespace SportStore.Web.Controllers
         [HttpGet]
         public ViewResult SaveNewsletter()
         {
-            return View();
+            return View(_newsletterHelper.GetNewsletterModel());
         }
 
         /// <summary>
@@ -41,9 +51,14 @@ namespace SportStore.Web.Controllers
         /// <param name="newsletter">obiekt typu newsletter</param>
         /// <returns>Widok NewsletterThanks</returns>
         [HttpPost]
-        public ViewResult SaveNewsletter(Newsletter newsletter)
+        public ActionResult SaveNewsletter(NewsletterModel newsletter)
         {
-            return View("NewsletterThanks", newsletter);
+            //tymczasowe, później bd sprawdzać czy model jest właściwy
+            _newsletterHelper.SaveToDb(newsletter);
+
+            ViewBag.Email = newsletter.Email;
+
+            return View("NewsletterThanks");
         }
 
         #endregion

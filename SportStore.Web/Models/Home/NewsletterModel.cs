@@ -1,8 +1,10 @@
-﻿using System;
+﻿using SportStore.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace SportStore.Web.Models.Home
 {
@@ -11,7 +13,7 @@ namespace SportStore.Web.Models.Home
     /// Opis:   Klasa modelowa do obsługi newslettera
     /// Data:   16.10.15
     /// </summary>
-    public class Newsletter
+    public class NewsletterModel
     {
         [Display(Name = "E-mail:")]
         [Required(ErrorMessage = "Pole E-mail jest wymagane!")]
@@ -19,10 +21,8 @@ namespace SportStore.Web.Models.Home
 
         [Display(Name = "Jaki dział chcesz subskrybować:")]
         [Required(ErrorMessage = "Proszę określić dział")]
-        public int TypeOfNews { get; set; }
+        public int selectedTypeOfNews { get; set; }
 
-        [Display(Name =  "Częstotliwość wiadomości:")]
-        [Required(ErrorMessage = "Proszę określić częstotliwość")]
-        public int Frequency { get; set; }
+        public IEnumerable<SelectListItem> TypeOfNews { get; set; }
     }
 }
