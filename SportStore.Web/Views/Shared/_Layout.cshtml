@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="~/Content/Css/bootstrap-theme.css">
     <link href="~/Content/Css/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/Css/bootstrap-theme.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Css/NewsletterCss/newsletter-theme.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/Css/IndexCss/index-theme.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/Css/MenuCss/menu_styles.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,800,300,700&amp;subset=latin-ext" />
@@ -30,7 +31,7 @@
 
         <div id='cssmenu'>
             <ul>
-                <li class='active'><a href='#'><span>Główna</span></a></li>
+                <li><a href='@Url.Action("Index","Home")'><span>Główna</span></a></li>
                 <li>
                     <a href='#'><span>Kategorie</span></a>
                     <ul>

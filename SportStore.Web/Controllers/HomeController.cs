@@ -53,18 +53,25 @@ namespace SportStore.Web.Controllers
         [HttpPost]
         public ActionResult SaveNewsletter(NewsletterModel newsletter)
         {
-            //tymczasowe, później bd sprawdzać czy model jest właściwy
-            _newsletterHelper.SaveToDb(newsletter);
+            if (ModelState.IsValid)
+            {
+                //tymczasowe, później bd sprawdzać czy model jest właściwy
+                _newsletterHelper.SaveToDb(newsletter);
 
-            ViewBag.Email = newsletter.Email;
+                ViewBag.Email = newsletter.Email;
 
-            return View("NewsletterThanks");
+                return View("NewsletterThanks");
+            }
+            else
+                return View(_newsletterHelper.GetNewsletterModel());
         }
+
         [HttpGet]
         public ViewResult Register()
         {
             return View();
         }
+
         [HttpPost]
         public ViewResult Register(RegisterModel registermodel)
         {

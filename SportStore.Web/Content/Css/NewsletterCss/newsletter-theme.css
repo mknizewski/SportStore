@@ -1,33 +1,19 @@
 ﻿.newsletter-button {
-    margin-left: 29%;
+    margin-left: 25%;
 }
 
-h1, p {
+.newsletter-button h1 {
     font-family: 'Open Sans', Arial;
+    font-size: 64px;
 }
 
-p {
-    font-size: 130%;
-}
-
-h1 {
-    font-size: 450%;
-}
-
-.newsletter-table {
-    margin-left: 35%;
-}
-
-.newsletter-back-button {
-    margin-left: 100px;
-    margin-top: 57px;
-}
-
-.newsletter-details {
-    margin-left: -90px;
-}
-
-.newsletter-back-button img {
+.newsletter-button img {
     width: 30%;
-    height: 40%;
+    height: 30%;
+}
+
+.newsletter-details p {
+    font-family: 'Open Sans', Arial;
+    font-size: 24px;
+    margin-left: 25%;
 }

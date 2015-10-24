@@ -1,7 +1,7 @@
 ﻿@model SportStore.Web.Models.Home.RegisterModel
 
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "rejestracja";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -24,11 +24,11 @@
             </div>
             <div>
                 <label>Haslo:</label>
-                @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+                @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
             </div>
             <div>
                 <label>Powtórz Haslo:</label>
-                @Html.TextBoxFor(x => x.RepeatPassword, new { @class = "form-control" })
+                @Html.PasswordFor(x => x.RepeatPassword, new { @class = "form-control" })
             </div>
             <div>
                 <label>Data Urodzenia(0000/00/00):</label>
