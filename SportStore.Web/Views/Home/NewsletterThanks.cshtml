@@ -1,0 +1,51 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/Content/Css/IndexCss/index-theme.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,800,300,700&amp;subset=latin-ext" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic,700,700italic,900,900italic&amp;subset=latin-ext" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Css/NewsletterCss/newsletter-theme.css" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Sport Store - Potwierdzenie Newslettera</title>
+</head>
+<body>
+
+    <div class="navi">
+        <div id="navi-banner">
+        </div>
+        <img src="~/Content/Images/Index/main-banner.png" alt="Logo główne" />
+    </div>
+
+    <div class="newsletter-button">
+        <table>
+            <tr>
+                <td> <img src="~/Content/Images/Newsletter/succes-sign.png" /> </td>
+                <td> <h1> Dziękujemy! </h1> </td>
+            </tr>
+        </table>
+    </div>
+
+    <table class="newsletter-table">
+        <tr>
+            <td>
+                <div class="newsletter-details">
+                    <p style="font-size: 40px;"> Newsletter będzie wysyłany na adres: </p>
+                    <p> E-mail: @ViewBag.Email </p>
+                </div>
+            </td>
+            <td>
+                <div class="newsletter-back-button">
+                    <a href="@Url.Action("Index", "Home")"> <img src=@Url.Content("~/Content/Images/Newsletter/undo.png") alt="revers" /> </a>
+                    <p> Powrót do poprzedniej strony </p>
+                </div>
+            </td>
+        </tr>+
+    </table>
+
+</body>
+</html>

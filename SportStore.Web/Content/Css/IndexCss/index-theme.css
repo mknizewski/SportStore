@@ -1,0 +1,105 @@
+﻿body {
+    background-color: #E6E6E6;
+}
+
+.all {
+    position: relative;
+    margin-left: 15%;
+    top: -60px;
+}
+
+.navi {
+    position: relative;
+    top: -60px;
+}
+
+.navi #navi-banner {
+    width: 100%;
+    height: 35px;
+    background-color: #4A4A4A;
+    color: white;
+}
+
+.navi img {
+    position: relative;
+    bottom: 35px;
+    left: 15%;
+}
+
+.navi p {
+    font-family: 'Open Sans', Arial;
+}
+
+.newsleeter {
+    background-color: #00c420;
+    height: 130px;
+    width: 320px;
+    padding-right: 50px;
+}
+
+#news-header {
+    position: relative;
+    font-family: 'Open Sans', Arial;
+    color: white;
+    font-size: 20px;
+    margin-left: 60px;
+    top: 10px;
+}
+
+#news-txt {
+    position: relative;
+    font-family: 'Open Sans', Arial;
+    color: white;
+    font-size: 14px;
+    margin-top: -10px;
+    margin-left: 24px;
+    top: 10px;
+}
+
+#button-news {
+    position: relative;
+    top: -5px;
+    left: 120px;
+    background-color: white;
+    width: 100px;
+    height: 30px;
+    border-radius: 8px;
+    top: -37px;
+}
+
+#button-news a {
+    position: relative;
+    margin-left: 15px;
+    margin-top: 100px;
+    font-family: 'Open Sans', Arial;
+    top: 3px;
+    text-decoration: none;
+}
+
+.white-field {
+    font-family: 'Open Sans', Arial;
+    background-color: white;
+    width: 84%;
+}
+
+.white-field-txt {
+    font-size: 12px;
+}
+
+.footer {
+    width: 84%;
+}
+
+.table table {
+    width: 84%;
+}
+
+.table img {
+    margin-left: 50px;
+    height: 100%;
+    width: 65%;
+}
+
+.body-content {
+    width: 84%;
+}
