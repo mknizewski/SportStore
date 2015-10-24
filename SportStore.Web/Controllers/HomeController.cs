@@ -60,6 +60,24 @@ namespace SportStore.Web.Controllers
 
             return View("NewsletterThanks");
         }
+        [HttpGet]
+        public ViewResult Register()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ViewResult Register(RegisterModel registermodel)
+        {
+            if (ModelState.IsValid)
+            {
+                return View("registerThanks");
+            }
+
+            else
+            {
+                return View();
+            }
+        }
 
         #endregion
     }

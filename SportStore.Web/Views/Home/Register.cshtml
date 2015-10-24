@@ -1,0 +1,43 @@
+﻿@model SportStore.Web.Models.Home.RegisterModel
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="panel panel-success">
+    <div class="panel-body">
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary()
+            <div>
+                <label>Imię:</label>
+                @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
+            </div>
+            <div>
+                <label>Nazwisko:</label>
+                @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+            </div>
+            <div>
+                <label>E-mail:</label>
+                @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+            </div>
+            <div>
+                <label>Haslo:</label>
+                @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+            </div>
+            <div>
+                <label>Powtórz Haslo:</label>
+                @Html.TextBoxFor(x => x.RepeatPassword, new { @class = "form-control" })
+            </div>
+            <div>
+                <label>Data Urodzenia(0000/00/00):</label>
+                @Html.TextBoxFor(x => x.DateOfBrith, new { @class = "form-control" })
+            </div>
+            <div>
+                <input class="btn btn-success" type="submit" value="Register" />
+            </div>
+        }
+    </div>
+</div>
+

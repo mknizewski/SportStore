@@ -116,6 +116,7 @@
     <Content Include="Content\Css\IndexCss\index-theme.css" />
     <Content Include="Content\Css\MenuCss\menu_styles.css" />
     <Content Include="Content\Css\NewsletterCss\newsletter-theme.css" />
+    <Content Include="Content\Css\RegisterCss\register.css" />
     <Content Include="Content\Css\Site.css" />
     <Content Include="Content\Images\Index\banner-1.png" />
     <Content Include="Content\Images\Index\banner-2.png" />
@@ -174,6 +175,8 @@
     <Content Include="Views\Home\NewsletterThanks.cshtml" />
     <Content Include="Views\Home\SaveNewsletter.cshtml" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
+    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Home\registerThanks.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
