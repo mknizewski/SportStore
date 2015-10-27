@@ -55,12 +55,13 @@ namespace SportStore.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                //tymczasowe, później bd sprawdzać czy model jest właściwy
-                _newsletterHelper.SaveToDb(newsletter);
-
-                ViewBag.Email = newsletter.Email;
-
-                return View("NewsletterThanks");
+                if (_newsletterHelper.TrySave(newsletter))
+                {
+                    ViewBag.Email = newsletter.Email;
+                    return View("NewsletterThanks");
+                }
+                else
+                    return View(_newsletterHelper.GetNewsletterModel());
             }
             else
                 return View(_newsletterHelper.GetNewsletterModel());

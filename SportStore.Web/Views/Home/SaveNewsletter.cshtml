@@ -8,10 +8,11 @@
 <div class="panel panel-success">
     <div class="panel-body">
 
+        <h1 class="text-center" style="font-family: 'Open Sans', Arial;">Zapisz się na newsletter</h1>
+
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
-            @Html.ValidationSummary()
 
             <div class="form-horizontal">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -27,7 +28,7 @@
                     @Html.LabelFor(model => model.TypeOfNews, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         @Html.DropDownListFor(model => model.selectedTypeOfNews, Model.TypeOfNews, "Wybierz dział", new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.TypeOfNews, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.selectedTypeOfNews, "", new { @class = "text-danger" })
                     </div>
                 </div>
 

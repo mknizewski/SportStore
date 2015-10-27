@@ -9,33 +9,74 @@
     <div class="panel-body">
         @using (Html.BeginForm())
         {
-            @Html.ValidationSummary()
-            <div>
-                <label>Imię:</label>
-                @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
+            @Html.AntiForgeryToken();
+            
+            <h1 class="text-center" style="font-family:'Open Sans', Arial;">Kreator nowego klienta</h1>
+            
+            <div class="form-horizontal">
+                <div class="form-group">
+                    @Html.LabelFor(x => x.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
             </div>
-            <div>
-                <label>Nazwisko:</label>
-                @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+            
+            <div class="form-horizontal">
+               <div class="form-group">
+                   @Html.LabelFor(x => x.LastName, htmlAttributes: new { @class = "control-label col-md-2"})
+                   <div class="col-md-10">
+                       @Html.EditorFor(x => x.LastName, new { htmlAttributes = new { @class = "form-control"} })
+                       @Html.ValidationMessageFor(x => x.LastName, "", new { @class = "text-danger"})
+                   </div>
+               </div>
             </div>
-            <div>
-                <label>E-mail:</label>
-                @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+            
+            <div class="form-horizontal">
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Email, htmlAttributes: new { @class = "control-label col-md-2"})
+                    <div class="col-md-10">
+                        @Html.EditorFor(x => x.Email, new { htmlAttributes = new { @class = "form-control"} })
+                        @Html.ValidationMessageFor(x => x.Email, "", new { @class = "text-danger"})
+                    </div>
+                </div>
             </div>
-            <div>
-                <label>Haslo:</label>
-                @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+
+            <div class="form-horizontal">
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(x => x.Password, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                        @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
             </div>
-            <div>
-                <label>Powtórz Haslo:</label>
-                @Html.PasswordFor(x => x.RepeatPassword, new { @class = "form-control" })
+
+            <div class="form-horizontal">
+                <div class="form-group">
+                    @Html.LabelFor(x => x.RepeatPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(x => x.RepeatPassword, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                        @Html.ValidationMessageFor(x => x.RepeatPassword, "", new { @class = "text-danger" })
+                    </div>
+                </div>
             </div>
-            <div>
-                <label>Data Urodzenia(0000/00/00):</label>
-                @Html.TextBoxFor(x => x.DateOfBrith, new { @class = "form-control" })
+
+            <div class="form-horizontal">
+                <div class="form-group">
+                    @Html.LabelFor(x => x.DateOfBrith, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(x => x.DateOfBrith, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(x => x.DateOfBrith, "", new { @class = "text-danger" })
+                    </div>
+                </div>
             </div>
-            <div>
-                <input class="btn btn-success" type="submit" value="Register" />
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Zapisz" class="btn btn-default" />
+                </div>
             </div>
         }
     </div>
