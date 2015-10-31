@@ -30,7 +30,7 @@ namespace SportStore.Domain.Respositories
             }
         }
 
-        IEnumerable<_dict_typeofnews_newsletter> INewsletterRepository.TypeOfNews
+        IEnumerable<_dict_newsletter> INewsletterRepository.TypeOfNews
         {
             get
             {

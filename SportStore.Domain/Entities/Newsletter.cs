@@ -21,6 +21,6 @@ namespace SportStore.Domain.Entities
         public int TypeOfNewsId { get; set; }
         public DateTime InsertTime { get; set; }
 
-        public virtual _dict_typeofnews_newsletter TypeOfNews { get; set; }
+        public virtual _dict_newsletter TypeOfNews { get; set; }
     }
 }

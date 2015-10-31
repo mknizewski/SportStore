@@ -46,7 +46,7 @@ namespace SportStore.Web.HtmlHelpers.Classes
                 var modelToSave = new Newsletter()
                 {
                     email = mail,
-                    TypeOfNewsId = selectedId,
+                    Id_Type_Of_News = selectedId,
                     InsertTime = currentTime
                 };
 
@@ -59,7 +59,7 @@ namespace SportStore.Web.HtmlHelpers.Classes
 
         }
 
-        private IEnumerable<SelectListItem> GetNewsList(IEnumerable<_dict_typeofnews_newsletter> list)
+        private IEnumerable<SelectListItem> GetNewsList(IEnumerable<_dict_newsletter> list)
         {
             var newList = new List<SelectListItem>();
 
