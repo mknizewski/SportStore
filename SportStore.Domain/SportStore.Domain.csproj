@@ -52,8 +52,26 @@
     <Compile Include="Abstract\INewsletterRepository.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EFDbInitializer.cs" />
+    <Compile Include="Entities\clients.cs" />
+    <Compile Include="Entities\client_notyfications.cs" />
+    <Compile Include="Entities\employees.cs" />
+    <Compile Include="Entities\employee_notyfications.cs" />
+    <Compile Include="Entities\items.cs" />
+    <Compile Include="Entities\items_opinions.cs" />
+    <Compile Include="Entities\items_picutures.cs" />
+    <Compile Include="Entities\items_quantity.cs" />
     <Compile Include="Entities\Newsletter.cs" />
-    <Compile Include="Entities\_dict_typeofnews_newsletter.cs" />
+    <Compile Include="Entities\orders.cs" />
+    <Compile Include="Entities\order_complaints.cs" />
+    <Compile Include="Entities\order_details.cs" />
+    <Compile Include="Entities\_dict_catalogs.cs" />
+    <Compile Include="Entities\_dict_cities.cs" />
+    <Compile Include="Entities\_dict_description_items.cs" />
+    <Compile Include="Entities\_dict_newsletter.cs" />
+    <Compile Include="Entities\_dict_rules.cs" />
+    <Compile Include="Entities\_dict_shops.cs" />
+    <Compile Include="Entities\_dict_status_compleints.cs" />
+    <Compile Include="Entities\_dict_status_orders.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Respositories\NewsletterRespository.cs" />
   </ItemGroup>
@@ -61,7 +79,9 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="SqlFiles\Initialization\0001_ii_dict_newsletter.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -15,7 +15,7 @@ namespace SportStore.Domain.Abstract
     public interface INewsletterRepository
     {
         IEnumerable<Newsletter> Newsletters { get; set; }
-        IEnumerable<_dict_typeofnews_newsletter> TypeOfNews { get; set; }
+        IEnumerable<_dict_newsletter> TypeOfNews { get; set; }
         void Add(Newsletter news);
         void Delete(int id);
     }

@@ -2,6 +2,7 @@
 using SportStore.Domain.Entities;
 using System.Collections.Generic;
 using System;
+using System.IO;
 
 namespace SportStore.Domain.Concrete
 {
@@ -13,20 +14,17 @@ namespace SportStore.Domain.Concrete
     public class EFDbInitializer : CreateDatabaseIfNotExists<EFDbContext>
     {
         /// <summary>
-        /// Ta metoda umożliwia nam podczas tworzenia bazy danych wypełnienie jej pierwszymi danymi oraz gdy model bazy się zmieni
+        /// Dane inicializujące podczas tworzenia bazy danych
         /// </summary>
         /// <param name="context">Zmienna bazowa</param>
         protected override void Seed(EFDbContext context)
         {
-            //TODO: Zrobić sqlki z insertami do bazy, poniższe rozwiązanie jest tymczasowe!
+            var tablePath = AppDomain.CurrentDomain.BaseDirectory.Split(new string[] { "SportStore.Web" }, StringSplitOptions.RemoveEmptyEntries);
+            string path = tablePath[0] + @"/SportStore.Domain/SqlFiles/Initialization";
 
-            List<_dict_typeofnews_newsletter> dictType = new List<_dict_typeofnews_newsletter> 
-            {
-                new _dict_typeofnews_newsletter() { Name = "Piłka Nożna", InsertTime = DateTime.Now, UpdateTime = null },
-                new _dict_typeofnews_newsletter() { Name = "Golf", InsertTime = DateTime.Now, UpdateTime = null },
-                new _dict_typeofnews_newsletter() { Name = "Kocmołuchowo", InsertTime = DateTime.Now, UpdateTime  = null }
-            };
-            dictType.ForEach(x => context.DictNewsletter.Add(x));
+            var sqlFiles = Directory.GetFiles(path, "*.sql");
+            foreach (var file in sqlFiles)
+                context.Database.ExecuteSqlCommand(File.ReadAllText(file));
 
             context.SaveChanges();
         }

@@ -19,10 +19,10 @@ namespace SportStore.Web.Models.Home
         [Required(ErrorMessage = "Pole E-mail jest wymagane!")]
         public string Email { get; set; }
 
-        [Display(Name = "Jaki dział chcesz subskrybować:")]
         [Required(ErrorMessage = "Proszę określić dział")]
         public int selectedTypeOfNews { get; set; }
 
+        [Display(Name = "Dział:")]
         public IEnumerable<SelectListItem> TypeOfNews { get; set; }
     }
 }

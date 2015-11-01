@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SportStore.Domain.Entities
 {
@@ -21,6 +17,6 @@ namespace SportStore.Domain.Entities
         public int TypeOfNewsId { get; set; }
         public DateTime InsertTime { get; set; }
 
-        public virtual _dict_typeofnews_newsletter TypeOfNews { get; set; }
+        public virtual _dict_newsletter TypeOfNews { get; set; }
     }
 }

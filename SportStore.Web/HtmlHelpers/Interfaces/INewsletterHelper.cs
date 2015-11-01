@@ -11,7 +11,6 @@ namespace SportStore.Web.HtmlHelpers.Interfaces
     public interface INewsletterHelper
     {
         NewsletterModel GetNewsletterModel();
-        void SaveToDb(NewsletterModel model);
-        bool CanSave();
+        bool TrySave(NewsletterModel model);
     }
 }

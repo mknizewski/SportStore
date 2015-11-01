@@ -29,28 +29,37 @@ namespace SportStore.Web.HtmlHelpers.Classes
             return model;
         }
 
-        void INewsletterHelper.SaveToDb(Models.Home.NewsletterModel model)
+        bool INewsletterHelper.TrySave(Models.Home.NewsletterModel model)
         {
-            var mail = model.Email;
-            var selectedId = model.selectedTypeOfNews;
-            var currentTime = DateTime.Now;
+            string mail = model.Email;
+            int selectedId = model.selectedTypeOfNews;
 
-            var modelToSave = new Newsletter() 
+            var ifExists = (from Newsletter modelNews in _newsletterRepository.Newsletters
+                            where modelNews.email == mail
+                            select modelNews).FirstOrDefault();
+
+
+            if (ifExists == null)
             {
-                email = mail,
-                TypeOfNewsId = selectedId,
-                InsertTime = currentTime
-            };
+                var currentTime = DateTime.Now;
 
-            _newsletterRepository.Add(modelToSave);
+                var modelToSave = new Newsletter()
+                {
+                    email = mail,
+                    TypeOfNewsId = selectedId,
+                    InsertTime = currentTime
+                };
+
+                _newsletterRepository.Add(modelToSave);
+
+                return true;
+            }
+            else
+                return false;
+
         }
 
-        bool INewsletterHelper.CanSave()
-        {
-            throw new NotImplementedException();
-        }
-
-        private IEnumerable<SelectListItem> GetNewsList(IEnumerable<_dict_typeofnews_newsletter> list)
+        private IEnumerable<SelectListItem> GetNewsList(IEnumerable<_dict_newsletter> list)
         {
             var newList = new List<SelectListItem>();
 

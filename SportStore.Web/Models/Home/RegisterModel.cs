@@ -13,23 +13,37 @@ namespace SportStore.Web.Models.Home
     /// Modyfikacja: Mateusz Kniżewski
     /// Opis: Usunięcie pól stringowych i dodanie pola DateTime
     /// Data: 17.10.15
+    /// Modyfikacja: Jarosław Chełmiński
+    /// Opis: Dodanie nowych stringow / modyfikacja istniejących.
+    /// Data: 24.10.15
     /// </summary>
     public class RegisterModel
     {
+        [Display(Name = "Imię: ")]
+        [Required(ErrorMessage = "Pole ''Imię'', jest puste!")]
+        public string FirstName { get; set; }
+
+        [Display(Name = "Nazwisko: ")]
+        [Required(ErrorMessage = "Pole ''Nazwisko'', jest puste!")]
+        public string LastName { get; set; }
+
         [Display(Name = "E-mail: ")]
-        [Required(ErrorMessage = "To pole jest wymagane!")]
+        [Required(ErrorMessage = "pole ''E-mail'', jest puste")]
+        [RegularExpression(".+\\@.+\\..+", ErrorMessage = "Nieprawidłowy E-mail!")]
         public string Email { get; set; }
 
         [Display(Name = "Hasło: ")]
-        [Required(ErrorMessage = "To pole jest wymagane!")]
+        [Required(ErrorMessage = "pole ''Hasło'', jest puste!")]
         public string Password { get; set; }
 
+        [Compare("Password")]
         [Display(Name = "Powtórz hasło: ")]
-        [Required(ErrorMessage = "To pole jest wymagane!")]
+        [Required(ErrorMessage = "pole ''Powtórz hasło'', jest puste!")]
         public string RepeatPassword { get; set; }
 
-        [Display(Name = "Data Urodzenia: ")]
-        [Required(ErrorMessage = "To pole jest wymagan!")]
+        [DataType(DataType.Date)]
+        [Display(Name = "Data Urodzenia:")]
+        [Required(ErrorMessage = "pole ''Data Urodzenia'', jest puste!")]
         public DateTime DateOfBrith { get; set; }
     }
 }
