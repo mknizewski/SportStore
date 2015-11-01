@@ -34,8 +34,17 @@ namespace SportStore.Domain.Concrete
         public DbSet<employees> Employees { get; set; }
         public DbSet<items> Items { get; set; }
         public DbSet<items_opinions> ItemsOpinions { get; set; }
+        public DbSet<items_quantity> ItemsQuantity { get; set; }
+        public DbSet<items_picutures> ItemsPictures { get; set; }
         public DbSet<orders> Orders { get; set; }
         public DbSet<order_details> OrderDetails { get; set; }
+        public DbSet<order_complaints> OrderComplaints { get; set; }
+        public DbSet<client_notyfications> ClientNotyfications { get; set; }
+        public DbSet<employee_notyfications> EmployeeNotyfications { get; set; }
+        #endregion
+
+        #region Tabele historyczne
+        // TODO: Zrobić historycze tabele!
         #endregion
 
         #region OnModelCreating
@@ -85,11 +94,30 @@ namespace SportStore.Domain.Concrete
             modelBuilder.Entity<items_opinions>()
                 .HasKey(e => e.Id);
 
+            modelBuilder.Entity<items_quantity>()
+                .HasKey(e => e.Id);
+
+            modelBuilder.Entity<items_picutures>()
+                .HasKey(e => e.Id);
+
             modelBuilder.Entity<orders>()
                 .HasKey(e => e.Id);
 
             modelBuilder.Entity<order_details>()
                 .HasKey(e => e.Id);
+
+            modelBuilder.Entity<order_complaints>()
+                .HasKey(e => e.Id);
+
+            modelBuilder.Entity<client_notyfications>()
+                .HasKey(e => e.Id);
+
+            modelBuilder.Entity<employee_notyfications>()
+                .HasKey(e => e.Id);
+            #endregion
+
+            #region Historyczne
+            // TODO: Tutaj opisać idki tabel historycznych na wzór poprzednich
             #endregion
         }
         #endregion

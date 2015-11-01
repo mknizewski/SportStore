@@ -53,11 +53,16 @@
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EFDbInitializer.cs" />
     <Compile Include="Entities\clients.cs" />
+    <Compile Include="Entities\client_notyfications.cs" />
     <Compile Include="Entities\employees.cs" />
+    <Compile Include="Entities\employee_notyfications.cs" />
     <Compile Include="Entities\items.cs" />
     <Compile Include="Entities\items_opinions.cs" />
+    <Compile Include="Entities\items_picutures.cs" />
+    <Compile Include="Entities\items_quantity.cs" />
     <Compile Include="Entities\Newsletter.cs" />
     <Compile Include="Entities\orders.cs" />
+    <Compile Include="Entities\order_complaints.cs" />
     <Compile Include="Entities\order_details.cs" />
     <Compile Include="Entities\_dict_catalogs.cs" />
     <Compile Include="Entities\_dict_cities.cs" />

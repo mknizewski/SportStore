@@ -46,7 +46,7 @@ namespace SportStore.Web.HtmlHelpers.Classes
                 var modelToSave = new Newsletter()
                 {
                     email = mail,
-                    Id_Type_Of_News = selectedId,
+                    TypeOfNewsId = selectedId,
                     InsertTime = currentTime
                 };
 
