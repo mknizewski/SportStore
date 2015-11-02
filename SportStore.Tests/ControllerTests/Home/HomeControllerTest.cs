@@ -24,7 +24,7 @@ namespace SportStore.Tests.ControllerTests.Home
                 TypeOfNews = FillTypeOfNews()
             });
             HomeController homeController = new HomeController(mock.Object);
-            int iterator = 1;
+            int iterator = 3;
 
             //działanie
             var returnedModel = (NewsletterModel)homeController.SaveNewsletter().Model;
@@ -42,8 +42,8 @@ namespace SportStore.Tests.ControllerTests.Home
         private IEnumerable<SelectListItem> FillTypeOfNews()
         {
             var list = new List<SelectListItem>();
-            list.Add(new SelectListItem() { Text = "Piłka Nożna", Value = "1" });
-            list.Add(new SelectListItem() { Text = "Kocmołuch", Value = "2" });
+            list.Add(new SelectListItem() { Text = "Piłka Nożna", Value = "3" });
+            list.Add(new SelectListItem() { Text = "Kocmołuch", Value = "4" });
 
             return list;
         }
