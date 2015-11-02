@@ -44,7 +44,11 @@ namespace SportStore.Domain.Concrete
         #endregion
 
         #region Tabele historyczne
-        // TODO: Zrobić historycze tabele!
+        DbSet<history_orders> HistoryOrders { get; set; }
+        DbSet<history_orders_details> HistoryOrdersDetails { get; set; }
+        DbSet<history_orders_complaints> HistoryOrdersComplaints { get; set; }
+        DbSet<history_client_notyfications> HistoryClientNotyfications { get; set; }
+        DbSet<history_employees_notyfications> HistoryEmployeesNotyfications { get; set; }
         #endregion
 
         #region OnModelCreating
@@ -117,7 +121,20 @@ namespace SportStore.Domain.Concrete
             #endregion
 
             #region Historyczne
-            // TODO: Tutaj opisać idki tabel historycznych na wzór poprzednich
+            modelBuilder.Entity<history_orders>()
+                .HasKey(e => e.Id);
+
+            modelBuilder.Entity<history_orders_details>()
+                .HasKey(e => e.Id);
+
+            modelBuilder.Entity<history_orders_complaints>()
+                .HasKey(e => e.Id);
+
+            modelBuilder.Entity<history_client_notyfications>()
+                .HasKey(e => e.Id);
+
+            modelBuilder.Entity<history_employees_notyfications>()
+                .HasKey(e => e.Id);
             #endregion
         }
         #endregion

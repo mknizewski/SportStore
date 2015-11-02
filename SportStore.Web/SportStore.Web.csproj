@@ -117,6 +117,7 @@
     <Content Include="Content\Css\bootstrap-theme.min.css" />
     <Content Include="Content\Css\bootstrap.css" />
     <Content Include="Content\Css\bootstrap.min.css" />
+    <Content Include="Content\Css\IndexCss\index-employee-section.css" />
     <Content Include="Content\Css\IndexCss\index-theme.css" />
     <Content Include="Content\Css\MenuCss\menu_styles.css" />
     <Content Include="Content\Css\NewsletterCss\newsletter-theme.css" />
