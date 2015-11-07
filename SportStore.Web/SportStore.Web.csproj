@@ -67,6 +67,7 @@
       <HintPath>..\packages\System.Linq.Dynamic.1.0.4\lib\net40\System.Linq.Dynamic.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -123,16 +124,25 @@
     <Content Include="Content\Css\NewsletterCss\newsletter-theme.css" />
     <Content Include="Content\Css\RegisterCss\register.css" />
     <Content Include="Content\Css\Site.css" />
+    <Content Include="Content\Images\Index\a11.png" />
+    <Content Include="Content\Images\Index\a21.png" />
+    <Content Include="Content\Images\Index\b05.png" />
+    <Content Include="Content\Images\Index\b21.png" />
     <Content Include="Content\Images\Index\banner-1.png" />
     <Content Include="Content\Images\Index\banner-2.png" />
     <Content Include="Content\Images\Index\banner-3.png" />
     <Content Include="Content\Images\Index\banner-4.png" />
     <Content Include="Content\Images\Index\main-banner.png" />
     <Content Include="Content\Images\Index\search-glass.png" />
+    <Content Include="Content\Images\Index\Slider\01.jpg" />
+    <Content Include="Content\Images\Index\Slider\02.jpg" />
+    <Content Include="Content\Images\Index\Slider\03.jpg" />
+    <Content Include="Content\Images\Index\Slider\04.jpg" />
     <Content Include="Content\Images\Menu\bg.png" />
     <Content Include="Content\Images\Newsletter\succes-sign.png" />
     <Content Include="Content\Images\Newsletter\undo.png" />
     <Content Include="Content\Images\favicon.ico" />
+    <Content Include="Content\Images\loading_gif.GIF" />
     <Content Include="Content\validation.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -145,8 +155,18 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\docs.min.js" />
+    <Content Include="Scripts\ie10-viewport-bug-workaround.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jssor.slider.mini.js" />
     <Content Include="Scripts\menu_script.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config">
@@ -156,15 +176,26 @@
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HtmlHelpers\Classes\LoginHelper.cs" />
     <Compile Include="HtmlHelpers\Classes\NewsletterHelper.cs" />
+    <Compile Include="HtmlHelpers\Classes\PasswordHelper.cs" />
+    <Compile Include="HtmlHelpers\Classes\RegisterHelper.cs" />
+    <Compile Include="HtmlHelpers\Interfaces\ILoginHelper.cs" />
     <Compile Include="HtmlHelpers\Interfaces\INewsletterHelper.cs" />
+    <Compile Include="HtmlHelpers\Interfaces\IRegisterHelper.cs" />
+    <Compile Include="HtmlHelpers\ValidationAttributes\MinimumLength.cs" />
+    <Compile Include="HtmlHelpers\ValidationAttributes\PolandPostalCode.cs" />
+    <Compile Include="HtmlHelpers\ValidationAttributes\UniqueNewsletterEmailAdress.cs" />
+    <Compile Include="Infrastructure\ClientAuthentication.cs" />
     <Compile Include="Infrastructure\NinjectDepedencyResolver.cs" />
+    <Compile Include="Models\Client\LoginModel.cs" />
     <Compile Include="Models\Home\NewsletterModel.cs" />
-    <Compile Include="Models\Home\RegisterModel.cs" />
+    <Compile Include="Models\Client\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\Home\HomeResources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -181,8 +212,9 @@
     <Content Include="Views\Home\NewsletterThanks.cshtml" />
     <Content Include="Views\Home\SaveNewsletter.cshtml" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
-    <Content Include="Views\Home\Register.cshtml" />
-    <Content Include="Views\Home\registerThanks.cshtml" />
+    <Content Include="Views\Client\Register.cshtml" />
+    <Content Include="Views\Client\registerThanks.cshtml" />
+    <Content Include="Views\Client\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

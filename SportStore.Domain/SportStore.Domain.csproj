@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IClientRepository.cs" />
     <Compile Include="Abstract\INewsletterRepository.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EFDbInitializer.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Entities\_dict_status_compleints.cs" />
     <Compile Include="Entities\_dict_status_orders.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Respositories\ClientsRepository.cs" />
     <Compile Include="Respositories\NewsletterRespository.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -86,6 +88,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="SqlFiles\Initialization\0001_ii_dict_newsletter.sql" />
+    <Content Include="SqlFiles\Initialization\0002_ii_dict_rules.sql" />
+    <Content Include="SqlFiles\Initialization\0003_ii_dict_cities.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

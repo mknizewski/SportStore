@@ -3,14 +3,21 @@
 @{
     ViewBag.Title = "newsletter";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    AjaxOptions ajaxOptions = new AjaxOptions()
+    {
+        UpdateTargetId = "body",
+        Url = Url.Action("SaveNewsletter"),
+        LoadingElementId = "loading",
+    };
 }
 
 <div class="panel panel-success">
     <div class="panel-body">
 
-        <h1 class="text-center" style="font-family: 'Open Sans', Arial;">Zapisz się na newsletter</h1>
+        <h4 style="font-family:'Open Sans', Arial;">Zapisz się na newsletter SportStore</h4>
+        <hr />
 
-        @using (Html.BeginForm())
+        @using (Ajax.BeginForm(ajaxOptions))
         {
             @Html.AntiForgeryToken()
 
@@ -39,6 +46,8 @@
                 </div>
             </div>
         }
+
+        <hr />
 
         <div class="btn btn-default">
             @Html.ActionLink("Powrót", "Index")

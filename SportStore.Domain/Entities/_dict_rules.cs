@@ -14,4 +14,9 @@ namespace SportStore.Domain.Entities
         public DateTime InsertTime { get; set; }
         public DateTime? UpdateTime { get; set; }
     }
+
+    public enum Rules
+    { 
+        Admin, Employee, Client
+    }
 }

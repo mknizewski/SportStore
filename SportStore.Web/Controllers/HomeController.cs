@@ -7,12 +7,14 @@ using SportStore.Web.Models.Home;
 using SportStore.Domain.Abstract;
 using SportStore.Domain.Entities;
 using SportStore.Web.HtmlHelpers.Interfaces;
+using SportStore.Web.Models.Client;
+using SportStore.Web.Infrastructure;
 
 namespace SportStore.Web.Controllers
 {
     /// <summary>
     /// Autor:  Mateusz Kniżewski
-    /// Opis:   Klasa kontrolera głownej strony
+    /// Opis:   Klasa kontrolera głownej strony sklepu
     /// Data:   16.10.15
     /// </summary>
     public class HomeController : Controller
@@ -66,27 +68,6 @@ namespace SportStore.Web.Controllers
             else
                 return View(_newsletterHelper.GetNewsletterModel());
         }
-
-        [HttpGet]
-        public ViewResult Register()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ViewResult Register(RegisterModel registermodel)
-        {
-            if (ModelState.IsValid)
-            {
-                return View("registerThanks");
-            }
-
-            else
-            {
-                return View();
-            }
-        }
-
         #endregion
     }
 }

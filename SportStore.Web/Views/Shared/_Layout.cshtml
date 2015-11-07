@@ -19,11 +19,30 @@
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     <script src="~/Scripts/menu_script.js"></script>
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery-2.1.4.js"></script>
 </head>
-<body>
+<body id="body">
+
+    <div id="loading" class="load" style="display:none">
+        <img src="~/Content/Images/loading_gif.GIF" alt="Loading Screen" />
+    </div>
 
     <div class="navi">
         <div id="navi-banner">
+            @{
+                if (Session["Client"] != null)
+                {
+                    var clientName = Session["Client"] as SportStore.Web.Models.Client.LoginModel;
+                   <a href='@Url.Action("AccountManagment", "Client")'>Witaj @clientName.Login</a>
+                   <a href='@Url.Action("Logout", "Client")'>Wyloguj się</a>
+                }
+                else
+                {
+                    <a href='@Url.Action("Login", "Client")'>Zaloguj się</a>
+                    <a href='@Url.Action("Register", "Client")'>Zarejestruj się</a>
+                }
+            }
         </div>
         <img src="~/Content/Images/Index/main-banner.png" alt="Logo główne" />
     </div>
@@ -35,22 +54,6 @@
                 <li><a href='@Url.Action("Index","Home")'><span>Główna</span></a></li>
                 <li>
                     <a href='#'><span>Kategorie</span></a>
-                    <ul>
-                        <li class='has-sub'>
-                            <a href='#'><span>Product 1</span></a>
-                            <ul>
-                                <li><a href='#'><span>Sub Product</span></a></li>
-                                <li class='last'><a href='#'><span>Sub Product</span></a></li>
-                            </ul>
-                        </li>
-                        <li class='has-sub'>
-                            <a href='#'><span>Product 2</span></a>
-                            <ul>
-                                <li><a href='#'><span>Sub Product</span></a></li>
-                                <li class='last'><a href='#'><span>Sub Product</span></a></li>
-                            </ul>
-                        </li>
-                    </ul>
                 </li>
                 <li><a href='#'><span>O nas</span></a></li>
                 <li class='last'><a href='#'><span>Kontakt</span></a></li>

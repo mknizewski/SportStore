@@ -6,6 +6,7 @@
         bottom: 150px;
         transition: 1s;
         -webkit-transition: 1s; /* dla Google Chrome, Safari, Opera 15+ */
+        z-index: 99999;
     }
 
      #caly:hover {
