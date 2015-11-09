@@ -90,6 +90,10 @@
     <Content Include="SqlFiles\Initialization\0001_ii_dict_newsletter.sql" />
     <Content Include="SqlFiles\Initialization\0002_ii_dict_rules.sql" />
     <Content Include="SqlFiles\Initialization\0003_ii_dict_cities.sql" />
+    <Content Include="SqlFiles\Initialization\0004_ii_dict_catalogs.sql" />
+    <Content Include="SqlFiles\Initialization\0005_ii_dict_shops.sql" />
+    <Content Include="SqlFiles\Initialization\0006_ii_dict_status_compleints.sql" />
+    <Content Include="SqlFiles\Initialization\0007_ii_dict_status_orders.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
