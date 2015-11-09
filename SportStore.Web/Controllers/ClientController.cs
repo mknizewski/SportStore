@@ -40,9 +40,11 @@ namespace SportStore.Web.Controllers
             {
                 FormsAuthentication.SetAuthCookie(loginModel.Login, false);
 
-                this.Session["Client"] = loginModel;
+                var split = loginModel.Login.Split(new char[] { '@' });
 
-                return Redirect(Url.Action("Index", "Home"));
+                this.Session["Client"] = split[0];
+
+                return Redirect(returnUrl);
             }
             else
             {
@@ -81,7 +83,7 @@ namespace SportStore.Web.Controllers
             this.Session["Client"] = null;
             FormsAuthentication.SignOut();
 
-            return Redirect(Url.Action("Index", "Home"));
+            return Redirect(returnUrl);
         }
     }
 }

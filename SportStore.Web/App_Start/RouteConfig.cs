@@ -17,16 +17,20 @@ namespace SportStore.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             #region Sklep
+            routes.MapRoute("", "Sklep/Klient/Logowanie", new { controller = "Client", action = "Login" });
+            routes.MapRoute("", "Sklep/Klient/Wylogowanie", new { controller = "Client", action = "Logout" });
+            routes.MapRoute("", "Sklep/Klient/Rejestracja", new { controller = "Client", action = "Register" });
+            routes.MapRoute("", "Sklep/Klient/{user}", new { controller = "Client", action = "AccountManagment", user = (string)null });
+
             routes.MapRoute("", "Sklep/Rejestracja", new { controller = "Home", action = "Register" });
             routes.MapRoute("", "Sklep/Newsletter", new { controller = "Home", action = "SaveNewsletter" });
-            routes.MapRoute("", "Sklep/Klient/Logowanie", new { controller = "Client", action = "Login" });
-            routes.MapRoute("", "Sklep/Klient/Rejestracja", new { controller = "Client", action = "Register" });
+            routes.MapRoute("", "Sklep/Wyszukiwarka", new { controller = "Search", action = "GlobalSearch" });
 
             routes.MapRoute(
-                name: "Default",
-                url: "Sklep",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+              name: "Default",
+              url: "Sklep",
+              defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+          );
             #endregion
 
 

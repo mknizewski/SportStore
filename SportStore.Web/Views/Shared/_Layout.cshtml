@@ -16,6 +16,7 @@
     <link href="~/Content/Css/MenuCss/menu_styles.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,800,300,700&amp;subset=latin-ext" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic,700,700italic,900,900italic&amp;subset=latin-ext" />
+    <link href="~/Content/Css/SearchBarCss/searchbar.css" rel="stylesheet" type="text/css" />
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     <script src="~/Scripts/menu_script.js"></script>
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
@@ -33,18 +34,29 @@
             @{
                 if (Session["Client"] != null)
                 {
-                    var clientName = Session["Client"] as SportStore.Web.Models.Client.LoginModel;
-                   <a href='@Url.Action("AccountManagment", "Client")'>Witaj @clientName.Login</a>
-                   <a href='@Url.Action("Logout", "Client")'>Wyloguj się</a>
+                    var clientName = Session["Client"];
+                    @Html.ActionLink("Witaj " + clientName + " ", "AccountManagment", new { controller = "Client", user = clientName });
+                    @Html.ActionLink("Wyloguj się", "Logout", "Client", new { returnUrl = Request.Url.PathAndQuery }, null);
                 }
                 else
                 {
-                    <a href='@Url.Action("Login", "Client")'>Zaloguj się</a>
-                    <a href='@Url.Action("Register", "Client")'>Zarejestruj się</a>
+                    @Html.ActionLink("Zaloguj się ", "Login", "Client", new { returnUrl = Request.Url.PathAndQuery }, null);
+                    @Html.ActionLink("Rejestruj się", "Register", "Client");
                 }
             }
         </div>
+
         <img src="~/Content/Images/Index/main-banner.png" alt="Logo główne" />
+
+        @* Div globalnej wyszukiwarki *@
+        <div id="global_search_div">
+            @using (Html.BeginForm("GlobalSearch", "Search", FormMethod.Post, new { @class = "searchform cf" }))
+            {
+                @Html.Editor("Czego szukasz?", "searchText", "searchText", new { htmlAttributes = new { @placeholder = "Przeszukaj sklep SportStore" } })
+                <button type="submit">Szukaj</button>
+            }
+        </div>
+
     </div>
 
     <div class="all">

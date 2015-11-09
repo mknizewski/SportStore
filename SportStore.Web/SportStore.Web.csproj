@@ -123,6 +123,7 @@
     <Content Include="Content\Css\MenuCss\menu_styles.css" />
     <Content Include="Content\Css\NewsletterCss\newsletter-theme.css" />
     <Content Include="Content\Css\RegisterCss\register.css" />
+    <Content Include="Content\Css\SearchBarCss\searchbar.css" />
     <Content Include="Content\Css\Site.css" />
     <Content Include="Content\Images\Index\a11.png" />
     <Content Include="Content\Images\Index\a21.png" />
@@ -178,6 +179,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -224,6 +226,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Home\HomeResources.resx">

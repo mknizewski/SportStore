@@ -14,9 +14,9 @@ namespace SportStore.Web.Models.Client
     public class LoginModel
     {
         [DataType(DataType.EmailAddress)]
-        [Display(Name = "Login:")]
-        [Required(ErrorMessage = "pole ''Login'', jest puste")]
-        [RegularExpression(".+\\@.+\\..+", ErrorMessage = "Login to twój email")] 
+        [Display(Name = "Email:")]
+        [Required(ErrorMessage = "pole ''Email'', jest puste")]
+        [RegularExpression(".+\\@.+\\..+", ErrorMessage = "Niepoprawny adres email")] 
         public string Login { get; set; }
 
         [Display(Name = "Hasło:")]
