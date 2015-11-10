@@ -57,6 +57,7 @@
     <Compile Include="Entities\client_notyfications.cs" />
     <Compile Include="Entities\employees.cs" />
     <Compile Include="Entities\employee_notyfications.cs" />
+    <Compile Include="Entities\genereted_register_keys.cs" />
     <Compile Include="Entities\history_client_notyfications.cs" />
     <Compile Include="Entities\history_employees_notyfications.cs" />
     <Compile Include="Entities\history_orders.cs" />

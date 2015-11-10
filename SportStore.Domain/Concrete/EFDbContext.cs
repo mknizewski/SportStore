@@ -41,6 +41,7 @@ namespace SportStore.Domain.Concrete
         public DbSet<order_complaints> OrderComplaints { get; set; }
         public DbSet<client_notyfications> ClientNotyfications { get; set; }
         public DbSet<employee_notyfications> EmployeeNotyfications { get; set; }
+        public DbSet<genereted_register_keys> GeneretedRegisterKeys { get; set; }
         #endregion
 
         #region Tabele historyczne
@@ -117,6 +118,9 @@ namespace SportStore.Domain.Concrete
                 .HasKey(e => e.Id);
 
             modelBuilder.Entity<employee_notyfications>()
+                .HasKey(e => e.Id);
+
+            modelBuilder.Entity<genereted_register_keys>()
                 .HasKey(e => e.Id);
             #endregion
 
