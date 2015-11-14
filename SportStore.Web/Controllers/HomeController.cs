@@ -32,6 +32,7 @@ namespace SportStore.Web.Controllers
         /// Metoda defaultowa
         /// </summary>
         /// <returns>Widok Index</returns>
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
@@ -53,14 +54,15 @@ namespace SportStore.Web.Controllers
         /// <param name="newsletter">obiekt typu newsletter</param>
         /// <returns>Widok NewsletterThanks</returns>
         [HttpPost]
-        public ActionResult SaveNewsletter(NewsletterModel newsletter)
+        public ViewResult SaveNewsletter(NewsletterModel newsletter)
         {
             if (ModelState.IsValid)
             {
                 if (_newsletterHelper.TrySave(newsletter))
                 {
                     ViewBag.Email = newsletter.Email;
-                    return View("NewsletterThanks");
+                    Alert.SetAlert(AlertStatus.Succes, "Poprawnie zapisano do newslettera!");
+                    return View("Index");
                 }
                 else
                     return View(_newsletterHelper.GetNewsletterModel());

@@ -10,12 +10,13 @@
 
         @using (Html.BeginForm(new { returnUrl = ViewBag.ReturnUrl }))
         {
+            
             @Html.AntiForgeryToken()
 
             <div class="form-horizontal">
                 <h4 style="font-family: 'Open Sans', Arial;">Zaloguj się do serwisu SportStore</h4>
                 <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.ValidationSummary(true, "", new { @class = "alert alert-danger fade in", @style = "'Open Sans', Arial" })
                 <div class="form-group">
                     @Html.LabelFor(model => model.Login, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">

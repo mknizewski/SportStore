@@ -197,6 +197,7 @@
     <Compile Include="Infrastructure\ClientAuthentication.cs" />
     <Compile Include="Infrastructure\NinjectDepedencyResolver.cs" />
     <Compile Include="Models\Client\LoginModel.cs" />
+    <Compile Include="Models\Home\Alert.cs" />
     <Compile Include="Models\Home\NewsletterModel.cs" />
     <Compile Include="Models\Client\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -212,11 +213,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\NewsletterThanks.cshtml" />
     <Content Include="Views\Home\SaveNewsletter.cshtml" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
     <Content Include="Views\Client\Register.cshtml" />
-    <Content Include="Views\Client\registerThanks.cshtml" />
     <Content Include="Views\Client\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

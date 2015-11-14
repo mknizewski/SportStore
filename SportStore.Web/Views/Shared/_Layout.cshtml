@@ -40,7 +40,7 @@
                 else
                 {
                     @Html.ActionLink("Zaloguj się ", "Login", "Client", new { returnUrl = Request.Url.PathAndQuery }, null);
-                    @Html.ActionLink("Rejestruj się", "Register", "Client");
+                    @Html.ActionLink("Rejestruj się", "Register", "Client", new { returnUrl = Request.Url.PathAndQuery }, null);
                 }
             }
         </div>
@@ -72,6 +72,22 @@
         </div>
 
         <div class="body-content">
+            @{
+                var alert = SportStore.Web.Models.Home.Alert.IsAlerted;
+
+                if (alert)
+                {
+                    var alertType = SportStore.Web.Models.Home.Alert.AlertType;
+                    var message = SportStore.Web.Models.Home.Alert.Message;
+
+                    <div class="alert alert-@alertType fade in">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        @message
+                    </div>
+                
+                    SportStore.Web.Models.Home.Alert.ClearAlert();
+                }
+            }
             @RenderBody()
         </div>
 
@@ -151,11 +167,17 @@
         function getCookie(cname) {
             var name = cname + "=";
             var ca = document.cookie.split(';');
+
             for (var i = 0; i < ca.length; i++) {
                 var c = ca[i];
-                while (c.charAt(0) == ' ') c = c.substring(1);
-                if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+
+                while (c.charAt(0) == ' ')
+                    c = c.substring(1);
+
+                if (c.indexOf(name) == 0)
+                    return c.substring(name.length, c.length);
             }
+
             return "";
         }
 

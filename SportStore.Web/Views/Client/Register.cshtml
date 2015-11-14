@@ -3,21 +3,17 @@
 @{
     ViewBag.Title = "rejestracja";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    AjaxOptions ajaxOptions = new AjaxOptions() 
-    {
-        UpdateTargetId = "body",
-        Url = Url.Action("Register"),
-        LoadingElementId = "loading",
-    };
+    
 }
 
 <link rel="stylesheet" href="~/Content/Css/RegisterCss/register.css" />
 
 <div class="panel panel-success">
     <div class="panel-body">
-        @using (Ajax.BeginForm(ajaxOptions))
+        @using (Html.BeginForm(new { returnUrl = ViewBag.ReturnUrl }))
         {
             @Html.AntiForgeryToken();
+            @Html.ValidationSummary(true, "", new { @class = "alert alert-danger fade in", @style = "'Open Sans', Arial" })
             
             <div class="form-horizontal">
                 <h4 style="font-family:'Open Sans', Arial;">Zarejestruj się w serwisie SportStore</h4>

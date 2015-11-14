@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using SportStore.Web.Infrastructure;
+using SportStore.Web.Models.Home;
 
 namespace SportStore.Web.Controllers
 {
@@ -43,7 +44,7 @@ namespace SportStore.Web.Controllers
                 var split = loginModel.Login.Split(new char[] { '@' });
 
                 this.Session["Client"] = split[0];
-
+                Alert.SetAlert(AlertStatus.Info, "Witaj " + split[0]);
                 return Redirect(returnUrl);
             }
             else
@@ -54,18 +55,20 @@ namespace SportStore.Web.Controllers
         }
 
         [HttpGet]
-        public ViewResult Register()
+        public ActionResult Register(string returnUrl)
         {
+            ViewBag.ReturnUrl = returnUrl;
             return View(_registerHelper.GetRegisterModel());
         }
 
         [HttpPost]
-        public ViewResult Register(RegisterModel registerModel)
+        public ActionResult Register(RegisterModel registerModel, string returnUrl)
         {
             if (ModelState.IsValid)
             {
                 _registerHelper.Save(registerModel);
-                return View("registerThanks");
+                Alert.SetAlert(AlertStatus.Succes, "Poprawnie założono konto klienta!");
+                return Redirect(returnUrl);
             }
             else
                 return View(_registerHelper.GetRegisterModel());
