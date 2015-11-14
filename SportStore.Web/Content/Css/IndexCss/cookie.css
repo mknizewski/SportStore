@@ -1,0 +1,22 @@
+﻿#cookieAlert {
+    background-color: rgba(0, 148, 255, 0.5);
+    width: 100%;
+    height: 5%;
+    position: fixed;
+    top: 95%;
+}
+
+#cookieAlert table {
+    position: relative;
+    left: 25%;
+}
+
+#cookieAlert p {
+    font-family: "Open Sans", Arial;
+    font-size: 100%;
+    margin: 15px 15px 15px 15px;
+}
+
+#cookieButton {
+   
+}
