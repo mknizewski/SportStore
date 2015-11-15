@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\ICatalogsRepository.cs" />
     <Compile Include="Abstract\IClientRepository.cs" />
     <Compile Include="Abstract\INewsletterRepository.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Entities\_dict_status_compleints.cs" />
     <Compile Include="Entities\_dict_status_orders.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Respositories\CatalogsRepository.cs" />
     <Compile Include="Respositories\ClientsRepository.cs" />
     <Compile Include="Respositories\NewsletterRespository.cs" />
   </ItemGroup>

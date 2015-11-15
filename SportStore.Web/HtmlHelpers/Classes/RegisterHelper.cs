@@ -27,6 +27,7 @@ namespace SportStore.Web.HtmlHelpers.Classes
             var list = GetCitiesList(new EFDbContext().DictCities);
 
             model.Cities = list;
+            model.DateOfBrith = DateTime.Today;
 
             return model;
         }
@@ -43,7 +44,7 @@ namespace SportStore.Web.HtmlHelpers.Classes
                 Street  = registerModel.Street,
                 PostalCode = registerModel.PostalCode,
                 Id_City = registerModel.selectedCity,
-                Id_Rule = (int)Rules.Client + 1 
+                Id_Rule = (int)Rules.Client
             };
 
             _clientsRepository.Add(model);

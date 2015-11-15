@@ -44,6 +44,8 @@ namespace SportStore.Web.Infrastructure
             _iKernel.Bind<IClientRepository>().To<ClientsRepository>();
             _iKernel.Bind<IRegisterHelper>().To<RegisterHelper>();
             _iKernel.Bind<ILoginHelper>().To<LoginHelper>();
+            _iKernel.Bind<ICatalogsRepository>().To<CatalogsRepository>();
+            _iKernel.Bind<ICatalogsHelper>().To<CatalogsHelper>();
         }
     }
 }

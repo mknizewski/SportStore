@@ -44,8 +44,13 @@ namespace SportStore.Web.Controllers
                 var split = loginModel.Login.Split(new char[] { '@' });
 
                 this.Session["Client"] = split[0];
+
                 Alert.SetAlert(AlertStatus.Info, "Witaj " + split[0]);
-                return Redirect(returnUrl);
+
+                if (returnUrl != null)
+                    return Redirect(returnUrl);
+                else
+                    return RedirectToAction("Index", "Home", new { controller = "Home", action = "Index" });
             }
             else
             {
@@ -67,8 +72,8 @@ namespace SportStore.Web.Controllers
             if (ModelState.IsValid)
             {
                 _registerHelper.Save(registerModel);
-                Alert.SetAlert(AlertStatus.Succes, "Poprawnie założono konto klienta!");
-                return Redirect(returnUrl);
+                Alert.SetAlert(AlertStatus.Succes, "Poprawnie założono konto klienta! Możesz teraz zalogować się do serwisu używając danych podanych w rejestracji.");
+                return RedirectToAction("Login");
             }
             else
                 return View(_registerHelper.GetRegisterModel());

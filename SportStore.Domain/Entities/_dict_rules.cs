@@ -17,6 +17,6 @@ namespace SportStore.Domain.Entities
 
     public enum Rules
     { 
-        Admin, Employee, Client
+        None, Admin, Employee, Client
     }
 }

@@ -178,16 +178,19 @@
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CatalogController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HtmlHelpers\Classes\CatalogsHelper.cs" />
     <Compile Include="HtmlHelpers\Classes\LoginHelper.cs" />
     <Compile Include="HtmlHelpers\Classes\NewsletterHelper.cs" />
     <Compile Include="HtmlHelpers\Classes\PasswordHelper.cs" />
     <Compile Include="HtmlHelpers\Classes\RegisterHelper.cs" />
+    <Compile Include="HtmlHelpers\Interfaces\ICatalogsHelper.cs" />
     <Compile Include="HtmlHelpers\Interfaces\ILoginHelper.cs" />
     <Compile Include="HtmlHelpers\Interfaces\INewsletterHelper.cs" />
     <Compile Include="HtmlHelpers\Interfaces\IRegisterHelper.cs" />
@@ -217,6 +220,7 @@
     <Content Include="Scripts\jquery-2.1.4.min.map" />
     <Content Include="Views\Client\Register.cshtml" />
     <Content Include="Views\Client\Login.cshtml" />
+    <Content Include="Views\Shared\CatalogPartialView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -226,6 +230,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Catalog\" />
     <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>
