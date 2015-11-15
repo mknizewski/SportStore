@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SportStore.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,7 @@ namespace SportStore.Web.HtmlHelpers.Interfaces
     /// </summary>
     public interface ICatalogsHelper
     {
-        IEnumerable<SelectListItem> GetCatalogs();
+        IEnumerable<_dict_catalogs> GetCatalogs();
         //TODO: Dodać nowe metody!
     }
 }

@@ -33,9 +33,9 @@ namespace SportStore.Web.HtmlHelpers.Classes
             return newList;
         }
 
-        IEnumerable<SelectListItem> ICatalogsHelper.GetCatalogs()
+        IEnumerable<_dict_catalogs> ICatalogsHelper.GetCatalogs()
         {
-            return GetCatalogsList(_catalogRepository.Catalogs);
+            return _catalogRepository.Catalogs;
         }
     }
 }
