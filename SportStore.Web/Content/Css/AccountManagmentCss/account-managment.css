@@ -1,0 +1,20 @@
+﻿td, th 
+{
+    border: 1px solid black;
+}
+
+table.AM-table tr td img
+{
+    height: 91px;
+    width: 90px;
+}
+
+table.AM-table tr td:hover
+{
+    background-color: #00c420;
+}
+table.AM-table td 
+{
+    height: 140px;
+    width: 200px;
+}

@@ -34,7 +34,7 @@
                 if (Session["Client"] != null)
                 {
                     var clientName = Session["Client"];
-                    @Html.ActionLink("Witaj " + clientName + " ", "AccountManagment", new { controller = "Client", user = clientName });
+                    @Html.ActionLink("Witaj " + clientName + " ", "AccountManagment", new { controller = "Client", user = clientName.ToString() });
                     @Html.ActionLink("Wyloguj się", "Logout", "Client", new { returnUrl = Request.Url.PathAndQuery }, null);
                 }
                 else

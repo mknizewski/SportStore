@@ -81,7 +81,7 @@ namespace SportStore.Web.Controllers
 
         [Authorize]
         [ClientAuthentication]
-        public ActionResult AccountManagment()
+        public ActionResult AccountManagment(string user)
         {
             return View();
         }
