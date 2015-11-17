@@ -114,6 +114,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Css\AccountManagmentCss\account-managment.css" />
     <Content Include="Content\Css\bootstrap-theme.css" />
     <Content Include="Content\Css\bootstrap-theme.min.css" />
     <Content Include="Content\Css\bootstrap.css" />
@@ -126,6 +127,11 @@
     <Content Include="Content\Css\RegisterCss\register.css" />
     <Content Include="Content\Css\SearchBarCss\searchbar.css" />
     <Content Include="Content\Css\Site.css" />
+    <Content Include="Content\Images\AccountManagment\complaints.png" />
+    <Content Include="Content\Images\AccountManagment\notices.png" />
+    <Content Include="Content\Images\AccountManagment\options.png" />
+    <Content Include="Content\Images\AccountManagment\order.png" />
+    <Content Include="Content\Images\AccountManagment\recycle-bin.png" />
     <Content Include="Content\Images\Index\a11.png" />
     <Content Include="Content\Images\Index\a21.png" />
     <Content Include="Content\Images\Index\b05.png" />
