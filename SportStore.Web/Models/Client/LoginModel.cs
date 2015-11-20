@@ -15,13 +15,13 @@ namespace SportStore.Web.Models.Client
     {
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email:")]
-        [Required(ErrorMessage = "pole ''Email'', jest puste")]
+        [Required(ErrorMessage = "pole jest puste")]
         [RegularExpression(".+\\@.+\\..+", ErrorMessage = "Niepoprawny adres email")] 
         public string Login { get; set; }
 
         [Display(Name = "Hasło:")]
         [DataType(DataType.Password)]
-        [Required(ErrorMessage = "pole ''Hasło'', jest puste")]
+        [Required(ErrorMessage = "pole jest puste")]
         public string Password { get; set; }
     }
 }

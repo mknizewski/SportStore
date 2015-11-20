@@ -1,5 +1,5 @@
 #global_search_div {
-    
+   
 }
 
 
@@ -7,6 +7,9 @@
 2.0 - SEARCH FORM - tutaj kod stylu wyszukiwarki
 --------------------------------------------------------------*/
 .searchform {
+    left: 26%;
+    bottom: 55px;
+    width: 35%;
     position: absolute;
     background:#f4f4f4;
     background:rgba(244,244,244,.79);
@@ -21,15 +24,15 @@
 }
 
 .searchform input, .searchform button {
-	float: left
+	float: left;
 }
 .searchform input {
 	background:#fefefe;
 	border: none;
-	font:12px/12px 'HelveticaNeue', Helvetica, Arial, sans-serif;
+	font:12px/12px 'Open Sans', Arial;
 	margin-right: 5px;
-	padding: 10px;
-	width: 216px;
+	padding: 15px;
+	width: 300px;
 	box-shadow: 0 0 4px rgba(0,0,0,.4) inset, 1px 1px 1px rgba(255,255,255,.75);
 	-moz-box-shadow: 0 0 4px rgba(0,0,0,.4) inset, 1px 1px 1px rgba(255,255,255,.75);
 	-webkit-box-shadow: 0 0 4px rgba(0,0,0,.4) inset, 1px 1px 1px rgba(255,255,255,.75);
@@ -54,6 +57,7 @@
 	}
 
 .searchform button {
+    float: left;
 	background: rgb(52,173,236);
 	background: -moz-linear-gradient(top, rgba(52,173,236,1) 0%, rgba(38,145,220,1) 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(52,173,236,1)), color-stop(100%,rgba(38,145,220,1)));
@@ -66,7 +70,7 @@
 	color:#fff;
 	cursor: pointer;
 	font: 13px/13px 'HelveticaNeue', Helvetica, Arial, sans-serif;
-	padding: 10px;
+	padding: 15px;
 	width:106px;
 	box-shadow: 0 0 2px #2692dd inset;
 	-moz-box-shadow: 0 0 2px #2692dd inset;

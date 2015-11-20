@@ -28,6 +28,8 @@ namespace SportStore.Web
             routes.MapRoute("", "Sklep/Wyszukiwarka", new { controller = "Search", action = "GlobalSearch" });
             routes.MapRoute("", "Sklep/Katalog", new { controller = "Catalog", action = "CatalogPartialView" });
 
+            routes.MapRoute("", "Pracownik/Logowanie", new { controller = "Employee", action = "Login" });
+
             routes.MapRoute(
               name: "Default",
               url: "Sklep",

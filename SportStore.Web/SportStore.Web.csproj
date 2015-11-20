@@ -186,6 +186,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CatalogController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
@@ -206,6 +207,7 @@
     <Compile Include="Infrastructure\ClientAuthentication.cs" />
     <Compile Include="Infrastructure\NinjectDepedencyResolver.cs" />
     <Compile Include="Models\Client\LoginModel.cs" />
+    <Compile Include="Models\Employee\LoginModel.cs" />
     <Compile Include="Models\Home\Alert.cs" />
     <Compile Include="Models\Home\NewsletterModel.cs" />
     <Compile Include="Models\Client\RegisterModel.cs" />
@@ -228,6 +230,7 @@
     <Content Include="Views\Client\Login.cshtml" />
     <Content Include="Views\Shared\CatalogPartialView.cshtml" />
     <Content Include="Views\Client\AccountManagment.cshtml" />
+    <Content Include="Views\Employee\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
