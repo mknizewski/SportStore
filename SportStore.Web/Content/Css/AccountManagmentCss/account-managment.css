@@ -1,21 +1,20 @@
-table.AM-table tr td img
-{
+.AM-table td {
+    margin-top: 50px;
+    margin-left: 200px;
+    float: left;
+    font-family: 'Open Sans', Arial;
+}
+
+.AM-table img {
     height: 90px;
     width: 90px;
 }
 
-table.AM-table tr td:hover
-{
+.AM-table tr td:hover {
    
 }
-table.AM-table tr td 
-{
-    height: 140px;
-    width: 200px;
-    font-family: Arial;
-}
-table.AM-table 
-{
+
+.AM-table {
    /* klasa tablicy, jak chcesz to wywal*/
 }
 
