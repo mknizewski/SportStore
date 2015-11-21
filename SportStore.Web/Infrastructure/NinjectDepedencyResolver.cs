@@ -7,6 +7,7 @@ using SportStore.Domain.Abstract;
 using SportStore.Domain.Respositories;
 using SportStore.Web.HtmlHelpers.Classes;
 using SportStore.Web.HtmlHelpers.Interfaces;
+using SportStore.Web.HtmlHelpers.ValidationAttributes;
 
 namespace SportStore.Web.Infrastructure
 {
@@ -40,6 +41,12 @@ namespace SportStore.Web.Infrastructure
         {
             _iKernel.Bind<INewsletterRepository>().To<NewsletterRespository>();
             _iKernel.Bind<INewsletterHelper>().To<NewsletterHelper>();
+            _iKernel.Bind<IClientRepository>().To<ClientsRepository>();
+            _iKernel.Bind<IRegisterHelper>().To<RegisterHelper>();
+            _iKernel.Bind<ILoginHelper>().To<LoginHelper>();
+            _iKernel.Bind<ICatalogsRepository>().To<CatalogsRepository>();
+            _iKernel.Bind<ICatalogsHelper>().To<CatalogsHelper>();
+            _iKernel.Bind<IAccountManagmentHelper>().To<AccountManagmentHelper>();
         }
     }
 }

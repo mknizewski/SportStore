@@ -1,19 +1,24 @@
-﻿@model SportStore.Web.Models.Home.RegisterModel
+﻿@model SportStore.Web.Models.Client.RegisterModel
 
 @{
     ViewBag.Title = "rejestracja";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    
 }
+
+<link rel="stylesheet" href="~/Content/Css/RegisterCss/register.css" />
 
 <div class="panel panel-success">
     <div class="panel-body">
-        @using (Html.BeginForm())
+        @using (Html.BeginForm(new { returnUrl = ViewBag.ReturnUrl }))
         {
             @Html.AntiForgeryToken();
-            
-            <h1 class="text-center" style="font-family:'Open Sans', Arial;">Kreator nowego klienta</h1>
+            @Html.ValidationSummary(true, "", new { @class = "alert alert-danger fade in", @style = "'Open Sans', Arial" })
             
             <div class="form-horizontal">
+                <h4 style="font-family:'Open Sans', Arial;">Zarejestruj się w serwisie SportStore</h4>
+                <h5 style="font-family: 'Open Sans', Arial;">Krok 1/2 - dane osobowe</h5>
+                <hr />
                 <div class="form-group">
                     @Html.LabelFor(x => x.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
@@ -73,12 +78,53 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Zapisz" class="btn btn-default" />
+            <h5 style="font-family: 'Open Sans', Arial;">Krok 2/2 - dane wysyłkowe</h5>
+            <hr />
+
+            <div class="form-horizontal">
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Cities, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.selectedCity, Model.Cities, "Wybierz miasto", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.selectedCity, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+           </div>
+
+            <div class="form-horizontal">
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Street, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(x => x.Street, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(x => x.Street, "", new { @class = "text-danger" })
+                    </div>
                 </div>
             </div>
+
+            <div class="form-horizontal">
+                <div class="form-group">
+                    @Html.LabelFor(x => x.PostalCode, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(x => x.PostalCode, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(x => x.PostalCode, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Zarejestruj się" class="btn btn-success" />
+                </div>
+            </div>
+
+            <p></p>
+            <hr />
         }
+
+        <div class="btn btn-default">
+            @Html.ActionLink("Powrót", "Index", "Home")
+        </div>
+
     </div>
 </div>
 

@@ -33,30 +33,18 @@ namespace SportStore.Web.HtmlHelpers.Classes
         {
             string mail = model.Email;
             int selectedId = model.selectedTypeOfNews;
+            var currentTime = DateTime.Now;
 
-            var ifExists = (from Newsletter modelNews in _newsletterRepository.Newsletters
-                            where modelNews.email == mail
-                            select modelNews).FirstOrDefault();
-
-
-            if (ifExists == null)
+            var modelToSave = new Newsletter()
             {
-                var currentTime = DateTime.Now;
+                email = mail,
+                TypeOfNewsId = selectedId,
+                InsertTime = currentTime
+            };
 
-                var modelToSave = new Newsletter()
-                {
-                    email = mail,
-                    TypeOfNewsId = selectedId,
-                    InsertTime = currentTime
-                };
+            _newsletterRepository.Add(modelToSave);
 
-                _newsletterRepository.Add(modelToSave);
-
-                return true;
-            }
-            else
-                return false;
-
+            return true;
         }
 
         private IEnumerable<SelectListItem> GetNewsList(IEnumerable<_dict_newsletter> list)

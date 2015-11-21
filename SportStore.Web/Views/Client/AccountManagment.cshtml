@@ -1,0 +1,109 @@
+﻿@model SportStore.Web.Models.Client.AccountModel
+
+@{
+    ViewBag.Title = "Zarządzanie kontem";
+}
+
+<link href="~/Content/Css/AccountManagmentCss/account-managment.css" rel="stylesheet" type="text/css" />
+
+
+<div class="panel panel-success">
+    <h4 style="font-family: 'Open Sans', Arial; margin-left: 2%;">Twoje konto</h4>
+    <hr />
+    <div class="table-responsive">
+        <table>
+            <tr>
+                <td>
+                    <a href="#" data-toggle="tooltip" title="Twój koszyk na zakupy">
+                        <div class="MetroIcon">
+                            <img src="~/Content/Images/AccountManagment/shopping-cart.png" />
+                            <p>Koszyk</p>
+                        </div>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" data-toggle="tooltip" title="Twoje zamówienia">
+                        <div class="MetroIcon">
+                            <img src="~/Content/Images/AccountManagment/orders.png" />
+                            <p>Zamówienia</p>
+                        </div>
+                    </a>
+                </td>
+                <td>
+                    <a href='@Url.Action("Notyfications", "Client")' data-toggle="tooltip" title="Twoje powiadomienia">
+                        <div id="Notify"> <p> @Model.UnreadNotifications </p> </div>
+                        <div class="MetroIcon">
+                            <img src="~/Content/Images/AccountManagment/notice.png" />
+                            <p>Powiadomienia</p>
+                        </div>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="#" data-toggle="tooltip" title="Tu znajdziesz zgłoszone reklamacje">
+                        <div class="MetroIcon">
+                            <img src="~/Content/Images/AccountManagment/complaint.png" alt="Reklamacje" />
+                            <p>Reklamacje</p>
+                        </div>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" data-toggle="tooltip" title="Tu możesz zmienić ustawienia konta">
+                        <div class="MetroIcon">
+                            <img src="~/Content/Images/AccountManagment/setting.png" />
+                            <p>Ustawienia konta</p>
+                        </div>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <h4 style="font-family: 'Open Sans', Arial; margin-left: 2%;">Twoje dane</h4>
+    <hr />
+
+    <div class="row">
+        <div class="col-sm-4">
+            <h5>Dane kontaktowe</h5>
+            <table>
+                <tr>
+                    <td> Imię: </td>
+                    <td> @Model.Name </td>
+                </tr>
+                <tr>
+                    <td> Nazwisko: </td>
+                    <td> @Model.Surname </td>
+                </tr>
+                <tr>
+                    <td> Email: </td>
+                    <td> @Model.Login </td>
+                </tr>
+                <tr>
+                    <td> Data urodzenia: </td>
+                    <td> @Model.DateOfBirth.ToShortDateString() </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-sm-4">
+            <h5>Dane wysyłkowe</h5>
+            <table>
+                <tr>
+                    <td> Miasto: </td>
+                    <td> @Model.City </td>
+                </tr>
+                <tr>
+                    <td> Ulica: </td>
+                    <td> @Model.Street </td>
+                </tr>
+                <tr>
+                    <td> Kod pocztowy: </td>
+                    <td> @Model.PostalCode </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+

@@ -49,6 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\ICatalogsRepository.cs" />
+    <Compile Include="Abstract\IClientRepository.cs" />
     <Compile Include="Abstract\INewsletterRepository.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EFDbInitializer.cs" />
@@ -56,6 +58,12 @@
     <Compile Include="Entities\client_notyfications.cs" />
     <Compile Include="Entities\employees.cs" />
     <Compile Include="Entities\employee_notyfications.cs" />
+    <Compile Include="Entities\genereted_register_keys.cs" />
+    <Compile Include="Entities\history_client_notyfications.cs" />
+    <Compile Include="Entities\history_employees_notyfications.cs" />
+    <Compile Include="Entities\history_orders.cs" />
+    <Compile Include="Entities\history_orders_complaints.cs" />
+    <Compile Include="Entities\history_orders_details.cs" />
     <Compile Include="Entities\items.cs" />
     <Compile Include="Entities\items_opinions.cs" />
     <Compile Include="Entities\items_picutures.cs" />
@@ -73,6 +81,8 @@
     <Compile Include="Entities\_dict_status_compleints.cs" />
     <Compile Include="Entities\_dict_status_orders.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Respositories\CatalogsRepository.cs" />
+    <Compile Include="Respositories\ClientsRepository.cs" />
     <Compile Include="Respositories\NewsletterRespository.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -81,6 +91,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="SqlFiles\Initialization\0001_ii_dict_newsletter.sql" />
+    <Content Include="SqlFiles\Initialization\0002_ii_dict_rules.sql" />
+    <Content Include="SqlFiles\Initialization\0003_ii_dict_cities.sql" />
+    <Content Include="SqlFiles\Initialization\0004_ii_dict_catalogs.sql" />
+    <Content Include="SqlFiles\Initialization\0005_ii_dict_shops.sql" />
+    <Content Include="SqlFiles\Initialization\0006_ii_dict_status_compleints.sql" />
+    <Content Include="SqlFiles\Initialization\0007_ii_dict_status_orders.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,67 +1,115 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sport Store - @ViewBag.Title</title>
     <link rel="shortcut icon" href="~/Content/Images/favicon.ico" />
-    <link rel="stylesheet" href="~/Content/Css/RegisterCss/register.css"/>
     <link rel="stylesheet" href="~/Content/Css/bootstrap.css"/>
     <link rel="stylesheet" href="~/Content/Css/bootstrap-theme.css">
     <link rel="stylesheet" href="~/Content/validation.css" type="text/css" />
     <link href="~/Content/Css/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/Css/bootstrap-theme.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/Css/NewsletterCss/newsletter-theme.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/Css/IndexCss/index-theme.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/Css/MenuCss/menu_styles.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,800,300,700&amp;subset=latin-ext" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic,700,700italic,900,900italic&amp;subset=latin-ext" />
+    <link href="~/Content/Css/SearchBarCss/searchbar.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Css/IndexCss/cookie.css" rel="stylesheet" type="text/css" />
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     <script src="~/Scripts/menu_script.js"></script>
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery-2.1.4.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
 </head>
-<body>
+<body id="body" onload="checkCookie()">
+
+    <div id="loading" class="load" style="display:none">
+        <img src="~/Content/Images/loading_gif.GIF" alt="Loading Screen" />
+    </div>
 
     <div class="navi">
         <div id="navi-banner">
+            @{
+                if (Session["Client"] != null)
+                {
+                    var client = (SportStore.Web.Models.Client.AccountModel)Session["Client"];
+                    var split = client.Login.Split(new char[] { '@' });
+                    var clientName = split[0];
+                    @Html.ActionLink("Witaj " + clientName + " ", "AccountManagment", new { controller = "Client" });
+                    @Html.ActionLink("Wyloguj się", "Logout", "Client", new { returnUrl = Request.Url.PathAndQuery }, null);
+                }
+                else
+                {
+                    @Html.ActionLink("Zaloguj się ", "Login", "Client", new { returnUrl = Request.Url.PathAndQuery }, null);
+                    @Html.ActionLink("Rejestruj się", "Register", "Client", new { returnUrl = Request.Url.PathAndQuery }, null);
+                }
+            }
         </div>
+
         <img src="~/Content/Images/Index/main-banner.png" alt="Logo główne" />
+
+        @* Div globalnej wyszukiwarki *@
+        <div id="global_search_div">
+            @using (Html.BeginForm("GlobalSearch", "Search", FormMethod.Post, new { @class = "searchform cf" }))
+            {
+                @Html.Editor("Czego szukasz?", "searchText", "searchText", new { htmlAttributes = new { @placeholder = "Przeszukaj sklep SportStore" } })
+                <button type="submit">Szukaj</button>
+            }
+        </div>
+
     </div>
 
     <div class="all">
 
         <div id='cssmenu'>
             <ul>
-                <li><a href='@Url.Action("Index","Home")'><span>Główna</span></a></li>
                 <li>
-                    <a href='#'><span>Kategorie</span></a>
-                    <ul>
-                        <li class='has-sub'>
-                            <a href='#'><span>Product 1</span></a>
-                            <ul>
-                                <li><a href='#'><span>Sub Product</span></a></li>
-                                <li class='last'><a href='#'><span>Sub Product</span></a></li>
-                            </ul>
-                        </li>
-                        <li class='has-sub'>
-                            <a href='#'><span>Product 2</span></a>
-                            <ul>
-                                <li><a href='#'><span>Sub Product</span></a></li>
-                                <li class='last'><a href='#'><span>Sub Product</span></a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                    <a href='@Url.Action("Index","Home")'><span>Główna</span></a>
                 </li>
-                <li><a href='#'><span>O nas</span></a></li>
-                <li class='last'><a href='#'><span>Kontakt</span></a></li>
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#myModal"><span>Kategorie</span></a>
+                </li>
+                <li>
+                    <a href="#"><span>Nowości</span></a>
+                </li>
+                <li>
+                    <a href="#"><span>Akutalności</span></a>
+                </li>
+                <li>
+                    <a href='#'><span>O nas</span></a>
+                </li>
+                <li class='last'>
+                    <a href='#'><span>Kontakt</span></a>
+                </li>
             </ul>
         </div>
 
+        @{ Html.RenderAction("CatalogPartialView", "Catalog"); }
+
         <div class="body-content">
+            @{
+                var alert = SportStore.Web.Models.Home.Alert.IsAlerted;
+
+                if (alert)
+                {
+                    var alertType = SportStore.Web.Models.Home.Alert.AlertType;
+                    var message = SportStore.Web.Models.Home.Alert.Message;
+
+                    <div class="alert alert-@alertType fade in">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        @message
+                    </div>
+                
+                    SportStore.Web.Models.Home.Alert.ClearAlert();
+                }
+            }
+
             @RenderBody()
         </div>
 
         <div class="table">
+            <img src="~/Content/Images/Banners/callus.jpg" alt="Zadzwoń do nas" style="margin-left: 8%;"/>
             <table class="footer-table">
                 <tr>
                     <td> <img src="~/Content/Images/Index/banner-1.png" alt="banner1" /> </td>
@@ -106,7 +154,62 @@
 
     </div>
 
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    <div id="cookieAlert">
+        <table>
+            <tr>
+                <td>
+                    <p>Strona korzysta z plików cookie w celu realizacji usług zgodnie z Polityką dotyczącą cookies.</p>
+                </td>
+                <td>
+                    <button id="cookieButton" onclick="acceptCookie()">Rozumiem</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <script type="text/javascript">
+
+        function acceptCookie() {
+            var div = document.getElementById("cookieAlert");
+            div.style.display = "none";
+            setCookie("cookie", true, 7);
+        }
+
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + "; " + expires;
+        }
+
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+
+                while (c.charAt(0) == ' ')
+                    c = c.substring(1);
+
+                if (c.indexOf(name) == 0)
+                    return c.substring(name.length, c.length);
+            }
+
+            return "";
+        }
+
+        function checkCookie() {
+            var cookie = getCookie("cookie");
+
+            if (cookie != "") {
+                var div = document.getElementById("cookieAlert");
+                div.style.display = "none";
+            }
+        }
+
+    </script>
+
 </body>
+
 </html>

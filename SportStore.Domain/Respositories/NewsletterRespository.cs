@@ -3,9 +3,6 @@ using SportStore.Domain.Concrete;
 using SportStore.Domain.Entities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SportStore.Domain.Respositories
 {
@@ -16,7 +13,7 @@ namespace SportStore.Domain.Respositories
     /// </summary>
     public class NewsletterRespository : INewsletterRepository
     {
-        EFDbContext context = new EFDbContext();
+        private EFDbContext context = new EFDbContext();
 
         IEnumerable<Newsletter> INewsletterRepository.Newsletters
         {
