@@ -33,8 +33,10 @@
             @{
                 if (Session["Client"] != null)
                 {
-                    var clientName = Session["Client"];
-                    @Html.ActionLink("Witaj " + clientName + " ", "AccountManagment", new { controller = "Client", user = clientName.ToString() });
+                    var client = (SportStore.Web.Models.Client.AccountModel)Session["Client"];
+                    var split = client.Login.Split(new char[] { '@' });
+                    var clientName = split[0];
+                    @Html.ActionLink("Witaj " + clientName + " ", "AccountManagment", new { controller = "Client" });
                     @Html.ActionLink("Wyloguj się", "Logout", "Client", new { returnUrl = Request.Url.PathAndQuery }, null);
                 }
                 else
@@ -107,6 +109,7 @@
         </div>
 
         <div class="table">
+            <img src="~/Content/Images/Banners/callus.jpg" alt="Zadzwoń do nas" style="margin-left: 8%;"/>
             <table class="footer-table">
                 <tr>
                     <td> <img src="~/Content/Images/Index/banner-1.png" alt="banner1" /> </td>

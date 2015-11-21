@@ -16,11 +16,12 @@ namespace SportStore.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            #region Sklep
             routes.MapRoute("", "Sklep/Klient/Logowanie", new { controller = "Client", action = "Login" });
             routes.MapRoute("", "Sklep/Klient/Wylogowanie", new { controller = "Client", action = "Logout" });
             routes.MapRoute("", "Sklep/Klient/Rejestracja", new { controller = "Client", action = "Register" });
-            routes.MapRoute("", "Sklep/Klient/{user}/Zarzadzanie", new { controller = "Client", action = "AccountManagment", user = UrlParameter.Optional });
+            routes.MapRoute("", "Sklep/Klient/Zarzadzanie", new { controller = "Client", action = "AccountManagment" });
+            routes.MapRoute("", "Sklep/Klient/Powiadomienia", new { controller = "Client", action = "Notyfications"});
+            routes.MapRoute("", "Sklep/Klient/Powiadomienia/{id}", new { controller = "Client", action = "DeleteNote", id = UrlParameter.Optional });
             routes.MapRoute("", "Sklep/Katalog/{catalogId}", new { controller = "Catalog", action = "Catalogs", catalogId = UrlParameter.Optional });
 
             routes.MapRoute("", "Sklep/Rejestracja", new { controller = "Home", action = "Register" });
@@ -31,12 +32,16 @@ namespace SportStore.Web
             routes.MapRoute("", "Pracownik/Logowanie", new { controller = "Employee", action = "Login" });
 
             routes.MapRoute(
+              name: "",
+              url: "",
+              defaults: new { controller = "Home", action = "Index" }
+          );
+
+            routes.MapRoute(
               name: "Default",
               url: "Sklep",
-              defaults: new { controller = "Home", action = "Index", catalogId = UrlParameter.Optional }
+              defaults: new { controller = "Home", action = "Index" }
           );
-            #endregion
-
 
         }
     }

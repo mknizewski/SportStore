@@ -13,5 +13,6 @@ namespace SportStore.Web.HtmlHelpers.Interfaces
         IEnumerable<clients> Clients { get; set; }
         bool IfExists(LoginModel loginModel);
         void ForgottenPassword(string email, string newPassword);
+        AccountModel GetClient(string clientLogin);
     }
 }

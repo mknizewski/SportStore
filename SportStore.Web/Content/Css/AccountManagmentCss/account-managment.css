@@ -1,21 +1,51 @@
-.AM-table td {
-    margin-top: 50px;
-    margin-left: 200px;
-    float: left;
+.MetroIcon {
+    font-family: 'Open Sans', Arial;
+    margin: 25px 25px 55px 175px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.MetroIcon p {
+    text-decoration: none;
+}
+
+.MetroIcon img {
+    height: 100px;
+    width: 110px;
+}
+
+.MetroIcon img:hover {
+    
+}
+
+#Notify {
+    position: absolute;
+    background-color: red;
+    border-radius: 25px;
+    height: 20px;
+    width: 20px;
+    left: 880px;
+    top: 160px;
+}
+
+#Notify p {
+    text-align:center;
+    color: white;
     font-family: 'Open Sans', Arial;
 }
 
-.AM-table img {
-    height: 90px;
-    width: 90px;
+.row {
+    font-family: 'Open Sans', Arial;
+    font-size: 20px;
+    margin-left: 35px;
+    margin-bottom: 30px;
 }
 
-.AM-table tr td:hover {
-   
+.row div {
+    margin-right: 55px;
 }
 
-.AM-table {
-   /* klasa tablicy, jak chcesz to wywal*/
+.row h5 {
+    font-family: 'Open Sans', Arial;
+    font-size: 35px;
 }
-
-

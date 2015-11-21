@@ -1,6 +1,7 @@
 ﻿using SportStore.Domain.Abstract;
 using SportStore.Domain.Entities;
 using SportStore.Web.HtmlHelpers.Interfaces;
+using SportStore.Web.Models.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,6 +59,34 @@ namespace SportStore.Web.HtmlHelpers.Classes
         void ILoginHelper.ForgottenPassword(string email, string newPassword)
         {
             throw new NotImplementedException();
+        }
+
+
+        Models.Client.AccountModel ILoginHelper.GetClient(string clientLogin)
+        {
+            var dbData = (from clients c in _clientRepository.Clients
+                         where c.Email.Equals(clientLogin)
+                         select c).FirstOrDefault();
+
+            var unReadNote = (from client_notyfications c in _clientRepository.ClientNotyfications
+                              where c.Id_Client.Equals(dbData.Id) && c.AsRead == false
+                              select c).ToArray();
+
+            AccountModel accountModel = new AccountModel()
+            {
+                Id = dbData.Id,
+                Login = dbData.Email,
+                Name = dbData.Name,
+                Surname = dbData.Surname,
+                City_Id = dbData.Id_City,
+                City = dbData.City.Name,
+                Street = dbData.Street,
+                PostalCode = dbData.PostalCode,
+                DateOfBirth = dbData.DateOfBrith,
+                UnreadNotifications = unReadNote.Length
+            };
+
+            return accountModel;
         }
     }
 }

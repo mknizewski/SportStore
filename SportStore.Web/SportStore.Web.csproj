@@ -127,11 +127,12 @@
     <Content Include="Content\Css\RegisterCss\register.css" />
     <Content Include="Content\Css\SearchBarCss\searchbar.css" />
     <Content Include="Content\Css\Site.css" />
-    <Content Include="Content\Images\AccountManagment\complaints.png" />
+    <Content Include="Content\Images\AccountManagment\complaint.png" />
     <Content Include="Content\Images\AccountManagment\notice.png" />
     <Content Include="Content\Images\AccountManagment\orders.png" />
-    <Content Include="Content\Images\AccountManagment\settings.png" />
+    <Content Include="Content\Images\AccountManagment\setting.png" />
     <Content Include="Content\Images\AccountManagment\shopping-cart.png" />
+    <Content Include="Content\Images\Banners\callus.jpg" />
     <Content Include="Content\Images\Index\a11.png" />
     <Content Include="Content\Images\Index\a21.png" />
     <Content Include="Content\Images\Index\b05.png" />
@@ -192,11 +193,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HtmlHelpers\Classes\AccountManagmentHelper.cs" />
     <Compile Include="HtmlHelpers\Classes\CatalogsHelper.cs" />
     <Compile Include="HtmlHelpers\Classes\LoginHelper.cs" />
     <Compile Include="HtmlHelpers\Classes\NewsletterHelper.cs" />
     <Compile Include="HtmlHelpers\Classes\PasswordHelper.cs" />
     <Compile Include="HtmlHelpers\Classes\RegisterHelper.cs" />
+    <Compile Include="HtmlHelpers\Interfaces\IAccountManagmentHelper.cs" />
     <Compile Include="HtmlHelpers\Interfaces\ICatalogsHelper.cs" />
     <Compile Include="HtmlHelpers\Interfaces\ILoginHelper.cs" />
     <Compile Include="HtmlHelpers\Interfaces\INewsletterHelper.cs" />
@@ -206,6 +209,7 @@
     <Compile Include="HtmlHelpers\ValidationAttributes\UniqueNewsletterEmailAdress.cs" />
     <Compile Include="Infrastructure\ClientAuthentication.cs" />
     <Compile Include="Infrastructure\NinjectDepedencyResolver.cs" />
+    <Compile Include="Models\Client\AccountModel.cs" />
     <Compile Include="Models\Client\LoginModel.cs" />
     <Compile Include="Models\Employee\LoginModel.cs" />
     <Compile Include="Models\Home\Alert.cs" />
@@ -229,8 +233,9 @@
     <Content Include="Views\Client\Register.cshtml" />
     <Content Include="Views\Client\Login.cshtml" />
     <Content Include="Views\Shared\CatalogPartialView.cshtml" />
-    <Content Include="Views\Client\AccountManagment.cshtml" />
     <Content Include="Views\Employee\Login.cshtml" />
+    <Content Include="Views\Client\AccountManagment.cshtml" />
+    <Content Include="Views\Client\Notyfications.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

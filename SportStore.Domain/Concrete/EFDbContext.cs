@@ -45,11 +45,11 @@ namespace SportStore.Domain.Concrete
         #endregion
 
         #region Tabele historyczne
-        DbSet<history_orders> HistoryOrders { get; set; }
-        DbSet<history_orders_details> HistoryOrdersDetails { get; set; }
-        DbSet<history_orders_complaints> HistoryOrdersComplaints { get; set; }
-        DbSet<history_client_notyfications> HistoryClientNotyfications { get; set; }
-        DbSet<history_employees_notyfications> HistoryEmployeesNotyfications { get; set; }
+        public DbSet<history_orders> HistoryOrders { get; set; }
+        public DbSet<history_orders_details> HistoryOrdersDetails { get; set; }
+        public DbSet<history_orders_complaints> HistoryOrdersComplaints { get; set; }
+        public DbSet<history_client_notyfications> HistoryClientNotyfications { get; set; }
+        public DbSet<history_employees_notyfications> HistoryEmployeesNotyfications { get; set; }
         #endregion
 
         #region OnModelCreating

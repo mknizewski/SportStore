@@ -44,5 +44,39 @@ namespace SportStore.Domain.Respositories
         {
             throw new NotImplementedException();
         }
+
+
+        IEnumerable<Entities.client_notyfications> IClientRepository.ClientNotyfications
+        {
+            get
+            {
+                return _context.ClientNotyfications;
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        IEnumerable<Entities.history_client_notyfications> IClientRepository.HistoryClientNotyfications
+        {
+            get
+            {
+                return _context.HistoryClientNotyfications;
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        void IClientRepository.MarkAsRead(int id)
+        {
+            var orginal = _context.ClientNotyfications.Find(id);
+
+            orginal.AsRead = true;
+
+            _context.SaveChanges();
+        }
     }
 }

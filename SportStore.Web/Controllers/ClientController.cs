@@ -20,11 +20,13 @@ namespace SportStore.Web.Controllers
     {
         private IRegisterHelper _registerHelper { get; set; }
         private ILoginHelper _loginHelper { get; set; }
+        private IAccountManagmentHelper _accountManagmentHelper { get; set; }
 
-        public ClientController(IRegisterHelper registerHelper, ILoginHelper loginHelper)
+        public ClientController(IRegisterHelper registerHelper, ILoginHelper loginHelper, IAccountManagmentHelper accountManagmentHelper)
         {
             _registerHelper = registerHelper;
             _loginHelper = loginHelper;
+            _accountManagmentHelper = accountManagmentHelper;
         }
 
         [HttpGet]
@@ -41,11 +43,11 @@ namespace SportStore.Web.Controllers
             {
                 FormsAuthentication.SetAuthCookie(loginModel.Login, false);
 
-                var split = loginModel.Login.Split(new char[] { '@' });
+                var Client = _loginHelper.GetClient(loginModel.Login);
+                this.Session["Client"] = Client;
 
-                this.Session["Client"] = split[0];
-
-                Alert.SetAlert(AlertStatus.Info, "Witaj " + split[0]);
+                if (Client.UnreadNotifications != 0)
+                    Alert.SetAlert(AlertStatus.Info, "Masz " + Client.UnreadNotifications + " nowe powiadomienia!");
 
                 if (returnUrl != null)
                     return Redirect(returnUrl);
@@ -81,9 +83,28 @@ namespace SportStore.Web.Controllers
 
         [Authorize]
         [ClientAuthentication]
-        public ActionResult AccountManagment(string user)
+        public ActionResult AccountManagment()
         {
-            return View();
+            var cookie = this.Session["Client"] as AccountModel;
+      
+            return View(cookie);
+        }
+
+        [Authorize]
+        [ClientAuthentication]
+        public ActionResult Notyfications()
+        {
+            var id = (Session["Client"] as AccountModel).Id;
+
+            return View(_accountManagmentHelper.GetNotifications(id));
+        }
+
+        public ActionResult DeleteNote(int id)
+        {
+            _accountManagmentHelper.MarkAsRead(id);
+            (Session["Client"] as AccountModel).UnreadNotifications -= 1;
+
+            return RedirectToAction("Notyfications");
         }
 
         public ActionResult Logout(string returnUrl)

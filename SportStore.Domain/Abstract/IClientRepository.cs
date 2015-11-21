@@ -15,8 +15,11 @@ namespace SportStore.Domain.Abstract
     public interface IClientRepository
     {
         IEnumerable<clients> Clients { get; set; }
+        IEnumerable<client_notyfications> ClientNotyfications { get; set; }
+        IEnumerable<history_client_notyfications> HistoryClientNotyfications { get; set; }
         void Add(clients client);
         void Delete(int id);
         void Edit(clients client);
+        void MarkAsRead(int id);
     }
 }

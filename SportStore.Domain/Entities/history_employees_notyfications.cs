@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SportStore.Domain.Entities
 {
-    class history_employees_notyfications
+    public class history_employees_notyfications
     {
         public int Id { get; set; }
         public int History_Id { get; set; }

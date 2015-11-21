@@ -16,7 +16,7 @@ namespace SportStore.Web.Models.Employee
         [Display(Name = "Email:")]
         [DataType(DataType.EmailAddress)]
         [Required(ErrorMessage = "Pole jest puste")]
-        [RegularExpression(".+\\@sportstore.pl.+\\..+", ErrorMessage = "Adres email musi się kończyć")] 
+        [RegularExpression(".+\\@sportstore.pl.+\\..+", ErrorMessage = "Adres email musi się kończyć znakami @sportstore.pl")] 
         public string Login { get; set; }
 
         [Display(Name = "Hasło:")]
