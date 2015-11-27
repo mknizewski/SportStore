@@ -9,7 +9,7 @@ namespace SportStore.Web.Controllers
 {
     /// <summary>
     /// Autor:  Mateusz Kniżewski
-    /// Opis:   Kontroler katalogów produktów
+    /// Opis:   Kontroler katalogów produktów oraz przedmiotów
     /// Data:   15.11.15
     /// </summary>
     public class CatalogController : Controller
@@ -26,7 +26,12 @@ namespace SportStore.Web.Controllers
             return PartialView(_catalogsHelper.GetCatalogs());
         }
 
-        public ActionResult Catalogs(int catalogId)
+        public ActionResult Catalogs(int catalogId, int page)
+        {
+            return View(_catalogsHelper.GetItemsByCatalog(catalogId, page));
+        }
+
+        public ViewResult ItemDescription()
         {
             return View();
         }

@@ -46,5 +46,17 @@ namespace SportStore.Domain.Respositories
             _context.DictCatalogs.Remove(rowToDelete);
             _context.SaveChanges();
         }
+
+        IEnumerable<Entities.items> ICatalogsRepository.Items
+        {
+            get
+            {
+                return _context.Items;
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
     }
 }

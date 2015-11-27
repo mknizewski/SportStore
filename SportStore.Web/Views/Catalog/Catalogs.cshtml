@@ -1,0 +1,60 @@
+﻿@model SportStore.Web.Models.Catalog.ProductsListViewModel
+
+@{
+    ViewBag.Title = "Katalog produktów: " + @Model.CurrentCategory;
+}
+
+<link rel="stylesheet" href="~/Content/Css/CatalogCss/catalogs.css" type="text/css" />
+
+<div class="panel panel-success">
+    <h2 style="font-family:'Open Sans', Arial;">
+        @Model.CurrentCategory
+        <small>Ilość znalezionych towarów: <span class="badge badge-inverse">@Model.pagingModel.TotalItems</span></small>
+    </h2>
+    <hr />
+
+    <div class="filters">
+        <h4 style="font-family:'Open Sans',Arial;">Filtry</h4>
+        <hr/>
+    </div>
+
+    <div class="row">
+
+    @foreach (var p in Model.Items)
+    {
+        <div class="col-md-4 portfolio-item">
+            <a href="#">
+                <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+            </a>
+            <h3 class="desc">
+                <a href="#">@p.Title</a>
+            </h3>
+
+                <a href="#" id="cart" style="float:left;">
+                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                </a>
+                <span class="label label-primary" style="float:right;">
+                    @p.Price.ToString("c")
+                </span>
+        </div>
+    }
+
+    </div>
+    <hr/>
+
+    <div class="row">
+        <div class="col-sm-4">
+            <p>Ilość znalezionych towarów: <span class="badge badge-inverse">@Model.pagingModel.TotalItems</span> </p>
+        </div>
+
+        <div class="col-sm-4">
+            
+        </div>
+
+        <div class="col-sm-4">
+            <div class="btn-group">
+                @Html.PageLinks(Model.pagingModel, x => Url.Action("Catalogs", new { page = x, catalogId = Model.CurrentCategoryId }))
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,5 @@
 ﻿using SportStore.Domain.Entities;
+using SportStore.Web.Models.Catalog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,6 @@ namespace SportStore.Web.HtmlHelpers.Interfaces
     public interface ICatalogsHelper
     {
         IEnumerable<_dict_catalogs> GetCatalogs();
-        //TODO: Dodać nowe metody!
+        ProductsListViewModel GetItemsByCatalog(int catalogId, int page);
     }
 }

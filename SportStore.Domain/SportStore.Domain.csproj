@@ -97,6 +97,8 @@
     <Content Include="SqlFiles\Initialization\0005_ii_dict_shops.sql" />
     <Content Include="SqlFiles\Initialization\0006_ii_dict_status_compleints.sql" />
     <Content Include="SqlFiles\Initialization\0007_ii_dict_status_orders.sql" />
+    <Content Include="SqlFiles\Initialization\0008_ii_dict_description_items.sql" />
+    <Content Include="SqlFiles\Initialization\0009_ii_items.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

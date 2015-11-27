@@ -15,7 +15,7 @@
                         foreach (var catalog in Model)
                         {
                             <li>
-                               @Html.ActionLink(catalog.Name, "Catalogs", new { controller = "Catalog", catalogId = catalog.Id })
+                               @Html.ActionLink(catalog.Name, "Catalogs", new { controller = "Catalog", catalogId = catalog.Id, page = 1 })
                             </li>
                         }
                     }

@@ -22,7 +22,7 @@ namespace SportStore.Web
             routes.MapRoute("", "Sklep/Klient/Zarzadzanie", new { controller = "Client", action = "AccountManagment" });
             routes.MapRoute("", "Sklep/Klient/Powiadomienia", new { controller = "Client", action = "Notyfications"});
             routes.MapRoute("", "Sklep/Klient/Powiadomienia/{id}", new { controller = "Client", action = "DeleteNote", id = UrlParameter.Optional });
-            routes.MapRoute("", "Sklep/Katalog/{catalogId}", new { controller = "Catalog", action = "Catalogs", catalogId = UrlParameter.Optional });
+            routes.MapRoute("", "Sklep/Katalog/{catalogId}/{page}", new { controller = "Catalog", action = "Catalogs", catalogId = UrlParameter.Optional, page = UrlParameter.Optional });
 
             routes.MapRoute("", "Sklep/Rejestracja", new { controller = "Home", action = "Register" });
             routes.MapRoute("", "Sklep/Newsletter", new { controller = "Home", action = "SaveNewsletter" });

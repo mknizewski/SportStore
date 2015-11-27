@@ -1,0 +1,11 @@
+﻿INSERT INTO items(Title, Id_Category, Price, Id_Description) VALUES (N'Piłka nożna EURO 2016 Beau Jeu Top Glider 4 AC5448 Adidas', 1, 299, 1);
+INSERT INTO items(Title, Id_Category, Price, Id_Description) VALUES (N'Narty damskie MYA No. 3 Head + wiązania MYA 9 Head', 6, 1190, 2);
+INSERT INTO items(Title, Id_Category, Price, Id_Description) VALUES (N'Rower magnetyczny M9239 HMS', 8, 645, 3);
+INSERT INTO items(Title, Id_Category, Price, Id_Description) VALUES (N'Koszulka termoaktywna kompresyjna męska HeatGear Compression ShortSleeve', 9, 200, 4);
+INSERT INTO items(Title, Id_Category, Price, Id_Description) VALUES (N'Buty biegowe męskie Patriot 7 Asics', 9, 169.90, 5);
+INSERT INTO items(Title, Id_Category, Price, Id_Description) VALUES (N'Buty piłkarskie korki Mercurial Vortex II FG Nike', 1, 150,  6);
+INSERT INTO items(Title, Id_Category, Price, Id_Description) VALUES (N'Rower magnetyczny Prime Zipro', 8, 309, 7);
+INSERT INTO items(Title, Id_Category, Price, Id_Description) VALUES (N'Rower treningowy HS-010H Rio Hop-Sport', 8, 228, 8);
+INSERT INTO items(Title, Id_Category, Price, Id_Description) VALUES (N'Piłki tenisowe ATP 3 Head', 7, 18, 9);
+INSERT INTO items(Title, Id_Category, Price, Id_Description) VALUES (N'Rakieta tenisowa Youtek IG Challenge MP Head', 7, 269, 10);
+INSERT INTO items(Title, Id_Category, Price, Id_Description) VALUES (N'Rakieta tenisowa Youtek Graphene Radical Pro Head', 7, 599, 11);
