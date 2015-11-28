@@ -34,10 +34,6 @@ namespace SportStore.Web.HtmlHelpers.Classes
 
         Models.Catalog.ProductsListViewModel ICatalogsHelper.GetItemsByCatalog(int catalogId, int page)
         {
-            var helperPage = page;
-            if (page.Equals(1))
-                helperPage = 0;
-
             var currentCatalog = _catalogRepository.Catalogs
                                 .Select(x => x)
                                 .Where(x => x.Id.Equals(catalogId))
@@ -48,7 +44,7 @@ namespace SportStore.Web.HtmlHelpers.Classes
                 Items = _catalogRepository.Items
                         .Where(x => x.Id_Category.Equals(catalogId))
                         .OrderBy(x => x.Id)
-                        .Skip(helperPage * PageSize)
+                        .Skip((page - 1) * PageSize)
                         .Take(PageSize),
 
                 pagingModel = new PagingModel
@@ -66,6 +62,14 @@ namespace SportStore.Web.HtmlHelpers.Classes
             };
 
             return viewModel;
+        }
+
+        items_picutures ICatalogsHelper.GetPictureById(int productId)
+        {
+            var image = _catalogRepository.ItemsPicture
+                        .FirstOrDefault(p => p.Id_Item.Equals(productId));
+
+            return image;
         }
     }
 }

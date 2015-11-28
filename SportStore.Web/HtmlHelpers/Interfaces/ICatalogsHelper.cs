@@ -18,5 +18,6 @@ namespace SportStore.Web.HtmlHelpers.Interfaces
     {
         IEnumerable<_dict_catalogs> GetCatalogs();
         ProductsListViewModel GetItemsByCatalog(int catalogId, int page);
+        items_picutures GetPictureById(int productId);
     }
 }

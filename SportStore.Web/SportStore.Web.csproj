@@ -154,6 +154,7 @@
     <Content Include="Content\Images\Newsletter\undo.png" />
     <Content Include="Content\Images\favicon.ico" />
     <Content Include="Content\Images\loading_gif.GIF" />
+    <Content Include="Content\Images\no-image.png" />
     <Content Include="Content\validation.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -198,6 +199,7 @@
     <Compile Include="HtmlHelpers\Classes\AccountManagmentHelper.cs" />
     <Compile Include="HtmlHelpers\Classes\CatalogsHelper.cs" />
     <Compile Include="HtmlHelpers\Classes\LoginHelper.cs" />
+    <Compile Include="HtmlHelpers\Classes\MimeTypes.cs" />
     <Compile Include="HtmlHelpers\Classes\NewsletterHelper.cs" />
     <Compile Include="HtmlHelpers\Classes\PagingHelpers.cs" />
     <Compile Include="HtmlHelpers\Classes\PasswordHelper.cs" />

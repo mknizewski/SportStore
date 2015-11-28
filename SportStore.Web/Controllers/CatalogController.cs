@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Resources;
+using System.IO;
+using System.Drawing.Imaging;
+using SportStore.Web.HtmlHelpers.Classes;
 
 namespace SportStore.Web.Controllers
 {
@@ -34,6 +38,16 @@ namespace SportStore.Web.Controllers
         public ViewResult ItemDescription()
         {
             return View();
+        }
+
+        public FileContentResult GetImage(int productId)
+        {
+            var content = _catalogsHelper.GetPictureById(productId);
+
+            if (content != null)
+                return File(content.PictureData, content.PictureMimeType);
+            else
+                return null;
         }
     }
 }

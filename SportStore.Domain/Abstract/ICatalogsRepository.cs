@@ -14,8 +14,12 @@ namespace SportStore.Domain.Abstract
     /// </summary>
     public interface ICatalogsRepository
     {
+        //Pobieranie
         IEnumerable<_dict_catalogs> Catalogs { get; set; }
         IEnumerable<items> Items { get; set; }
+        IEnumerable<items_picutures> ItemsPicture { get; set; }
+
+        //CRUD
         void Add(_dict_catalogs catalog);
         void Edit(_dict_catalogs newCatalog);
         void Delete(int id);

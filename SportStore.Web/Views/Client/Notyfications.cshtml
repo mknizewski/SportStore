@@ -6,39 +6,38 @@
 
 <div class="panel panel-success">
 
-    <h2 style="font-family: 'Open Sans', Arial;">Powiadomienia od sklepu SportStore</h2>
+    <h4 style="font-family: 'Open Sans', Arial;">Powiadomienia od sklepu SportStore</h4>
     <hr />
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Wiadomość</th>
-                <th></th>
-                <th>Akcja</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach (var item in Model)
-        {
-            if (!item.AsRead)
-            {
-                <tr class="info">
-                    <td> @item.Message  </td>
-                    <td></td>
-                    <td> @Html.ActionLink("Przeczytane", "DeleteNote", new { id = item.Id }, new { @class = "btn btn-info" }) </td>
-                </tr>
-            }
-            else
-            {
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
                 <tr>
-                    <td> @item.Message  </td>
-                    <td> </td>
-                    <td> </td>
+                    <th>Wiadomość</th>
+                    <th>Akcja</th>
                 </tr>
-            }
-        }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    if (!item.AsRead)
+                    {
+                        <tr class="info">
+                            <td> @item.Message </td>
+                            <td> @Html.ActionLink("Usuń", "DeleteNote", new { id = item.Id }, new { @class = "btn btn-info" }) </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr>
+                            <td> @item.Message </td>
+                            <td> </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
 
     <hr />
     <a href='@Url.Action("AccountManagment", "Client")' class="btn btn-info">Powrót</a>

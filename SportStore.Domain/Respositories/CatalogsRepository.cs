@@ -58,5 +58,17 @@ namespace SportStore.Domain.Respositories
                 throw new NotImplementedException();
             }
         }
+
+        IEnumerable<Entities.items_picutures> ICatalogsRepository.ItemsPicture
+        {
+            get
+            {
+                return _context.ItemsPictures;
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
     }
 }
