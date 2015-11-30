@@ -1,4 +1,5 @@
 ﻿using SportStore.Domain.Entities;
+using SportStore.Web.Models.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,6 @@ namespace SportStore.Web.HtmlHelpers.Interfaces
         IEnumerable<order_complaints> GetComplaints(int id);
         void EditAccount();
         void RemoveAccount(int id);
-        void MarkAsRead(int id);
+        void MarkAsRead(List<MarkAsReadModel> ids);
     }
 }

@@ -46,9 +46,20 @@ namespace SportStore.Web.HtmlHelpers.Classes
             throw new NotImplementedException();
         }
 
-        void IAccountManagmentHelper.MarkAsRead(int id)
+        void IAccountManagmentHelper.MarkAsRead(List<Models.Client.MarkAsReadModel> ids)
         {
-            _clientRepository.MarkAsRead(id);
+            if (ids != null)
+            {
+                foreach (var item in ids)
+                {
+                    var dbItem = (from client_notyfications c in _clientRepository.ClientNotyfications
+                                  where c.Id.Equals(item.Id)
+                                  select c.AsRead).FirstOrDefault();
+
+                    if (!dbItem)
+                        _clientRepository.MarkAsRead(item.Id);
+                }
+            }
         }
     }
 }

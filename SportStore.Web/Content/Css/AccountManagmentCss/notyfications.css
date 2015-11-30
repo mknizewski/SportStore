@@ -1,0 +1,23 @@
+﻿h4 {
+    font-family: 'Open Sans',Arial;
+    margin-left: 15px;
+}
+
+.tabbable {
+    margin-top: 20px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+#backButton {
+    position: relative;
+    margin-left: 15px;
+    bottom: 10px;
+}
+
+.message {
+    font-family: 'Open Sans',Arial;
+    float: left;
+    margin-left: 10px;
+    margin-bottom: 5px;
+}

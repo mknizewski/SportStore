@@ -4,41 +4,155 @@
     ViewBag.Title = "Powiadomienia";
 }
 
+<link href="~/Content/Css/AccountManagmentCss/notyfications.css" rel="stylesheet" type="text/css" />
+
 <div class="panel panel-success">
 
-    <h4 style="font-family: 'Open Sans', Arial;">Powiadomienia od sklepu SportStore</h4>
+    <h4>Powiadomienia od sklepu SportStore</h4>
     <hr />
 
-    <div class="table-responsive">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Wiadomość</th>
-                    <th>Akcja</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    if (!item.AsRead)
-                    {
-                        <tr class="info">
-                            <td> @item.Message </td>
-                            <td> @Html.ActionLink("Usuń", "DeleteNote", new { id = item.Id }, new { @class = "btn btn-info" }) </td>
-                        </tr>
-                    }
-                    else
-                    {
-                        <tr>
-                            <td> @item.Message </td>
-                            <td> </td>
-                        </tr>
-                    }
-                }
-            </tbody>
-        </table>
+    <button id="checkingButton" onclick="checkAll()" type="button" class="btn btn-primary" style="margin-left:15px;">Zaznacz wszystkie</button>
+
+    <div class="btn-group" style="margin-left:15px;">
+        <button type="button" class="btn btn-primary">Opcje</button>
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#"><span style="margin-right:5px;" class="glyphicon glyphicon-trash"></span>Archiwizuj</a></li>
+            <li><a href="javascript:history.go(0)" id="markAsRead"><span style="margin-right:5px;" class="glyphicon glyphicon-check"></span> Oznacz jako przeczytane</a></li>
+        </ul>
+    </div>
+
+    <button type="button" class="btn btn-primary" style="margin-left:15px;">
+        <span class="glyphicon glyphicon-refresh" />
+    </button>
+
+    <div id="message" class="tabbable">
+        <!-- Only required for left/right tabs -->
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab1" data-toggle="tab">Powiadomienia</a></li>
+            <li><a href="#tab2" data-toggle="tab">Archizowane</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+                <div class="panel-group">
+                    <div class="panel panel-default">
+                        @foreach (var item in Model)
+                        {
+                            if (@item.AsRead)
+                            {
+                                <div id="@item.Id" class="panel-body">
+                                    <input onclick="setBg(this)" style="float:left;" type="checkbox" value="@item.Id" name="checkB" />
+                                    <p class="message">@item.Message</p>
+                                </div>
+                            }
+                            else
+                            {
+                                <div id="@item.Id" class="panel-body" style="background-color: #ffff99;">
+                                    <input onclick="setBg(this)" style="float:left;" type="checkbox" value="@item.Id" name="checkB" />
+                                    <p class="message"><b>@item.Message</b></p>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="tab2">
+                <p>Howdy, I'm in Section 2.</p>
+            </div>
+        </div>
     </div>
 
     <hr />
-    <a href='@Url.Action("AccountManagment", "Client")' class="btn btn-info">Powrót</a>
+    <a href='@Url.Action("AccountManagment", "Client")' id="backButton" class="btn btn-primary">Powrót</a>
 </div> 
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        
+        $("#markAsRead").click(function () {
+
+            $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                url: '/Sklep/Klient/Powiadomienia/Przeczytane',
+                type: 'POST',
+                dataType: 'json',
+                data: getAllCheckboxes(),
+                success: function (data) { location.reload(true); },
+                failure: function () { }
+            });
+
+        });
+
+    });
+
+    var isChecked = false;
+
+    function getAllCheckboxes()
+    {
+        var items = document.getElementsByName("checkB");
+        var array = new Array();
+        var i;
+
+        for (i = 0; i < items.length; i++)
+        {
+            if(items[i].checked)
+                array.push({ Id : items[i].value });
+        }
+
+        array = JSON.stringify( { 'markAsReadIds': array } );
+
+        return array;
+    }
+
+    function setBg(checkbox)
+    {
+        var div = document.getElementById(checkbox.value);
+
+        if(checkbox.checked)
+            div.style.backgroundColor = "#cccccc";
+        else
+            div.style.backgroundColor = "#ffffff";
+    }
+
+    function checkAll() {
+        if (!isChecked)
+        {
+            var items = document.getElementsByName("checkB");
+            var i;
+
+            for (i = 0; i < items.length; i++)
+                items[i].checked = true;
+
+            var backg = document.getElementsByClassName("panel-body");
+
+            for (i = 0; i < backg.length; i++)
+                backg[i].style.backgroundColor = "#cccccc";
+
+            var button = document.getElementById("checkingButton");
+            button.textContent = "Odznacz wszystkie";
+
+            isChecked = true;
+        }
+        else
+        {
+            var items = document.getElementsByName("checkB");
+            var i;
+
+            for (i = 0; i < items.length; i++)
+                items[i].checked = false;
+
+            var backg = document.getElementsByClassName("panel-body");
+
+            for (i = 0; i < backg.length; i++)
+                backg[i].style.backgroundColor = "#ffffff";
+
+            var button = document.getElementById("checkingButton");
+            button.textContent = "Zaznacz wszystkie";
+
+            isChecked = false;
+        }
+    }
+</script>

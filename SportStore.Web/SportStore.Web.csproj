@@ -115,6 +115,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Css\AccountManagmentCss\account-managment.css" />
+    <Content Include="Content\Css\AccountManagmentCss\notyfications.css" />
     <Content Include="Content\Css\bootstrap-glyphicons.css" />
     <Content Include="Content\Css\bootstrap-theme.css" />
     <Content Include="Content\Css\bootstrap-theme.min.css" />
@@ -217,6 +218,8 @@
     <Compile Include="Models\Catalog\ProductsListViewModel.cs" />
     <Compile Include="Models\Client\AccountModel.cs" />
     <Compile Include="Models\Client\LoginModel.cs" />
+    <Compile Include="Models\Client\MarkAsReadModel.cs" />
+    <Compile Include="Models\Client\NotyficationsClientModel.cs" />
     <Compile Include="Models\Employee\LoginModel.cs" />
     <Compile Include="Models\Home\Alert.cs" />
     <Compile Include="Models\Home\NewsletterModel.cs" />

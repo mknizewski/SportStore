@@ -99,10 +99,11 @@ namespace SportStore.Web.Controllers
             return View(_accountManagmentHelper.GetNotifications(id));
         }
 
-        public ActionResult DeleteNote(int id)
+        [Authorize]
+        [ClientAuthentication]
+        public ActionResult MarkAsRead(List<MarkAsReadModel> markAsReadIds)
         {
-            _accountManagmentHelper.MarkAsRead(id);
-            (Session["Client"] as AccountModel).UnreadNotifications -= 1;
+            _accountManagmentHelper.MarkAsRead(markAsReadIds);
 
             return RedirectToAction("Notyfications");
         }
