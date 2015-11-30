@@ -8,6 +8,7 @@ using System.Resources;
 using System.IO;
 using System.Drawing.Imaging;
 using SportStore.Web.HtmlHelpers.Classes;
+using SportStore.Web.Models.Home;
 
 namespace SportStore.Web.Controllers
 {
@@ -38,6 +39,14 @@ namespace SportStore.Web.Controllers
         public ViewResult ItemDescription()
         {
             return View();
+        }
+
+        public ActionResult AddToCart(string returnUrl, int productId)
+        {
+            //TODO: Dodać obsługę koszyka!
+            Alert.SetAlert(AlertStatus.Succes, "Poprawnie dodano przedmiot do koszyka!");
+
+            return Redirect(returnUrl);
         }
 
         public FileContentResult GetImage(int productId)
