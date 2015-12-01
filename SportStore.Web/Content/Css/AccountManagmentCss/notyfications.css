@@ -21,3 +21,16 @@
     margin-left: 10px;
     margin-bottom: 5px;
 }
+
+.panel-body {
+    margin-top: 3px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #8c8c8c;
+    border-radius: 5px 5px;
+}
+
+#data{
+    font-family: 'Open Sans',Arial;
+    font-size: 12px;
+}

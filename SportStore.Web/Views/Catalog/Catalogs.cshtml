@@ -88,11 +88,11 @@
     @foreach (var p in Model.Items)
     {   
         <div class="col-md-4 portfolio-item">
-            <a href="">
+            <a href="@Url.Action("ItemDescription", new { productId = @p.Id })">
                 <img class="img-responsive" src="~/Content/Images/no-image.png" alt="Brak obrazka" width="700" height="400">
             </a>
             <h3 class="desc">
-                <a href="#">@p.Title</a>
+                <a href="@Url.Action("ItemDescription", new { productId = @p.Id })">@p.Title</a>
             </h3>
 
                 <a href="@Url.Action("AddToCart", new { returnUrl = @Request.Url.PathAndQuery, productId = @p.Id })" id="cart" style="float:left;">

@@ -1,0 +1,107 @@
+﻿@model SportStore.Web.Models.Catalog.ItemModel
+
+@{
+    ViewBag.Title = @Model.Item.Title;
+}
+
+<link href="~/Content/Css/CatalogCss/description.css" rel="stylesheet" type="text/css" />
+
+<div class="panel panel-success">
+
+    <div class="row">
+        <div class="col-md-3">
+            <h4>Zobacz inne produkty</h4>
+        </div>
+        <div class="col-md-9">
+            <div class="thumbnail">
+                <div class="row">
+                    <div class="col-md-4">
+                        <a href="pulpitrock.jpg" class="thumbnail">
+                            <img src="http://placehold.it/800x300" alt="Pulpit Rock" style="width:340px;height:300px">
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="moustiers-sainte-marie.jpg" class="thumbnail">
+                            <img src="http://placehold.it/800x300" alt="Moustiers Sainte Marie" style="width:340px;height:300px">
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="cinqueterre.jpg" class="thumbnail">
+                            <img src="http://placehold.it/800x300" alt="Cinque Terre" style="width:340px;height:300px">
+                        </a>
+                    </div>
+                </div>
+                <div class="caption-full">
+                    <h4 class="pull-right">
+                        <a href="#" class="btn btn-info">
+                            <span class="glyphicon glyphicon-shopping-cart"></span> @Model.Item.Price.ToString("c")
+                        </a>
+                    </h4>
+                    <h4>
+                        <a href="#">@Model.Item.Title</a>
+                    </h4>
+                    <p id="desc">
+                       @Model.Item.Description.Name
+                    </p>
+                </div>
+                <div class="ratings">
+                    <p class="pull-right">3 opinie</p>
+                    <p>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                        4.0 gwiazdek
+                    </p>
+                </div>
+            </div>
+            <div class="well">
+                <div class="text-right">
+                    <a class="btn btn-success">Zostaw opinię</a>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                        Anonimowy
+                        <span class="pull-right">10 dni temu</span>
+                        <p>This product was great in terms of quality. I would definitely buy another!</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                        Anonymous
+                        <span class="pull-right">12 days ago</span>
+                        <p>I've alredy ordered another one!</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                        Anonymous
+                        <span class="pull-right">15 days ago</span>
+                        <p>I've seen some better than this, but not at this price. I definitely recommend this item.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+       </div>
+
+ </div>
+

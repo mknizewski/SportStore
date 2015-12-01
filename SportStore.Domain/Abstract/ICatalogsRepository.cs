@@ -18,6 +18,9 @@ namespace SportStore.Domain.Abstract
         IEnumerable<_dict_catalogs> Catalogs { get; set; }
         IEnumerable<items> Items { get; set; }
         IEnumerable<items_picutures> ItemsPicture { get; set; }
+        IEnumerable<items_opinions> ItemsOpinions { get; set; }
+        IEnumerable<items_quantity> ItemsQuantity { get; set; }
+        IEnumerable<_dict_description_items> ItemsDescriptions { get; set; }
 
         //CRUD
         void Add(_dict_catalogs catalog);

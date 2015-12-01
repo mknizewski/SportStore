@@ -36,9 +36,9 @@ namespace SportStore.Web.Controllers
             return View(_catalogsHelper.GetItemsByCatalog(catalogId, page));
         }
 
-        public ViewResult ItemDescription()
+        public ActionResult ItemDescription(int productId)
         {
-            return View();
+            return View(_catalogsHelper.GetDescriptionItemById(productId));
         }
 
         public ActionResult AddToCart(string returnUrl, int productId)

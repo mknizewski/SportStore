@@ -15,11 +15,12 @@ namespace SportStore.Web.HtmlHelpers.Interfaces
     /// </summary>
     public interface IAccountManagmentHelper
     {
-        IEnumerable<client_notyfications> GetNotifications(int id);
+        NotyficationsClientModel GetNotifications(int id);
         IEnumerable<orders> GetOrders(int id);
         IEnumerable<order_complaints> GetComplaints(int id);
         void EditAccount();
         void RemoveAccount(int id);
         void MarkAsRead(List<MarkAsReadModel> ids);
+        void ArchivizeNote(List<int> ids);
     }
 }

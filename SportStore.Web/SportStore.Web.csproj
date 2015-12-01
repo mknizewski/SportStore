@@ -122,6 +122,7 @@
     <Content Include="Content\Css\bootstrap.css" />
     <Content Include="Content\Css\bootstrap.min.css" />
     <Content Include="Content\Css\CatalogCss\catalogs.css" />
+    <Content Include="Content\Css\CatalogCss\description.css" />
     <Content Include="Content\Css\IndexCss\cookie.css" />
     <Content Include="Content\Css\IndexCss\index-employee-section.css" />
     <Content Include="Content\Css\IndexCss\index-theme.css" />
@@ -215,6 +216,7 @@
     <Compile Include="HtmlHelpers\ValidationAttributes\UniqueNewsletterEmailAdress.cs" />
     <Compile Include="Infrastructure\ClientAuthentication.cs" />
     <Compile Include="Infrastructure\NinjectDepedencyResolver.cs" />
+    <Compile Include="Models\Catalog\ItemModel.cs" />
     <Compile Include="Models\Catalog\ProductsListViewModel.cs" />
     <Compile Include="Models\Client\AccountModel.cs" />
     <Compile Include="Models\Client\LoginModel.cs" />
@@ -247,6 +249,7 @@
     <Content Include="Views\Client\AccountManagment.cshtml" />
     <Content Include="Views\Client\Notyfications.cshtml" />
     <Content Include="Views\Catalog\Catalogs.cshtml" />
+    <Content Include="Views\Catalog\ItemDescription.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

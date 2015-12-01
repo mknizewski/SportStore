@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SportStore.Domain.Entities.client_notyfications>
+﻿@model SportStore.Web.Models.Client.NotyficationsClientModel
 
 @{
     ViewBag.Title = "Powiadomienia";
@@ -19,7 +19,7 @@
             <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu">
-            <li><a href="#"><span style="margin-right:5px;" class="glyphicon glyphicon-trash"></span>Archiwizuj</a></li>
+            <li><a href="javascript:history.go(0)" id="archivizeButton"><span style="margin-right:5px;" class="glyphicon glyphicon-trash"></span>Archiwizuj</a></li>
             <li><a href="javascript:history.go(0)" id="markAsRead"><span style="margin-right:5px;" class="glyphicon glyphicon-check"></span> Oznacz jako przeczytane</a></li>
         </ul>
     </div>
@@ -38,7 +38,7 @@
             <div class="tab-pane active" id="tab1">
                 <div class="panel-group">
                     <div class="panel panel-default">
-                        @foreach (var item in Model)
+                        @foreach (var item in Model.ClientNotyfications)
                         {
                             if (@item.AsRead)
                             {
@@ -59,7 +59,13 @@
                 </div>
             </div>
             <div class="tab-pane" id="tab2">
-                <p>Howdy, I'm in Section 2.</p>
+                @foreach (var item in Model.HistoryClientNotyfications)
+                {
+                    <div id="@item.Id" class="panel-body">
+                        <p class="message">@item.Message  </p>
+                        <span id="data" style="float:right;">Data archiwizacji: @item.InsertTime </span>
+                    </div>
+                }
             </div>
         </div>
     </div>
@@ -80,7 +86,21 @@
                 type: 'POST',
                 dataType: 'json',
                 data: getAllCheckboxes(),
-                success: function (data) { location.reload(true); },
+                success: function (msg) { location.reload(true); },
+                failure: function () { }
+            });
+
+        });
+
+        $("#archivizeButton").click(function () {
+
+            $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                url: '/Sklep/Klient/Powiadomienia/Archiwizuj',
+                type: 'POST',
+                dataType: 'json',
+                data: getCheckedChecbox(),
+                success: function (msg) { location.reload(true); },
                 failure: function () { }
             });
 
@@ -89,6 +109,22 @@
     });
 
     var isChecked = false;
+
+    function getCheckedChecbox()
+    {
+        var items = document.getElementsByName("checkB");
+        var array = new Array();
+        var i;
+
+        for (i = 0; i < items.length; i++) {
+            if (items[i].checked)
+                array.push(items[i].value);
+        }
+
+        array = JSON.stringify({ 'ids': array });
+
+        return array;
+    }
 
     function getAllCheckboxes()
     {

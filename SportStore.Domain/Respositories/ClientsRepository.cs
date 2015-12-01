@@ -78,5 +78,18 @@ namespace SportStore.Domain.Respositories
 
             _context.SaveChanges();
         }
+
+
+        void IClientRepository.DeleteNote(Entities.client_notyfications model)
+        {
+            _context.ClientNotyfications.Remove(model);
+            _context.SaveChanges();
+        }
+
+        void IClientRepository.AddHistoryNote(Entities.history_client_notyfications model)
+        {
+            _context.HistoryClientNotyfications.Add(model);
+            _context.SaveChanges();
+        }
     }
 }

@@ -70,5 +70,43 @@ namespace SportStore.Domain.Respositories
                 throw new NotImplementedException();
             }
         }
+
+
+        IEnumerable<Entities.items_opinions> ICatalogsRepository.ItemsOpinions
+        {
+            get
+            {
+                return _context.ItemsOpinions;
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        IEnumerable<Entities.items_quantity> ICatalogsRepository.ItemsQuantity
+        {
+            get
+            {
+                return _context.ItemsQuantity;
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+
+        IEnumerable<Entities._dict_description_items> ICatalogsRepository.ItemsDescriptions
+        {
+            get
+            {
+                return _context.DictDescriptionItems;
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
     }
 }

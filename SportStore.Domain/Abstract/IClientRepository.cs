@@ -21,5 +21,7 @@ namespace SportStore.Domain.Abstract
         void Delete(int id);
         void Edit(clients client);
         void MarkAsRead(int id);
+        void DeleteNote(client_notyfications model);
+        void AddHistoryNote(history_client_notyfications model);
     }
 }

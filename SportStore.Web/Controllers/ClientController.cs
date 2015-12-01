@@ -108,6 +108,15 @@ namespace SportStore.Web.Controllers
             return RedirectToAction("Notyfications");
         }
 
+        [Authorize]
+        [ClientAuthentication]
+        public ActionResult ArchivizeNote(List<int> ids)
+        {
+            _accountManagmentHelper.ArchivizeNote(ids);
+
+            return RedirectToAction("Notyfications");
+        }
+
         public ActionResult Logout(string returnUrl)
         {
             this.Session["Client"] = null;

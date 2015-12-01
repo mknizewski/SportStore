@@ -20,7 +20,7 @@ namespace SportStore.Web.HtmlHelpers.Classes
     public class CatalogsHelper : ICatalogsHelper
     {
         public ICatalogsRepository _catalogRepository;
-        private const int PageSize = 9; //ilosc itemow na stronie
+        public static int PageSize = 9; //ilosc itemow na stronie - modyfikowalna przez filtry - deafultowo 9
 
         public CatalogsHelper(ICatalogsRepository catalogRepository)
         { 
@@ -70,6 +70,35 @@ namespace SportStore.Web.HtmlHelpers.Classes
                         .FirstOrDefault(p => p.Id_Item.Equals(productId));
 
             return image;
+        }
+
+        ItemModel ICatalogsHelper.GetDescriptionItemById(int productId)
+        {
+            var item = _catalogRepository.Items
+                        .Where(x => x.Id.Equals(productId))
+                        .FirstOrDefault();
+
+            var opinions = _catalogRepository.ItemsOpinions
+                            .Where(x => x.Id_Item.Equals(productId))
+                            .ToArray();
+
+            var quantity = _catalogRepository.ItemsQuantity
+                            .Where(x => x.Id_Item.Equals(productId))
+                            .ToArray();
+
+            var pictures = _catalogRepository.ItemsPicture
+                            .Where(x => x.Id_Item.Equals(productId))
+                            .ToArray();
+
+            var modelToReturn = new ItemModel 
+            {
+                Item = item,
+                Opinions = opinions,
+                Quantity = quantity,
+                Pictures = pictures
+            };
+
+            return modelToReturn;
         }
     }
 }

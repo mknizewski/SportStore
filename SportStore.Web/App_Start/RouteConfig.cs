@@ -22,8 +22,10 @@ namespace SportStore.Web
             routes.MapRoute("", "Sklep/Klient/Zarzadzanie", new { controller = "Client", action = "AccountManagment" });
             routes.MapRoute("", "Sklep/Klient/Powiadomienia", new { controller = "Client", action = "Notyfications"});
             routes.MapRoute("", "Sklep/Klient/Powiadomienia/Przeczytane", new { controller = "Client", action = "MarkAsRead" });
+            routes.MapRoute("", "Sklep/Klient/Powiadomienia/Archiwizuj", new { controller = "Client", action = "ArchivizeNote" });
             routes.MapRoute("", "Sklep/Katalog/{catalogId}/{page}", new { controller = "Catalog", action = "Catalogs", catalogId = UrlParameter.Optional, page = UrlParameter.Optional });
-            routes.MapRoute("", "Sklep/Katalog/Dodaj/{catalogId}/{productId}", new { controller = "Catalog", action = "AddToCart", productId = UrlParameter.Optional, catalogId = UrlParameter.Optional });
+            routes.MapRoute("", "Sklep/Katalog/{catalogId}/Produkt/{productId}", new { controller = "Catalog", action = "ItemDescription", productId = UrlParameter.Optional, catalogId = UrlParameter.Optional });
+            routes.MapRoute("", "Sklep/Katalog/{catalogId}/Dodaj/{productId}", new { controller = "Catalog", action = "AddToCart", productId = UrlParameter.Optional, catalogId = UrlParameter.Optional });
             routes.MapRoute("", "Zdjecie/{productId}", new { controller = "Catalog", action = "GetImage", productId = UrlParameter.Optional });
 
             routes.MapRoute("", "Sklep/Rejestracja", new { controller = "Home", action = "Register" });
