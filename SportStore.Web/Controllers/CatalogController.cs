@@ -9,6 +9,7 @@ using System.IO;
 using System.Drawing.Imaging;
 using SportStore.Web.HtmlHelpers.Classes;
 using SportStore.Web.Models.Home;
+using SportStore.Web.Models.Catalog;
 
 namespace SportStore.Web.Controllers
 {
@@ -36,6 +37,7 @@ namespace SportStore.Web.Controllers
             return View(_catalogsHelper.GetItemsByCatalog(catalogId, page));
         }
 
+        [HttpGet]
         public ActionResult ItemDescription(int productId)
         {
             return View(_catalogsHelper.GetDescriptionItemById(productId));
@@ -57,6 +59,16 @@ namespace SportStore.Web.Controllers
                 return File(content.PictureData, content.PictureMimeType);
             else
                 return null;
+        }
+
+        [HttpPost]
+        [ActionName("ItemDescription")]
+        public ActionResult AddOpinion(OpinionModel opinionModel)
+        {
+            Alert.SetAlert(AlertStatus.Succes, "Poprawnie dodano opinię. Dziękujemy!");
+            _catalogsHelper.AddOpinion(opinionModel);
+
+            return Json("");
         }
     }
 }

@@ -11,7 +11,7 @@ namespace SportStore.Domain.Entities
     /// </summary>
     public enum Rating
     {
-        VeryBad, Bad, Medium, Good, VeryGood
+        None, VeryBad, Bad, Medium, Good, VeryGood
     }
 
     /// <summary>

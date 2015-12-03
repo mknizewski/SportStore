@@ -20,5 +20,7 @@ namespace SportStore.Web.HtmlHelpers.Interfaces
         ProductsListViewModel GetItemsByCatalog(int catalogId, int page);
         items_picutures GetPictureById(int productId);
         ItemModel GetDescriptionItemById(int productId);
+        void ChangePageSize(int newSize);
+        void AddOpinion(OpinionModel opinionModel);
     }
 }

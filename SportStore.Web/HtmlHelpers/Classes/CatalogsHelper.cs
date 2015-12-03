@@ -20,7 +20,7 @@ namespace SportStore.Web.HtmlHelpers.Classes
     public class CatalogsHelper : ICatalogsHelper
     {
         public ICatalogsRepository _catalogRepository;
-        public static int PageSize = 9; //ilosc itemow na stronie - modyfikowalna przez filtry - deafultowo 9
+        private static int _pageSize = 9; // defaultowo 9
 
         public CatalogsHelper(ICatalogsRepository catalogRepository)
         { 
@@ -44,13 +44,13 @@ namespace SportStore.Web.HtmlHelpers.Classes
                 Items = _catalogRepository.Items
                         .Where(x => x.Id_Category.Equals(catalogId))
                         .OrderBy(x => x.Id)
-                        .Skip((page - 1) * PageSize)
-                        .Take(PageSize),
+                        .Skip((page - 1) * _pageSize)
+                        .Take(_pageSize),
 
                 pagingModel = new PagingModel
                 {
                     CurrentPage = page,
-                    ItemsPerPage = PageSize,
+                    ItemsPerPage = _pageSize,
                     TotalItems = _catalogRepository.Items
                                 .Select(x => x)
                                 .Where(x => x.Id_Category.Equals(catalogId))
@@ -99,6 +99,42 @@ namespace SportStore.Web.HtmlHelpers.Classes
             };
 
             return modelToReturn;
+        }
+
+        void ICatalogsHelper.ChangePageSize(int newSize)
+        {
+            _pageSize = newSize;
+        }
+
+
+        void ICatalogsHelper.AddOpinion(OpinionModel opinionModel)
+        {
+            if (opinionModel.Id_User != -1 && opinionModel.Opinion != null)
+            {
+                var modelToSave = new items_opinions
+                {
+                    Id_Item = opinionModel.Id_Item,
+                    Opinion = opinionModel.Opinion,
+                    Rate = (Rating)opinionModel.Rate,
+                    InsertTime = DateTime.Now,
+                    Id_Client = opinionModel.Id_User
+                };
+
+                _catalogRepository.AddOpinion(modelToSave);
+            }
+            else if (opinionModel.Id_User == -1 && opinionModel.Opinion != null)
+            {
+                var modelToSave = new items_opinions
+                {
+                    Id_Item = opinionModel.Id_Item,
+                    Opinion = opinionModel.Opinion,
+                    Rate = (Rating)opinionModel.Rate,
+                    InsertTime = DateTime.Now,
+                    Id_Client = null
+                };
+
+                _catalogRepository.AddOpinion(modelToSave);
+            }
         }
     }
 }

@@ -128,6 +128,8 @@
     <Content Include="Content\Css\IndexCss\index-theme.css" />
     <Content Include="Content\Css\MenuCss\menu_styles.css" />
     <Content Include="Content\Css\NewsletterCss\newsletter-theme.css" />
+    <Content Include="Content\Css\RatingCss\star-rating.css" />
+    <Content Include="Content\Css\RatingCss\star-rating.min.css" />
     <Content Include="Content\Css\RegisterCss\register.css" />
     <Content Include="Content\Css\SearchBarCss\searchbar.css" />
     <Content Include="Content\Css\Site.css" />
@@ -183,6 +185,11 @@
     <Content Include="Scripts\jssor.slider.mini.js" />
     <Content Include="Scripts\menu_script.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\star-rating.js" />
+    <Content Include="Scripts\star-rating.min.js" />
+    <Content Include="Scripts\star-rating_locale_de.js" />
+    <Content Include="Scripts\star-rating_locale_LANG.js" />
+    <Content Include="Scripts\star-rating_locale_ru.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -217,6 +224,7 @@
     <Compile Include="Infrastructure\ClientAuthentication.cs" />
     <Compile Include="Infrastructure\NinjectDepedencyResolver.cs" />
     <Compile Include="Models\Catalog\ItemModel.cs" />
+    <Compile Include="Models\Catalog\OpinionModel.cs" />
     <Compile Include="Models\Catalog\ProductsListViewModel.cs" />
     <Compile Include="Models\Client\AccountModel.cs" />
     <Compile Include="Models\Client\LoginModel.cs" />

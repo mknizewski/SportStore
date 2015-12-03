@@ -26,6 +26,7 @@ namespace SportStore.Domain.Concrete
         public DbSet<_dict_status_compleints> DictStatusCompleints { get; set; }
         public DbSet<_dict_cities> DictCities { get; set; }
         public DbSet<_dict_shops> DictShops { get; set; }
+        public DbSet<_dict_items_details> DictItemsDetails { get; set; }
         #endregion
 
         #region Zwykłe tabele
@@ -80,6 +81,9 @@ namespace SportStore.Domain.Concrete
                 .HasKey(e => e.Id);
 
             modelBuilder.Entity<_dict_shops>()
+                .HasKey(e => e.Id);
+
+            modelBuilder.Entity<_dict_items_details>()
                 .HasKey(e => e.Id);
             #endregion
 

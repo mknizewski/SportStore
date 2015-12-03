@@ -75,6 +75,7 @@
     <Compile Include="Entities\_dict_catalogs.cs" />
     <Compile Include="Entities\_dict_cities.cs" />
     <Compile Include="Entities\_dict_description_items.cs" />
+    <Compile Include="Entities\_dict_items_details.cs" />
     <Compile Include="Entities\_dict_newsletter.cs" />
     <Compile Include="Entities\_dict_rules.cs" />
     <Compile Include="Entities\_dict_shops.cs" />
@@ -99,6 +100,7 @@
     <Content Include="SqlFiles\Initialization\0007_ii_dict_status_orders.sql" />
     <Content Include="SqlFiles\Initialization\0008_ii_dict_description_items.sql" />
     <Content Include="SqlFiles\Initialization\0009_ii_items.sql" />
+    <Content Include="SqlFiles\Initialization\0010_ii_dict_items_details.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
