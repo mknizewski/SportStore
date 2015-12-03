@@ -1,10 +1,7 @@
-﻿using System;
+﻿using SportStore.Web.HtmlHelpers.ValidationAttributes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-using SportStore.Web.HtmlHelpers.ValidationAttributes;
-using SportStore.Domain.Entities;
 using System.Web.Mvc;
 
 namespace SportStore.Web.Models.Client
@@ -40,7 +37,7 @@ namespace SportStore.Web.Models.Client
         [Display(Name = "E-mail:")]
         [DataType(DataType.EmailAddress)]
         [Required(ErrorMessage = "pole ''E-mail'', jest puste")]
-        [RegularExpression(".+\\@.+\\..+", ErrorMessage = "Nieprawidłowy E-mail!")]      
+        [RegularExpression(".+\\@.+\\..+", ErrorMessage = "Nieprawidłowy E-mail!")]
         public string Email { get; set; }
 
         [Display(Name = "Hasło:")]
@@ -81,4 +78,5 @@ namespace SportStore.Web.Models.Client
         public string PostalCode { get; set; }
     }
 }
+
 // hehe komentarz

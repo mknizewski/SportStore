@@ -10,13 +10,13 @@ using System.Linq;
 /// Original list created from here:
 /// http://www.feedforall.com/mime-types.htm
 /// </summary>
-/// 
+///
 
 namespace SportStore.Web.HtmlHelpers.Classes
 {
     public static class MimeTypes
     {
-        public static Dictionary<string, string> MimeTypeDictionary = new Dictionary<string, string> 
+        public static Dictionary<string, string> MimeTypeDictionary = new Dictionary<string, string>
     {
         {".ai", "application/postscript"},
         {".aif", "audio/x-aiff"},
@@ -230,7 +230,6 @@ namespace SportStore.Web.HtmlHelpers.Classes
                 return Default;
         }
 
-
         /// <summary>
         /// Returns the Dictionary entry that matches the MimeType.
         /// </summary>
@@ -269,6 +268,5 @@ namespace SportStore.Web.HtmlHelpers.Classes
             else
                 return Default;
         }
-
     }
 }

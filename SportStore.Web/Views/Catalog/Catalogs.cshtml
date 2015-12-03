@@ -21,7 +21,7 @@
 
         <div id="filt" class="collapse row" style="margin-top: 15px;">
             <div class="col-sm-2" style="margin-left:15px;">
-                
+
                 <h5>Cena</h5>
                 <div id="price">
                     <div class="checkbox">
@@ -50,7 +50,6 @@
                         <label><input type="checkbox" value="">Option 3</label>
                     </div>
                 </div>
-
             </div>
             <div class="col-sm-2">
                 <div class="col-xs-10">
@@ -68,10 +67,8 @@
                 </select>
             </div>
             <div class="col-sm-2">
-
             </div>
             <div class="col-sm-2">
-
             </div>
         </div>
 
@@ -82,11 +79,11 @@
     </div>
 
     <br />
-    <hr/>
+    <hr />
 
     <div class="row">
     @foreach (var p in Model.Items)
-    {   
+    {
         <div class="col-md-4 portfolio-item">
             <a href="@Url.Action("ItemDescription", new { productId = @p.Id })">
                 <img class="img-responsive" src="~/Content/Images/no-image.png" alt="Brak obrazka" width="700" height="400">
@@ -103,10 +100,9 @@
                 </span>
         </div>
     }
-
     </div>
 
-    <hr/>
+    <hr />
 
     <div class="row">
         <div class="col-sm-4">
@@ -114,7 +110,6 @@
         </div>
 
         <div class="col-sm-4">
-            
         </div>
 
         <div class="col-sm-4">

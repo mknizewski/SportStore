@@ -1,11 +1,7 @@
-﻿using SportStore.Domain.Entities;
-using System;
+﻿using SportStore.Web.HtmlHelpers.ValidationAttributes;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using SportStore.Web.HtmlHelpers.ValidationAttributes;
 
 namespace SportStore.Web.Models.Home
 {

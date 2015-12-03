@@ -1,9 +1,6 @@
 ﻿using SportStore.Web.Models.Shared;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SportStore.Web.HtmlHelpers.Classes
@@ -13,7 +10,7 @@ namespace SportStore.Web.HtmlHelpers.Classes
         public static MvcHtmlString PageLinks(this HtmlHelper html, PagingModel pagingModel, Func<int, string> pageUrl)
         {
             StringBuilder result = new StringBuilder();
-            
+
             for (int i = 1; i <= pagingModel.TotalPages + 1; i++)
             {
                 TagBuilder tag = new TagBuilder("a");

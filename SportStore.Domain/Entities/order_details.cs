@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SportStore.Domain.Entities
@@ -12,10 +11,13 @@ namespace SportStore.Domain.Entities
     public class order_details
     {
         public int Id { get; set; }
+
         [Key, ForeignKey("Order")]
         public int Id_Order { get; set; }
+
         [Key, ForeignKey("Item")]
         public int Id_Item { get; set; }
+
         public int Quantity { get; set; }
 
         public virtual orders Order { get; set; }

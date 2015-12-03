@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sport Store - @ViewBag.Title</title>
     <link rel="shortcut icon" href="~/Content/Images/favicon.ico" />
-    <link rel="stylesheet" href="~/Content/Css/bootstrap.css"/>
+    <link rel="stylesheet" href="~/Content/Css/bootstrap.css" />
     <link rel="stylesheet" href="~/Content/Css/bootstrap-theme.css">
     <link rel="stylesheet" href="~/Content/Css/bootstrap-glyphicons.css" />
     <link rel="stylesheet" href="~/Content/validation.css" type="text/css" />
@@ -38,12 +38,12 @@
                     var split = client.Login.Split(new char[] { '@' });
                     var clientName = split[0];
                     @Html.ActionLink("Witaj " + clientName + " ", "AccountManagment", new { controller = "Client" });
-                    @Html.ActionLink("Wyloguj się", "Logout", "Client", new { returnUrl = Request.Url.PathAndQuery }, null);
+                @Html.ActionLink("Wyloguj się", "Logout", "Client", new { returnUrl = Request.Url.PathAndQuery }, null);
                 }
                 else
                 {
                     @Html.ActionLink("Zaloguj się ", "Login", "Client", new { returnUrl = Request.Url.PathAndQuery }, null);
-                    @Html.ActionLink("Rejestruj się", "Register", "Client", new { returnUrl = Request.Url.PathAndQuery }, null);
+                @Html.ActionLink("Rejestruj się", "Register", "Client", new { returnUrl = Request.Url.PathAndQuery }, null);
                 }
             }
         </div>
@@ -58,7 +58,6 @@
                 <button type="submit">Szukaj</button>
             }
         </div>
-
     </div>
 
     <div class="all">
@@ -101,7 +100,7 @@
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                         @message
                     </div>
-                
+
                     SportStore.Web.Models.Home.Alert.ClearAlert();
                 }
             }
@@ -110,7 +109,7 @@
         </div>
 
         <div class="table">
-            <img src="~/Content/Images/Banners/callus.jpg" alt="Zadzwoń do nas" style="margin-left: 8%;"/>
+            <img src="~/Content/Images/Banners/callus.jpg" alt="Zadzwoń do nas" style="margin-left: 8%;" />
             <table class="footer-table">
                 <tr>
                     <td> <img src="~/Content/Images/Index/banner-1.png" alt="banner1" /> </td>
@@ -152,7 +151,6 @@
                 </tr>
             </table>
         </div>
-
     </div>
 
     <div id="cookieAlert">
@@ -208,9 +206,6 @@
                 div.style.display = "none";
             }
         }
-
     </script>
-
 </body>
-
 </html>

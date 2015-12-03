@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using SportStore.Web.HtmlHelpers.Interfaces;
-using SportStore.Domain.Abstract;
-using SportStore.Domain.Entities;
-using System.Web.Mvc;
-using SportStore.Web.Models.Home;
-using SportStore.Web.Models.Client;
+﻿using SportStore.Domain.Abstract;
 using SportStore.Domain.Concrete;
+using SportStore.Domain.Entities;
+using SportStore.Web.HtmlHelpers.Interfaces;
+using SportStore.Web.Models.Client;
+using System;
+using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace SportStore.Web.HtmlHelpers.Classes
 {
@@ -41,7 +38,7 @@ namespace SportStore.Web.HtmlHelpers.Classes
                 Email = registerModel.Email,
                 DateOfBrith = registerModel.DateOfBrith,
                 Password = PasswordHelper.Encrypt(registerModel.Password),
-                Street  = registerModel.Street,
+                Street = registerModel.Street,
                 PostalCode = registerModel.PostalCode,
                 Id_City = registerModel.selectedCity,
                 Id_Rule = (int)Rules.Client
@@ -62,6 +59,6 @@ namespace SportStore.Web.HtmlHelpers.Classes
                 });
 
             return newList;
-        } 
+        }
     }
 }

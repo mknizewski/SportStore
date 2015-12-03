@@ -50,19 +50,19 @@
                         <a href="#">@Model.Item.Title</a>
                     </h4>
                     <p id="desc">
-                       @Model.Item.Description.Name
+                        @Model.Item.Description.Name
                     </p>
                 </div>
                 <div class="ratings">
                     <p class="pull-right" style="color: #ff4d4d;">
-                       Liczba opinii: @Model.Opinions.Count()
+                        Liczba opinii: @Model.Opinions.Count()
                     </p>
                     <p>
-                       @{
-                           var suma = @Model.Opinions.Select(x => (int)x.Rate).Sum();
-                           var count = @Model.Opinions.Count();
-                           int gwiazdki = 0;                                                             
-                       }
+                        @{
+                            var suma = @Model.Opinions.Select(x => (int)x.Rate).Sum();
+                            var count = @Model.Opinions.Count();
+                            int gwiazdki = 0;
+                        }
 
                         @try
                         {
@@ -89,7 +89,7 @@
                 </div>
             </div>
         </div>
-       </div>
+    </div>
 </div>
 
 <div class="well">
@@ -131,33 +131,29 @@
     }
 </div>
 
-
-
-
-
-    <!-- Modal zostawienia opinii o produkcie -->
-    <div class="modal fade" id="modalOpinion" role="dialog">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Opinia o: @Model.Item.Title</h4>
+<!-- Modal zostawienia opinii o produkcie -->
+<div class="modal fade" id="modalOpinion" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Opinia o: @Model.Item.Title</h4>
+            </div>
+            <div class="modal-body">
+                <!-- Body modala -->
+                <div class="form-group">
+                    <label for="comment">Opinia:</label>
+                    <textarea class="form-control" rows="5" id="comment"></textarea>
                 </div>
-                <div class="modal-body">
-                    <!-- Body modala -->
-                    <div class="form-group">
-                        <label for="comment">Opinia:</label>
-                        <textarea class="form-control" rows="5" id="comment"></textarea>
-                    </div>
-                    <label for="input-1">Oceń produkt:</label>
-                    <input id="input-1" class="rating" data-min="0" data-max="5" data-step="1" data-size="xs" value="0">
-                </div>
-                <div class="modal-footer">
-                    <a href="" id="sendOpinion" type="button" class="btn btn-primary" data-dismiss="modal">Wyślij</a>
-                </div>
+                <label for="input-1">Oceń produkt:</label>
+                <input id="input-1" class="rating" data-min="0" data-max="5" data-step="1" data-size="xs" value="0">
+            </div>
+            <div class="modal-footer">
+                <a href="" id="sendOpinion" type="button" class="btn btn-primary" data-dismiss="modal">Wyślij</a>
             </div>
         </div>
     </div>
+</div>
 
 <script type="text/javascript">
 
@@ -202,7 +198,7 @@
 
         var client = @id;
 
-        var model = { 
+        var model = {
             Id_User: client,
             Id_Item: itemId,
             Opinion: opinion,
@@ -213,5 +209,4 @@
 
         return model;
     }
-
 </script>

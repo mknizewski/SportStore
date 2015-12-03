@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace SportStore.Web.Models.Home
 {
@@ -16,16 +13,19 @@ namespace SportStore.Web.Models.Home
             string alert = String.Empty;
 
             switch (status)
-            { 
+            {
                 case AlertStatus.Succes:
                     alert = "success";
                     break;
+
                 case AlertStatus.Info:
                     alert = "info";
                     break;
+
                 case AlertStatus.Warning:
                     alert = "warning";
                     break;
+
                 case AlertStatus.Danger:
                     alert = "danger";
                     break;
@@ -45,7 +45,7 @@ namespace SportStore.Web.Models.Home
     }
 
     public enum AlertStatus
-    {  
+    {
         Succes, Info, Warning, Danger
     }
 }

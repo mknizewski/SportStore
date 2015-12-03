@@ -1,9 +1,6 @@
 ﻿using SportStore.Domain.Entities;
 using SportStore.Web.Models.Shared;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace SportStore.Web.Models.Catalog
 {

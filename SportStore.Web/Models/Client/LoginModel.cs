@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace SportStore.Web.Models.Client
 {
@@ -16,7 +12,7 @@ namespace SportStore.Web.Models.Client
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email:")]
         [Required(ErrorMessage = "pole jest puste")]
-        [RegularExpression(".+\\@.+\\..+", ErrorMessage = "Niepoprawny adres email")] 
+        [RegularExpression(".+\\@.+\\..+", ErrorMessage = "Niepoprawny adres email")]
         public string Login { get; set; }
 
         [Display(Name = "Hasło:")]

@@ -1,5 +1,4 @@
-﻿using Ninject;
-using SportStore.Domain.Abstract;
+﻿using SportStore.Domain.Abstract;
 using SportStore.Domain.Entities;
 using SportStore.Web.HtmlHelpers.Interfaces;
 using SportStore.Web.Models.Catalog;
@@ -7,8 +6,6 @@ using SportStore.Web.Models.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 
 namespace SportStore.Web.HtmlHelpers.Classes
 {
@@ -23,7 +20,7 @@ namespace SportStore.Web.HtmlHelpers.Classes
         private static int _pageSize = 9; // defaultowo 9
 
         public CatalogsHelper(ICatalogsRepository catalogRepository)
-        { 
+        {
             _catalogRepository = catalogRepository;
         }
 
@@ -90,7 +87,7 @@ namespace SportStore.Web.HtmlHelpers.Classes
                             .Where(x => x.Id_Item.Equals(productId))
                             .ToArray();
 
-            var modelToReturn = new ItemModel 
+            var modelToReturn = new ItemModel
             {
                 Item = item,
                 Opinions = opinions,
@@ -105,7 +102,6 @@ namespace SportStore.Web.HtmlHelpers.Classes
         {
             _pageSize = newSize;
         }
-
 
         void ICatalogsHelper.AddOpinion(OpinionModel opinionModel)
         {

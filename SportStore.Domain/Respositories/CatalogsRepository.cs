@@ -3,8 +3,6 @@ using SportStore.Domain.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SportStore.Domain.Respositories
 {
@@ -71,7 +69,6 @@ namespace SportStore.Domain.Respositories
             }
         }
 
-
         IEnumerable<Entities.items_opinions> ICatalogsRepository.ItemsOpinions
         {
             get
@@ -95,7 +92,6 @@ namespace SportStore.Domain.Respositories
                 throw new NotImplementedException();
             }
         }
-
 
         IEnumerable<Entities._dict_description_items> ICatalogsRepository.ItemsDescriptions
         {

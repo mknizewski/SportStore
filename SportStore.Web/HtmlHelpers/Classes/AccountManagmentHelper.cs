@@ -5,7 +5,6 @@ using SportStore.Web.Models.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace SportStore.Web.HtmlHelpers.Classes
 {
@@ -85,14 +84,14 @@ namespace SportStore.Web.HtmlHelpers.Classes
         NotyficationsClientModel IAccountManagmentHelper.GetNotifications(int id)
         {
             var notyfications = (from client_notyfications c in _clientRepository.ClientNotyfications
-                          where c.Id_Client == id
-                          select c).ToArray();
+                                 where c.Id_Client == id
+                                 select c).ToArray();
 
             var historyNotyfications = (from history_client_notyfications h in _clientRepository.HistoryClientNotyfications
                                         where h.Id_Client == id
                                         select h).ToArray();
 
-            var modelToReturn = new NotyficationsClientModel 
+            var modelToReturn = new NotyficationsClientModel
             {
                 ClientNotyfications = notyfications,
                 HistoryClientNotyfications = historyNotyfications

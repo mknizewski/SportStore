@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace SportStore.Web.Models.Employee
 {
@@ -16,7 +12,7 @@ namespace SportStore.Web.Models.Employee
         [Display(Name = "Email:")]
         [DataType(DataType.EmailAddress)]
         [Required(ErrorMessage = "Pole jest puste")]
-        [RegularExpression(".+\\@sportstore.pl.+\\..+", ErrorMessage = "Adres email musi się kończyć znakami @sportstore.pl")] 
+        [RegularExpression(".+\\@sportstore.pl.+\\..+", ErrorMessage = "Adres email musi się kończyć znakami @sportstore.pl")]
         public string Login { get; set; }
 
         [Display(Name = "Hasło:")]

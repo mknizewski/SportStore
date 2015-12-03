@@ -24,9 +24,12 @@ namespace SportStore.Domain.Entities
         public int Id { get; set; }
         public string Opinion { get; set; }
         public Rating Rate { get; set; }
+
         [Key, ForeignKey("Item")]
         public int Id_Item { get; set; }
+
         public DateTime InsertTime { get; set; }
+
         [Key, ForeignKey("Client")]
         public int? Id_Client { get; set; }
 

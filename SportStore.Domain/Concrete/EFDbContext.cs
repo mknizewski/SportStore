@@ -12,12 +12,12 @@ namespace SportStore.Domain.Concrete
     public class EFDbContext : DbContext
     {
         public EFDbContext()
-            :base("EFDbContext")
+            : base("EFDbContext")
         {
-            
         }
 
         #region Tabele Słownikowe
+
         public DbSet<_dict_newsletter> DictNewsletter { get; set; }
         public DbSet<_dict_catalogs> DictCatalogs { get; set; }
         public DbSet<_dict_rules> DictRules { get; set; }
@@ -27,9 +27,11 @@ namespace SportStore.Domain.Concrete
         public DbSet<_dict_cities> DictCities { get; set; }
         public DbSet<_dict_shops> DictShops { get; set; }
         public DbSet<_dict_items_details> DictItemsDetails { get; set; }
-        #endregion
+
+        #endregion Tabele Słownikowe
 
         #region Zwykłe tabele
+
         public DbSet<Newsletter> Newsletter { get; set; }
         public DbSet<clients> Clients { get; set; }
         public DbSet<employees> Employees { get; set; }
@@ -43,22 +45,27 @@ namespace SportStore.Domain.Concrete
         public DbSet<client_notyfications> ClientNotyfications { get; set; }
         public DbSet<employee_notyfications> EmployeeNotyfications { get; set; }
         public DbSet<genereted_register_keys> GeneretedRegisterKeys { get; set; }
-        #endregion
+
+        #endregion Zwykłe tabele
 
         #region Tabele historyczne
+
         public DbSet<history_orders> HistoryOrders { get; set; }
         public DbSet<history_orders_details> HistoryOrdersDetails { get; set; }
         public DbSet<history_orders_complaints> HistoryOrdersComplaints { get; set; }
         public DbSet<history_client_notyfications> HistoryClientNotyfications { get; set; }
         public DbSet<history_employees_notyfications> HistoryEmployeesNotyfications { get; set; }
-        #endregion
+
+        #endregion Tabele historyczne
 
         #region OnModelCreating
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
             #region Słownikowe
+
             modelBuilder.Entity<_dict_newsletter>()
                 .HasKey(e => e.Id);
 
@@ -85,9 +92,11 @@ namespace SportStore.Domain.Concrete
 
             modelBuilder.Entity<_dict_items_details>()
                 .HasKey(e => e.Id);
-            #endregion
+
+            #endregion Słownikowe
 
             #region Normalne
+
             modelBuilder.Entity<Newsletter>()
                 .HasKey(e => e.Id);
 
@@ -126,9 +135,11 @@ namespace SportStore.Domain.Concrete
 
             modelBuilder.Entity<genereted_register_keys>()
                 .HasKey(e => e.Id);
-            #endregion
+
+            #endregion Normalne
 
             #region Historyczne
+
             modelBuilder.Entity<history_orders>()
                 .HasKey(e => e.Id);
 
@@ -143,8 +154,10 @@ namespace SportStore.Domain.Concrete
 
             modelBuilder.Entity<history_employees_notyfications>()
                 .HasKey(e => e.Id);
-            #endregion
+
+            #endregion Historyczne
         }
-        #endregion
+
+        #endregion OnModelCreating
     }
 }

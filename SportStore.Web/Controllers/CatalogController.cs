@@ -1,15 +1,7 @@
 ﻿using SportStore.Web.HtmlHelpers.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Resources;
-using System.IO;
-using System.Drawing.Imaging;
-using SportStore.Web.HtmlHelpers.Classes;
-using SportStore.Web.Models.Home;
 using SportStore.Web.Models.Catalog;
+using SportStore.Web.Models.Home;
+using System.Web.Mvc;
 
 namespace SportStore.Web.Controllers
 {

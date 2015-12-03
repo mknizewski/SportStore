@@ -16,11 +16,14 @@ namespace SportStore.Domain.Entities
         public string Surname { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
+
         [Key, ForeignKey("City")]
         public int Id_City { get; set; }
+
         public string Street { get; set; }
         public string PostalCode { get; set; }
         public DateTime DateOfBrith { get; set; }
+
         [Key, ForeignKey("Rule")]
         public int Id_Rule { get; set; }
 

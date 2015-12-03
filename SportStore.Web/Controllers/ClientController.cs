@@ -1,13 +1,10 @@
 ﻿using SportStore.Web.HtmlHelpers.Interfaces;
+using SportStore.Web.Infrastructure;
 using SportStore.Web.Models.Client;
-using System;
+using SportStore.Web.Models.Home;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using SportStore.Web.Infrastructure;
-using SportStore.Web.Models.Home;
 
 namespace SportStore.Web.Controllers
 {
@@ -86,7 +83,7 @@ namespace SportStore.Web.Controllers
         public ActionResult AccountManagment()
         {
             var cookie = this.Session["Client"] as AccountModel;
-      
+
             return View(cookie);
         }
 

@@ -1,7 +1,5 @@
-﻿using System.Data.Entity;
-using SportStore.Domain.Entities;
-using System.Collections.Generic;
-using System;
+﻿using System;
+using System.Data.Entity;
 using System.IO;
 
 namespace SportStore.Domain.Concrete

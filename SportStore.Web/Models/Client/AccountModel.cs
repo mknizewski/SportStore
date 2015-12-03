@@ -1,20 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace SportStore.Web.Models.Client
 {
     public class AccountModel
     {
         //Dane kontaktowe
-        public int Id {get; set;}
+        public int Id { get; set; }
+
         public string Login { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
 
         //Dane wysyłkowe
         public int City_Id { get; set; }
+
         public string City { get; set; }
         public string Street { get; set; }
         public string PostalCode { get; set; }

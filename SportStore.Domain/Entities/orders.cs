@@ -12,10 +12,13 @@ namespace SportStore.Domain.Entities
     public class orders
     {
         public int Id { get; set; }
+
         [Key, ForeignKey("Client")]
         public int Id_Client { get; set; }
+
         [Key, ForeignKey("OrderStatus")]
         public int Id_Status { get; set; }
+
         public DateTime InsertTime { get; set; }
         public DateTime? UpdateTime { get; set; }
         public decimal ToPay { get; set; }
