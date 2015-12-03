@@ -75,6 +75,17 @@ namespace SportStore.Web.HtmlHelpers.Classes
                         .Where(x => x.Id.Equals(productId))
                         .FirstOrDefault();
 
+            var details = _catalogRepository.ItemsDetails
+                            .Where(x => x.Id_Item.Equals(productId))
+                            .Select(x => x.Name)
+                            .FirstOrDefault();
+
+            string[] detailData = { "" };
+
+            if (details != null)
+                detailData = details.Split(';');
+
+
             var opinions = _catalogRepository.ItemsOpinions
                             .Where(x => x.Id_Item.Equals(productId))
                             .ToArray();
@@ -92,7 +103,8 @@ namespace SportStore.Web.HtmlHelpers.Classes
                 Item = item,
                 Opinions = opinions,
                 Quantity = quantity,
-                Pictures = pictures
+                Pictures = pictures,
+                DetailsItem = detailData
             };
 
             return modelToReturn;

@@ -38,25 +38,33 @@
                     var split = client.Login.Split(new char[] { '@' });
                     var clientName = split[0];
                     @Html.ActionLink("Witaj " + clientName + " ", "AccountManagment", new { controller = "Client" });
-                @Html.ActionLink("Wyloguj się", "Logout", "Client", new { returnUrl = Request.Url.PathAndQuery }, null);
+                    @Html.ActionLink("Wyloguj się", "Logout", "Client", new { returnUrl = Request.Url.PathAndQuery }, null);
                 }
                 else
                 {
                     @Html.ActionLink("Zaloguj się ", "Login", "Client", new { returnUrl = Request.Url.PathAndQuery }, null);
-                @Html.ActionLink("Rejestruj się", "Register", "Client", new { returnUrl = Request.Url.PathAndQuery }, null);
+                    @Html.ActionLink("Rejestruj się", "Register", "Client", new { returnUrl = Request.Url.PathAndQuery }, null);
                 }
             }
         </div>
 
-        <img src="~/Content/Images/Index/main-banner.png" alt="Logo główne" />
+        <div class="row">
+            <div class="col-sm-4">
+                <img id="logo" src="~/Content/Images/Index/main-banner.png" alt="Logo główne" />
+            </div>
+            <div class="col-sm-4">
+                @* Div globalnej wyszukiwarki *@
+                <div id="global_search_div">
+                    @using (Html.BeginForm("GlobalSearch", "Search", FormMethod.Post, new { @class = "searchform cf" }))
+                    {
+                        @Html.Editor("Czego szukasz?", "searchText", "searchText", new { htmlAttributes = new { @placeholder = "Przeszukaj sklep SportStore" } })
+                        <button type="submit">Szukaj</button>
+                    }
+                </div>
+            </div>
+            <div class="col-sm-4">
 
-        @* Div globalnej wyszukiwarki *@
-        <div id="global_search_div">
-            @using (Html.BeginForm("GlobalSearch", "Search", FormMethod.Post, new { @class = "searchform cf" }))
-            {
-                @Html.Editor("Czego szukasz?", "searchText", "searchText", new { htmlAttributes = new { @placeholder = "Przeszukaj sklep SportStore" } })
-                <button type="submit">Szukaj</button>
-            }
+            </div>
         </div>
     </div>
 

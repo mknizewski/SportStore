@@ -14,11 +14,10 @@
         <div class="col-md-3">
             <label id="label" for="details">Dane techniczne: </label>
             <ul id="details" class="list-group">
-                <li class="list-group-item">Rozmiar: 5</li>
-                <li class="list-group-item">Bezszwowa budowa TSBE</li>
-                <li class="list-group-item">Zawór zwrotny butylowy</li>
-                <li class="list-group-item">Unikalne wzornictwo EURO 2016</li>
-                <li class="list-group-item">Wszechstronnie testowana</li>
+                @foreach (var details in Model.DetailsItem)
+                { 
+                    <li class="list-group-item">@details</li>
+                }
             </ul>
         </div>
         <div class="col-md-9">
