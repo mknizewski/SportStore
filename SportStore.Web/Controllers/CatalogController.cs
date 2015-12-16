@@ -1,4 +1,5 @@
-﻿using SportStore.Web.HtmlHelpers.Interfaces;
+﻿using SportStore.Web.HtmlHelpers.Classes;
+using SportStore.Web.HtmlHelpers.Interfaces;
 using SportStore.Web.Models.Catalog;
 using SportStore.Web.Models.Home;
 using System.Web.Mvc;
@@ -50,7 +51,7 @@ namespace SportStore.Web.Controllers
             if (content != null)
                 return File(content.PictureData, content.PictureMimeType);
             else
-                return null;
+                return File(NonPictureHelper.NoImageArray, "image/png");
         }
 
         [HttpPost]

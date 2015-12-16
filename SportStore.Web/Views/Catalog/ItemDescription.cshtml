@@ -15,7 +15,7 @@
             <label id="label" for="details">Dane techniczne: </label>
             <ul id="details" class="list-group">
                 @foreach (var details in Model.DetailsItem)
-                { 
+                {
                     <li class="list-group-item">@details</li>
                 }
             </ul>
@@ -142,7 +142,8 @@
                 <!-- Body modala -->
                 <div class="form-group">
                     <label for="comment">Opinia:</label>
-                    <textarea class="form-control" rows="5" id="comment"></textarea>
+                    <textarea oninput="checkOpinionCount()" class="form-control" rows="5" id="comment"></textarea>
+                    <span id="wordCount">Ilość znaków: 120</span>
                 </div>
                 <label for="input-1">Oceń produkt:</label>
                 <input id="input-1" class="rating" data-min="0" data-max="5" data-step="1" data-size="xs" value="0">
@@ -155,6 +156,23 @@
 </div>
 
 <script type="text/javascript">
+
+    function checkOpinionCount()
+    {
+        var textArea = document.getElementById("comment");
+        var spanArea = document.getElementById("wordCount");
+
+        var textAreaLength = textArea.value.length;
+        var unusedWords = 120 - textAreaLength;
+
+        if (unusedWords <= 0)
+        {
+            textArea.value = textArea.value.substring(0, 120);
+            spanArea.textContent = "Ilość znaków: 0"
+        }
+        else
+            spanArea.textContent = "Ilość znaków: " + unusedWords;
+    }
 
     $(document).ready(function () {
 

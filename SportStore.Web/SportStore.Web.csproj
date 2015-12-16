@@ -19,6 +19,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -210,6 +211,7 @@
     <Compile Include="HtmlHelpers\Classes\LoginHelper.cs" />
     <Compile Include="HtmlHelpers\Classes\MimeTypes.cs" />
     <Compile Include="HtmlHelpers\Classes\NewsletterHelper.cs" />
+    <Compile Include="HtmlHelpers\Classes\NonPictureHelper.cs" />
     <Compile Include="HtmlHelpers\Classes\PagingHelpers.cs" />
     <Compile Include="HtmlHelpers\Classes\PasswordHelper.cs" />
     <Compile Include="HtmlHelpers\Classes\RegisterHelper.cs" />

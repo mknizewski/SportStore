@@ -1,4 +1,5 @@
 ﻿using SportStore.Domain.Concrete;
+using SportStore.Web.HtmlHelpers.Classes;
 using System.Data.Entity;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -12,6 +13,8 @@ namespace SportStore.Web
             AreaRegistration.RegisterAllAreas();
             //Rejestracja tablicy routingu
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            //Inicjalizacja braku zdjęcia
+            NonPictureHelper.GetNoImage();
             //Inicjalizacja bazy danych
             Database.SetInitializer(new EFDbInitializer());
         }
