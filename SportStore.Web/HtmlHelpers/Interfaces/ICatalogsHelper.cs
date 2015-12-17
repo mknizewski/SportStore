@@ -22,5 +22,7 @@ namespace SportStore.Web.HtmlHelpers.Interfaces
         void ChangePageSize(int newSize);
 
         void AddOpinion(OpinionModel opinionModel);
+
+        items GetItemById(int productId);
     }
 }

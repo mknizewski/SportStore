@@ -1,4 +1,5 @@
-﻿using SportStore.Web.HtmlHelpers.Interfaces;
+﻿using SportStore.Web.HtmlHelpers.Classes;
+using SportStore.Web.HtmlHelpers.Interfaces;
 using SportStore.Web.Models.Home;
 using System.Web.Mvc;
 
@@ -61,6 +62,11 @@ namespace SportStore.Web.Controllers
             }
             else
                 return View(_newsletterHelper.GetNewsletterModel());
+        }
+
+        public ViewResult Cart(Cart cart)
+        {
+            return View(cart);
         }
 
         #endregion Metody Kontrolera

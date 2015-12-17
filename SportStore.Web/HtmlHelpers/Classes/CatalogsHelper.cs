@@ -144,5 +144,12 @@ namespace SportStore.Web.HtmlHelpers.Classes
                 _catalogRepository.AddOpinion(modelToSave);
             }
         }
+
+        items ICatalogsHelper.GetItemById(int productId)
+        {
+            return _catalogRepository.Items
+                .Where(x => x.Id.Equals(productId))
+                .FirstOrDefault();
+        }
     }
 }

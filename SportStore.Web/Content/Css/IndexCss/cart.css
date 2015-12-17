@@ -1,0 +1,18 @@
+﻿.panel {
+    font-family: 'Open Sans',Arial;
+    min-height: 800px;
+}
+
+.col-md-8 {
+    background-color: white;
+    min-height: 700px;
+}
+
+.col-md-4 {
+    background-color: lightgray;
+    min-height: 700px;
+}
+
+.col-md-4 hr {
+    border-top: 3px solid black;
+}

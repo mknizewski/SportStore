@@ -36,14 +36,17 @@ namespace SportStore.Web.Controllers
             return View(_catalogsHelper.GetDescriptionItemById(productId));
         }
 
-        public ActionResult AddToCart(string returnUrl, int productId)
+        public ActionResult AddToCart(Cart cart, string returnUrl, int productId, int quantity)
         {
-            //TODO: Dodać obsługę koszyka!
+            var item = _catalogsHelper.GetItemById(productId);
+            cart.AddItem(item, quantity);
+
             Alert.SetAlert(AlertStatus.Succes, "Poprawnie dodano przedmiot do koszyka!");
 
             return Redirect(returnUrl);
         }
 
+        
         public FileContentResult GetImage(int productId)
         {
             var content = _catalogsHelper.GetPictureById(productId);

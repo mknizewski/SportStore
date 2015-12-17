@@ -124,6 +124,7 @@
     <Content Include="Content\Css\bootstrap.min.css" />
     <Content Include="Content\Css\CatalogCss\catalogs.css" />
     <Content Include="Content\Css\CatalogCss\description.css" />
+    <Content Include="Content\Css\IndexCss\cart.css" />
     <Content Include="Content\Css\IndexCss\cookie.css" />
     <Content Include="Content\Css\IndexCss\index-employee-section.css" />
     <Content Include="Content\Css\IndexCss\index-theme.css" />
@@ -207,6 +208,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HtmlHelpers\Classes\AccountManagmentHelper.cs" />
+    <Compile Include="HtmlHelpers\Classes\Cart.cs" />
+    <Compile Include="HtmlHelpers\Classes\CartLine.cs" />
     <Compile Include="HtmlHelpers\Classes\CatalogsHelper.cs" />
     <Compile Include="HtmlHelpers\Classes\LoginHelper.cs" />
     <Compile Include="HtmlHelpers\Classes\MimeTypes.cs" />
@@ -223,6 +226,7 @@
     <Compile Include="HtmlHelpers\ValidationAttributes\MinimumLength.cs" />
     <Compile Include="HtmlHelpers\ValidationAttributes\PolandPostalCode.cs" />
     <Compile Include="HtmlHelpers\ValidationAttributes\UniqueNewsletterEmailAdress.cs" />
+    <Compile Include="Infrastructure\Binders\CartModelBinder.cs" />
     <Compile Include="Infrastructure\ClientAuthentication.cs" />
     <Compile Include="Infrastructure\NinjectDepedencyResolver.cs" />
     <Compile Include="Models\Catalog\ItemModel.cs" />
@@ -260,6 +264,7 @@
     <Content Include="Views\Client\Notyfications.cshtml" />
     <Content Include="Views\Catalog\Catalogs.cshtml" />
     <Content Include="Views\Catalog\ItemDescription.cshtml" />
+    <Content Include="Views\Home\Cart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

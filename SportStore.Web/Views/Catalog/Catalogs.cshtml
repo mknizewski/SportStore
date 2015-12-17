@@ -92,7 +92,7 @@
                 <a href="@Url.Action("ItemDescription", new { productId = @p.Id })">@p.Title</a>
             </h3>
 
-                <a href="@Url.Action("AddToCart", new { returnUrl = @Request.Url.PathAndQuery, productId = @p.Id })" id="cart" style="float:left;">
+                <a href="@Url.Action("AddToCart", new { returnUrl = @Request.Url.PathAndQuery, productId = @p.Id, quantity = 1 })" id="cart" style="float:left;">
                     <span class="glyphicon glyphicon-shopping-cart"></span>
                 </a>
                 <span class="label label-primary" style="float:right;">

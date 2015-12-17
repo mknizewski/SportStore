@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = @Model.Item.Title;
+    var ilosc = 1;
 }
 
 <link href="~/Content/Css/CatalogCss/description.css" rel="stylesheet" type="text/css" />
@@ -40,11 +41,19 @@
                     </div>
                 </div>
                 <div class="caption-full">
+                    
                     <h4 class="pull-right">
-                        <a href="#" class="btn btn-info">
+                        <a href='@Url.Action("AddToCart", "Catalog", new { returnUrl = @Request.Url.PathAndQuery, productId = Model.Item.Id, quantity = ilosc})' class="btn btn-info">
                             <span class="glyphicon glyphicon-shopping-cart"></span> @Model.Item.Price.ToString("c")
                         </a>
                     </h4>
+
+                    <span id="ilosc" class="form-inline" style="float:right;">
+                        <button onclick="removeItem()" id="plus" type="button" class="btn btn-primary">-</button>
+                        <input id="quantity" type="text" class="form-control" value="1" style="width: 40px;" readonly/>
+                        <button onclick="addItem()" id="minus" type="button" class="btn btn-primary">+</button>
+                    </span>
+
                     <h4>
                         <a href="#">@Model.Item.Title</a>
                     </h4>
@@ -71,6 +80,8 @@
                         {
                             gwiazdki = 0;
                         }
+
+                        
 
                         @for (int i = 0; i < 5; i++)
                         {
@@ -194,6 +205,25 @@
 
         });
     });
+
+    function addItem()
+    {
+        var text = document.getElementById("quantity");
+        var value = parseInt(text.value) + 1;
+
+        text.value = value;
+    }
+
+    function removeItem()
+    {
+        var text = document.getElementById("quantity");
+        var value = parseInt(text.value) - 1;
+
+        if (value > 0)
+        {
+            text.value = value;
+        }
+    }
 
     function getOpinionModel()
     {
