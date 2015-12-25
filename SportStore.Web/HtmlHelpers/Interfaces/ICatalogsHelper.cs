@@ -9,7 +9,7 @@ namespace SportStore.Web.HtmlHelpers.Interfaces
     /// Opis:   Interfejs pomocy dla repo katalogów
     /// Data:   15.11.15
     /// </summary>
-    public interface ICatalogsHelper
+    public interface ICatalogRepository
     {
         IEnumerable<_dict_catalogs> GetCatalogs();
 

@@ -14,7 +14,7 @@ namespace SportStore.Web.HtmlHelpers.Classes
     /// Opis:   Klasa pomocniczna do przegladania produktów
     /// Data:   26.11.15
     /// </summary>
-    public class CatalogsHelper : ICatalogsHelper
+    public class CatalogsHelper : ICatalogRepository
     {
         public ICatalogsRepository _catalogRepository;
         private static int _pageSize = 9; // defaultowo 9
@@ -24,12 +24,12 @@ namespace SportStore.Web.HtmlHelpers.Classes
             _catalogRepository = catalogRepository;
         }
 
-        IEnumerable<_dict_catalogs> ICatalogsHelper.GetCatalogs()
+        IEnumerable<_dict_catalogs> ICatalogRepository.GetCatalogs()
         {
             return _catalogRepository.Catalogs;
         }
 
-        Models.Catalog.ProductsListViewModel ICatalogsHelper.GetItemsByCatalog(int catalogId, int page)
+        Models.Catalog.ProductsListViewModel ICatalogRepository.GetItemsByCatalog(int catalogId, int page)
         {
             var currentCatalog = _catalogRepository.Catalogs
                                 .Select(x => x)
@@ -61,7 +61,7 @@ namespace SportStore.Web.HtmlHelpers.Classes
             return viewModel;
         }
 
-        items_picutures ICatalogsHelper.GetPictureById(int productId)
+        items_picutures ICatalogRepository.GetPictureById(int productId)
         {
             var image = _catalogRepository.ItemsPicture
                         .FirstOrDefault(p => p.Id_Item.Equals(productId));
@@ -69,7 +69,7 @@ namespace SportStore.Web.HtmlHelpers.Classes
             return image;
         }
 
-        ItemModel ICatalogsHelper.GetDescriptionItemById(int productId)
+        ItemModel ICatalogRepository.GetDescriptionItemById(int productId)
         {
             var item = _catalogRepository.Items
                         .Where(x => x.Id.Equals(productId))
@@ -110,12 +110,12 @@ namespace SportStore.Web.HtmlHelpers.Classes
             return modelToReturn;
         }
 
-        void ICatalogsHelper.ChangePageSize(int newSize)
+        void ICatalogRepository.ChangePageSize(int newSize)
         {
             _pageSize = newSize;
         }
 
-        void ICatalogsHelper.AddOpinion(OpinionModel opinionModel)
+        void ICatalogRepository.AddOpinion(OpinionModel opinionModel)
         {
             if (opinionModel.Id_User != -1 && opinionModel.Opinion != null)
             {
@@ -145,7 +145,7 @@ namespace SportStore.Web.HtmlHelpers.Classes
             }
         }
 
-        items ICatalogsHelper.GetItemById(int productId)
+        items ICatalogRepository.GetItemById(int productId)
         {
             return _catalogRepository.Items
                 .Where(x => x.Id.Equals(productId))

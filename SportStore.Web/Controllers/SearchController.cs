@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using SportStore.Web.HtmlHelpers.Interfaces;
+using SportStore.Web.Models.Search;
+using System.Web.Mvc;
 
 namespace SportStore.Web.Controllers
 {
@@ -9,15 +11,27 @@ namespace SportStore.Web.Controllers
     /// </summary>
     public class SearchController : Controller
     {
+        private IGlobalSearchHelper _globalSearchHelper;
+        public SearchController(IGlobalSearchHelper globalSearchHelper)
+        {
+            _globalSearchHelper = globalSearchHelper;
+        }
+
         /// <summary>
         /// Wyszukiwanie globalne przedmiotu
         /// </summary>
         /// <param name="searchText">Szuakny przedmiot</param>
         /// <returns>Widok strony głownej wyszukiwania</returns>
-        [HttpPost]
+        [HttpGet]
         public ActionResult GlobalSearch(string searchText)
         {
-            return View();
+            return View(_globalSearchHelper.GetModel(searchText));
+        }
+
+        [HttpPost]
+        public ActionResult GlobalSearch(GlobalSearchModel model)
+        {
+            return View(_globalSearchHelper.SearchItems(model));
         }
     }
 }

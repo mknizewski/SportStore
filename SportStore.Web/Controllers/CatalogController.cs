@@ -13,9 +13,9 @@ namespace SportStore.Web.Controllers
     /// </summary>
     public class CatalogController : Controller
     {
-        private ICatalogsHelper _catalogsHelper;
+        private ICatalogRepository _catalogsHelper;
 
-        public CatalogController(ICatalogsHelper catalogHelper)
+        public CatalogController(ICatalogRepository catalogHelper)
         {
             _catalogsHelper = catalogHelper;
         }

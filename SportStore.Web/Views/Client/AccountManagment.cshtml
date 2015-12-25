@@ -6,100 +6,152 @@
 
 <link href="~/Content/Css/AccountManagmentCss/account-managment.css" rel="stylesheet" type="text/css" />
 
-<div class="panel panel-success">
-    <h4 style="font-family: 'Open Sans', Arial; margin-left: 2%;">Twoje konto</h4>
-    <hr />
-    <div class="table-responsive">
-        <table>
-            <tr>
-                <td>
-                    <a href='@Url.Action("Cart", "Home")' data-toggle="tooltip" title="Twój koszyk na zakupy">
-                        <div class="MetroIcon">
-                            <img src="~/Content/Images/AccountManagment/shopping-cart.png" />
-                            <p>Koszyk</p>
-                        </div>
-                    </a>
-                </td>
-                <td>
-                    <a href="#" data-toggle="tooltip" title="Twoje zamówienia">
-                        <div class="MetroIcon">
-                            <img src="~/Content/Images/AccountManagment/orders.png" />
-                            <p>Zamówienia</p>
-                        </div>
-                    </a>
-                </td>
-                <td>
-                    <a href='@Url.Action("Notyfications", "Client")' data-toggle="tooltip" title="Twoje powiadomienia">
-                        <div id="Notify"> <p> @Model.UnreadNotifications </p> </div>
-                        <div class="MetroIcon">
-                            <img src="~/Content/Images/AccountManagment/notice.png" />
-                            <p>Powiadomienia</p>
-                        </div>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="#" data-toggle="tooltip" title="Tu znajdziesz zgłoszone reklamacje">
-                        <div class="MetroIcon">
-                            <img src="~/Content/Images/AccountManagment/complaint.png" alt="Reklamacje" />
-                            <p>Reklamacje</p>
-                        </div>
-                    </a>
-                </td>
-                <td>
-                    <a href="#" data-toggle="tooltip" title="Tu możesz zmienić ustawienia konta">
-                        <div class="MetroIcon">
-                            <img src="~/Content/Images/AccountManagment/setting.png" />
-                            <p>Ustawienia konta</p>
-                        </div>
-                    </a>
-                </td>
-            </tr>
-        </table>
-    </div>
-
-    <h4 style="font-family: 'Open Sans', Arial; margin-left: 2%;">Twoje dane</h4>
-    <hr />
-
+<div class="panel">
     <div class="row">
-        <div class="col-sm-4">
-            <h5>Dane kontaktowe</h5>
-            <table>
-                <tr>
-                    <td> Imię: </td>
-                    <td> @Model.Name </td>
-                </tr>
-                <tr>
-                    <td> Nazwisko: </td>
-                    <td> @Model.Surname </td>
-                </tr>
-                <tr>
-                    <td> Email: </td>
-                    <td> @Model.Login </td>
-                </tr>
-                <tr>
-                    <td> Data urodzenia: </td>
-                    <td> @Model.DateOfBirth.ToShortDateString() </td>
-                </tr>
-            </table>
+        <div id="left" class="col-md-6">
+            <div class="panel panel-group">
+                <div class="panel panel-info">
+                    <div class="panel-heading">Dane personalne</div>
+                    <div class="panel-body">
+
+                        <form role="form">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="email" class="col-md-2">Login:</label>
+                                    <div class="col-md-10">
+                                        <input type="email" class="form-control" id="email" value="@Model.Login" readonly />
+                                        <span class="help-block">Twój login do serwisu SportStore</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="name" class="col-md-2">Imię:</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" id="name" value="@Model.Name" />
+                                        <span class="help-block">Twoje imię</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="surname" class="col-md-2">Nazwisko:</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" id="surname" value="@Model.Surname" />
+                                        <span class="help-block">Twoje nazwisko</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="date" class="col-md-2">Data urodzenia:</label>
+                                    <div class="col-md-10">
+                                        <input type="date" class="form-control" id="date" value="@Model.DateOfBirth.ToShortDateString()" />
+                                        <span class="help-block">Twoja data urodzenia</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-success" style="float: right;">Zapisz zmiany</button>
+                        </form>
+
+                        <button class="btn btn-primary" style="float: right; margin-right: 10px;">Zmiana hasła</button>
+
+                    </div>
+                </div>
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">Dane wysyłkowe</div>
+                    <div class="panel-body">
+
+                        <form role="form">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="street" class="col-md-2">Ulica:</label>
+                                    <div class="col-md-10">
+                                        <input type="text" id="street" class="form-control" value="@Model.Street" />
+                                        <span class="help-block">Ulica podana przy rejestracji</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="postalcode" class="col-md-2">Kod pocztowy:</label>
+                                    <div class="col-md-10">
+                                        <input type="text" id="postalcode" class="form-control" value="@Model.PostalCode" />
+                                        <span class="help-block">Kod pocztowy podany przy rejestracji</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="city" class="col-md-2">Miasto:</label>
+                                    <div class="col-md-10">
+                                        <input type="text" id="city" class="form-control" value="@Model.City" />
+                                        <span class="help-block">Miasto podane przy rejestracji</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-success" style="float:right;">Zapisz zmiany</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-sm-4">
-            <h5>Dane wysyłkowe</h5>
-            <table>
-                <tr>
-                    <td> Miasto: </td>
-                    <td> @Model.City </td>
-                </tr>
-                <tr>
-                    <td> Ulica: </td>
-                    <td> @Model.Street </td>
-                </tr>
-                <tr>
-                    <td> Kod pocztowy: </td>
-                    <td> @Model.PostalCode </td>
-                </tr>
-            </table>
+        <div id="right" class="col-md-6">
+            
+            <div id="navi" class="panel panel-success">
+                <div class="panel-heading">Nawigacja</div>
+                <div class="panel-body">
+
+                    <div id="gorny" class="row">
+                        <div class="col-md-6">
+
+                            <a href='@Url.Action("Cart", "Home")' class="btn btn-lg btn-primary" id="ck">
+                                <img id="koszyk" src="~/Content/Images/AccountManagment/shopping-cart.png" width="50" height="50" />
+                                <label for="koszyk">Koszyk</label>
+                            </a>
+
+                        </div>
+                        <div class="col-md-6">
+
+                            <a href="#" id="ok" class="btn btn-lg btn-primary">
+                                <img id="orders" src="~/Content/Images/AccountManagment/orders.png" width="50" height="50" />
+                                <label for="orders">Zamówienia</label>
+                            </a>
+
+                        </div>
+                    </div>
+                    
+                    <div id="dolny" class="row">
+                        <div class="col-md-6">
+
+                            <a href="#" class="btn btn-lg btn-primary">
+                                <img id="reklamacje" src="~/Content/Images/AccountManagment/complaint.png" width="50" height="50" />
+                                <label for="reklamacje">Reklamacje</label>
+                            </a>
+
+                        </div>
+                        <div class="col-md-6">
+
+                            <a href='@Url.Action("Notyfications", "Client")' class="btn btn-lg btn-primary">
+                                <img id="powiadomienia" src="~/Content/Images/AccountManagment/notice.png" width="50" height="50" />
+                                <label for="powiadomienia">Powiadomienia <span class="badge">@Model.UnreadNotifications</span></label>
+                            </a>
+
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

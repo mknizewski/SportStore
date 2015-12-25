@@ -1,0 +1,113 @@
+﻿@model SportStore.Web.Models.Search.GlobalSearchModel
+
+@{
+    ViewBag.Title = "Wyniki wyszukiwania";
+}
+
+<link href="~/Content/Css/SearchBarCss/searchCss.css" type="text/css" rel="stylesheet" />
+
+<div class="panel-group">
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">Ustawienia wyszukiwania</div>
+        <div class="panel-body">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken();
+
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="word" class="control-label col-md-1">Słowo:</label>
+                        <div class="col-md-11 form-inline">
+                            @Html.EditorFor(x => x.Word, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                            @Html.DropDownListFor(x => x.SelectedTypeSearchWord, Model.TypeSearchWord, new { @class = "form-control", @id = "word" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="price" class="control-label col-md-1">Cena:</label>
+                        <div class="col-md-11 form-inline">
+                            <div class="input-group">
+                                @Html.EditorFor(x => x.OdPirce, new { htmlAttributes = new { @class = "form-control", @type = "number", @placeholder = "Od", @id = "price" } })
+                                <div class="input-group-addon">zł</div>
+                            </div>
+                            <div class="input-group">
+                                @Html.EditorFor(x => x.DoPrice, new { htmlAttributes = new { @class = "form-control", @type = "number", @placeholder = "Do" } })
+                                <div class="input-group-addon">zł</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="filtr" class="control-label col-md-1">Filtr:</label>
+                        <div class="col-md-11">
+                            @Html.DropDownListFor(x => x.SelectedFilter, Model.Filter, new { @class = "form-control", @id = "filtr" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="category" class="col-md-1">Kategoria:</label>
+                        <div class="col-md-11">
+                            @Html.DropDownListFor(x => x.SelectedCategory, Model.Category, new { @class = "form-control", @id = "category" })
+                        </div>
+                    </div>
+                </div>
+
+                <input type="submit" value="Wyszukaj" class="btn btn-primary" style="float: right;" />
+            }
+        </div>
+    </div>
+
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            @{
+                var count = 0;
+                if (Model.searchedItems != null)
+                {
+                    count = Model.searchedItems.Count();
+                }
+            }
+            @count wyników
+        </div>
+        <div class="panel-body">
+            <table class="table">
+                <thead class="thead-default">
+                    <tr>
+                        <th>#</th>
+                        <th>Przedmiot</th>
+                        <th>Cena</th>
+                        <th>Kategoria</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.searchedItems != null)
+                    {
+                            var iterator = 1;
+
+                            foreach (var item in Model.searchedItems)
+                            {
+                                <tr>
+                                    <th scope="row">@iterator</th>
+                                    <td>
+                                        @Html.ActionLink(item.Title, "ItemDescription", "Catalog", new { productId = item.Id, catalogId = item.Id_Category }, null)
+                                    </td>
+                                    <td>@item.Price.ToString("c")</td>
+                                    <td>@item.Category.Name</td>
+                                </tr>
+
+                                iterator++;
+                            }
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+

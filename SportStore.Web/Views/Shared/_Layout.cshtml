@@ -54,7 +54,7 @@
             <div class="col-sm-4">
                 @* Div globalnej wyszukiwarki *@
                 <div id="global_search_div">
-                    @using (Html.BeginForm("GlobalSearch", "Search", FormMethod.Post, new { @class = "searchform cf" }))
+                    @using (Html.BeginForm("GlobalSearch", "Search", FormMethod.Get, new { @class = "searchform cf" }))
                     {
                         @Html.Editor("Czego szukasz?", "searchText", "searchText", new { htmlAttributes = new { @placeholder = "Przeszukaj sklep SportStore" } })
                         <button type="submit">Szukaj</button>
@@ -85,8 +85,11 @@
                 <li>
                     <a href='#'><span>O nas</span></a>
                 </li>
-                <li class='last'>
+                <li>
                     <a href='#'><span>Kontakt</span></a>
+                </li>
+                <li class="last">
+                    <a href='@Url.Action("Login", "Employee")'><span>Dla pracowników</span></a>
                 </li>
             </ul>
         </div>
