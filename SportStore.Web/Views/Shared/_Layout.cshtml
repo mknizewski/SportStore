@@ -34,16 +34,15 @@
             @{
                 if (Session["Client"] != null)
                 {
-                    var client = (SportStore.Web.Models.Client.AccountModel)Session["Client"];
-                    var split = client.Login.Split(new char[] { '@' });
-                    var clientName = split[0];
-                    @Html.ActionLink("Witaj " + clientName + " ", "AccountManagment", new { controller = "Client" });
-                    @Html.ActionLink("Wyloguj się", "Logout", "Client", new { returnUrl = Request.Url.PathAndQuery }, null);
+                    <a href='@Url.Action("AccountManagment", "Client")' class="btn btn-primary btn-xs">Konto</a>
+                    <a href='@Url.Action("Cart", "Home")' class="btn btn-primary btn-xs">Koszyk</a>
+                    <a href='@Url.Action("Logout", "Client", new { returnUrl = Request.Url.PathAndQuery })' class="btn btn-primary btn-xs">Wyloguj się</a>
                 }
                 else
                 {
-                    @Html.ActionLink("Zaloguj się ", "Login", "Client", new { returnUrl = Request.Url.PathAndQuery }, null);
-                    @Html.ActionLink("Rejestruj się", "Register", "Client", new { returnUrl = Request.Url.PathAndQuery }, null);
+                    <a href='@Url.Action("Cart", "Home")' class="btn btn-primary btn-xs">Koszyk</a>
+                    <a href='@Url.Action("Login", "Client", new { returnUrl = Request.Url.PathAndQuery })' class="btn btn-primary btn-xs">Zaloguj się</a>
+                    <a href='@Url.Action("Register", "Client", new { returnUrl = Request.Url.PathAndQuery })' class="btn btn-primary btn-xs">Rejestruj się</a>
                 }
             }
         </div>

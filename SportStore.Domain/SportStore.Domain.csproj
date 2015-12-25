@@ -42,6 +42,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -85,6 +86,7 @@
     <Compile Include="Respositories\CatalogsRepository.cs" />
     <Compile Include="Respositories\ClientsRepository.cs" />
     <Compile Include="Respositories\NewsletterRespository.cs" />
+    <Compile Include="SqlFiles\HelperClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -101,7 +103,41 @@
     <Content Include="SqlFiles\Initialization\0008_ii_dict_description_items.sql" />
     <Content Include="SqlFiles\Initialization\0009_ii_items.sql" />
     <Content Include="SqlFiles\Initialization\0010_ii_dict_items_details.sql" />
+    <Content Include="SqlFiles\Pictures\a0a.jpg" />
+    <Content Include="SqlFiles\Pictures\a0b.jpg" />
+    <Content Include="SqlFiles\Pictures\a0c.jpg" />
+    <Content Include="SqlFiles\Pictures\b1a.jpg" />
+    <Content Include="SqlFiles\Pictures\b1b.jpg" />
+    <Content Include="SqlFiles\Pictures\b1c.jpg" />
+    <Content Include="SqlFiles\Pictures\1a.jpg" />
+    <Content Include="SqlFiles\Pictures\1b.jpg" />
+    <Content Include="SqlFiles\Pictures\1c.jpg" />
+    <Content Include="SqlFiles\Pictures\2a.jpg" />
+    <Content Include="SqlFiles\Pictures\2b.jpg" />
+    <Content Include="SqlFiles\Pictures\2c.jpg" />
+    <Content Include="SqlFiles\Pictures\3a.jpg" />
+    <Content Include="SqlFiles\Pictures\3b.jpg" />
+    <Content Include="SqlFiles\Pictures\3c.jpg" />
+    <Content Include="SqlFiles\Pictures\4a.jpg" />
+    <Content Include="SqlFiles\Pictures\4b.jpg" />
+    <Content Include="SqlFiles\Pictures\4c.jpg" />
+    <Content Include="SqlFiles\Pictures\5a.jpg" />
+    <Content Include="SqlFiles\Pictures\5b.jpg" />
+    <Content Include="SqlFiles\Pictures\5c.jpg" />
+    <Content Include="SqlFiles\Pictures\6a.jpg" />
+    <Content Include="SqlFiles\Pictures\6b.jpg" />
+    <Content Include="SqlFiles\Pictures\6c.jpg" />
+    <Content Include="SqlFiles\Pictures\7a.jpg" />
+    <Content Include="SqlFiles\Pictures\7b.jpg" />
+    <Content Include="SqlFiles\Pictures\7c.jpg" />
+    <Content Include="SqlFiles\Pictures\8a.jpg" />
+    <Content Include="SqlFiles\Pictures\8b.jpg" />
+    <Content Include="SqlFiles\Pictures\8c.jpg" />
+    <Content Include="SqlFiles\Pictures\9a.jpg" />
+    <Content Include="SqlFiles\Pictures\9b.jpg" />
+    <Content Include="SqlFiles\Pictures\9c.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

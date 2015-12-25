@@ -22,6 +22,14 @@ namespace SportStore.Web.HtmlHelpers.Classes
                 line.Quantity += quantity;
         }
 
+        public void EditQuantity(int productId, int newQuantity)
+        {
+            lineCollection
+                .Where(x => x.Item.Id.Equals(productId))
+                .FirstOrDefault()
+                .Quantity = newQuantity;
+        }
+
         public void RemoveItem(items item)
         {
             lineCollection.RemoveAll(l => l.Item.Id.Equals(item.Id));

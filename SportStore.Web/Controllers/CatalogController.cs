@@ -36,17 +36,41 @@ namespace SportStore.Web.Controllers
             return View(_catalogsHelper.GetDescriptionItemById(productId));
         }
 
-        public ActionResult AddToCart(Cart cart, string returnUrl, int productId, int quantity)
+        public ActionResult AddToCart(Cart cart, int productId, int quantity)
         {
             var item = _catalogsHelper.GetItemById(productId);
             cart.AddItem(item, quantity);
 
             Alert.SetAlert(AlertStatus.Succes, "Poprawnie dodano przedmiot do koszyka!");
 
+            return RedirectToAction("ItemDescription", new { productId = productId });
+        }
+
+        public ActionResult RemoveItem(Cart cart, string returnUrl, int productId)
+        {
+            var item = _catalogsHelper.GetItemById(productId);
+            cart.RemoveItem(item);
+
+            Alert.SetAlert(AlertStatus.Info, "Porawnie usnięto produkt: " + item.Title);
+
             return Redirect(returnUrl);
         }
 
-        
+        public ActionResult EditQuantityItem(Cart cart, int productId, int newQuantity)
+        { 
+            cart.EditQuantity(productId, newQuantity);
+
+            Alert.SetAlert(AlertStatus.Info, "Poprawnie wprowadzono zmiany");
+
+            return RedirectToAction("Cart", "Home");
+        }
+
+        [HttpPost]
+        public FileContentResult GetImageByByte(byte[] array, string mimeType)
+        {
+            return File(array, mimeType);
+        }
+
         public FileContentResult GetImage(int productId)
         {
             var content = _catalogsHelper.GetPictureById(productId);

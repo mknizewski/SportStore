@@ -2,7 +2,6 @@
 
 @{
     ViewBag.Title = @Model.Item.Title;
-    var ilosc = 1;
 }
 
 <link href="~/Content/Css/CatalogCss/description.css" rel="stylesheet" type="text/css" />
@@ -24,27 +23,29 @@
         <div class="col-md-9">
             <div class="thumbnail">
                 <div class="row">
-                    <div class="col-md-4">
+
+                    @foreach(var picture in Model.Pictures)
+                    {
+                        <div class="col-md-4">
+                            <a href="#" class="thumbnail">
+                                @Html.Image(picture.PictureData)
+                            </a>
+                        </div>
+                    }
+
+                    @*<div class="col-md-4">
                         <a href="pulpitrock.jpg" class="thumbnail">
                             <img src="http://placehold.it/800x300" alt="Pulpit Rock" style="width:340px;height:300px">
                         </a>
-                    </div>
-                    <div class="col-md-4">
-                        <a href="moustiers-sainte-marie.jpg" class="thumbnail">
-                            <img src="http://placehold.it/800x300" alt="Moustiers Sainte Marie" style="width:340px;height:300px">
-                        </a>
-                    </div>
-                    <div class="col-md-4">
-                        <a href="cinqueterre.jpg" class="thumbnail">
-                            <img src="http://placehold.it/800x300" alt="Cinque Terre" style="width:340px;height:300px">
-                        </a>
-                    </div>
+                    </div>*@     
+                                 
                 </div>
                 <div class="caption-full">
                     
                     <h4 class="pull-right">
-                        <a href='@Url.Action("AddToCart", "Catalog", new { returnUrl = @Request.Url.PathAndQuery, productId = Model.Item.Id, quantity = ilosc})' class="btn btn-info">
-                            <span class="glyphicon glyphicon-shopping-cart"></span> @Model.Item.Price.ToString("c")
+                        <a href='#' onclick="addToCart()" class="btn btn-info">
+                            <span class="glyphicon glyphicon-shopping-cart"></span> 
+                            <span id="price">@Model.Item.Price.ToString("c")</span>
                         </a>
                     </h4>
 
@@ -168,6 +169,25 @@
 
 <script type="text/javascript">
 
+    function addToCart()
+    {
+        var itemId = '@Model.Item.Id';
+        var quantity = document.getElementById("quantity").value;
+        var url = document.URL;
+
+        location.href = url + '/Dodaj/' + quantity;
+    }
+
+    function changePrice(priceValue)
+    {
+        var quantity = document.getElementById("quantity").value;
+        var price = document.getElementById("price");
+
+        var totalPrice = priceValue * quantity;
+
+        price.innerText = totalPrice.toFixed(2) + " zł";
+    }
+
     function checkOpinionCount()
     {
         var textArea = document.getElementById("comment");
@@ -212,6 +232,7 @@
         var value = parseInt(text.value) + 1;
 
         text.value = value;
+        changePrice(@Model.Item.Price);
     }
 
     function removeItem()
@@ -222,6 +243,7 @@
         if (value > 0)
         {
             text.value = value;
+            changePrice(@Model.Item.Price);
         }
     }
 

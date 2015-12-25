@@ -86,7 +86,7 @@
     {
         <div class="col-md-4 portfolio-item">
             <a href="@Url.Action("ItemDescription", new { productId = @p.Id })">
-                <img class="img-responsive" src="@Url.Action("GetImage", new { productId = @p.Id })" alt="Brak obrazka" width="700" height="400">
+                <img src="@Url.Action("GetImage", new { productId = @p.Id })" alt="Brak obrazka" width="250" height="250">
             </a>
             <h3 class="desc">
                 <a href="@Url.Action("ItemDescription", new { productId = @p.Id })">@p.Title</a>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SportStore.Domain.Entities;
+using SportStore.Domain.SqlFiles;
+using System;
 using System.Data.Entity;
 using System.IO;
 
@@ -23,6 +25,26 @@ namespace SportStore.Domain.Concrete
             var sqlFiles = Directory.GetFiles(path, "*.sql");
             foreach (var file in sqlFiles)
                 context.Database.ExecuteSqlCommand(File.ReadAllText(file));
+
+            path = tablePath[0] + @"/SportStore.Domain/SqlFiles/Pictures";
+            var imageFiles = Directory.GetFiles(path, "*.jpg");
+
+            int iterator = 0;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    var image = new items_picutures
+                    {
+                        Id_Item = (i + 1),
+                        PictureData = HelperClass.Img2Byte(imageFiles[iterator]),
+                        PictureMimeType = "picture/jpeg"
+                    };
+
+                    iterator++;
+                    context.ItemsPictures.Add(image);
+                }
+            }
 
             context.SaveChanges();
         }

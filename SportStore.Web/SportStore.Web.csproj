@@ -143,14 +143,18 @@
     <Content Include="Content\Images\Banners\callus.jpg" />
     <Content Include="Content\Images\Index\a11.png" />
     <Content Include="Content\Images\Index\a21.png" />
+    <Content Include="Content\Images\Index\account.png" />
     <Content Include="Content\Images\Index\b05.png" />
     <Content Include="Content\Images\Index\b21.png" />
     <Content Include="Content\Images\Index\banner-1.png" />
     <Content Include="Content\Images\Index\banner-2.png" />
     <Content Include="Content\Images\Index\banner-3.png" />
     <Content Include="Content\Images\Index\banner-4.png" />
+    <Content Include="Content\Images\Index\login-512.png" />
+    <Content Include="Content\Images\Index\logoff.png" />
     <Content Include="Content\Images\Index\main-banner.png" />
     <Content Include="Content\Images\Index\search-glass.png" />
+    <Content Include="Content\Images\Index\service-cart.png" />
     <Content Include="Content\Images\Index\Slider\01.jpg" />
     <Content Include="Content\Images\Index\Slider\02.jpg" />
     <Content Include="Content\Images\Index\Slider\03.jpg" />
@@ -211,6 +215,7 @@
     <Compile Include="HtmlHelpers\Classes\Cart.cs" />
     <Compile Include="HtmlHelpers\Classes\CartLine.cs" />
     <Compile Include="HtmlHelpers\Classes\CatalogsHelper.cs" />
+    <Compile Include="HtmlHelpers\Classes\ImageHelper.cs" />
     <Compile Include="HtmlHelpers\Classes\LoginHelper.cs" />
     <Compile Include="HtmlHelpers\Classes\MimeTypes.cs" />
     <Compile Include="HtmlHelpers\Classes\NewsletterHelper.cs" />
