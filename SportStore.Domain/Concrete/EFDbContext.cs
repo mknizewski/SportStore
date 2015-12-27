@@ -27,6 +27,7 @@ namespace SportStore.Domain.Concrete
         public DbSet<_dict_cities> DictCities { get; set; }
         public DbSet<_dict_shops> DictShops { get; set; }
         public DbSet<_dict_items_details> DictItemsDetails { get; set; }
+        public DbSet<_dict_orders_delivery> DictOrdersDelivery { get; set; }
 
         #endregion Tabele Słownikowe
 
@@ -91,6 +92,9 @@ namespace SportStore.Domain.Concrete
                 .HasKey(e => e.Id);
 
             modelBuilder.Entity<_dict_items_details>()
+                .HasKey(e => e.Id);
+
+            modelBuilder.Entity<_dict_orders_delivery>()
                 .HasKey(e => e.Id);
 
             #endregion Słownikowe

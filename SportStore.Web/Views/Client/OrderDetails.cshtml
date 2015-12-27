@@ -1,0 +1,192 @@
+﻿@model SportStore.Web.Models.Client.OrderModel
+
+@{
+    ViewBag.Title = "Szczegóły zamówienia";
+    var iter = 1;
+}
+
+<link href="~/Content/Css/IndexCss/order.css" rel="stylesheet" type="text/css" />
+
+<div class="panel">
+    <form action="" method="post">
+        @Html.AntiForgeryToken()
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Dane do wysyłki</div>
+                    <div class="panel-body">
+
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="name" class="control-label col-md-2">Imię:</label>
+                                <div class="col-md-10">
+                                    @Html.HiddenFor(x => x.Client.Id)
+                                    @Html.EditorFor(x => x.Client.Name, new { htmlAttributes = new { @class = "form-control", @type = "text", @id = "name" } })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="surname" class="control-label col-md-2">Nazwisko:</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(x => x.Client.Surname, new { htmlAttributes = new { @class = "form-control", @type = "text", @id = "surname" } })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="street" class="control-label col-md-2">Ulica:</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(x => x.Client.Street, new { htmlAttributes = new { @class = "form-control", @type = "text", @id = "street" } })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="postalCode" class="control-label col-md-2">Kod pocztowy:</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(x => x.Client.PostalCode, new { htmlAttributes = new { @class = "form-control", @type = "text", @id = "postalCode" } })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="city" class="control-label col-md-2">Miasto:</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(x => x.Client.City, new { htmlAttributes = new { @class = "form-control", @type = "text", @id = "city" } })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Opcje dostawy</div>
+                    <div class="panel-body">
+
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="delivery" class="control-label col-md-2">Tryb dostawy:</label>
+                                <div class="col-md-10">
+                                    @Html.DropDownListFor(x => x.selectedDeliveryId, Model.OrderDelivery, "Wybierz typ dostawy", new { @class = "form-control", @id = "delivery", @onChange = "recalculateOrder()" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Zamówienie</div>
+                    <div class="panel-body">
+                        <table id="table" class="table">
+                            <thead class="thead-default">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Przedmiot</th>
+                                    <th>Ilość</th>
+                                    <th>Cena</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+
+                                    foreach (var item in Model.cart.Lines)
+                                    {
+                                        <tr>
+                                            <th scope="row">@iter</th>
+                                            <td>@item.Item.Title</td>
+                                            <td>@item.Quantity</td>
+                                            <td>
+                                                @{
+                                                    var price = decimal.Multiply(item.Quantity, item.Item.Price);
+                                                }
+                                                @price.ToString("c")
+                                            </td>
+                                        </tr>
+
+                                                        iter++;
+                                                    }
+                                }
+                            </tbody>
+                        </table>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input id="recal" type="submit" value="Przelicz" class="btn btn-primary" name="action:RecalOrder" />
+                            </div>
+                            <div class="col-md-6">
+                                @Html.HiddenFor(x => x.TotalPrice)
+                                @Html.HiddenFor(x => x.cart)
+                                <p style="float: right;">Do zapłaty: <b>@Model.TotalPrice.ToString("c")</b></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p id="time">
+                Przybliżony czas realizacji:
+                @{
+                    var selectedValue = Model.selectedDeliveryId;
+                    var time = String.Empty;
+
+                    switch (selectedValue)
+                    {
+                        case 1:
+                        case 2:
+                            time = "od 2 do 4 dni roboczych";
+                            break;
+                        case 3:
+                        case 4:
+                            time = "od 1 do 2 dni roboczych";
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                <b>@time.ToString()</b>
+            </p>
+            <input id="order" type="submit" class="btn btn-primary btn-lg" value="Złóż zamówienie" style="float: right;" name="action:SaveOrder" />
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+        recalculateOrder();
+    });
+
+    function recalculateOrder(ddl)
+    {
+        var selectedValue = @Model.selectedDeliveryId;
+        var list = document.getElementById("delivery");
+        var orderButton = document.getElementById("order");
+        var przeliczButton = document.getElementById("recal");
+
+        if (list.selectedIndex == 0)
+        {
+            przeliczButton.disabled = true;
+            orderButton.disabled = true;
+        }
+        else if (list.selectedIndex != selectedValue)
+        {
+            orderButton.disabled = true;
+            przeliczButton.disabled = false;
+        }
+        else
+        {
+            orderButton.disabled = false;
+            przeliczButton.disabled = false;
+        }
+    }
+</script>

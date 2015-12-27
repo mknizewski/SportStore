@@ -47,6 +47,10 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="itextsharp, Version=5.5.8.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.8\lib\itextsharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -128,6 +132,7 @@
     <Content Include="Content\Css\IndexCss\cookie.css" />
     <Content Include="Content\Css\IndexCss\index-employee-section.css" />
     <Content Include="Content\Css\IndexCss\index-theme.css" />
+    <Content Include="Content\Css\IndexCss\order.css" />
     <Content Include="Content\Css\MenuCss\menu_styles.css" />
     <Content Include="Content\Css\NewsletterCss\newsletter-theme.css" />
     <Content Include="Content\Css\RatingCss\star-rating.css" />
@@ -166,6 +171,7 @@
     <Content Include="Content\Images\favicon.ico" />
     <Content Include="Content\Images\loading_gif.GIF" />
     <Content Include="Content\Images\no-image.png" />
+    <Content Include="Content\Images\Orders\pdf.png" />
     <Content Include="Content\validation.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -222,6 +228,7 @@
     <Compile Include="HtmlHelpers\Classes\MimeTypes.cs" />
     <Compile Include="HtmlHelpers\Classes\NewsletterHelper.cs" />
     <Compile Include="HtmlHelpers\Classes\NonPictureHelper.cs" />
+    <Compile Include="HtmlHelpers\Classes\OrderHelper.cs" />
     <Compile Include="HtmlHelpers\Classes\PagingHelpers.cs" />
     <Compile Include="HtmlHelpers\Classes\PasswordHelper.cs" />
     <Compile Include="HtmlHelpers\Classes\RegisterHelper.cs" />
@@ -230,11 +237,13 @@
     <Compile Include="HtmlHelpers\Interfaces\IGlobalSearchHelper.cs" />
     <Compile Include="HtmlHelpers\Interfaces\ILoginHelper.cs" />
     <Compile Include="HtmlHelpers\Interfaces\INewsletterHelper.cs" />
+    <Compile Include="HtmlHelpers\Interfaces\IOrderHelper.cs" />
     <Compile Include="HtmlHelpers\Interfaces\IRegisterHelper.cs" />
     <Compile Include="HtmlHelpers\ValidationAttributes\MinimumLength.cs" />
     <Compile Include="HtmlHelpers\ValidationAttributes\PolandPostalCode.cs" />
     <Compile Include="HtmlHelpers\ValidationAttributes\UniqueNewsletterEmailAdress.cs" />
     <Compile Include="Infrastructure\Binders\CartModelBinder.cs" />
+    <Compile Include="Infrastructure\Binders\MultipleButtonAttribute.cs" />
     <Compile Include="Infrastructure\ClientAuthentication.cs" />
     <Compile Include="Infrastructure\NinjectDepedencyResolver.cs" />
     <Compile Include="Models\Catalog\ItemModel.cs" />
@@ -244,6 +253,7 @@
     <Compile Include="Models\Client\LoginModel.cs" />
     <Compile Include="Models\Client\MarkAsReadModel.cs" />
     <Compile Include="Models\Client\NotyficationsClientModel.cs" />
+    <Compile Include="Models\Client\OrderModel.cs" />
     <Compile Include="Models\Employee\LoginModel.cs" />
     <Compile Include="Models\Home\Alert.cs" />
     <Compile Include="Models\Home\NewsletterModel.cs" />
@@ -275,6 +285,8 @@
     <Content Include="Views\Catalog\ItemDescription.cshtml" />
     <Content Include="Views\Home\Cart.cshtml" />
     <Content Include="Views\Search\GlobalSearch.cshtml" />
+    <Content Include="Views\Client\OrderDetails.cshtml" />
+    <Content Include="Views\Client\OrdersList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

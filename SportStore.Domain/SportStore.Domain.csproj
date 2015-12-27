@@ -53,6 +53,7 @@
     <Compile Include="Abstract\ICatalogsRepository.cs" />
     <Compile Include="Abstract\IClientRepository.cs" />
     <Compile Include="Abstract\INewsletterRepository.cs" />
+    <Compile Include="Abstract\IOrdersRepository.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EFDbInitializer.cs" />
     <Compile Include="Entities\clients.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Entities\_dict_description_items.cs" />
     <Compile Include="Entities\_dict_items_details.cs" />
     <Compile Include="Entities\_dict_newsletter.cs" />
+    <Compile Include="Entities\_dict_orders_delivery.cs" />
     <Compile Include="Entities\_dict_rules.cs" />
     <Compile Include="Entities\_dict_shops.cs" />
     <Compile Include="Entities\_dict_status_compleints.cs" />
@@ -86,6 +88,7 @@
     <Compile Include="Respositories\CatalogsRepository.cs" />
     <Compile Include="Respositories\ClientsRepository.cs" />
     <Compile Include="Respositories\NewsletterRespository.cs" />
+    <Compile Include="Respositories\OrdersRepository.cs" />
     <Compile Include="SqlFiles\HelperClass.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -103,6 +106,7 @@
     <Content Include="SqlFiles\Initialization\0008_ii_dict_description_items.sql" />
     <Content Include="SqlFiles\Initialization\0009_ii_items.sql" />
     <Content Include="SqlFiles\Initialization\0010_ii_dict_items_details.sql" />
+    <Content Include="SqlFiles\Initialization\0011_ii_dict_orders_delivery.sql" />
     <Content Include="SqlFiles\Pictures\a0a.jpg" />
     <Content Include="SqlFiles\Pictures\a0b.jpg" />
     <Content Include="SqlFiles\Pictures\a0c.jpg" />

@@ -24,5 +24,7 @@ namespace SportStore.Web.HtmlHelpers.Interfaces
         void AddOpinion(OpinionModel opinionModel);
 
         items GetItemById(int productId);
+
+        int GetQuantityItemById(int productId);
     }
 }

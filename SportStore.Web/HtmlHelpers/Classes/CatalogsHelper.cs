@@ -85,7 +85,6 @@ namespace SportStore.Web.HtmlHelpers.Classes
             if (details != null)
                 detailData = details.Split(';');
 
-
             var opinions = _catalogRepository.ItemsOpinions
                             .Where(x => x.Id_Item.Equals(productId))
                             .ToArray();
@@ -150,6 +149,13 @@ namespace SportStore.Web.HtmlHelpers.Classes
             return _catalogRepository.Items
                 .Where(x => x.Id.Equals(productId))
                 .FirstOrDefault();
+        }
+
+        int ICatalogRepository.GetQuantityItemById(int productId)
+        {
+            return _catalogRepository.ItemsQuantity
+                .Where(x => x.Id_Item.Equals(productId))
+                .Sum(x => x.Quantity);
         }
     }
 }

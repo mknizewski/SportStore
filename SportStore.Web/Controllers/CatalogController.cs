@@ -38,12 +38,22 @@ namespace SportStore.Web.Controllers
 
         public ActionResult AddToCart(Cart cart, int productId, int quantity)
         {
-            var item = _catalogsHelper.GetItemById(productId);
-            cart.AddItem(item, quantity);
+            var itemQuantity = _catalogsHelper.GetQuantityItemById(productId);
 
-            Alert.SetAlert(AlertStatus.Succes, "Poprawnie dodano przedmiot do koszyka!");
+            if (itemQuantity != 0)
+            {
+                var item = _catalogsHelper.GetItemById(productId);
+                cart.AddItem(item, quantity);
 
-            return RedirectToAction("ItemDescription", new { productId = productId });
+                Alert.SetAlert(AlertStatus.Succes, "Poprawnie dodano przedmiot do koszyka!");
+
+                return RedirectToAction("ItemDescription", new { productId = productId });
+            }
+            else
+            {
+                Alert.SetAlert(AlertStatus.Danger, "Brak dostępnego towaru w sklepie!");
+                return RedirectToAction("ItemDescription", new { productId = productId });
+            }
         }
 
         public ActionResult RemoveItem(Cart cart, string returnUrl, int productId)
@@ -57,7 +67,7 @@ namespace SportStore.Web.Controllers
         }
 
         public ActionResult EditQuantityItem(Cart cart, int productId, int newQuantity)
-        { 
+        {
             cart.EditQuantity(productId, newQuantity);
 
             Alert.SetAlert(AlertStatus.Info, "Poprawnie wprowadzono zmiany");

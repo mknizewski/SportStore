@@ -26,6 +26,7 @@ namespace SportStore.Domain.Concrete
             foreach (var file in sqlFiles)
                 context.Database.ExecuteSqlCommand(File.ReadAllText(file));
 
+            //zdjęcia
             path = tablePath[0] + @"/SportStore.Domain/SqlFiles/Pictures";
             var imageFiles = Directory.GetFiles(path, "*.jpg");
 
@@ -43,6 +44,23 @@ namespace SportStore.Domain.Concrete
 
                     iterator++;
                     context.ItemsPictures.Add(image);
+                }
+            }
+
+            var random = new Random();
+            //ilosc itemów w sklepach
+            for (int i = 1; i <= 5; i++)
+            {
+                for (int j = 1; j <= 11; j++)
+                {
+                    var quantity = new items_quantity
+                    {
+                        Id_Shop = i,
+                        Id_Item = j,
+                        Quantity = random.Next(1, 50)
+                    };
+
+                    context.ItemsQuantity.Add(quantity);
                 }
             }
 

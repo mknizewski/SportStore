@@ -1,5 +1,7 @@
-﻿using SportStore.Web.HtmlHelpers.Interfaces;
+﻿using SportStore.Web.HtmlHelpers.Classes;
+using SportStore.Web.HtmlHelpers.Interfaces;
 using SportStore.Web.Infrastructure;
+using SportStore.Web.Infrastructure.Binders;
 using SportStore.Web.Models.Client;
 using SportStore.Web.Models.Home;
 using System.Collections.Generic;
@@ -18,12 +20,18 @@ namespace SportStore.Web.Controllers
         private IRegisterHelper _registerHelper { get; set; }
         private ILoginHelper _loginHelper { get; set; }
         private IAccountManagmentHelper _accountManagmentHelper { get; set; }
+        private IOrderHelper _orderHelper { get; set; }
 
-        public ClientController(IRegisterHelper registerHelper, ILoginHelper loginHelper, IAccountManagmentHelper accountManagmentHelper)
+        public ClientController(
+            IRegisterHelper registerHelper,
+            ILoginHelper loginHelper,
+            IAccountManagmentHelper accountManagmentHelper,
+            IOrderHelper orderHelper)
         {
             _registerHelper = registerHelper;
             _loginHelper = loginHelper;
             _accountManagmentHelper = accountManagmentHelper;
+            _orderHelper = orderHelper;
         }
 
         [HttpGet]
@@ -72,6 +80,7 @@ namespace SportStore.Web.Controllers
             {
                 _registerHelper.Save(registerModel);
                 Alert.SetAlert(AlertStatus.Succes, "Poprawnie założono konto klienta! Możesz teraz zalogować się do serwisu używając danych podanych w rejestracji.");
+
                 return RedirectToAction("Login");
             }
             else
@@ -120,6 +129,65 @@ namespace SportStore.Web.Controllers
             FormsAuthentication.SignOut();
 
             return Redirect(returnUrl);
+        }
+
+        [Authorize]
+        [ClientAuthentication]
+        [HttpGet]
+        public ActionResult OrderDetails(Cart cart)
+        {
+            var client = Session["Client"] as AccountModel;
+
+            Alert.SetAlert(AlertStatus.Warning, "Przy każdej zmianie opcji dostawy należy kliknąć w przycisk Przelicz!");
+            return View(_orderHelper.GetOrderModel(cart, client));
+        }
+
+        [Authorize]
+        [ClientAuthentication]
+        [HttpPost]
+        [MultipleButton(Name = "action", Argument = "RecalOrder")]
+        public ActionResult RecalOrder(OrderModel model)
+        {
+            model = _orderHelper.RecalculateOrder(model);
+
+            Alert.SetAlert(AlertStatus.Succes, "Poprawnie przeliczono!");
+            return View("OrderDetails", model);
+        }
+
+        [Authorize]
+        [ClientAuthentication]
+        [HttpPost]
+        [MultipleButton(Name = "action", Argument = "SaveOrder")]
+        public ActionResult SaveOrder(OrderModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                _orderHelper.AddOrder(model);
+
+                var cart = Session["Cart"] as Cart;
+                cart.Clear();
+
+                Alert.SetAlert(AlertStatus.Succes, "Poprawnie złożono zamówienie! Status zamówienia można sprawdzić w sekcji Zamówienia");
+                return RedirectToAction("AccountManagment");
+            }
+            else
+                return View(model);
+        }
+
+        [Authorize]
+        [ClientAuthentication]
+        public ActionResult OrdersList()
+        {
+            var id = (Session["Client"] as AccountModel).Id;
+
+            return View(_orderHelper.GetOrdersByClientId(id));
+        }
+
+        [Authorize]
+        [ClientAuthentication]
+        public ActionResult OrderDess()
+        {
+            return View();
         }
     }
 }

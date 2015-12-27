@@ -59,7 +59,6 @@
                         </form>
 
                         <button class="btn btn-primary" style="float: right; margin-right: 10px;">Zmiana hasła</button>
-
                     </div>
                 </div>
 
@@ -100,13 +99,12 @@
 
                             <button class="btn btn-success" style="float:right;">Zapisz zmiany</button>
                         </form>
-
                     </div>
                 </div>
             </div>
         </div>
         <div id="right" class="col-md-6">
-            
+
             <div id="navi" class="panel panel-success">
                 <div class="panel-heading">Nawigacja</div>
                 <div class="panel-body">
@@ -118,18 +116,16 @@
                                 <img id="koszyk" src="~/Content/Images/AccountManagment/shopping-cart.png" width="50" height="50" />
                                 <label for="koszyk">Koszyk</label>
                             </a>
-
                         </div>
                         <div class="col-md-6">
 
-                            <a href="#" id="ok" class="btn btn-lg btn-primary">
+                            <a href='@Url.Action("OrdersList", "Client")' id="ok" class="btn btn-lg btn-primary">
                                 <img id="orders" src="~/Content/Images/AccountManagment/orders.png" width="50" height="50" />
                                 <label for="orders">Zamówienia</label>
                             </a>
-
                         </div>
                     </div>
-                    
+
                     <div id="dolny" class="row">
                         <div class="col-md-6">
 
@@ -137,7 +133,6 @@
                                 <img id="reklamacje" src="~/Content/Images/AccountManagment/complaint.png" width="50" height="50" />
                                 <label for="reklamacje">Reklamacje</label>
                             </a>
-
                         </div>
                         <div class="col-md-6">
 
@@ -145,13 +140,10 @@
                                 <img id="powiadomienia" src="~/Content/Images/AccountManagment/notice.png" width="50" height="50" />
                                 <label for="powiadomienia">Powiadomienia <span class="badge">@Model.UnreadNotifications</span></label>
                             </a>
-
                         </div>
                     </div>
-                    
                 </div>
             </div>
-
         </div>
     </div>
 </div>

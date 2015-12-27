@@ -31,13 +31,13 @@
                         <tr>
                             <td>@i</td>
                             <td>
-                                @item.Item.Title 
+                                @item.Item.Title
                             </td>
                             <td></td>
                             <td>
                                 @item.Quantity
                                 <a href="#" onclick="changeQuant(@item.Item.Id)" data-toggle="modal" data-target="#changeIlosc">
-                                    <span class="glyphicon glyphicon-edit" style="color: blue;" id="spanEdit"/>
+                                    <span class="glyphicon glyphicon-edit" style="color: blue;" id="spanEdit" />
                                 </a>
                             </td>
                             <td>@item.Item.Price.ToString("c")</td>
@@ -53,11 +53,9 @@
                         </tr>
                         i++;
                     }
-
                 </tbody>
             </table>
         </div>
-
     </div>
     <div class="col-md-4">
 
@@ -88,10 +86,9 @@
         } @total.ToString("c")</h6>
         <hr />
 
-        <button class="btn btn-success">Zamów</button>
+        <a href='@Url.Action("OrderDetails", "Client")' class="btn btn-success">Zamów</a>
         <p>Potrzebujesz pomocy? Zadzwoń! 69696969</p>
         <hr />
-
     </div>
 </div>
 
@@ -141,5 +138,4 @@
             location.href = '/Sklep/Koszyk/Edytuj/' + productId + '/' + quantity;
         });
     });
-
 </script>

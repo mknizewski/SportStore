@@ -19,6 +19,9 @@ namespace SportStore.Domain.Entities
         [Key, ForeignKey("OrderStatus")]
         public int Id_Status { get; set; }
 
+        [Key, ForeignKey("OrderDelivery")]
+        public int Id_Delivery { get; set; }
+
         public DateTime InsertTime { get; set; }
         public DateTime? UpdateTime { get; set; }
         public decimal ToPay { get; set; }
@@ -26,5 +29,6 @@ namespace SportStore.Domain.Entities
 
         public virtual clients Client { get; set; }
         public virtual _dict_status_orders OrderStatus { get; set; }
+        public virtual _dict_orders_delivery OrderDelivery { get; set; }
     }
 }

@@ -2,6 +2,9 @@
 
 @{
     ViewBag.Title = @Model.Item.Title;
+
+    var avalibeTotalItem = Model.Quantity
+                    .Sum(x => x.Quantity);
 }
 
 <link href="~/Content/Css/CatalogCss/description.css" rel="stylesheet" type="text/css" />
@@ -19,6 +22,33 @@
                     <li class="list-group-item">@details</li>
                 }
             </ul>
+
+            @{
+                if (avalibeTotalItem > 10)
+                {
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="50" style="width: 100%;">
+                            Dostępnych wiele: @avalibeTotalItem sztuk
+                        </div>
+                    </div>
+                }
+                else if (avalibeTotalItem <= 10 && avalibeTotalItem >= 5)
+                {
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="50" style="width: 50%;">
+                            Pozostało: @avalibeTotalItem sztuk
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuemax="50" aria-valuemin="0" aria-valuenow="50" style="width: 100%;">
+                            Na wyczerpaniu: @avalibeTotalItem sztuk
+                        </div>
+                    </div>
+                }
+            }
         </div>
         <div class="col-md-9">
             <div class="thumbnail">
@@ -37,21 +67,32 @@
                         <a href="pulpitrock.jpg" class="thumbnail">
                             <img src="http://placehold.it/800x300" alt="Pulpit Rock" style="width:340px;height:300px">
                         </a>
-                    </div>*@     
-                                 
+                    </div>*@
                 </div>
                 <div class="caption-full">
-                    
+
                     <h4 class="pull-right">
-                        <a href='#' onclick="addToCart()" class="btn btn-info">
-                            <span class="glyphicon glyphicon-shopping-cart"></span> 
-                            <span id="price">@Model.Item.Price.ToString("c")</span>
-                        </a>
+                        @{
+                            if (avalibeTotalItem != 0)
+                            {
+                                <a href='#' onclick="addToCart()" class="btn btn-info">
+                                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                                    <span id="price">@Model.Item.Price.ToString("c")</span>
+                                </a>
+                            }
+                            else
+                            {
+                                <a href='#' onclick="addToCart()" class="btn btn-info disabled">
+                                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                                    <span id="price">@Model.Item.Price.ToString("c")</span>
+                                </a>
+                            }
+                        }
                     </h4>
 
                     <span id="ilosc" class="form-inline" style="float:right;">
                         <button onclick="removeItem()" id="plus" type="button" class="btn btn-primary">-</button>
-                        <input id="quantity" type="text" class="form-control" value="1" style="width: 40px;" readonly/>
+                        <input id="quantity" type="text" class="form-control" value="1" style="width: 40px;" readonly />
                         <button onclick="addItem()" id="minus" type="button" class="btn btn-primary">+</button>
                     </span>
 
@@ -81,8 +122,6 @@
                         {
                             gwiazdki = 0;
                         }
-
-                        
 
                         @for (int i = 0; i < 5; i++)
                         {
@@ -229,10 +268,15 @@
     function addItem()
     {
         var text = document.getElementById("quantity");
-        var value = parseInt(text.value) + 1;
+        var value = parseInt(text.value);
 
-        text.value = value;
-        changePrice(@Model.Item.Price);
+        if (value < @avalibeTotalItem)
+        {
+            var valueText = parseInt(text.value) + 1;
+
+            text.value = valueText;
+            changePrice(@Model.Item.Price);
+        }
     }
 
     function removeItem()

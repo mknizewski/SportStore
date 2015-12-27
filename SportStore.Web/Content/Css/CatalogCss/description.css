@@ -42,3 +42,11 @@ h4 {
 #desc {
     width: 70%;
 }
+
+.progress {
+    margin-left: 35px;
+}
+
+.progress-bar {
+    font-family: 'Open Sans', Arial;
+}

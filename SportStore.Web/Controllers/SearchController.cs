@@ -12,6 +12,7 @@ namespace SportStore.Web.Controllers
     public class SearchController : Controller
     {
         private IGlobalSearchHelper _globalSearchHelper;
+
         public SearchController(IGlobalSearchHelper globalSearchHelper)
         {
             _globalSearchHelper = globalSearchHelper;

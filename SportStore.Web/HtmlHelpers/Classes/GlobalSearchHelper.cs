@@ -1,12 +1,10 @@
-﻿using SportStore.Web.HtmlHelpers.Interfaces;
+﻿using SportStore.Domain.Abstract;
+using SportStore.Web.HtmlHelpers.Interfaces;
+using SportStore.Web.Models.Search;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using SportStore.Domain.Entities;
-using SportStore.Web.Models.Search;
 using System.Web.Mvc;
-using SportStore.Domain.Abstract;
 
 namespace SportStore.Web.HtmlHelpers.Classes
 {
@@ -43,7 +41,7 @@ namespace SportStore.Web.HtmlHelpers.Classes
             catalog.Add(new SelectListItem { Text = "Wszystkie", Value = "1" });
             var catalogs = _catalogRepository.Catalogs;
 
-            foreach(var x in catalogs)
+            foreach (var x in catalogs)
             {
                 catalog.Add(
                         new SelectListItem { Text = x.Name, Value = (x.Id + 1).ToString() }
@@ -123,16 +121,19 @@ namespace SportStore.Web.HtmlHelpers.Classes
                             .Where(x => x.Title.ToLower().Contains(word.ToLower()))
                             .ToArray();
                         break;
+
                     case 2:
                         items = items
                             .Where(x => x.Title.StartsWith(word))
                             .ToArray();
                         break;
+
                     case 3:
                         items = items
                             .Where(x => !(x.Title.ToLower().Contains(word.ToLower())))
                             .ToArray();
                         break;
+
                     case 4:
                         items = items
                             .Where(x => x.Title.EndsWith(word))
@@ -169,11 +170,13 @@ namespace SportStore.Web.HtmlHelpers.Classes
                         .OrderBy(x => x.Title)
                         .ToArray();
                     break;
+
                 case 2:
                     items = items
                         .OrderByDescending(x => x.Price)
                         .ToArray();
                     break;
+
                 case 3:
                     items = items
                         .OrderBy(x => x.Price)
