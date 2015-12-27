@@ -42,6 +42,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,6 +53,7 @@
     <Compile Include="Abstract\ICatalogsRepository.cs" />
     <Compile Include="Abstract\IClientRepository.cs" />
     <Compile Include="Abstract\INewsletterRepository.cs" />
+    <Compile Include="Abstract\IOrdersRepository.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EFDbInitializer.cs" />
     <Compile Include="Entities\clients.cs" />
@@ -75,7 +77,9 @@
     <Compile Include="Entities\_dict_catalogs.cs" />
     <Compile Include="Entities\_dict_cities.cs" />
     <Compile Include="Entities\_dict_description_items.cs" />
+    <Compile Include="Entities\_dict_items_details.cs" />
     <Compile Include="Entities\_dict_newsletter.cs" />
+    <Compile Include="Entities\_dict_orders_delivery.cs" />
     <Compile Include="Entities\_dict_rules.cs" />
     <Compile Include="Entities\_dict_shops.cs" />
     <Compile Include="Entities\_dict_status_compleints.cs" />
@@ -84,6 +88,8 @@
     <Compile Include="Respositories\CatalogsRepository.cs" />
     <Compile Include="Respositories\ClientsRepository.cs" />
     <Compile Include="Respositories\NewsletterRespository.cs" />
+    <Compile Include="Respositories\OrdersRepository.cs" />
+    <Compile Include="SqlFiles\HelperClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -97,7 +103,45 @@
     <Content Include="SqlFiles\Initialization\0005_ii_dict_shops.sql" />
     <Content Include="SqlFiles\Initialization\0006_ii_dict_status_compleints.sql" />
     <Content Include="SqlFiles\Initialization\0007_ii_dict_status_orders.sql" />
+    <Content Include="SqlFiles\Initialization\0008_ii_dict_description_items.sql" />
+    <Content Include="SqlFiles\Initialization\0009_ii_items.sql" />
+    <Content Include="SqlFiles\Initialization\0010_ii_dict_items_details.sql" />
+    <Content Include="SqlFiles\Initialization\0011_ii_dict_orders_delivery.sql" />
+    <Content Include="SqlFiles\Pictures\a0a.jpg" />
+    <Content Include="SqlFiles\Pictures\a0b.jpg" />
+    <Content Include="SqlFiles\Pictures\a0c.jpg" />
+    <Content Include="SqlFiles\Pictures\b1a.jpg" />
+    <Content Include="SqlFiles\Pictures\b1b.jpg" />
+    <Content Include="SqlFiles\Pictures\b1c.jpg" />
+    <Content Include="SqlFiles\Pictures\1a.jpg" />
+    <Content Include="SqlFiles\Pictures\1b.jpg" />
+    <Content Include="SqlFiles\Pictures\1c.jpg" />
+    <Content Include="SqlFiles\Pictures\2a.jpg" />
+    <Content Include="SqlFiles\Pictures\2b.jpg" />
+    <Content Include="SqlFiles\Pictures\2c.jpg" />
+    <Content Include="SqlFiles\Pictures\3a.jpg" />
+    <Content Include="SqlFiles\Pictures\3b.jpg" />
+    <Content Include="SqlFiles\Pictures\3c.jpg" />
+    <Content Include="SqlFiles\Pictures\4a.jpg" />
+    <Content Include="SqlFiles\Pictures\4b.jpg" />
+    <Content Include="SqlFiles\Pictures\4c.jpg" />
+    <Content Include="SqlFiles\Pictures\5a.jpg" />
+    <Content Include="SqlFiles\Pictures\5b.jpg" />
+    <Content Include="SqlFiles\Pictures\5c.jpg" />
+    <Content Include="SqlFiles\Pictures\6a.jpg" />
+    <Content Include="SqlFiles\Pictures\6b.jpg" />
+    <Content Include="SqlFiles\Pictures\6c.jpg" />
+    <Content Include="SqlFiles\Pictures\7a.jpg" />
+    <Content Include="SqlFiles\Pictures\7b.jpg" />
+    <Content Include="SqlFiles\Pictures\7c.jpg" />
+    <Content Include="SqlFiles\Pictures\8a.jpg" />
+    <Content Include="SqlFiles\Pictures\8b.jpg" />
+    <Content Include="SqlFiles\Pictures\8c.jpg" />
+    <Content Include="SqlFiles\Pictures\9a.jpg" />
+    <Content Include="SqlFiles\Pictures\9b.jpg" />
+    <Content Include="SqlFiles\Pictures\9c.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

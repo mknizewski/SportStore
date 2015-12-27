@@ -45,7 +45,6 @@ namespace SportStore.Domain.Respositories
             throw new NotImplementedException();
         }
 
-
         IEnumerable<Entities.client_notyfications> IClientRepository.ClientNotyfications
         {
             get
@@ -76,6 +75,18 @@ namespace SportStore.Domain.Respositories
 
             orginal.AsRead = true;
 
+            _context.SaveChanges();
+        }
+
+        void IClientRepository.DeleteNote(Entities.client_notyfications model)
+        {
+            _context.ClientNotyfications.Remove(model);
+            _context.SaveChanges();
+        }
+
+        void IClientRepository.AddHistoryNote(Entities.history_client_notyfications model)
+        {
+            _context.HistoryClientNotyfications.Add(model);
             _context.SaveChanges();
         }
     }

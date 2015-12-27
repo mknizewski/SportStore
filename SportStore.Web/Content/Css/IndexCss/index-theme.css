@@ -118,3 +118,25 @@
 .body-content {
     width: 84%;
 }
+
+#logo {
+    margin-left: 32%;
+}
+
+.alert {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#icons {
+    position: relative;
+    top: 40px;
+    text-decoration: none;
+    text-decoration-line: none;
+    right: 60px;
+}
+
+#icons img {
+    width: 75px;
+    height: 75px;
+}

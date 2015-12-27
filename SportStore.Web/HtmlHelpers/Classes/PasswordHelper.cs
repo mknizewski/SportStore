@@ -13,7 +13,7 @@ namespace SportStore.Web.HtmlHelpers.Classes
     {
         public static string Encrypt(string plainText)
         {
-            if (plainText == null) 
+            if (plainText == null)
                 throw new ArgumentNullException("plainText");
 
             var data = Encoding.Unicode.GetBytes(plainText);
@@ -24,7 +24,7 @@ namespace SportStore.Web.HtmlHelpers.Classes
 
         public static string Decrypt(string cipher)
         {
-            if (cipher == null) 
+            if (cipher == null)
                 throw new ArgumentNullException("cipher");
 
             byte[] data = Convert.FromBase64String(cipher);

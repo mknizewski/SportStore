@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace SportStore.Web.HtmlHelpers.ValidationAttributes
 {
@@ -14,7 +10,7 @@ namespace SportStore.Web.HtmlHelpers.ValidationAttributes
     public class MinimumLength : ValidationAttribute
     {
         public MinimumLength(int length)
-            :base("{0} musi zawierać " + length + " lub więcej znaków!")
+            : base("{0} musi zawierać " + length + " lub więcej znaków!")
         {
             _length = length;
         }
@@ -23,7 +19,7 @@ namespace SportStore.Web.HtmlHelpers.ValidationAttributes
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            if(value != null)
+            if (value != null)
             {
                 var box = value.ToString();
                 var boxLen = box.Length;
@@ -34,7 +30,6 @@ namespace SportStore.Web.HtmlHelpers.ValidationAttributes
                     return new ValidationResult(messageError);
                 }
             }
-                
 
             return ValidationResult.Success;
         }

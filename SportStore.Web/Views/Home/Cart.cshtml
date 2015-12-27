@@ -1,0 +1,141 @@
+﻿@model SportStore.Web.HtmlHelpers.Classes.Cart
+
+@{
+    ViewBag.Title = "Koszyk";
+    int i = 1;
+}
+
+<link href="~/Content/Css/IndexCss/cart.css" rel="stylesheet" type="text/css" />
+
+<div class="row">
+    <div class="col-md-8">
+
+        <h3>Mój koszyk</h3>
+        <hr />
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Produkt</th>
+                        <th></th>
+                        <th>Ilość</th>
+                        <th>Cena za 1 szt.</th>
+                        <th>Cena ogólna</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Lines)
+                    {
+                        <tr>
+                            <td>@i</td>
+                            <td>
+                                @item.Item.Title
+                            </td>
+                            <td></td>
+                            <td>
+                                @item.Quantity
+                                <a href="#" onclick="changeQuant(@item.Item.Id)" data-toggle="modal" data-target="#changeIlosc">
+                                    <span class="glyphicon glyphicon-edit" style="color: blue;" id="spanEdit" />
+                                </a>
+                            </td>
+                            <td>@item.Item.Price.ToString("c")</td>
+                            <td>@{
+                                var itemPrice = item.Item.Price;
+                                var quantity = item.Quantity;
+                                var totalPrice = itemPrice * quantity;
+                            }@totalPrice.ToString("c")
+                                <a href='@Url.Action("RemoveItem", "Catalog", new { returnUrl = Request.Url.PathAndQuery, productId = item.Item.Id }) '>
+                                    <span class="glyphicon glyphicon-remove" style="color: red;" />
+                                </a>
+                            </td>
+                        </tr>
+                        i++;
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-4">
+
+        <h3>Podsumowanie</h3>
+        <hr />
+
+        <label for="ex1">Czy posiadasz kod promocyjny?</label>
+        <form class="form-inline" role="form">
+            <div class="form-group">
+                <input class="form-control" id="ex1" type="text" placeholder="Wpisz kod promocyjny">
+                <button class="btn btn-primary">Wykorzystaj kod</button>
+            </div>
+        </form>
+        <hr />
+
+        <h6>Do zapłaty: @Model.ComputeTotalValue().ToString("c")</h6>
+        <h6>W tym 23% VAT: @{
+            var total = Model.ComputeTotalValue();
+
+            if (total.Equals(new decimal(0.0)))
+            {
+                total.ToString("c");
+            }
+            else
+            {
+                total = decimal.Multiply(total, new decimal(0.23));
+            }
+        } @total.ToString("c")</h6>
+        <hr />
+
+        <a href='@Url.Action("OrderDetails", "Client")' class="btn btn-success">Zamów</a>
+        <p>Potrzebujesz pomocy? Zadzwoń! 69696969</p>
+        <hr />
+    </div>
+</div>
+
+ <!-- Modal -->
+<div class="modal fade" id="changeIlosc" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Zmień ilość</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="sel1">Wybierz ilość:</label>
+                    <select class="form-control" id="sel1">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+                <button id="editItemSaveChanges" type="button" class="btn btn-primary">Zapisz zmiany</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    var productId = "";
+
+    function changeQuant(itemId)
+    {
+        productId = itemId;
+    }
+
+    $(document).ready(function () {
+
+        $("#editItemSaveChanges").click(function () {
+
+            var quantity = document.getElementById("sel1").value;
+
+            location.href = '/Sklep/Koszyk/Edytuj/' + productId + '/' + quantity;
+        });
+    });
+</script>

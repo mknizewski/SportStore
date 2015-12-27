@@ -1,9 +1,5 @@
 ﻿using SportStore.Domain.Entities;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SportStore.Domain.Abstract
 {
@@ -17,9 +13,17 @@ namespace SportStore.Domain.Abstract
         IEnumerable<clients> Clients { get; set; }
         IEnumerable<client_notyfications> ClientNotyfications { get; set; }
         IEnumerable<history_client_notyfications> HistoryClientNotyfications { get; set; }
+
         void Add(clients client);
+
         void Delete(int id);
+
         void Edit(clients client);
+
         void MarkAsRead(int id);
+
+        void DeleteNote(client_notyfications model);
+
+        void AddHistoryNote(history_client_notyfications model);
     }
 }

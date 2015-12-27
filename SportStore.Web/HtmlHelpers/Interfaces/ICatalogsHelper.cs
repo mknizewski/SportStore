@@ -1,10 +1,6 @@
 ﻿using SportStore.Domain.Entities;
-using System;
+using SportStore.Web.Models.Catalog;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
 
 namespace SportStore.Web.HtmlHelpers.Interfaces
 {
@@ -13,9 +9,22 @@ namespace SportStore.Web.HtmlHelpers.Interfaces
     /// Opis:   Interfejs pomocy dla repo katalogów
     /// Data:   15.11.15
     /// </summary>
-    public interface ICatalogsHelper
+    public interface ICatalogRepository
     {
         IEnumerable<_dict_catalogs> GetCatalogs();
-        //TODO: Dodać nowe metody!
+
+        ProductsListViewModel GetItemsByCatalog(int catalogId, int page);
+
+        items_picutures GetPictureById(int productId);
+
+        ItemModel GetDescriptionItemById(int productId);
+
+        void ChangePageSize(int newSize);
+
+        void AddOpinion(OpinionModel opinionModel);
+
+        items GetItemById(int productId);
+
+        int GetQuantityItemById(int productId);
     }
 }

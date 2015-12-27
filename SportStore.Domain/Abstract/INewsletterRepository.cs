@@ -1,9 +1,5 @@
 ﻿using SportStore.Domain.Entities;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SportStore.Domain.Abstract
 {
@@ -16,7 +12,9 @@ namespace SportStore.Domain.Abstract
     {
         IEnumerable<Newsletter> Newsletters { get; set; }
         IEnumerable<_dict_newsletter> TypeOfNews { get; set; }
+
         void Add(Newsletter news);
+
         void Delete(int id);
     }
 }

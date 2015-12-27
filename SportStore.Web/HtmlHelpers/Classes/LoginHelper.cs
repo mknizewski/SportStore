@@ -5,7 +5,6 @@ using SportStore.Web.Models.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace SportStore.Web.HtmlHelpers.Classes
 {
@@ -33,8 +32,8 @@ namespace SportStore.Web.HtmlHelpers.Classes
         bool ILoginHelper.IfExists(Models.Client.LoginModel loginModel)
         {
             var tableModel = (from clients c in _clientRepository.Clients
-                             where c.Email == loginModel.Login
-                             select c).FirstOrDefault();
+                              where c.Email == loginModel.Login
+                              select c).FirstOrDefault();
 
             if (tableModel != null)
             {
@@ -50,7 +49,6 @@ namespace SportStore.Web.HtmlHelpers.Classes
                 }
                 else
                     return false;
-                
             }
             else
                 return false;
@@ -61,12 +59,11 @@ namespace SportStore.Web.HtmlHelpers.Classes
             throw new NotImplementedException();
         }
 
-
         Models.Client.AccountModel ILoginHelper.GetClient(string clientLogin)
         {
             var dbData = (from clients c in _clientRepository.Clients
-                         where c.Email.Equals(clientLogin)
-                         select c).FirstOrDefault();
+                          where c.Email.Equals(clientLogin)
+                          select c).FirstOrDefault();
 
             var unReadNote = (from client_notyfications c in _clientRepository.ClientNotyfications
                               where c.Id_Client.Equals(dbData.Id) && c.AsRead == false

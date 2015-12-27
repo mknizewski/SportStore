@@ -1,0 +1,52 @@
+﻿#desc {
+    font-family: 'Open Sans',Arial;
+    text-align: justify;
+    text-justify: inter-word;
+    width: 85%;
+    margin-left: 5px;
+}
+
+h4 {
+    font-family: 'Open Sans',Arial;
+    margin-left: 5px;
+}
+
+.ratings {
+    margin-left: 5px;
+}
+
+.btn-info {
+    margin-right: 5px;
+}
+
+#modalOpinion {
+    top: 30%;
+}
+
+.list-group {
+    font-family: 'Open Sans', Arial;
+    margin-left: 35px;
+    margin-top: 5px;
+}
+
+#label {
+    font-family: 'Open Sans', Arial;
+    margin-left: 35px;
+    margin-top: 10px;
+}
+
+#ilosc {
+    margin-top: 10px;
+}
+
+#desc {
+    width: 70%;
+}
+
+.progress {
+    margin-left: 35px;
+}
+
+.progress-bar {
+    font-family: 'Open Sans', Arial;
+}

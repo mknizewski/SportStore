@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using SportStore.Web.HtmlHelpers.Interfaces;
-using SportStore.Domain.Abstract;
+﻿using SportStore.Domain.Abstract;
 using SportStore.Domain.Entities;
-using System.Web.Mvc;
+using SportStore.Web.HtmlHelpers.Interfaces;
 using SportStore.Web.Models.Home;
+using System;
+using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace SportStore.Web.HtmlHelpers.Classes
 {

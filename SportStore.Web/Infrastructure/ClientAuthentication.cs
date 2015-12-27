@@ -1,9 +1,7 @@
-﻿using System;
+﻿using System.Security.Principal;
 using System.Web.Mvc;
 using System.Web.Mvc.Filters;
 using System.Web.Routing;
-using System.Security.Principal;
-using System.Web.Security;
 
 namespace SportStore.Web.Infrastructure
 {

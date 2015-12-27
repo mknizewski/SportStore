@@ -1,0 +1,48 @@
+﻿@model IEnumerable<SportStore.Domain.Entities.orders>
+
+@{
+    ViewBag.Title = "Lista zamówień";
+}
+
+<div class="">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Twoje zamówienia</div>
+        <div class="panel-body">
+            <table class="table">
+                <thead class="thead-deafult">
+                    <tr>
+                        <th>Zamówienie</th>
+                        <th>Stan zamówienia</th>
+                        <th>Utworzono</th>
+                        <th>Faktura</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ 
+                        foreach(var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <a href="">
+                                        Zamówienie o nr: @item.Id
+                                    </a>
+                                </td>
+                                <td>@item.OrderStatus.Name</td>
+                                <td>@item.InsertTime</td>
+                                <td>
+                                    <a href="">
+                                        <img src="~/Content/Images/Orders/pdf.png" style="width: 35px; height: 35px;"/>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+
+            <a href='@Url.Action("AccountManagment")' class="btn btn-primary">Powrót</a>
+
+        </div>
+    </div>
+</div>
+

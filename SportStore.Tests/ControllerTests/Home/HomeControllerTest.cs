@@ -1,13 +1,10 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using SportStore.Web.HtmlHelpers.Interfaces;
-using SportStore.Domain.Entities;
-using SportStore.Web.Models.Home;
 using SportStore.Web.Controllers;
-using System.Web.Mvc;
-using System.Collections;
+using SportStore.Web.HtmlHelpers.Interfaces;
+using SportStore.Web.Models.Home;
 using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace SportStore.Tests.ControllerTests.Home
 {
@@ -19,7 +16,7 @@ namespace SportStore.Tests.ControllerTests.Home
         {
             //przygotowanie
             Mock<INewsletterHelper> mock = new Mock<INewsletterHelper>();
-            mock.Setup(x => x.GetNewsletterModel()).Returns(new NewsletterModel() 
+            mock.Setup(x => x.GetNewsletterModel()).Returns(new NewsletterModel()
             {
                 TypeOfNews = FillTypeOfNews()
             });
@@ -36,7 +33,6 @@ namespace SportStore.Tests.ControllerTests.Home
                 Assert.AreEqual(el.Value, iterator.ToString());
                 iterator++;
             }
-
         }
 
         private IEnumerable<SelectListItem> FillTypeOfNews()

@@ -1,51 +1,23 @@
-.MetroIcon {
-    font-family: 'Open Sans', Arial;
-    margin: 25px 25px 55px 175px;
-    text-align: center;
-    text-decoration: none;
-}
-
-.MetroIcon p {
-    text-decoration: none;
-}
-
-.MetroIcon img {
-    height: 100px;
-    width: 110px;
-}
-
-.MetroIcon img:hover {
-    
-}
-
-#Notify {
-    position: absolute;
-    background-color: red;
-    border-radius: 25px;
-    height: 20px;
-    width: 20px;
-    left: 880px;
-    top: 160px;
-}
-
-#Notify p {
-    text-align:center;
-    color: white;
+.panel {
     font-family: 'Open Sans', Arial;
 }
 
-.row {
-    font-family: 'Open Sans', Arial;
-    font-size: 20px;
-    margin-left: 35px;
-    margin-bottom: 30px;
+#gorny{
+    margin-top: 35px;
+    margin-bottom: 80px;
 }
 
-.row div {
-    margin-right: 55px;
+#dolny {
 }
 
-.row h5 {
-    font-family: 'Open Sans', Arial;
-    font-size: 35px;
+#navi {
+    min-height: 442px;
+}
+
+#ck {
+    width: 192px;
+}
+
+#ok {
+    width: 252px;
 }

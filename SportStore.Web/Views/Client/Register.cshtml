@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "rejestracja";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    
+
 }
 
 <link rel="stylesheet" href="~/Content/Css/RegisterCss/register.css" />
@@ -14,7 +14,7 @@
         {
             @Html.AntiForgeryToken();
             @Html.ValidationSummary(true, "", new { @class = "alert alert-danger fade in", @style = "'Open Sans', Arial" })
-            
+
             <div class="form-horizontal">
                 <h4 style="font-family:'Open Sans', Arial;">Zarejestruj się w serwisie SportStore</h4>
                 <h5 style="font-family: 'Open Sans', Arial;">Krok 1/2 - dane osobowe</h5>
@@ -27,7 +27,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="form-horizontal">
                <div class="form-group">
                    @Html.LabelFor(x => x.LastName, htmlAttributes: new { @class = "control-label col-md-2"})
@@ -37,7 +37,7 @@
                    </div>
                </div>
             </div>
-            
+
             <div class="form-horizontal">
                 <div class="form-group">
                     @Html.LabelFor(x => x.Email, htmlAttributes: new { @class = "control-label col-md-2"})
@@ -124,7 +124,5 @@
         <div class="btn btn-default">
             @Html.ActionLink("Powrót", "Index", "Home")
         </div>
-
     </div>
 </div>
-

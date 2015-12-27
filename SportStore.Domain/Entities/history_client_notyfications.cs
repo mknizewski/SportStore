@@ -8,8 +8,10 @@ namespace SportStore.Domain.Entities
     {
         public int Id { get; set; }
         public int History_Id { get; set; }
+
         [Key, ForeignKey("Client")]
         public int Id_Client { get; set; }
+
         public string Message { get; set; }
         public DateTime InsertTime { get; set; }
         public bool AsRead { get; set; }

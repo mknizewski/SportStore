@@ -1,0 +1,12 @@
+﻿.panel {
+    font-family: 'Open Sans', Arial;
+}
+
+#time {
+    margin-left: 30px;
+}
+
+#order {
+    margin-right: 35px;
+    margin-bottom: 15px;
+}

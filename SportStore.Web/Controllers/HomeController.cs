@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using SportStore.Web.Models.Home;
-using SportStore.Domain.Abstract;
-using SportStore.Domain.Entities;
+﻿using SportStore.Web.HtmlHelpers.Classes;
 using SportStore.Web.HtmlHelpers.Interfaces;
-using SportStore.Web.Models.Client;
-using SportStore.Web.Infrastructure;
+using SportStore.Web.Models.Home;
+using System.Web.Mvc;
 
 namespace SportStore.Web.Controllers
 {
@@ -70,6 +63,12 @@ namespace SportStore.Web.Controllers
             else
                 return View(_newsletterHelper.GetNewsletterModel());
         }
-        #endregion
+
+        public ViewResult Cart(Cart cart)
+        {
+            return View(cart);
+        }
+
+        #endregion Metody Kontrolera
     }
 }

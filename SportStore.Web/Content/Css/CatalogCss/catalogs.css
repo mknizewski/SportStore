@@ -1,0 +1,40 @@
+﻿.panel {
+    font-family: 'Open Sans', Arial;
+}
+
+h2, h4 {
+    margin-left: 15px;
+}
+
+.desc {
+    font-size: 135%;
+    height: 40px;
+}
+
+.col-md-4 {
+    margin-bottom: 20px;
+}
+
+p {
+    margin-top: 5px;
+    margin-left: 15px;
+}
+
+.btn-group {
+    float: right;
+    margin-right: 20px;
+    margin-bottom: 15px;
+}
+
+#cart {
+    position: relative;
+    margin-right: 5px;
+    top: 1px;
+    text-decoration-line:none;
+    text-decoration: none;
+}
+
+#buttonFilter {
+    position: relative;
+    margin-right: 15px;
+}

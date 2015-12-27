@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using SportStore.Web.Models.Employee;
 using System.Web.Mvc;
-using SportStore.Web.Models.Employee;
 
 namespace SportStore.Web.Controllers
 {

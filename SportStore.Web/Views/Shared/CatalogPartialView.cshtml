@@ -1,7 +1,6 @@
 ﻿@model IEnumerable<SportStore.Domain.Entities._dict_catalogs>
 
-
-        <!-- Okno modalne -->
+<!-- Okno modalne -->
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -15,7 +14,7 @@
                         foreach (var catalog in Model)
                         {
                             <li>
-                               @Html.ActionLink(catalog.Name, "Catalogs", new { controller = "Catalog", catalogId = catalog.Id })
+                                @Html.ActionLink(catalog.Name, "Catalogs", new { controller = "Catalog", catalogId = catalog.Id, page = 1 })
                             </li>
                         }
                     }

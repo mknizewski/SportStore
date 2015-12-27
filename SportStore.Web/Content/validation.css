@@ -1,11 +1,11 @@
 ﻿.field-validation-error
 {
-     color: red; 
-     font-weight: bold; 
+     color: red;
+     font-weight: bold;
 }
 
 .input-validation-error
-{ 
+{
      background: pink;
-     border: 1px solid red; 
+     border: 1px solid red;
 }

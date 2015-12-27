@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SportStore.Domain.Entities
@@ -8,11 +7,15 @@ namespace SportStore.Domain.Entities
     {
         public int Id { get; set; }
         public int History_Id { get; set; }
+
         [Key, ForeignKey("HistoryOrder")]
         public int Id_Order { get; set; }
+
         [Key, ForeignKey("Status")]
         public int Id_Status { get; set; }
+
         public string MessageFromClient { get; set; }
+
         [Key, ForeignKey("Employee")]
         public int? Id_employee { get; set; }
 

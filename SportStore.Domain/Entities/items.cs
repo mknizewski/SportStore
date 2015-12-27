@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SportStore.Domain.Entities
@@ -13,10 +12,13 @@ namespace SportStore.Domain.Entities
     {
         public int Id { get; set; }
         public string Title { get; set; }
+
         [Key, ForeignKey("Category")]
         public int Id_Category { get; set; }
+
         [Key, ForeignKey("Description")]
         public int Id_Description { get; set; }
+
         public decimal Price { get; set; }
 
         public virtual _dict_catalogs Category { get; set; }
