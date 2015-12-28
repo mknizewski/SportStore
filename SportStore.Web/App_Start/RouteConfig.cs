@@ -17,6 +17,7 @@ namespace SportStore.Web
             routes.MapRoute("", "Sklep/Klient/Rejestracja", new { controller = "Client", action = "Register" });
             routes.MapRoute("", "Sklep/Klient/Zarzadzanie", new { controller = "Client", action = "AccountManagment" });
             routes.MapRoute("", "Sklep/Klient/Zamowienia", new { controller = "Client", action = "OrdersList" });
+            routes.MapRoute("", "Sklep/Klient/Zamowienia/{orderId}", new { controller = "Client", action = "OrderDess" , orderId = UrlParameter.Optional });
             routes.MapRoute("", "Sklep/Klient/Powiadomienia", new { controller = "Client", action = "Notyfications" });
             routes.MapRoute("", "Sklep/Klient/Powiadomienia/Przeczytane", new { controller = "Client", action = "MarkAsRead" });
             routes.MapRoute("", "Sklep/Klient/Powiadomienia/Archiwizuj", new { controller = "Client", action = "ArchivizeNote" });
@@ -28,6 +29,8 @@ namespace SportStore.Web
             routes.MapRoute("", "Zdjecie/{productId}", new { controller = "Catalog", action = "GetImage", productId = UrlParameter.Optional });
             routes.MapRoute("", "Sklep/Zamowienie/Przelicz", new { controller = "Client", action = "RecalOrder" });
             routes.MapRoute("", "Sklep/Zamowienie/Dodaj", new { controller = "Client", action = "SaveOrder" });
+            routes.MapRoute("", "Sklep/Zamowienie/Generuj/{orderId}", new { controller = "Client", action = "PDF", orderId = UrlParameter.Optional });
+            routes.MapRoute("", "Sklep/Zamowienie/Faktura/{orderId}", new { controller = "Client", action = "Invoice", orderId = UrlParameter.Optional});
             routes.MapRoute("", "Sklep/Zamowienie", new { controller = "Client", action = "OrderDetails" });
             routes.MapRoute("", "Sklep/Zdjecie/{array}/{mimeType}", new { controller = "Catalog", action = "GetImageByByte", array = UrlParameter.Optional, mimeType = UrlParameter.Optional });
 
@@ -36,7 +39,8 @@ namespace SportStore.Web
             routes.MapRoute("", "Sklep/Wyszukiwarka", new { controller = "Search", action = "GlobalSearch" });
             routes.MapRoute("", "Sklep/Katalog", new { controller = "Catalog", action = "CatalogPartialView" });
             routes.MapRoute("", "Sklep/Koszyk", new { controller = "Home", action = "Cart" });
-
+            routes.MapRoute("", "Sklep/Onas", new { controller = "Home", action = "AboutUs" });
+            routes.MapRoute("", "Sklep/Kontakt", new { controller = "Home", action = "Contact" });
             routes.MapRoute("", "Pracownik/Logowanie", new { controller = "Employee", action = "Login" });
 
             routes.MapRoute(

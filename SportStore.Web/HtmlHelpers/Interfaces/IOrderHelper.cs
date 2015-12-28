@@ -14,5 +14,6 @@ namespace SportStore.Web.HtmlHelpers.Interfaces
 
         void AddOrder(OrderModel model);
         IEnumerable<orders> GetOrdersByClientId(int clientId);
+        OrderPDFModel GetPDF(int orderId);
     }
 }

@@ -1,0 +1,109 @@
+﻿@model SportStore.Web.Models.Client.OrderPDFModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" href="~/Content/Css/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/Css/bootstrap-theme.css">
+    <link rel="stylesheet" href="~/Content/Css/bootstrap-glyphicons.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,800,300,700&amp;subset=latin-ext" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic,700,700italic,900,900italic&amp;subset=latin-ext" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</head>
+<body>
+    <div>
+         
+        <div class="row" style="margin-bottom: 30px;">
+            <div class="col-md-6">
+                <img src="~/Content/Images/Index/main-banner.png" />
+            </div>
+            <div class="col-md-6">
+
+            </div>
+        </div>
+
+        <div class="panel panel-success">
+            <div class="panel-heading">Faktura  FV-SS-@Model.Order.Id</div>
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Przedmiot</th>
+                            <th>Ilość</th>
+                            <th>Cena za 1 szt</th>
+                            <th>Cena ogólna</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ 
+                            var i = 1;
+
+                            foreach(var item in Model.OrderDetails)
+                            {
+                                <tr>
+                                    <th role="row">@i</th>
+                                    <td>@item.Item.Title</td>
+                                    <td>@item.Quantity</td>
+                                    <td>@item.Item.Price.ToString("c")</td>
+                                    <td>
+                                        @{ 
+                                            var totalPrice = item.Item.Price * item.Quantity;
+                                        }
+                                        @totalPrice.ToString("c")
+                                    </td>
+                                </tr>
+
+                                i++;
+                            }
+                        }
+                        <tr>
+                            <th role="row">@i</th>
+                            <td>@Model.Order.OrderDelivery.Name</td>
+                            <td>1</td>
+                            <td>
+                                @Model.Order.OrderDelivery.Price.ToString("c")
+                            </td>
+                            <td>
+                                @Model.Order.OrderDelivery.Price.ToString("c")
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="float:right;">Suma należna: <b>@Model.Order.ToPay.ToString("c")</b></p>
+            </div>
+            <table style="margin-left: 15px; margin-bottom: 15px;">
+                <thead>
+                    <tr>
+                        <th>Adres dostawy:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ 
+                        var splitAdres = Model.Order.AdressToDelivery.Split(new char[] { ';' });
+
+                        foreach(var ad in splitAdres)
+                        {
+                            <tr>
+                                <td>@ad</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</body>
+</html>
+
+<style>
+    body {
+        font-family: 'Open Sans', Arial;
+    }
+</style>

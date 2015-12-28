@@ -1,5 +1,7 @@
-﻿using SportStore.Web.HtmlHelpers.Classes;
+﻿using SportStore.Domain.Concrete;
+using SportStore.Web.HtmlHelpers.Classes;
 using SportStore.Web.HtmlHelpers.Interfaces;
+using SportStore.Web.Models.Client;
 using SportStore.Web.Models.Home;
 using System.Web.Mvc;
 
@@ -67,6 +69,42 @@ namespace SportStore.Web.Controllers
         public ViewResult Cart(Cart cart)
         {
             return View(cart);
+        }
+
+        public ViewResult AboutUs()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Contact()
+        {
+            var model = new ContactModel();
+
+            if (Session["Client"] != null)
+            {
+                model.Email = (Session["Client"] as AccountModel).Login;
+                model.Id_Client = (Session["Client"] as AccountModel).Id;
+            }
+
+            ViewBag.Shops = new EFDbContext().DictShops;
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Contact(ContactModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                Alert.SetAlert(AlertStatus.Succes, "Dziękujemy za wiadomość! Postaramy się odpowiedzieć w jak najszybszym tempie!");
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return Contact();
+            }
+            
         }
 
         #endregion Metody Kontrolera

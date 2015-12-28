@@ -83,6 +83,25 @@ namespace SportStore.Web.HtmlHelpers.Classes
             return model;
         }
 
+        OrderPDFModel IOrderHelper.GetPDF(int orderId)
+        {
+            var order = _ordersRepository.Orders
+                .Where(x => x.Id.Equals(orderId))
+                .FirstOrDefault();
+
+            var orderDetails = _ordersRepository.OrderDetails
+                .Where(x => x.Id_Order.Equals(orderId))
+                .ToArray();
+
+            var model = new OrderPDFModel
+            {
+                Order = order,
+                OrderDetails = orderDetails
+            };
+
+            return model;
+        }
+
         OrderModel IOrderHelper.RecalculateOrder(OrderModel model)
         {
             var selectedOrderId = model.selectedDeliveryId;

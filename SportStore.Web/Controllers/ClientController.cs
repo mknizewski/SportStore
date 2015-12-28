@@ -1,4 +1,5 @@
-﻿using SportStore.Web.HtmlHelpers.Classes;
+﻿using Rotativa;
+using SportStore.Web.HtmlHelpers.Classes;
 using SportStore.Web.HtmlHelpers.Interfaces;
 using SportStore.Web.Infrastructure;
 using SportStore.Web.Infrastructure.Binders;
@@ -185,9 +186,28 @@ namespace SportStore.Web.Controllers
 
         [Authorize]
         [ClientAuthentication]
-        public ActionResult OrderDess()
+        public ActionResult OrderDess(int orderId)
         {
-            return View();
+            return View(_orderHelper.GetPDF(orderId));
+        }
+
+        [Authorize]
+        [ClientAuthentication]
+        [HttpGet]
+        public ActionResult Invoice(int orderId)
+        {
+            return View(_orderHelper.GetPDF(orderId));
+        }
+
+        [Authorize]
+        [ClientAuthentication]
+        public ActionResult PDF(int orderID)
+        {
+            return new ActionAsPdf("Invoice", new { orderId = orderID })
+            {
+                PageSize = Rotativa.Options.Size.A4,
+                FileName = "FV-SS-" + orderID + ".pdf"
+            };
         }
     }
 }

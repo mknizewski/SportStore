@@ -11,7 +11,7 @@
             <table class="table">
                 <thead class="thead-deafult">
                     <tr>
-                        <th>Zamówienie</th>
+                        <th role="rowheader">Zamówienie</th>
                         <th>Stan zamówienia</th>
                         <th>Utworzono</th>
                         <th>Faktura</th>
@@ -19,18 +19,18 @@
                 </thead>
                 <tbody>
                     @{ 
-                        foreach(var item in Model)
+                        foreach(var item in Model.OrderByDescending(x => x.InsertTime))
                         {
                             <tr>
-                                <td>
-                                    <a href="">
+                                <td role="row">
+                                    <a href='@Url.Action("OrderDess", new { orderId = item.Id })'>
                                         Zamówienie o nr: @item.Id
                                     </a>
                                 </td>
                                 <td>@item.OrderStatus.Name</td>
                                 <td>@item.InsertTime</td>
-                                <td>
-                                    <a href="">
+                                <td role="img">
+                                    <a href='@Url.Action("PDF", new { orderId = item.Id})'>
                                         <img src="~/Content/Images/Orders/pdf.png" style="width: 35px; height: 35px;"/>
                                     </a>
                                 </td>

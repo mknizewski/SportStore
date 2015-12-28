@@ -1,0 +1,201 @@
+﻿@model SportStore.Web.Models.Home.ContactModel
+
+@{
+    ViewBag.Title = "Kontakt";
+}
+
+<div id="panel">
+
+    <div class="row">
+        <div class="col-md-6">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">Biuro Obsługi Klienta</div>
+                <div class="panel-body">
+
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="infolinia" class="control-label col-md-2">infolinia:</label>
+                            <div class="col-md-10">
+                                <p id="infolinia">0-801-000-849</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="emailKlient" class="control-label col-md-2">e-mail:</label>
+                            <div class="col-md-10">
+                                <p id="emailKlient"><b>konsultant@SportStore.pl</b></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="date1" class="control-label col-md-2">pon.-pt.:</label>
+                            <div class="col-md-10">
+                                <p id="date1">8.00 - 18.00</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="date2" class="control-label col-md-2">soboty:</label>
+                            <div class="col-md-10">
+                                <p id="date2">8.00 - 14.00</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">Napisz do nas</div>
+                <div class="panel-body">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken();
+
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="emailUser" class="control-label col-md-2">e-mail:</label>
+                                <div class="col-md-10">
+                                    @Html.HiddenFor(x => x.Id_Client)
+                                    @Html.EditorFor(x => x.Email, new { htmlAttributes = new { @class = "form-control", @id = "emailUser" } })
+                                    @Html.ValidationMessageFor(x => x.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="thread" class="control-label col-md-2">Temat:</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(x => x.Thread, new { htmlAttributes = new { @class = "form-control", @id = "emailUser" } })
+                                    @Html.ValidationMessageFor(x => x.Thread, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="content" class="control-label col-md-2">Treść:</label>
+                                <div class="col-md-10">
+                                    @Html.TextAreaFor(x => x.Content, new { cols = "40", rows = "5", @class = "form-control", id = "emailUser"})
+                                    @Html.ValidationMessageFor(x => x.Content, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="float:right;">Wyślij</button>               
+                    }
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">Dane do przelewu</div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th>Sport Store SP. Z.O.O</th>
+                                    </tr>
+                                    <tr>
+                                        <td>ul. Ulicowa 12</td>
+                                    </tr>
+                                    <tr>
+                                        <td>15-785 Białystok</td>
+                                    </tr>
+                                    <tr>
+                                        <td>POLSKA</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <table style="float:right;">
+                                <tbody>
+                                    <tr>
+                                        <td><b>NIP: </b>682-175-99-47</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Numer wpisu: </b>0000386009</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>REGON: </b>121534972</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Numer konta do wpłat: </b>5910 4028 0611 0001 4015 2715 2149</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+
+            <div class="panel panel-primary" style="min-height: 281px;">
+                <div class="panel-heading">Dział reklamacji</div>
+                <div class="panel-body">
+
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="emailReklamacja" class="control-label col-md-2">e-mail:</label>
+                            <div class="col-md-10">
+                                <p><b id="emailReklamacja">reklamacje@SportStore.pl</b></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="date" class="control-label col-md-2">pon.-pt.:</label>
+                            <div class="col-md-2">
+                                <p id="date">8.00 - 16.00</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="panel panel-success" style="min-height: 328px;">
+                <div class="panel-heading">Nasze sklepy</div>
+                <div class="panel-body">
+
+                    <ul class="list-group">
+                        @{ 
+                            var i = 1;
+                            foreach(var item in ViewBag.Shops)
+                            {
+                                <li class="list-group-item"><b>Sklep nr @i: </b>@item.Name</li>
+                                i++;
+                            }
+                        }
+                    </ul>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<style>
+    #panel {
+        font-family: 'Open Sans', Arial;
+    }
+
+    p {
+        margin-top: 7px;
+    }
+</style>
