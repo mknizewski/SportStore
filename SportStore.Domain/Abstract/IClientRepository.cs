@@ -20,6 +20,10 @@ namespace SportStore.Domain.Abstract
 
         void Edit(clients client);
 
+        void ChangePassword(int Id, string password);
+
+        void ChangePersonalData(int Id, string street, string postalCode, string city);
+
         void MarkAsRead(int id);
 
         void DeleteNote(client_notyfications model);

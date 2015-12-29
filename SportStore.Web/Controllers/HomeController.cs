@@ -95,7 +95,7 @@ namespace SportStore.Web.Controllers
         [HttpPost]
         public ActionResult Contact(ContactModel model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 Alert.SetAlert(AlertStatus.Succes, "Dziękujemy za wiadomość! Postaramy się odpowiedzieć w jak najszybszym tempie!");
                 return RedirectToAction("Index");
@@ -104,7 +104,6 @@ namespace SportStore.Web.Controllers
             {
                 return Contact();
             }
-            
         }
 
         #endregion Metody Kontrolera

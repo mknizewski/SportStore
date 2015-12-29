@@ -17,6 +17,10 @@ namespace SportStore.Web.HtmlHelpers.Interfaces
 
         IEnumerable<order_complaints> GetComplaints(int id);
 
+        bool ChangePassword(int Id, string oldPassword, string newPassword);
+
+        void ChangeDeliveryData(AccountModel model);
+
         void EditAccount();
 
         void RemoveAccount(int id);

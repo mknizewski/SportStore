@@ -99,6 +99,33 @@ namespace SportStore.Web.Controllers
 
         [Authorize]
         [ClientAuthentication]
+        [HttpPost]
+        public ActionResult EditDeliveryData(AccountModel model)
+        {
+            _accountManagmentHelper.ChangeDeliveryData(model);
+            var Client = _loginHelper.GetClient(model.Login);
+            this.Session["Client"] = Client;
+
+            Alert.SetAlert(AlertStatus.Info, "Wprowadzono zmiany");
+
+            return RedirectToAction("AccountManagment");
+        }
+
+        [Authorize]
+        [ClientAuthentication]
+        [HttpPost]
+        public ActionResult ChangeClientPassword(int Id, string oldPassword, string newPassword)
+        {
+            if (_accountManagmentHelper.ChangePassword(Id, oldPassword, newPassword))
+                Alert.SetAlert(AlertStatus.Succes, "Poprawnie zmieniono hasło dostępu!");
+            else
+                Alert.SetAlert(AlertStatus.Danger, "Podane stare hasło nie jest poprawne!");
+
+            return RedirectToAction("AccountManagment");
+        }
+
+        [Authorize]
+        [ClientAuthentication]
         public ActionResult Notyfications()
         {
             var id = (Session["Client"] as AccountModel).Id;

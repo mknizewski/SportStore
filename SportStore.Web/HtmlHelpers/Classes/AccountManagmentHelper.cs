@@ -99,5 +99,36 @@ namespace SportStore.Web.HtmlHelpers.Classes
 
             return modelToReturn;
         }
+
+        bool IAccountManagmentHelper.ChangePassword(int Id, string oldPassword, string newPassword)
+        {
+            if (checkPassword(Id, oldPassword))
+            {
+                _clientRepository.ChangePassword(Id, PasswordHelper.Encrypt(newPassword));
+                return true;
+            }
+            else
+                return false;  
+
+        }
+
+        private bool checkPassword(int Id, string Password)
+        {
+            var client = _clientRepository.Clients
+                .Where(x => x.Id.Equals(Id))
+                .FirstOrDefault();
+
+            var password = PasswordHelper.Decrypt(client.Password);
+
+            if (password == Password)
+                return true;
+            else
+                return false;
+        }
+
+        void IAccountManagmentHelper.ChangeDeliveryData(AccountModel model)
+        {
+            _clientRepository.ChangePersonalData(model.Id, model.Street, model.PostalCode, model.City);
+        }
     }
 }

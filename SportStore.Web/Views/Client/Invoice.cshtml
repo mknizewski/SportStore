@@ -17,13 +17,12 @@
 </head>
 <body>
     <div>
-         
+
         <div class="row" style="margin-bottom: 30px;">
             <div class="col-md-6">
                 <img src="~/Content/Images/Index/main-banner.png" />
             </div>
             <div class="col-md-6">
-
             </div>
         </div>
 
@@ -41,7 +40,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @{ 
+                        @{
                             var i = 1;
 
                             foreach(var item in Model.OrderDetails)
@@ -52,7 +51,7 @@
                                     <td>@item.Quantity</td>
                                     <td>@item.Item.Price.ToString("c")</td>
                                     <td>
-                                        @{ 
+                                        @{
                                             var totalPrice = item.Item.Price * item.Quantity;
                                         }
                                         @totalPrice.ToString("c")
@@ -84,7 +83,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @{ 
+                    @{
                         var splitAdres = Model.Order.AdressToDelivery.Split(new char[] { ';' });
 
                         foreach(var ad in splitAdres)
@@ -97,7 +96,6 @@
                 </tbody>
             </table>
         </div>
-
     </div>
 </body>
 </html>

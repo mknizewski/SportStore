@@ -3,6 +3,7 @@ using SportStore.Domain.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using SportStore.Domain.Entities;
 
 namespace SportStore.Domain.Respositories
 {
@@ -87,6 +88,35 @@ namespace SportStore.Domain.Respositories
         void IClientRepository.AddHistoryNote(Entities.history_client_notyfications model)
         {
             _context.HistoryClientNotyfications.Add(model);
+            _context.SaveChanges();
+        }
+
+        void IClientRepository.ChangePassword(int Id, string password)
+        {
+            var client = _context.Clients
+                .Where(x => x.Id.Equals(Id))
+                .FirstOrDefault();
+
+            client.Password = password;
+
+            _context.SaveChanges();
+        }
+
+        void IClientRepository.ChangePersonalData(int Id, string street, string postalCode, string city)
+        {
+            var client = _context.Clients
+                .Find(Id);
+
+            client.Street = street;
+            client.PostalCode = postalCode;
+
+            var cityId = _context.DictCities
+                .Where(x => x.Name.ToLower().Equals(city.ToLower()))
+                .FirstOrDefault();
+
+            if (cityId != null)
+                client.Id_City = cityId.Id;
+
             _context.SaveChanges();
         }
     }

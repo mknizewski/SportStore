@@ -146,7 +146,6 @@ namespace SportStore.Domain.Respositories
             return order.Id;
         }
 
-
         void IOrdersRepository.AddOrderComplaints(order_complaints orderCompaints)
         {
             _efDbContext.OrderComplaints.Add(orderCompaints);
@@ -164,7 +163,7 @@ namespace SportStore.Domain.Respositories
                 bool inserted = false;
                 int iterator = 0;
 
-                while(!inserted)
+                while (!inserted)
                 {
                     var shop = quantityItems[iterator];
 

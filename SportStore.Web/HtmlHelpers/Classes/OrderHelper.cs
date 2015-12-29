@@ -20,8 +20,8 @@ namespace SportStore.Web.HtmlHelpers.Classes
 
         void IOrderHelper.AddOrder(OrderModel model)
         {
-            var adress = model.Client.Name + " " + model.Client.Surname 
-                + ";" + model.Client.Street + ";" + model.Client.PostalCode 
+            var adress = model.Client.Name + " " + model.Client.Surname
+                + ";" + model.Client.Street + ";" + model.Client.PostalCode
                 + ";" + model.Client.City;
 
             var order = new orders

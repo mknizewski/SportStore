@@ -16,8 +16,10 @@ namespace SportStore.Web
             routes.MapRoute("", "Sklep/Klient/Wylogowanie", new { controller = "Client", action = "Logout" });
             routes.MapRoute("", "Sklep/Klient/Rejestracja", new { controller = "Client", action = "Register" });
             routes.MapRoute("", "Sklep/Klient/Zarzadzanie", new { controller = "Client", action = "AccountManagment" });
+            routes.MapRoute("", "Sklep/Klient/Zarzadzanie/ZmianaHasla", new { controller = "Client", action = "ChangeClientPassword" });
+            routes.MapRoute("", "Sklep/Klient/Zarzadzanie/ZmianaWysylkowa", new { controller = "Client", action = "EditDeliveryData" });
             routes.MapRoute("", "Sklep/Klient/Zamowienia", new { controller = "Client", action = "OrdersList" });
-            routes.MapRoute("", "Sklep/Klient/Zamowienia/{orderId}", new { controller = "Client", action = "OrderDess" , orderId = UrlParameter.Optional });
+            routes.MapRoute("", "Sklep/Klient/Zamowienia/{orderId}", new { controller = "Client", action = "OrderDess", orderId = UrlParameter.Optional });
             routes.MapRoute("", "Sklep/Klient/Powiadomienia", new { controller = "Client", action = "Notyfications" });
             routes.MapRoute("", "Sklep/Klient/Powiadomienia/Przeczytane", new { controller = "Client", action = "MarkAsRead" });
             routes.MapRoute("", "Sklep/Klient/Powiadomienia/Archiwizuj", new { controller = "Client", action = "ArchivizeNote" });
@@ -30,7 +32,7 @@ namespace SportStore.Web
             routes.MapRoute("", "Sklep/Zamowienie/Przelicz", new { controller = "Client", action = "RecalOrder" });
             routes.MapRoute("", "Sklep/Zamowienie/Dodaj", new { controller = "Client", action = "SaveOrder" });
             routes.MapRoute("", "Sklep/Zamowienie/Generuj/{orderId}", new { controller = "Client", action = "PDF", orderId = UrlParameter.Optional });
-            routes.MapRoute("", "Sklep/Zamowienie/Faktura/{orderId}", new { controller = "Client", action = "Invoice", orderId = UrlParameter.Optional});
+            routes.MapRoute("", "Sklep/Zamowienie/Faktura/{orderId}", new { controller = "Client", action = "Invoice", orderId = UrlParameter.Optional });
             routes.MapRoute("", "Sklep/Zamowienie", new { controller = "Client", action = "OrderDetails" });
             routes.MapRoute("", "Sklep/Zdjecie/{array}/{mimeType}", new { controller = "Catalog", action = "GetImageByByte", array = UrlParameter.Optional, mimeType = UrlParameter.Optional });
 

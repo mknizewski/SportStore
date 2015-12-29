@@ -18,7 +18,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @{ 
+                    @{
                         foreach(var item in Model.OrderByDescending(x => x.InsertTime))
                         {
                             <tr>
@@ -31,7 +31,7 @@
                                 <td>@item.InsertTime</td>
                                 <td role="img">
                                     <a href='@Url.Action("PDF", new { orderId = item.Id})'>
-                                        <img src="~/Content/Images/Orders/pdf.png" style="width: 35px; height: 35px;"/>
+                                        <img src="~/Content/Images/Orders/pdf.png" style="width: 35px; height: 35px;" />
                                     </a>
                                 </td>
                             </tr>
@@ -41,8 +41,6 @@
             </table>
 
             <a href='@Url.Action("AccountManagment")' class="btn btn-primary">Powrót</a>
-
         </div>
     </div>
 </div>
-
