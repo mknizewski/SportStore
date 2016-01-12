@@ -43,7 +43,7 @@ namespace SportStore.Web.Infrastructure
             _iKernel.Bind<IRegisterHelper>().To<RegisterHelper>();
             _iKernel.Bind<ILoginHelper>().To<LoginHelper>();
             _iKernel.Bind<ICatalogsRepository>().To<CatalogsRepository>();
-            _iKernel.Bind<ICatalogRepository>().To<CatalogsHelper>();
+            _iKernel.Bind<ICatalogHelper>().To<CatalogsHelper>();
             _iKernel.Bind<IAccountManagmentHelper>().To<AccountManagmentHelper>();
             _iKernel.Bind<IGlobalSearchHelper>().To<GlobalSearchHelper>();
             _iKernel.Bind<IOrdersRepository>().To<OrdersRepository>();

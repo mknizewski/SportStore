@@ -1,4 +1,5 @@
-﻿using SportStore.Domain.Concrete;
+﻿using SportStore.Domain.Abstract;
+using SportStore.Domain.Concrete;
 using SportStore.Web.HtmlHelpers.Classes;
 using SportStore.Web.HtmlHelpers.Interfaces;
 using SportStore.Web.Models.Client;
@@ -15,10 +16,12 @@ namespace SportStore.Web.Controllers
     public class HomeController : Controller
     {
         private INewsletterHelper _newsletterHelper;
+        private ICatalogHelper _catalogRepository;
 
-        public HomeController(INewsletterHelper newsletterHelper)
+        public HomeController(INewsletterHelper newsletterHelper, ICatalogHelper catalogRepository)
         {
             _newsletterHelper = newsletterHelper;
+            _catalogRepository = catalogRepository;
         }
 
         #region Metody Kontrolera
@@ -30,7 +33,7 @@ namespace SportStore.Web.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            return View(_catalogRepository.GetIndexModel());
         }
 
         /// <summary>

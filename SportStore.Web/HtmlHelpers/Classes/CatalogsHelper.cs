@@ -6,6 +6,7 @@ using SportStore.Web.Models.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using SportStore.Web.Models.Home;
 
 namespace SportStore.Web.HtmlHelpers.Classes
 {
@@ -14,7 +15,7 @@ namespace SportStore.Web.HtmlHelpers.Classes
     /// Opis:   Klasa pomocniczna do przegladania produktów
     /// Data:   26.11.15
     /// </summary>
-    public class CatalogsHelper : ICatalogRepository
+    public class CatalogsHelper : ICatalogHelper
     {
         public ICatalogsRepository _catalogRepository;
         private static int _pageSize = 9; // defaultowo 9
@@ -24,12 +25,12 @@ namespace SportStore.Web.HtmlHelpers.Classes
             _catalogRepository = catalogRepository;
         }
 
-        IEnumerable<_dict_catalogs> ICatalogRepository.GetCatalogs()
+        IEnumerable<_dict_catalogs> ICatalogHelper.GetCatalogs()
         {
             return _catalogRepository.Catalogs;
         }
 
-        Models.Catalog.ProductsListViewModel ICatalogRepository.GetItemsByCatalog(int catalogId, int page)
+        Models.Catalog.ProductsListViewModel ICatalogHelper.GetItemsByCatalog(int catalogId, int page)
         {
             var currentCatalog = _catalogRepository.Catalogs
                                 .Select(x => x)
@@ -61,7 +62,7 @@ namespace SportStore.Web.HtmlHelpers.Classes
             return viewModel;
         }
 
-        items_picutures ICatalogRepository.GetPictureById(int productId)
+        items_picutures ICatalogHelper.GetPictureById(int productId)
         {
             var image = _catalogRepository.ItemsPicture
                         .FirstOrDefault(p => p.Id_Item.Equals(productId));
@@ -69,7 +70,7 @@ namespace SportStore.Web.HtmlHelpers.Classes
             return image;
         }
 
-        ItemModel ICatalogRepository.GetDescriptionItemById(int productId)
+        ItemModel ICatalogHelper.GetDescriptionItemById(int productId)
         {
             var item = _catalogRepository.Items
                         .Where(x => x.Id.Equals(productId))
@@ -109,12 +110,12 @@ namespace SportStore.Web.HtmlHelpers.Classes
             return modelToReturn;
         }
 
-        void ICatalogRepository.ChangePageSize(int newSize)
+        void ICatalogHelper.ChangePageSize(int newSize)
         {
             _pageSize = newSize;
         }
 
-        void ICatalogRepository.AddOpinion(OpinionModel opinionModel)
+        void ICatalogHelper.AddOpinion(OpinionModel opinionModel)
         {
             if (opinionModel.Id_User != -1 && opinionModel.Opinion != null)
             {
@@ -144,18 +145,66 @@ namespace SportStore.Web.HtmlHelpers.Classes
             }
         }
 
-        items ICatalogRepository.GetItemById(int productId)
+        items ICatalogHelper.GetItemById(int productId)
         {
             return _catalogRepository.Items
                 .Where(x => x.Id.Equals(productId))
                 .FirstOrDefault();
         }
 
-        int ICatalogRepository.GetQuantityItemById(int productId)
+        int ICatalogHelper.GetQuantityItemById(int productId)
         {
             return _catalogRepository.ItemsQuantity
                 .Where(x => x.Id_Item.Equals(productId))
                 .Sum(x => x.Quantity);
+        }
+
+        IndexModel ICatalogHelper.GetIndexModel()
+        {
+            IndexModel model = new IndexModel();
+
+            var lastAdded = _catalogRepository
+                .Items
+                .OrderBy(x => x.Description.InsertTime)
+                .Take(3);
+
+            var lastAddedList = new List<LastAddedItemModel>();
+
+            foreach(var item in lastAdded)
+            {
+                lastAddedList.Add
+                    (new LastAddedItemModel
+                    {
+                        Item = item,
+                        Picture = _catalogRepository.ItemsPicture.Where(x => x.Id_Item.Equals(item.Id)).FirstOrDefault(),
+                        Opinions = _catalogRepository.ItemsOpinions.Where(x => x.Id_Item.Equals(item.Id)).ToList()
+                    });
+            }
+
+            var topRated = from x in _catalogRepository.ItemsOpinions
+                           group x by x.Id_Item into g
+                           orderby g.Key
+                           select new { Id_Item = g.Key, Item = g.ToList()};
+
+            topRated = topRated.Take(3);
+
+            var topRatedList = new List<TopRatedItemModel>();
+
+            foreach(var item in topRated)
+            {
+                topRatedList.Add(
+                    new TopRatedItemModel
+                    {
+                        Item = _catalogRepository.Items.Where(x => x.Id.Equals(item.Id_Item)).FirstOrDefault(),
+                        Picure = _catalogRepository.ItemsPicture.Where(x => x.Id_Item.Equals(item.Id_Item)).FirstOrDefault(),
+                        Opinions = _catalogRepository.ItemsOpinions.Where(x => x.Id_Item.Equals(item.Id_Item)).ToList()
+                    });
+            }
+
+            model.LastAdded = lastAddedList;
+            model.TopRated = topRatedList;
+
+            return model;
         }
     }
 }

@@ -130,6 +130,7 @@
     <Content Include="Content\Css\CatalogCss\description.css" />
     <Content Include="Content\Css\IndexCss\cart.css" />
     <Content Include="Content\Css\IndexCss\cookie.css" />
+    <Content Include="Content\Css\IndexCss\heroic-features.css" />
     <Content Include="Content\Css\IndexCss\index-employee-section.css" />
     <Content Include="Content\Css\IndexCss\index-theme.css" />
     <Content Include="Content\Css\IndexCss\order.css" />
@@ -146,6 +147,9 @@
     <Content Include="Content\Images\AccountManagment\orders.png" />
     <Content Include="Content\Images\AccountManagment\setting.png" />
     <Content Include="Content\Images\AccountManagment\shopping-cart.png" />
+    <Content Include="Content\Images\Banners\1450799283.jpg" />
+    <Content Include="Content\Images\Banners\1451472370.jpg" />
+    <Content Include="Content\Images\Banners\1451474918.jpg" />
     <Content Include="Content\Images\Banners\callus.jpg" />
     <Content Include="Content\Images\Index\a11.png" />
     <Content Include="Content\Images\Index\a21.png" />
@@ -264,16 +268,14 @@
     <Compile Include="Models\Employee\LoginModel.cs" />
     <Compile Include="Models\Home\Alert.cs" />
     <Compile Include="Models\Home\ContactModel.cs" />
+    <Compile Include="Models\Home\IndexModel.cs" />
+    <Compile Include="Models\Home\LastAddedItemModel.cs" />
     <Compile Include="Models\Home\NewsletterModel.cs" />
     <Compile Include="Models\Client\RegisterModel.cs" />
+    <Compile Include="Models\Home\TopRatedItemModel.cs" />
     <Compile Include="Models\Search\GlobalSearchModel.cs" />
     <Compile Include="Models\Shared\PagingModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\Home\HomeResources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HomeResources.resx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -308,12 +310,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\Home\HomeResources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>HomeResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SportStore.Domain\SportStore.Domain.csproj">
