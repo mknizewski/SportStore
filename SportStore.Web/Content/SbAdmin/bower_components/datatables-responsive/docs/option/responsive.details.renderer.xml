@@ -53,7 +53,7 @@ $('#example').DataTable( {
 				} ).toArray().join('');
 
 				return data ?
-					$('<table/>').append( data ) :
+					$('<table />').append( data ) :
 					false;
 			}
 		}
@@ -61,5 +61,4 @@ $('#example').DataTable( {
 } );
 
 ]]></example>
-
 </dt-option>

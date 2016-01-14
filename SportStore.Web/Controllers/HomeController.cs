@@ -1,5 +1,4 @@
-﻿using SportStore.Domain.Abstract;
-using SportStore.Domain.Concrete;
+﻿using SportStore.Domain.Concrete;
 using SportStore.Web.HtmlHelpers.Classes;
 using SportStore.Web.HtmlHelpers.Interfaces;
 using SportStore.Web.Models.Client;

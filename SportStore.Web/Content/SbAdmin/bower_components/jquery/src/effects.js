@@ -13,7 +13,6 @@ define([
 	"./deferred",
 	"./traversing"
 ], function( jQuery, pnum, cssExpand, isHidden, defaultDisplay, data_priv ) {
-
 var
 	fxNow, timerId,
 	rfxtypes = /^(?:toggle|show|hide)$/,
@@ -107,7 +106,6 @@ function createTween( value, prop, animation ) {
 		length = collection.length;
 	for ( ; index < length; index++ ) {
 		if ( (tween = collection[ index ].call( animation, prop, value )) ) {
-
 			// We're done with this property
 			return tween;
 		}
@@ -185,7 +183,6 @@ function defaultPrefilter( elem, props, opts ) {
 			delete props[ prop ];
 			toggle = toggle || value === "toggle";
 			if ( value === ( hidden ? "hide" : "show" ) ) {
-
 				// If there is dataShow left over from a stopped hide or show and we are going to proceed with show, we should pretend to be hidden
 				if ( value === "show" && dataShow && dataShow[ prop ] !== undefined ) {
 					hidden = true;
@@ -389,7 +386,6 @@ function Animation( elem, properties, options ) {
 }
 
 jQuery.Animation = jQuery.extend( Animation, {
-
 	tweener: function( props, callback ) {
 		if ( jQuery.isFunction( props ) ) {
 			callback = props;
@@ -452,7 +448,6 @@ jQuery.speed = function( speed, easing, fn ) {
 
 jQuery.fn.extend({
 	fadeTo: function( speed, to, easing, callback ) {
-
 		// Show any hidden elements after setting opacity to 0
 		return this.filter( isHidden ).css( "opacity", 0 ).show()
 

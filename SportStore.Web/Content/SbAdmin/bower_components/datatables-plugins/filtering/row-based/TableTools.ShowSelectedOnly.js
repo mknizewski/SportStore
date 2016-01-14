@@ -23,7 +23,6 @@
  */
 
 (function (window, document, $, undefined) {
-
     $.fn.dataTable.SelectedLengthMenu = function(oSettings) {
         if (oSettings.oScroll.bInfinite) {
             return null;
@@ -62,8 +61,6 @@
         }
         sSelectedMenu += '</select>';
 
-
-
         var nLength = document.createElement('div');
         if (!oSettings.aanFeatures.l) {
             nLength.id = oSettings.sTableId + '_length';
@@ -78,13 +75,12 @@
         var $lengthSelect = $('select[name="' + oSettings.sTableId + '_length"]', nLength);
         if ($lengthSelect.length == 0)
             $lengthSelect = $('select :eq(0)', nLength);
-        
+
         /*
          * Set the length to the current display length - thanks to Andrea Pavlovic for this fix,
          * and Stefan Skopnik for fixing the fix!
          */
         $lengthSelect.find('option[value="' + oSettings._iDisplayLength + '"]', nLength).attr("selected", true);
-
 
         $lengthSelect.bind('change.DT', function(e) {
             var iVal = $(this).val();
@@ -116,7 +112,6 @@
             oSettings.oApi._fnDraw(oSettings);
         });
 
-
         var $filterSelectedSelect = $('select[name="' + oSettings.sTableId + '_selectedFilter"]', nLength);
         if ($filterSelectedSelect.length == 0)
             $filterSelectedSelect = $('select :eq(1)', nLength);
@@ -127,7 +122,6 @@
             oSettings._sFilterSelected = $(this).val();
             $('#' + oSettings.sTableId).dataTable().fnDraw();
         });
-        
 
         $('select', nLength).attr('aria-controls', oSettings.sTableId);
 
@@ -143,7 +137,6 @@
             if ($filterSelectedSelect.val() == 'All')
                 return true; // all items selected
 
-
             var oTable = $('#' + oSettings.sTableId).dataTable();
             var row = oTable.fnGetNodes(iDataIndex);
             var oTableTools = TableTools.fnGetInstance(oSettings.sTableId);
@@ -153,7 +146,6 @@
         }
     );
 
-
     // Subscribe the feature plug-in to DataTables, ready for use
     $.fn.dataTableExt.aoFeatures.push({
         "fnInit": function (oSettings) {
@@ -162,7 +154,4 @@
         "cFeature": "O",
         "sFeature": "SelectedLengthMenu"
     });
-    
-
-
 })(window, document, jQuery);

@@ -3,7 +3,6 @@ define([
 	"../core/access",
 	"./support"
 ], function( jQuery, access, support ) {
-
 var rfocusable = /^(?:input|select|textarea|button)$/i;
 
 jQuery.fn.extend({
@@ -45,7 +44,6 @@ jQuery.extend({
 			return hooks && "set" in hooks && (ret = hooks.set( elem, value, name )) !== undefined ?
 				ret :
 				( elem[ name ] = value );
-
 		} else {
 			return hooks && "get" in hooks && (ret = hooks.get( elem, name )) !== null ?
 				ret :
@@ -90,5 +88,4 @@ jQuery.each([
 ], function() {
 	jQuery.propFix[ this.toLowerCase() ] = this;
 });
-
 });

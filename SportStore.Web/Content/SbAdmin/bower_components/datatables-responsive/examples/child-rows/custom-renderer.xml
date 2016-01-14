@@ -25,7 +25,7 @@ $(document).ready(function() {
 					} ).toArray().join('');
 
 					return data ?
-						$('<table/>').append( data ) :
+						$('<table />').append( data ) :
 						false;
 				}
 			}
@@ -45,6 +45,4 @@ The child row's for a collapsed table in Responsive, by default, show a `-tag ul
 This example shows the `dt-api cells()` method being used to select the hidden columns and constructing a table of the data. You could refine the selector to select only certain columns, or show all columns, etc.
 
 ]]></info>
-
 </dt-example>
-

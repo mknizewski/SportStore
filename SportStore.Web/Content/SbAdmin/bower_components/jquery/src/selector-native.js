@@ -1,7 +1,6 @@
 define([
 	"./core"
 ], function( jQuery ) {
-
 /*
  * Optional (non-Sizzle) selector module for custom builds.
  *
@@ -46,7 +45,6 @@ var docElem = window.document.documentElement,
 		if ( compare ) {
 			// Disconnected nodes
 			if ( compare & 1 ) {
-
 				// Choose the first element that is related to our document
 				if ( a === document || jQuery.contains(document, a) ) {
 					return -1;
@@ -168,5 +166,4 @@ jQuery.extend( jQuery.find, {
 		return elem.getAttribute( name );
 	}
 });
-
 });

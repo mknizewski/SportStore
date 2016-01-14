@@ -11,7 +11,6 @@
  * for further information.
  */
 (function(window, document, $, DataTable, undefined){
-
 $.extend( true, DataTable.defaults, {
 	"dom":
 		"<'row-fluid'<'span6'l><'span6'f>r>" +
@@ -20,12 +19,10 @@ $.extend( true, DataTable.defaults, {
 	renderer: 'bootstrap'
 } );
 
-
 /* Default class modification */
 $.extend( DataTable.ext.classes, {
 	sWrapper: "dataTables_wrapper form-inline dt-bootstrap"
 } );
-
 
 /* Bootstrap paging button renderer */
 DataTable.ext.renderer.pageButton.bootstrap = function ( settings, host, idx, buttons, page, pages ) {
@@ -120,7 +117,6 @@ DataTable.ext.renderer.pageButton.bootstrap = function ( settings, host, idx, bu
 	);
 };
 
-
 /*
  * TableTools Bootstrap compatibility
  * Required TableTools 2.1+
@@ -157,6 +153,4 @@ if ( DataTable.TableTools ) {
 		}
 	} );
 }
-
-
 })(window, document, jQuery, jQuery.fn.dataTable);

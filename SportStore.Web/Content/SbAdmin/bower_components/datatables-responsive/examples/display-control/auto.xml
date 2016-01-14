@@ -21,6 +21,4 @@ Responsive will automatically detect which columns have breakpoint class names a
 This example shows that simple case. On a desktop browser resize the window horizontally to see columns added and removed on-the-fly. On a tablet or mobile browser, change the screen's orientation.
 
 ]]></info>
-
 </dt-example>
-

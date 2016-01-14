@@ -9,7 +9,6 @@
 })("onDomReady", this,
 
 (function(win) {
-
     'use strict';
 
     //Lazy loading fix for Firefox < 3.6
@@ -50,7 +49,6 @@
     // Handle when the DOM is ready
     function ready( fn ) {
         if ( !isReady ) {
-
             // Make sure body exists, at least, in case IE gets a little overzealous (ticket #5443).
             if ( !doc.body ) {
                 return defer( ready );

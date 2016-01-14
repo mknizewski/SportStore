@@ -1,9 +1,9 @@
 /**
- * This plug-in will add automatic detection for currency columns to 
+ * This plug-in will add automatic detection for currency columns to
  * DataTables. Note that only $, £ and € symbols are detected with this code,
  * but it is trivial to add more or change the current ones. This is best used
  * in conjunction with the currency sorting plug-in.
- * 
+ *
  * DataTables 1.10+ has currency sorting abilities built-in and will be
  * automatically detected. As such this plug-in is marked as deprecated, but
  * might be useful when working with old versions of DataTables.
@@ -15,7 +15,6 @@
  */
 
 (function(){
-
 // Change this list to the valid characters you want
 var validChars = "$£€c" + "0123456789" + ".-,'";
 
@@ -23,7 +22,6 @@ var validChars = "$£€c" + "0123456789" + ".-,'";
 var
 	str = jQuery.fn.dataTableExt.oApi._fnEscapeRegex( validChars ),
 	re = new RegExp('[^'+str+']');
-
 
 jQuery.fn.dataTableExt.aTypes.unshift(
    function ( data )
@@ -35,6 +33,4 @@ jQuery.fn.dataTableExt.aTypes.unshift(
 		return 'currency';
 	}
 );
-
 }());
-

@@ -1,7 +1,6 @@
 define([
 	"../ajax"
 ], function( jQuery ) {
-
 jQuery._evalUrl = function( url ) {
 	return jQuery.ajax({
 		url: url,
@@ -14,5 +13,4 @@ jQuery._evalUrl = function( url ) {
 };
 
 return jQuery._evalUrl;
-
 });

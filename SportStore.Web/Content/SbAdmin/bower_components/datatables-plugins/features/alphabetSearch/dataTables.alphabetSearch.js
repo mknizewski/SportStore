@@ -11,15 +11,13 @@
  * @author      SpryMedia Ltd (www.sprymedia.co.uk)
  * @contact     www.sprymedia.co.uk/contact
  * @copyright   Copyright 2014 SpryMedia Ltd.
- * 
+ *
  * License      MIT - http://datatables.net/license/mit
  *
  * For more detailed information please see:
  *     http://datatables.net/blog/2014-09-22
  */
 (function(){
-
-
 // Search function
 $.fn.dataTable.Api.register( 'alphabetSearch()', function ( searchTerm ) {
 	this.iterator( 'table', function ( context ) {
@@ -41,7 +39,6 @@ $.fn.dataTable.Api.register( 'alphabetSearch.recalc()', function ( searchTerm ) 
 	return this;
 } );
 
-
 // Search plug-in
 $.fn.dataTable.ext.search.push( function ( context, searchData ) {
 	// Ensure that there is a search applied to this table before running it
@@ -55,7 +52,6 @@ $.fn.dataTable.ext.search.push( function ( context, searchData ) {
 
 	return false;
 } );
-
 
 // Private support methods
 function bin ( data ) {
@@ -104,7 +100,6 @@ function draw ( table, alphabet )
 		.appendTo( alphabet );
 }
 
-
 $.fn.dataTable.AlphabetSearch = function ( context ) {
 	var table = new $.fn.dataTable.Api( context );
 	var alphabet = $('<div class="alphabet"/>');
@@ -147,7 +142,6 @@ $.fn.dataTable.AlphabetSearch = function ( context ) {
 
 $.fn.DataTable.AlphabetSearch = $.fn.dataTable.AlphabetSearch;
 
-
 // Register a search plug-in
 $.fn.dataTable.ext.feature.push( {
 	fnInit: function ( settings ) {
@@ -156,7 +150,4 @@ $.fn.dataTable.ext.feature.push( {
 	},
 	cFeature: 'A'
 } );
-
-
 }());
-

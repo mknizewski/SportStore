@@ -11,7 +11,6 @@ define([
 	"./css",
 	"./selector" // contains
 ], function( jQuery, strundefined, access, rnumnonpx, curCSS, addGetHookIf, support ) {
-
 var docElem = window.document.documentElement;
 
 /**
@@ -45,7 +44,6 @@ jQuery.offset = {
 			curPosition = curElem.position();
 			curTop = curPosition.top;
 			curLeft = curPosition.left;
-
 		} else {
 			curTop = parseFloat( curCSSTop ) || 0;
 			curLeft = parseFloat( curCSSLeft ) || 0;
@@ -64,7 +62,6 @@ jQuery.offset = {
 
 		if ( "using" in options ) {
 			options.using.call( elem, props );
-
 		} else {
 			curElem.css( props );
 		}
@@ -122,7 +119,6 @@ jQuery.fn.extend({
 		if ( jQuery.css( elem, "position" ) === "fixed" ) {
 			// Assume getBoundingClientRect is there when computed position is fixed
 			offset = elem.getBoundingClientRect();
-
 		} else {
 			// Get *real* offsetParent
 			offsetParent = this.offsetParent();
@@ -175,7 +171,6 @@ jQuery.each( { scrollLeft: "pageXOffset", scrollTop: "pageYOffset" }, function( 
 					!top ? val : window.pageXOffset,
 					top ? val : window.pageYOffset
 				);
-
 			} else {
 				elem[ method ] = val;
 			}

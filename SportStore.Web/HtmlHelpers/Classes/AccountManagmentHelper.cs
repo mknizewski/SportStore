@@ -108,8 +108,7 @@ namespace SportStore.Web.HtmlHelpers.Classes
                 return true;
             }
             else
-                return false;  
-
+                return false;
         }
 
         private bool checkPassword(int Id, string Password)

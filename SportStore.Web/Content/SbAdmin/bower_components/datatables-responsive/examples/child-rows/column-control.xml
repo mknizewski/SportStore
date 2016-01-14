@@ -33,6 +33,4 @@ Responsive has two built in methods for displaying the controlling element of th
 This example shows the `r-init responsive.details.type` option set to `column` to activate the control column. Note that by default the first column is used as the control, so additionally in the initialisation the `dt-init order` and `dt-init columns.orderable` options are used to disable sorting on this column.
 
 ]]></info>
-
 </dt-example>
-

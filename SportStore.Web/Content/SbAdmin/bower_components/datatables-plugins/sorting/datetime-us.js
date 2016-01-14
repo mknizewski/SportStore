@@ -1,6 +1,6 @@
 /*
  * Adds a new sorting option to dataTables called `datetime-us`.
- * 
+ *
  * Also included is a type detection plug-in. Matches and sorts date / time
  * strings in the format: `(m)m/(d)d/(yy)yy (h)h/m(m) (am|pm)`. For example:
  *
@@ -78,7 +78,6 @@ jQuery.extend(jQuery.fn.dataTableExt.oSort, {
 jQuery.fn.dataTableExt.aTypes.unshift(
     function (sData) {
         if (sData !== null && sData.match(/\d{1,2}\/\d{1,2}\/\d{2,4} \d{1,2}:\d{1,2} (am|pm|AM|PM|Am|Pm)/)) {
-
             return 'datetime-us';
         }
         return null;

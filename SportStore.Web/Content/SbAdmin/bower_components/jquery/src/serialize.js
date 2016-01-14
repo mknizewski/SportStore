@@ -5,7 +5,6 @@ define([
 	"./traversing", // filter
 	"./attributes/prop"
 ], function( jQuery, rcheckableType ) {
-
 var r20 = /%20/g,
 	rbracket = /\[\]$/,
 	rCRLF = /\r?\n/g,
@@ -21,19 +20,16 @@ function buildParams( prefix, obj, traditional, add ) {
 			if ( traditional || rbracket.test( prefix ) ) {
 				// Treat each array item as a scalar.
 				add( prefix, v );
-
 			} else {
 				// Item is non-scalar (array or object), encode its numeric index.
 				buildParams( prefix + "[" + ( typeof v === "object" ? i : "" ) + "]", v, traditional, add );
 			}
 		});
-
 	} else if ( !traditional && jQuery.type( obj ) === "object" ) {
 		// Serialize object item.
 		for ( name in obj ) {
 			buildParams( prefix + "[" + name + "]", obj[ name ], traditional, add );
 		}
-
 	} else {
 		// Serialize scalar item.
 		add( prefix, obj );
@@ -62,7 +58,6 @@ jQuery.param = function( a, traditional ) {
 		jQuery.each( a, function() {
 			add( this.name, this.value );
 		});
-
 	} else {
 		// If traditional, encode the "old" way (the way 1.3.2 or older
 		// did it), otherwise encode params recursively.

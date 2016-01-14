@@ -3,7 +3,6 @@ define([
 	"./support",
 	"../core/init"
 ], function( jQuery, support ) {
-
 var rreturn = /\r/g;
 
 jQuery.fn.extend({
@@ -49,10 +48,8 @@ jQuery.fn.extend({
 			// Treat null/undefined as ""; convert numbers to string
 			if ( val == null ) {
 				val = "";
-
 			} else if ( typeof val === "number" ) {
 				val += "";
-
 			} else if ( jQuery.isArray( val ) ) {
 				val = jQuery.map( val, function( value ) {
 					return value == null ? "" : value + "";
@@ -102,7 +99,6 @@ jQuery.extend({
 							// Don't return options that are disabled or in a disabled optgroup
 							( support.optDisabled ? !option.disabled : option.getAttribute( "disabled" ) === null ) &&
 							( !option.parentNode.disabled || !jQuery.nodeName( option.parentNode, "optgroup" ) ) ) {
-
 						// Get the specific value for the option
 						value = jQuery( option ).val();
 
@@ -157,5 +153,4 @@ jQuery.each([ "radio", "checkbox" ], function() {
 		};
 	}
 });
-
 });

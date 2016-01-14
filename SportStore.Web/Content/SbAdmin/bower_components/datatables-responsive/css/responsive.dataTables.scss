@@ -1,11 +1,9 @@
-
 //
 // Variables
 //
 
 $open-button-background: #31b131 !default;
 $close-button-background: #d33333 !default;
-
 
 //
 // Mixins
@@ -31,7 +29,6 @@ $close-button-background: #d33333 !default;
 	content: '-';
 	background-color: $close-button-background;
 }
-
 
 //
 // Table styles
@@ -88,7 +85,6 @@ table.dataTable {
 		}
 	}
 
-
 	// Styling for the `column` type
 	&.dtr-column > tbody {
 		> tr > td.control,
@@ -115,7 +111,6 @@ table.dataTable {
 			}
 		}
 	}
-
 
 	// Child row styling
 	> tbody > tr.child {
@@ -154,4 +149,3 @@ table.dataTable {
 		span.dtr-data {}
 	}
 }
-

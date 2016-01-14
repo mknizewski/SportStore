@@ -45,5 +45,4 @@ $('#example').DataTable( {
 } );
 
 ]]></example>
-
 </dt-option>

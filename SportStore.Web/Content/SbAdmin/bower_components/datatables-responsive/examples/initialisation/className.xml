@@ -21,6 +21,4 @@ The easiest way to initialise the Responsive extension for DataTables is simply 
 The may also use the class `dt-responsive` to perform the same action, since `responsive` may be used in your stylesheet, or may have some other meaning in a CSS framework being used (for example Bootstrap).
 
 ]]></info>
-
 </dt-example>
-

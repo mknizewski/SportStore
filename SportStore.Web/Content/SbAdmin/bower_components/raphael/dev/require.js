@@ -893,7 +893,6 @@ var requirejs, require, define;
                                 err.requireType = this.map.isDefine ? 'define' : 'require';
                                 return onError((this.error = err));
                             }
-
                         } else {
                             //Just a literal value
                             exports = factory;
@@ -925,7 +924,6 @@ var requirejs, require, define;
                         this.emit('defined', this.exports);
                         this.defineEmitComplete = true;
                     }
-
                 }
             },
 
@@ -1687,7 +1685,6 @@ var requirejs, require, define;
      * name for minification/local scope use.
      */
     req = requirejs = function (deps, callback, errback, optional) {
-
         //Find the right context, use default
         var context, config,
             contextName = defContextName;
@@ -2035,7 +2032,6 @@ var requirejs, require, define;
     define.amd = {
         jQuery: true
     };
-
 
     /**
      * Executes the text. Normally just uses eval, but can be modified

@@ -16,7 +16,6 @@
  *    } );
  */
 
-
 /* Time between each scrolling frame */
 $.fn.dataTableExt.oPagination.iTweenTime = 100;
 

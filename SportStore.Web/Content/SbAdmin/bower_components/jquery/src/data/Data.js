@@ -3,7 +3,6 @@ define([
 	"../var/rnotwhite",
 	"./accepts"
 ], function( jQuery, rnotwhite ) {
-
 function Data() {
 	// Support: Android<4,
 	// Old WebKit does not have Object.preventExtensions/freeze method,
@@ -108,7 +107,6 @@ Data.prototype = {
 		//
 		if ( key === undefined ||
 				((key && typeof key === "string") && value === undefined) ) {
-
 			stored = this.get( owner, key );
 
 			return stored !== undefined ?
@@ -134,7 +132,6 @@ Data.prototype = {
 
 		if ( key === undefined ) {
 			this.cache[ unlock ] = {};
-
 		} else {
 			// Support array or space separated string of keys
 			if ( jQuery.isArray( key ) ) {

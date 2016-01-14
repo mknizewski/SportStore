@@ -3,7 +3,6 @@ Holder.js - client side image placeholders
 © 2012-2014 Ivan Malopinsky - http://imsky.co
 */
 (function(register, global, undefined) {
-
 	//Constants and definitions
 
 	var SVG_NS = 'http://www.w3.org/2000/svg';
@@ -1155,7 +1154,6 @@ Holder.js - client side image placeholders
 
 		//External stylesheets: <link> method
 		if (renderSettings.svgLinkStylesheet) {
-
 			defs.removeChild(defs.firstChild);
 			for (i = 0; i < stylesheets.length; i++) {
 				var link = document.createElementNS('http://www.w3.org/1999/xhtml', 'link');
@@ -1518,7 +1516,6 @@ Holder.js - client side image placeholders
 			}
 		});
 	}
-
 })(function(fn, name, global) {
 	var isAMD = (typeof define === 'function' && define.amd);
 	var isNode = (typeof exports === 'object');

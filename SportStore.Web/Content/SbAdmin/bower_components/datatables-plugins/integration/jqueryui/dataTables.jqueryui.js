@@ -11,10 +11,8 @@
  * for further information.
  */
 (function(window, document, undefined){
-
 var factory = function( $, DataTable ) {
 "use strict";
-
 
 var sort_prefix = 'css_right ui-icon ui-icon-';
 var toolbar_prefix = 'fg-toolbar ui-toolbar ui-widget-header ui-helper-clearfix ui-corner-';
@@ -27,7 +25,6 @@ $.extend( true, DataTable.defaults, {
 		'<"'+toolbar_prefix+'bl ui-corner-br"ip>',
 	renderer: 'jqueryui'
 } );
-
 
 $.extend( DataTable.ext.classes, {
 	"sWrapper":            "dataTables_wrapper dt-jqueryui",
@@ -58,7 +55,6 @@ $.extend( DataTable.ext.classes, {
 	"sHeaderTH":  "ui-state-default",
 	"sFooterTH":  "ui-state-default"
 } );
-
 
 DataTable.ext.renderer.header.jqueryui = function ( settings, cell, column, classes ) {
 	// Calculate what the unsorted class should be
@@ -118,7 +114,6 @@ DataTable.ext.renderer.header.jqueryui = function ( settings, cell, column, clas
 	} );
 };
 
-
 /*
  * TableTools jQuery UI compatibility
  * Required TableTools 2.1+
@@ -134,9 +129,7 @@ if ( DataTable.TableTools ) {
 		}
 	} );
 }
-
 }; // /factory
-
 
 // Define as an AMD module if possible
 if ( typeof define === 'function' && define.amd ) {
@@ -150,7 +143,4 @@ else if ( jQuery ) {
 	// Otherwise simply initialise as normal, stopping multiple evaluation
 	factory( jQuery, jQuery.fn.dataTable );
 }
-
-
 })(window, document);
-

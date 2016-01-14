@@ -6,7 +6,6 @@ define([
 	"./support",
 	"../selector"
 ], function( jQuery, rnotwhite, strundefined, access, support ) {
-
 var nodeHook, boolHook,
 	attrHandle = jQuery.expr.attrHandle;
 
@@ -46,21 +45,16 @@ jQuery.extend({
 		}
 
 		if ( value !== undefined ) {
-
 			if ( value === null ) {
 				jQuery.removeAttr( elem, name );
-
 			} else if ( hooks && "set" in hooks && (ret = hooks.set( elem, value, name )) !== undefined ) {
 				return ret;
-
 			} else {
 				elem.setAttribute( name, value + "" );
 				return value;
 			}
-
 		} else if ( hooks && "get" in hooks && (ret = hooks.get( elem, name )) !== null ) {
 			return ret;
-
 		} else {
 			ret = jQuery.find.attr( elem, name );
 
@@ -137,5 +131,4 @@ jQuery.each( jQuery.expr.match.bool.source.match( /\w+/g ), function( i, name ) 
 		return ret;
 	};
 });
-
 });

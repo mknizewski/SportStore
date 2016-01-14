@@ -9,7 +9,6 @@
  * Date: 2014-12-16
  */
 (function( window ) {
-
 var i,
 	support,
 	Expr,
@@ -209,12 +208,10 @@ function Sizzle( selector, context, results, seed ) {
 
 	if ( typeof selector !== "string" || !selector ||
 		nodeType !== 1 && nodeType !== 9 && nodeType !== 11 ) {
-
 		return results;
 	}
 
 	if ( !seed && documentIsHTML ) {
-
 		// Try to shortcut find operations when possible (e.g., not under DocumentFragment)
 		if ( nodeType !== 11 && (match = rquickExpr.exec( selector )) ) {
 			// Speed-up: Sizzle("#ID")
@@ -692,7 +689,6 @@ setDocument = Sizzle.setDocument = function( node ) {
 		docElem.mozMatchesSelector ||
 		docElem.oMatchesSelector ||
 		docElem.msMatchesSelector) )) ) {
-
 		assert(function( div ) {
 			// Check to see if it's possible to do matchesSelector
 			// on a disconnected node (IE 9)
@@ -742,7 +738,6 @@ setDocument = Sizzle.setDocument = function( node ) {
 	// Document order sorting
 	sortOrder = hasCompare ?
 	function( a, b ) {
-
 		// Flag for duplicate removal
 		if ( a === b ) {
 			hasDuplicate = true;
@@ -765,7 +760,6 @@ setDocument = Sizzle.setDocument = function( node ) {
 		// Disconnected nodes
 		if ( compare & 1 ||
 			(!support.sortDetached && b.compareDocumentPosition( a ) === compare) ) {
-
 			// Choose the first element that is related to our preferred document
 			if ( a === doc || a.ownerDocument === preferredDoc && contains(preferredDoc, a) ) {
 				return -1;
@@ -855,7 +849,6 @@ Sizzle.matchesSelector = function( elem, expr ) {
 	if ( support.matchesSelector && documentIsHTML &&
 		( !rbuggyMatches || !rbuggyMatches.test( expr ) ) &&
 		( !rbuggyQSA     || !rbuggyQSA.test( expr ) ) ) {
-
 		try {
 			var ret = matches.call( elem, expr );
 
@@ -974,7 +967,6 @@ getText = Sizzle.getText = function( elem ) {
 };
 
 Expr = Sizzle.selectors = {
-
 	// Can be adjusted by the user
 	cacheLength: 50,
 
@@ -1057,7 +1049,6 @@ Expr = Sizzle.selectors = {
 				(excess = tokenize( unquoted, true )) &&
 				// advance to the next closing parenthesis
 				(excess = unquoted.indexOf( ")", unquoted.length - excess ) - unquoted.length) ) {
-
 				// excess is a negative index
 				match[0] = match[0].slice( 0, excess );
 				match[2] = unquoted.slice( 0, excess );
@@ -1069,7 +1060,6 @@ Expr = Sizzle.selectors = {
 	},
 
 	filter: {
-
 		"TAG": function( nodeNameSelector ) {
 			var nodeName = nodeNameSelector.replace( runescape, funescape ).toLowerCase();
 			return nodeNameSelector === "*" ?
@@ -1133,7 +1123,6 @@ Expr = Sizzle.selectors = {
 						useCache = !xml && !ofType;
 
 					if ( parent ) {
-
 						// :(first|last|only)-(child|of-type)
 						if ( simple ) {
 							while ( dir ) {
@@ -1164,7 +1153,6 @@ Expr = Sizzle.selectors = {
 
 								// Fallback to seeking `elem` from the start
 								(diff = nodeIndex = 0) || start.pop()) ) {
-
 								// When found, cache indexes on `parent` and break
 								if ( node.nodeType === 1 && ++diff && node === elem ) {
 									outerCache[ type ] = [ dirruns, nodeIndex, diff ];
@@ -1181,7 +1169,6 @@ Expr = Sizzle.selectors = {
 							// Use the same loop as above to seek `elem` from the start
 							while ( (node = ++nodeIndex && node && node[ dir ] ||
 								(diff = nodeIndex = 0) || start.pop()) ) {
-
 								if ( ( ofType ? node.nodeName.toLowerCase() === name : node.nodeType === 1 ) && ++diff ) {
 									// Cache the index of each encountered element
 									if ( useCache ) {
@@ -1304,7 +1291,6 @@ Expr = Sizzle.selectors = {
 					if ( (elemLang = documentIsHTML ?
 						elem.lang :
 						elem.getAttribute("xml:lang") || elem.getAttribute("lang")) ) {
-
 						elemLang = elemLang.toLowerCase();
 						return elemLang === lang || elemLang.indexOf( lang + "-" ) === 0;
 					}
@@ -1471,7 +1457,6 @@ tokenize = Sizzle.tokenize = function( selector, parseOnly ) {
 	preFilters = Expr.preFilter;
 
 	while ( soFar ) {
-
 		// Comma and first run
 		if ( !matched || (match = rcomma.exec( soFar )) ) {
 			if ( match ) {
@@ -1569,7 +1554,6 @@ function addCombinator( matcher, combinator, base ) {
 						outerCache = elem[ expando ] || (elem[ expando ] = {});
 						if ( (oldCache = outerCache[ dir ]) &&
 							oldCache[ 0 ] === dirruns && oldCache[ 1 ] === doneName ) {
-
 							// Assign to newCache so results back-propagate to previous elements
 							return (newCache[ 2 ] = oldCache[ 2 ]);
 						} else {
@@ -1702,7 +1686,6 @@ function setMatcher( preFilter, selector, matcher, postFilter, postFinder, postS
 				while ( i-- ) {
 					if ( (elem = matcherOut[i]) &&
 						(temp = postFinder ? indexOf( seed, elem ) : preMap[i]) > -1 ) {
-
 						seed[temp] = !(results[temp] = elem);
 					}
 				}
@@ -1862,7 +1845,6 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 				// Seedless set matches succeeding multiple successful matchers stipulate sorting
 				if ( outermost && !seed && setMatched.length > 0 &&
 					( matchedCount + setMatchers.length ) > 1 ) {
-
 					Sizzle.uniqueSort( results );
 				}
 			}
@@ -1929,13 +1911,11 @@ select = Sizzle.select = function( selector, context, results, seed ) {
 
 	// Try to minimize operations if there is no seed and only one group
 	if ( match.length === 1 ) {
-
 		// Take a shortcut and set the context if the root selector is an ID
 		tokens = match[0] = match[0].slice( 0 );
 		if ( tokens.length > 2 && (token = tokens[0]).type === "ID" &&
 				support.getById && context.nodeType === 9 && documentIsHTML &&
 				Expr.relative[ tokens[1].type ] ) {
-
 			context = ( Expr.find["ID"]( token.matches[0].replace(runescape, funescape), context ) || [] )[0];
 			if ( !context ) {
 				return results;
@@ -1963,7 +1943,6 @@ select = Sizzle.select = function( selector, context, results, seed ) {
 					token.matches[0].replace( runescape, funescape ),
 					rsibling.test( tokens[0].type ) && testContext( context.parentNode ) || context
 				)) ) {
-
 					// If seed is empty or no tokens remain, we can return early
 					tokens.splice( i, 1 );
 					selector = seed.length && toSelector( tokens );
@@ -2063,5 +2042,4 @@ if ( typeof define === "function" && define.amd ) {
 	window.Sizzle = Sizzle;
 }
 // EXPOSE
-
 })( window );

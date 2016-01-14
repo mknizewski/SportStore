@@ -3,7 +3,6 @@ define([
 	"../core/init",
 	"../deferred"
 ], function( jQuery ) {
-
 // The deferred used on DOM ready
 var readyList;
 
@@ -33,7 +32,6 @@ jQuery.extend({
 
 	// Handle when the DOM is ready
 	ready: function( wait ) {
-
 		// Abort if there are pending holds or we're already ready
 		if ( wait === true ? --jQuery.readyWait : jQuery.isReady ) {
 			return;
@@ -69,7 +67,6 @@ function completed() {
 
 jQuery.ready.promise = function( obj ) {
 	if ( !readyList ) {
-
 		readyList = jQuery.Deferred();
 
 		// Catch cases where $(document).ready() is called after the browser event has already occurred.
@@ -78,9 +75,7 @@ jQuery.ready.promise = function( obj ) {
 		if ( document.readyState === "complete" ) {
 			// Handle it asynchronously to allow scripts the opportunity to delay ready
 			setTimeout( jQuery.ready );
-
 		} else {
-
 			// Use the handy event callback
 			document.addEventListener( "DOMContentLoaded", completed, false );
 
@@ -93,5 +88,4 @@ jQuery.ready.promise = function( obj ) {
 
 // Kick off the DOM ready check even if the user does not
 jQuery.ready.promise();
-
 });

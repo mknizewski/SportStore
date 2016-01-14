@@ -71,7 +71,6 @@ $.fn.dataTableExt.oPagination.four_button = {
 		$(nLast).bind( 'selectstart', function () { return false; } );
 	},
 
-
 	"fnUpdate": function ( oSettings, fnCallbackDraw )
 	{
 		if ( !oSettings.aanFeatures.p )

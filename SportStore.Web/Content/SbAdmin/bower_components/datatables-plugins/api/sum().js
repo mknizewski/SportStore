@@ -33,4 +33,3 @@ jQuery.fn.dataTable.Api.register( 'sum()', function () {
 		return (a*1) + (b*1); // cast values in-case they are strings
 	} );
 } );
-

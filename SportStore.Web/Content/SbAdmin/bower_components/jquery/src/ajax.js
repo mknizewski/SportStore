@@ -8,7 +8,6 @@ define([
 	"./ajax/parseXML",
 	"./deferred"
 ], function( jQuery, rnotwhite, nonce, rquery ) {
-
 var
 	rhash = /#.*$/,
 	rts = /([?&])_=[^&]*/,
@@ -48,10 +47,8 @@ var
 
 // Base "constructor" for jQuery.ajaxPrefilter and jQuery.ajaxTransport
 function addToPrefiltersOrTransports( structure ) {
-
 	// dataTypeExpression is optional and defaults to "*"
 	return function( dataTypeExpression, func ) {
-
 		if ( typeof dataTypeExpression !== "string" ) {
 			func = dataTypeExpression;
 			dataTypeExpression = "*";
@@ -80,7 +77,6 @@ function addToPrefiltersOrTransports( structure ) {
 
 // Base inspection function for prefilters and transports
 function inspectPrefiltersOrTransports( structure, options, originalOptions, jqXHR ) {
-
 	var inspected = {},
 		seekingTransport = ( structure === transports );
 
@@ -127,7 +123,6 @@ function ajaxExtend( target, src ) {
  * - returns the corresponding response
  */
 function ajaxHandleResponses( s, jqXHR, responses ) {
-
 	var ct, type, finalDataType, firstDataType,
 		contents = s.contents,
 		dataTypes = s.dataTypes;
@@ -199,7 +194,6 @@ function ajaxConvert( s, response, jqXHR, isSuccess ) {
 
 	// Convert to each sequential dataType
 	while ( current ) {
-
 		if ( s.responseFields[ current ] ) {
 			jqXHR[ s.responseFields[ current ] ] = response;
 		}
@@ -213,26 +207,21 @@ function ajaxConvert( s, response, jqXHR, isSuccess ) {
 		current = dataTypes.shift();
 
 		if ( current ) {
-
 		// There's only work to do if current dataType is non-auto
 			if ( current === "*" ) {
-
 				current = prev;
 
 			// Convert response if prev dataType is non-auto and differs from current
 			} else if ( prev !== "*" && prev !== current ) {
-
 				// Seek a direct converter
 				conv = converters[ prev + " " + current ] || converters[ "* " + current ];
 
 				// If none found, seek a pair
 				if ( !conv ) {
 					for ( conv2 in converters ) {
-
 						// If conv2 outputs current
 						tmp = conv2.split( " " );
 						if ( tmp[ 1 ] === current ) {
-
 							// If prev can be converted to accepted input
 							conv = converters[ prev + " " + tmp[ 0 ] ] ||
 								converters[ "* " + tmp[ 0 ] ];
@@ -254,7 +243,6 @@ function ajaxConvert( s, response, jqXHR, isSuccess ) {
 
 				// Apply converter (if not an equivalence)
 				if ( conv !== true ) {
-
 					// Unless errors are allowed to bubble, catch and return them
 					if ( conv && s[ "throws" ] ) {
 						response = conv( response );
@@ -274,7 +262,6 @@ function ajaxConvert( s, response, jqXHR, isSuccess ) {
 }
 
 jQuery.extend({
-
 	// Counter for holding the number of active queries
 	active: 0,
 
@@ -325,7 +312,6 @@ jQuery.extend({
 		// Data converters
 		// Keys separate source (or catchall "*") and destination types with a single space
 		converters: {
-
 			// Convert anything to text
 			"* text": String,
 
@@ -367,7 +353,6 @@ jQuery.extend({
 
 	// Main method
 	ajax: function( url, options ) {
-
 		// If url is an object, simulate pre-1.5 signature
 		if ( typeof url === "object" ) {
 			options = url;
@@ -543,7 +528,6 @@ jQuery.extend({
 
 		// More options handling for requests with no content
 		if ( !s.hasContent ) {
-
 			// If data is available, append data to url
 			if ( s.data ) {
 				cacheURL = ( s.url += ( rquery.test( cacheURL ) ? "&" : "?" ) + s.data );
@@ -680,7 +664,6 @@ jQuery.extend({
 
 			// If successful, handle type chaining
 			if ( isSuccess ) {
-
 				// Set the If-Modified-Since and/or If-None-Match header, if in ifModified mode.
 				if ( s.ifModified ) {
 					modified = jqXHR.getResponseHeader("Last-Modified");

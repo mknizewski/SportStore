@@ -2,7 +2,6 @@ define([
 	"../core",
 	"../css"
 ], function( jQuery ) {
-
 function Tween( elem, options, prop, end, easing ) {
 	return new Tween.prototype.init( elem, options, prop, end, easing );
 }
@@ -110,5 +109,4 @@ jQuery.fx = Tween.prototype.init;
 
 // Back Compat <1.8 extension point
 jQuery.fx.step = {};
-
 });

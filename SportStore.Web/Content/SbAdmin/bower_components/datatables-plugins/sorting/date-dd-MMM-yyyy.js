@@ -2,7 +2,7 @@
  * Adds a new sorting option to dataTables called `date-dd-mmm-yyyy`. Also
  * includes a type detection plug-in. Matches and sorts date strings in
  * the format: `dd/mmm/yyyy`. For example:
- * 
+ *
  * * 02-FEB-1978
  * * 17-MAY-2013
  * * 31-JAN-2014
@@ -25,7 +25,6 @@
  */
 
 (function () {
-
 var customDateDDMMMYYYYToOrd = function (date) {
 	"use strict"; //let's avoid tom-foolery in this function
 	// Convert to a number YYYYMMDD which we can use to order
@@ -59,5 +58,4 @@ jQuery.fn.dataTableExt.oSort['date-dd-mmm-yyyy-desc'] = function (a, b) {
 		ordB = customDateDDMMMYYYYToOrd(b);
 	return (ordA < ordB) ? 1 : ((ordA > ordB) ? -1 : 0);
 };
-
 })();

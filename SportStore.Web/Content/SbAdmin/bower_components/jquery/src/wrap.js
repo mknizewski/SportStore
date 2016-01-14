@@ -4,7 +4,6 @@ define([
 	"./manipulation", // clone
 	"./traversing" // parent, contents
 ], function( jQuery ) {
-
 jQuery.fn.extend({
 	wrapAll: function( html ) {
 		var wrap;
@@ -16,7 +15,6 @@ jQuery.fn.extend({
 		}
 
 		if ( this[ 0 ] ) {
-
 			// The elements to wrap the target around
 			wrap = jQuery( html, this[ 0 ].ownerDocument ).eq( 0 ).clone( true );
 
@@ -51,7 +49,6 @@ jQuery.fn.extend({
 
 			if ( contents.length ) {
 				contents.wrapAll( html );
-
 			} else {
 				self.append( html );
 			}

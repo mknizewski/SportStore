@@ -5,7 +5,6 @@ define([
 	"./data/var/data_priv",
 	"./data/var/data_user"
 ], function( jQuery, rnotwhite, access, data_priv, data_user ) {
-
 //	Implementation Summary
 //
 //	1. Enforce API surface and semantic compatibility with 1.9.x branch
@@ -86,7 +85,6 @@ jQuery.fn.extend({
 				if ( elem.nodeType === 1 && !data_priv.get( elem, "hasDataAttrs" ) ) {
 					i = attrs.length;
 					while ( i-- ) {
-
 						// Support: IE11+
 						// The attrs elements can be null (#14894)
 						if ( attrs[ i ] ) {

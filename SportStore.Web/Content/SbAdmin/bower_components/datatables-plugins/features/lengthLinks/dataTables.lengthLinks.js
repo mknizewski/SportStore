@@ -10,7 +10,7 @@
  * @author      SpryMedia Ltd (www.sprymedia.co.uk)
  * @contact     www.sprymedia.co.uk/contact
  * @copyright   Copyright 2014 SpryMedia Ltd.
- * 
+ *
  * License      MIT - http://datatables.net/license/mit
  *
  * This feature plug-in for DataTables adds page length control links to the
@@ -31,8 +31,6 @@
  */
 
 (function(window, document, $, undefined) {
-
-
 $.fn.dataTable.LengthLinks = function ( inst ) {
 	var api = new $.fn.dataTable.Api( inst );
 	var settings = api.settings()[0];
@@ -85,6 +83,4 @@ $.fn.dataTable.ext.feature.push( {
 	"cFeature": "L",
 	"sFeature": "LengthLinks"
 } );
-
-
 })(window, document, jQuery);

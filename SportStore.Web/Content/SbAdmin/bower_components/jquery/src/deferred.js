@@ -3,9 +3,7 @@ define([
 	"./var/slice",
 	"./callbacks"
 ], function( jQuery, slice ) {
-
 jQuery.extend({
-
 	Deferred: function( func ) {
 		var tuples = [
 				// action, add listener, listener list, final state

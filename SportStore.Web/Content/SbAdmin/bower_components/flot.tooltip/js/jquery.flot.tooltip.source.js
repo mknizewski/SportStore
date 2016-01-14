@@ -58,7 +58,6 @@
         }
 
         plot.hooks.bindEvents.push(function (plot, eventHolder) {
-
             // get plot options
             that.plotOptions = plot.getOptions();
 
@@ -169,7 +168,6 @@
                         series.yaxis.p2c(pointPrev.y), series.xaxis.p2c(pointNext.x), series.yaxis.p2c(pointNext.y), false);
 
                     if (distToLine < closestTrace.distance) {
-
                         var closestIndex = lineDistance(pointPrev.x, pointPrev.y, pos.x, pos.y) <
                             lineDistance(pos.x, pos.y, pointNext.x, pointNext.y) ? xBeforeIndex : xAfterIndex;
 
@@ -283,7 +281,6 @@
      * @return {string} real tooltip content for current item
      */
     FlotTooltip.prototype.stringFormat = function (content, item) {
-
         var percentPattern = /%p\.{0,1}(\d{0,})/;
         var seriesPattern = /%s/;
         var colorPattern = /%c/;
@@ -333,7 +330,7 @@
             p = item.series.percent;
         } else if (typeof (item.series.percents) !== 'undefined') {
             p = item.series.percents[item.dataIndex];
-        }        
+        }
         if (typeof p === 'number') {
             content = this.adjustValPrecision(percentPattern, content, p);
         }
@@ -345,7 +342,7 @@
             //remove %s if label is undefined
             content = content.replace(seriesPattern, "");
         }
-        
+
         // color match
         if (typeof(item.series.color) !== 'undefined') {
             content = content.replace(colorPattern, item.series.color);
@@ -388,7 +385,6 @@
 
         // change x from number to given label, if given
         if (typeof item.series.xaxis.ticks !== 'undefined') {
-
             var ticks;
             if (this.hasRotatedXAxisTicks(item)) {
                 // xaxis.ticks will be an empty array if tickRotor is being used, but the values are available in rotatedTicks
@@ -463,7 +459,6 @@
 
     //
     FlotTooltip.prototype.adjustValPrecision = function (pattern, content, value) {
-
         var precision;
         var matchResult = content.match(pattern);
         if( matchResult !== null ) {
@@ -502,5 +497,4 @@
         name: 'tooltip',
         version: '0.8.5'
     });
-
 })(jQuery);

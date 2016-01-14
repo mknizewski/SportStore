@@ -11,15 +11,12 @@
  * for further information.
  */
 (function(window, document, undefined){
-
 var factory = function( $, DataTable ) {
 "use strict";
-
 
 $.extend( DataTable.ext.classes, {
 	sWrapper: "dataTables_wrapper dt-foundation"
 } );
-
 
 /* Set the defaults for DataTables initialisation */
 $.extend( true, DataTable.defaults, {
@@ -29,7 +26,6 @@ $.extend( true, DataTable.defaults, {
 		"<'row'<'small-6 columns'i><'small-6 columns'p>>",
 	renderer: 'foundation'
 } );
-
 
 /* Page button renderer */
 DataTable.ext.renderer.pageButton.foundation = function ( settings, host, idx, buttons, page, pages ) {
@@ -124,7 +120,6 @@ DataTable.ext.renderer.pageButton.foundation = function ( settings, host, idx, b
 	);
 };
 
-
 /*
  * TableTools Foundation compatibility
  * Required TableTools 2.1+
@@ -158,9 +153,7 @@ if ( DataTable.TableTools ) {
 		}
 	} );
 }
-
 }; // /factory
-
 
 // Define as an AMD module if possible
 if ( typeof define === 'function' && define.amd ) {
@@ -174,7 +167,4 @@ else if ( jQuery ) {
 	// Otherwise simply initialise as normal, stopping multiple evaluation
 	factory( jQuery, jQuery.fn.dataTable );
 }
-
-
 })(window, document);
-

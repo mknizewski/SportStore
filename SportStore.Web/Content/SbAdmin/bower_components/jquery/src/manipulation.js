@@ -14,7 +14,6 @@ define([
 	"./selector",
 	"./event"
 ], function( jQuery, concat, push, access, rcheckableType, support, data_priv, data_user ) {
-
 var
 	rxhtmlTag = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/gi,
 	rtagName = /<([\w:]+)/,
@@ -28,7 +27,6 @@ var
 
 	// We have to close these tags to support XHTML (#13200)
 	wrapMap = {
-
 		// Support: IE9
 		option: [ 1, "<select multiple='multiple'>", "</select>" ],
 
@@ -153,7 +151,6 @@ jQuery.extend({
 		// Fix IE cloning issues
 		if ( !support.noCloneChecked && ( elem.nodeType === 1 || elem.nodeType === 11 ) &&
 				!jQuery.isXMLDoc( elem ) ) {
-
 			// We eschew Sizzle here for performance reasons: http://jsperf.com/getall-vs-sizzle/2
 			destElements = getAll( clone );
 			srcElements = getAll( elem );
@@ -198,7 +195,6 @@ jQuery.extend({
 			elem = elems[ i ];
 
 			if ( elem || elem === 0 ) {
-
 				// Add nodes directly
 				if ( jQuery.type( elem ) === "object" ) {
 					// Support: QtWebKit, PhantomJS
@@ -242,7 +238,6 @@ jQuery.extend({
 
 		i = 0;
 		while ( (elem = nodes[ i++ ]) ) {
-
 			// #4087 - If origin and destination elements are the same, and this is
 			// that element, do not do anything
 			if ( selection && jQuery.inArray( elem, selection ) !== -1 ) {
@@ -380,7 +375,6 @@ jQuery.fn.extend({
 
 		for ( ; (elem = this[i]) != null; i++ ) {
 			if ( elem.nodeType === 1 ) {
-
 				// Prevent memory leaks
 				jQuery.cleanData( getAll( elem, false ) );
 
@@ -414,7 +408,6 @@ jQuery.fn.extend({
 			// See if we can take a shortcut and just use innerHTML
 			if ( typeof value === "string" && !rnoInnerhtml.test( value ) &&
 				!wrapMap[ ( rtagName.exec( value ) || [ "", "" ] )[ 1 ].toLowerCase() ] ) {
-
 				value = value.replace( rxhtmlTag, "<$1></$2>" );
 
 				try {
@@ -463,7 +456,6 @@ jQuery.fn.extend({
 	},
 
 	domManip: function( args, callback ) {
-
 		// Flatten any nested arrays
 		args = concat.apply( [], args );
 
@@ -530,7 +522,6 @@ jQuery.fn.extend({
 						node = scripts[ i ];
 						if ( rscriptType.test( node.type || "" ) &&
 							!data_priv.access( node, "globalEval" ) && jQuery.contains( doc, node ) ) {
-
 							if ( node.src ) {
 								// Optional AJAX dependency, but won't run scripts if not present
 								if ( jQuery._evalUrl ) {

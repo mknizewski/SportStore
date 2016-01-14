@@ -5,7 +5,6 @@ define([
 	"./var/getStyles",
 	"../selector" // contains
 ], function( jQuery, rnumnonpx, rmargin, getStyles ) {
-
 function curCSS( elem, name, computed ) {
 	var width, minWidth, maxWidth, ret,
 		style = elem.style;
@@ -19,7 +18,6 @@ function curCSS( elem, name, computed ) {
 	}
 
 	if ( computed ) {
-
 		if ( ret === "" && !jQuery.contains( elem.ownerDocument, elem ) ) {
 			ret = jQuery.style( elem, name );
 		}
@@ -29,7 +27,6 @@ function curCSS( elem, name, computed ) {
 		// iOS < 6 (at least) returns percentage for a larger set of values, but width seems to be reliably pixels
 		// this is against the CSSOM draft spec: http://dev.w3.org/csswg/cssom/#resolved-values
 		if ( rnumnonpx.test( ret ) && rmargin.test( name ) ) {
-
 			// Remember the original values
 			width = style.width;
 			minWidth = style.minWidth;

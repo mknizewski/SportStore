@@ -13,7 +13,7 @@
 		</description>
 	</type>
 
-	<default value="inline"/>
+	<default value="inline" />
 
 	<description>
 		Responsive has two built in methods of managing how the child row display control is shown to the end user:
@@ -43,5 +43,4 @@ $('#example').DataTable( {
 } );
 
 ]]></example>
-
 </dt-option>

@@ -1,6 +1,6 @@
 /**
- * Sorting in Javascript can be difficult to get right with non-Roman 
- * characters - for which special consideration must be made. This plug-in 
+ * Sorting in Javascript can be difficult to get right with non-Roman
+ * characters - for which special consideration must be made. This plug-in
  * performs correct sorting on Persian characters.
  *
  *  @name Persian
@@ -16,7 +16,6 @@
  */
 
 (function(){
-
 var persianSort = [ 'آ', 'ا', 'ب', 'پ', 'ت', 'ث', 'ج', 'چ', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'ژ',
 					'س', 'ش', 'ص', 'ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ک', 'گ', 'ل', 'م', 'ن', 'و', 'ه', 'ی', 'ي' ];
 
@@ -55,5 +54,4 @@ jQuery.extend( jQuery.fn.dataTableExt.oSort, {
 		return ((a < b) ? 1 : ((a > b) ? -1 : 0));
 	}
 } );
-
 }());

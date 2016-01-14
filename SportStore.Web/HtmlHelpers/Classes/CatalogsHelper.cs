@@ -2,11 +2,11 @@
 using SportStore.Domain.Entities;
 using SportStore.Web.HtmlHelpers.Interfaces;
 using SportStore.Web.Models.Catalog;
+using SportStore.Web.Models.Home;
 using SportStore.Web.Models.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using SportStore.Web.Models.Home;
 
 namespace SportStore.Web.HtmlHelpers.Classes
 {
@@ -170,7 +170,7 @@ namespace SportStore.Web.HtmlHelpers.Classes
 
             var lastAddedList = new List<LastAddedItemModel>();
 
-            foreach(var item in lastAdded)
+            foreach (var item in lastAdded)
             {
                 lastAddedList.Add
                     (new LastAddedItemModel
@@ -184,13 +184,13 @@ namespace SportStore.Web.HtmlHelpers.Classes
             var topRated = from x in _catalogRepository.ItemsOpinions
                            group x by x.Id_Item into g
                            orderby g.Key
-                           select new { Id_Item = g.Key, Item = g.ToList()};
+                           select new { Id_Item = g.Key, Item = g.ToList() };
 
             topRated = topRated.Take(3);
 
             var topRatedList = new List<TopRatedItemModel>();
 
-            foreach(var item in topRated)
+            foreach (var item in topRated)
             {
                 topRatedList.Add(
                     new TopRatedItemModel

@@ -10,7 +10,7 @@
  * @author      SpryMedia Ltd (www.sprymedia.co.uk)
  * @contact     www.sprymedia.co.uk/contact
  * @copyright   Copyright 2014 SpryMedia Ltd.
- * 
+ *
  * License      MIT - http://datatables.net/license/mit
  *
  * This feature plug-in for DataTables will highlight search terms in the
@@ -34,8 +34,6 @@
  */
 
 (function(window, document, $){
-
-
 // Listen for DataTables initialisations
 $(document).on( 'init.dt.dth', function (e, settings, json) {
 	var table = new $.fn.dataTable.Api( settings );
@@ -62,6 +60,4 @@ $(document).on( 'init.dt.dth', function (e, settings, json) {
 			} );
 	}
 } );
-
-
 })(window, document, jQuery);

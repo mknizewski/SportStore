@@ -19,7 +19,6 @@ define([
 	"./selector" // contains
 ], function( jQuery, pnum, access, rmargin, rnumnonpx, cssExpand, isHidden,
 	getStyles, curCSS, defaultDisplay, addGetHookIf, support, data_priv ) {
-
 var
 	// Swappable if display is none or starts with table except "table", "table-cell", or "table-caption"
 	// See here for display values: https://developer.mozilla.org/en-US/docs/CSS/display
@@ -37,7 +36,6 @@ var
 
 // Return a css property mapped to a potentially vendor prefixed property
 function vendorPropName( style, name ) {
-
 	// Shortcut for names that are not vendor prefixed
 	if ( name in style ) {
 		return name;
@@ -106,7 +104,6 @@ function augmentWidthOrHeight( elem, name, extra, isBorderBox, styles ) {
 }
 
 function getWidthOrHeight( elem, name, extra ) {
-
 	// Start with offset property, which is equivalent to the border-box value
 	var valueIsBorderBox = true,
 		val = name === "width" ? elem.offsetWidth : elem.offsetHeight,
@@ -201,14 +198,12 @@ function showHide( elements, show ) {
 }
 
 jQuery.extend({
-
 	// Add in style property hooks for overriding the default
 	// behavior of getting and setting a style property
 	cssHooks: {
 		opacity: {
 			get: function( elem, computed ) {
 				if ( computed ) {
-
 					// We should always get a number back from opacity
 					var ret = curCSS( elem, "opacity" );
 					return ret === "" ? "1" : ret;
@@ -241,7 +236,6 @@ jQuery.extend({
 
 	// Get and set the style property on a DOM Node
 	style: function( elem, name, value, extra ) {
-
 		// Don't set styles on text and comment nodes
 		if ( !elem || elem.nodeType === 3 || elem.nodeType === 8 || !elem.style ) {
 			return;
@@ -288,7 +282,6 @@ jQuery.extend({
 			if ( !hooks || !("set" in hooks) || (value = hooks.set( elem, value, extra )) !== undefined ) {
 				style[ name ] = value;
 			}
-
 		} else {
 			// If a hook was provided get the non-computed value from there
 			if ( hooks && "get" in hooks && (ret = hooks.get( elem, false, extra )) !== undefined ) {
@@ -338,7 +331,6 @@ jQuery.each([ "height", "width" ], function( i, name ) {
 	jQuery.cssHooks[ name ] = {
 		get: function( elem, computed, extra ) {
 			if ( computed ) {
-
 				// Certain elements can have dimension info if we invisibly show them
 				// but it must have a current display style that would benefit
 				return rdisplayswap.test( jQuery.css( elem, "display" ) ) && elem.offsetWidth === 0 ?

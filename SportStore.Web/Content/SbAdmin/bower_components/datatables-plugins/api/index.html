@@ -1,4 +1,3 @@
-
 <h2>Custom API functions</h2>
 
 <p>One of the most common interactions with DataTables for a developer (other than initialisation of the table of course!) is to make use of the <a href="/api">API functions</a> provided by DataTables. While allowing for a fairly extensive range of code interactions, the default API set can be greatly enhanced by making use of the functions provided below, as suitable for your application.</p>
@@ -7,7 +6,6 @@
 	<li><a href="#how_to">How to use DataTables plug-in API functions</a></li>
 	<li><a href="#functions">Plug-in API functions</a></li>
 </ul>
-
 
 <a name="how_to"></a>
 <h3>How to use DataTables plug-in API functions</h3>
@@ -19,7 +17,7 @@
 &lt;script type="text/javascript"&gt;
 	$(document).ready(function() {
 		var oTable = $('#example').dataTable();
-		
+
 		$('#button').click( function () {
 			var nHidden = oTable.fnGetHiddenNodes();
 			alert( nHidden.length +' nodes were returned' );

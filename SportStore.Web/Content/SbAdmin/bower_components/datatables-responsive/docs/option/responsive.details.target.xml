@@ -20,7 +20,7 @@
 		</description>
 	</type>
 
-	<default value="0"/>
+	<default value="0" />
 
 	<description>
 		When the `column` type is selected for the `r-init responsive.details.type` option, this option provides the ability to control what element in the table will activate the show / hide control in each row. This can be one of an column index, or a jQuery selector, as detailed below.
@@ -60,5 +60,4 @@ $('#example').DataTable( {
 } );
 
 ]]></example>
-
 </dt-option>

@@ -1,5 +1,4 @@
 ;(function($, window, document, undefined) {
-
     var pluginName = "metisMenu",
         defaults = {
             toggle: true,
@@ -16,7 +15,6 @@
 
     Plugin.prototype = {
         init: function() {
-
             var $this = this.element,
                 $toggle = this.settings.toggle,
                 obj = this;
@@ -39,7 +37,6 @@
 
                 //Do we need to enable the double tap
                 if (obj.settings.doubleTapToGo) {
-
                     //if we hit a second time on the link and the href is valid, navigate to that url
                     if (obj.doubleTapToGo($(this)) && $(this).attr("href") !== "#" && $(this).attr("href") !== "") {
                         e.stopPropagation();
@@ -53,7 +50,6 @@
                 if ($toggle) {
                     $(this).parent("li").siblings().removeClass("active").children("ul.in").collapse("hide");
                 }
-
             });
         },
 
@@ -95,7 +91,6 @@
             this.element.off("." + pluginName);
             this.element.removeData(pluginName);
         }
-
     };
 
     $.fn[pluginName] = function(options) {
@@ -108,5 +103,4 @@
         });
         return this;
     };
-
 })(jQuery, window, document);

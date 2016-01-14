@@ -21,7 +21,6 @@
  */
 
 (function($) {
-
 $.fn.dataTable.moment = function ( format, locale ) {
 	var types = $.fn.dataTable.ext.type;
 
@@ -37,5 +36,4 @@ $.fn.dataTable.moment = function ( format, locale ) {
 		return moment( d, format, locale, true ).unix();
 	};
 };
-
 }(jQuery));

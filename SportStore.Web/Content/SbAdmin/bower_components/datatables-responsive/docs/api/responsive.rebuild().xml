@@ -26,5 +26,4 @@ table.responsive.rebuild();
 table.responsive.recalc();
 
 ]]></example>
-
 </dt-api>

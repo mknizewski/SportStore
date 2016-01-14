@@ -31,7 +31,5 @@ define([
 	"./exports/amd",
 	"./exports/global"
 ], function( jQuery ) {
-
 return jQuery;
-
 });

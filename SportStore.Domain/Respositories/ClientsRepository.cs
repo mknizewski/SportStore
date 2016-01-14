@@ -3,7 +3,6 @@ using SportStore.Domain.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using SportStore.Domain.Entities;
 
 namespace SportStore.Domain.Respositories
 {

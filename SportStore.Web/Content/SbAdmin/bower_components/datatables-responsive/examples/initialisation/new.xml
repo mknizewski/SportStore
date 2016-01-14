@@ -25,6 +25,4 @@ Responsive will automatically detect new DataTable instances being created on a 
 The third way of initialising Responsive is manually creating a new instance using the `$.fn.dataTable.Responsive` class, as shown in this example (the other two methods are provided using this constructor in a `dt-event init` event handler!).
 
 ]]></info>
-
 </dt-example>
-

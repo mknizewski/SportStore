@@ -1,7 +1,6 @@
 define([
 	"../core"
 ], function( jQuery ) {
-
 // Register as a named AMD module, since jQuery can be concatenated with other
 // files that may use define, but not via a proper concatenation script that
 // understands anonymous AMD modules. A named AMD is safest and most robust
@@ -20,5 +19,4 @@ if ( typeof define === "function" && define.amd ) {
 		return jQuery;
 	});
 }
-
 });

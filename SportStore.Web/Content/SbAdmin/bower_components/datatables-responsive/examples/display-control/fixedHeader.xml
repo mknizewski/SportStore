@@ -26,6 +26,4 @@ $(document).ready(function() {
 This example shows Responsive being used with the DataTables [FixedHeader](http://datatables.net/extensions/fixedheader) extension. FixedHeader will lock a table's header to the top of the table, ensuring that the user always knows what each column relates to.
 
 ]]></info>
-
 </dt-example>
-

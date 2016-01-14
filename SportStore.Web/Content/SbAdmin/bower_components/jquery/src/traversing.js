@@ -6,7 +6,6 @@ define([
 	"./traversing/findFilter",
 	"./selector"
 ], function( jQuery, indexOf, rneedsContext ) {
-
 var rparentsprev = /^(?:parents|prev(?:Until|All))/,
 	// Methods guaranteed to produce a unique set when starting from a unique set
 	guaranteedUnique = {
@@ -78,7 +77,6 @@ jQuery.fn.extend({
 					// Don't pass non-elements to Sizzle
 					cur.nodeType === 1 &&
 						jQuery.find.matchesSelector(cur, selectors)) ) {
-
 					matched.push( cur );
 					break;
 				}
@@ -90,7 +88,6 @@ jQuery.fn.extend({
 
 	// Determine the position of an element within the set
 	index: function( elem ) {
-
 		// No argument, return index in parent
 		if ( !elem ) {
 			return ( this[ 0 ] && this[ 0 ].parentNode ) ? this.first().prevAll().length : -1;

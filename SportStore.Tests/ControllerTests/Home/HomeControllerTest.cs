@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using SportStore.Domain.Abstract;
 using SportStore.Web.Controllers;
 using SportStore.Web.HtmlHelpers.Interfaces;
 using SportStore.Web.Models.Home;

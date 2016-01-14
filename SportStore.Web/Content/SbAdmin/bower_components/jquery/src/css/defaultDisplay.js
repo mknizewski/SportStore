@@ -2,7 +2,6 @@ define([
 	"../core",
 	"../manipulation" // appendTo
 ], function( jQuery ) {
-
 var iframe,
 	elemdisplay = {};
 
@@ -43,7 +42,6 @@ function defaultDisplay( nodeName ) {
 
 		// If the simple way fails, read from inside an iframe
 		if ( display === "none" || !display ) {
-
 			// Use the already-created iframe if possible
 			iframe = (iframe || jQuery( "<iframe frameborder='0' width='0' height='0'/>" )).appendTo( doc.documentElement );
 
@@ -66,5 +64,4 @@ function defaultDisplay( nodeName ) {
 }
 
 return defaultDisplay;
-
 });

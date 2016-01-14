@@ -2,7 +2,6 @@ define([
 	"./core",
 	"./var/rnotwhite"
 ], function( jQuery, rnotwhite ) {
-
 // String to Object options format cache
 var optionsCache = {};
 
@@ -38,7 +37,6 @@ function createOptions( options ) {
  *
  */
 jQuery.Callbacks = function( options ) {
-
 	// Convert options from String-formatted to Object-formatted if needed
 	// (we check in cache first)
 	options = typeof options === "string" ?

@@ -7,14 +7,12 @@ $.extend( true, $.fn.dataTable.defaults, {
 	}
 } );
 
-
 /* Default class modification */
 $.extend( $.fn.dataTableExt.oStdClasses, {
     "sSortAsc": "header headerSortDown",
     "sSortDesc": "header headerSortUp",
     "sSortable": "header"
 } );
-
 
 /* API method to get paging information */
 $.fn.dataTableExt.oApi.fnPagingInfo = function ( oSettings )
@@ -31,7 +29,6 @@ $.fn.dataTableExt.oApi.fnPagingInfo = function ( oSettings )
 			0 : Math.ceil( oSettings.fnRecordsDisplay() / oSettings._iDisplayLength )
 	};
 };
-
 
 /* Bootstrap style pagination control */
 $.extend( $.fn.dataTableExt.oPagination, {
@@ -110,7 +107,6 @@ $.extend( $.fn.dataTableExt.oPagination, {
 	}
 } );
 
-
 /*
  * TableTools Bootstrap compatibility
  * Required TableTools 2.1+
@@ -147,4 +143,3 @@ if ( $.fn.DataTable.TableTools ) {
 		}
 	} );
 }
-

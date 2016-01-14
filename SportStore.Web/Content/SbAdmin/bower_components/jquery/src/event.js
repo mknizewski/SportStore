@@ -11,7 +11,6 @@ define([
 	"./data/accepts",
 	"./selector"
 ], function( jQuery, strundefined, rnotwhite, hasOwn, slice, support, data_priv ) {
-
 var
 	rkeyEvent = /^key/,
 	rmouseEvent = /^(?:mouse|pointer|contextmenu)|click/,
@@ -37,11 +36,9 @@ function safeActiveElement() {
  * Props to Dean Edwards' addEvent library for many of the ideas.
  */
 jQuery.event = {
-
 	global: {},
 
 	add: function( elem, types, handler, data, selector ) {
-
 		var handleObjIn, eventHandle, tmp,
 			events, t, handleObj,
 			special, handlers, type, namespaces, origType,
@@ -142,12 +139,10 @@ jQuery.event = {
 			// Keep track of which events have ever been used, for event optimization
 			jQuery.event.global[ type ] = true;
 		}
-
 	},
 
 	// Detach an event or set of events from an element
 	remove: function( elem, types, handler, selector, mappedTypes ) {
-
 		var j, origCount, tmp,
 			events, t, handleObj,
 			special, handlers, type, namespaces, origType,
@@ -217,7 +212,6 @@ jQuery.event = {
 	},
 
 	trigger: function( event, data, elem, onlyHandlers ) {
-
 		var i, cur, tmp, bubbleType, ontype, handle, special,
 			eventPath = [ elem || document ],
 			type = hasOwn.call( event, "type" ) ? event.type : event,
@@ -275,7 +269,6 @@ jQuery.event = {
 		// Determine event propagation path in advance, per W3C events spec (#9951)
 		// Bubble up to document, then to window; watch for a global ownerDocument var (#9724)
 		if ( !onlyHandlers && !special.noBubble && !jQuery.isWindow( elem ) ) {
-
 			bubbleType = special.delegateType || type;
 			if ( !rfocusMorph.test( bubbleType + type ) ) {
 				cur = cur.parentNode;
@@ -294,7 +287,6 @@ jQuery.event = {
 		// Fire handlers on the event path
 		i = 0;
 		while ( (cur = eventPath[i++]) && !event.isPropagationStopped() ) {
-
 			event.type = i > 1 ?
 				bubbleType :
 				special.bindType || type;
@@ -318,14 +310,11 @@ jQuery.event = {
 
 		// If nobody prevented the default action, do it now
 		if ( !onlyHandlers && !event.isDefaultPrevented() ) {
-
 			if ( (!special._default || special._default.apply( eventPath.pop(), data ) === false) &&
 				jQuery.acceptData( elem ) ) {
-
 				// Call a native DOM method on the target with the same name name as the event.
 				// Don't do default actions on window, that's where global variables be (#6170)
 				if ( ontype && jQuery.isFunction( elem[ type ] ) && !jQuery.isWindow( elem ) ) {
-
 					// Don't re-trigger an onFOO event when we call its FOO() method
 					tmp = elem[ ontype ];
 
@@ -349,7 +338,6 @@ jQuery.event = {
 	},
 
 	dispatch: function( event ) {
-
 		// Make a writable jQuery.Event from the native event object
 		event = jQuery.event.fix( event );
 
@@ -378,11 +366,9 @@ jQuery.event = {
 
 			j = 0;
 			while ( (handleObj = matched.handlers[ j++ ]) && !event.isImmediatePropagationStopped() ) {
-
 				// Triggered event must either 1) have no namespace, or 2) have namespace(s)
 				// a subset or equal to those in the bound event (both can have no namespace).
 				if ( !event.namespace_re || event.namespace_re.test( handleObj.namespace ) ) {
-
 					event.handleObj = handleObj;
 					event.data = handleObj.data;
 
@@ -417,9 +403,7 @@ jQuery.event = {
 		// Black-hole SVG <use> instance trees (#13180)
 		// Avoid non-left-click bubbling in Firefox (#3861)
 		if ( delegateCount && cur.nodeType && (!event.button || event.type !== "click") ) {
-
 			for ( ; cur !== this; cur = cur.parentNode || this ) {
-
 				// Don't process clicks on disabled elements (#6911, #8165, #11382, #11764)
 				if ( cur.disabled !== true || event.type !== "click" ) {
 					matches = [];
@@ -461,7 +445,6 @@ jQuery.event = {
 	keyHooks: {
 		props: "char charCode key keyCode".split(" "),
 		filter: function( event, original ) {
-
 			// Add which for key events
 			if ( event.which == null ) {
 				event.which = original.charCode != null ? original.charCode : original.keyCode;
@@ -580,7 +563,6 @@ jQuery.event = {
 
 		beforeunload: {
 			postDispatch: function( event ) {
-
 				// Support: Firefox 20+
 				// Firefox doesn't alert if the returnValue field is not set.
 				if ( event.result !== undefined && event.originalEvent ) {
@@ -729,7 +711,6 @@ jQuery.each({
 // Create "bubbling" focus and blur events
 if ( !support.focusinBubbles ) {
 	jQuery.each({ focus: "focusin", blur: "focusout" }, function( orig, fix ) {
-
 		// Attach a single capturing handler on the document while someone wants focusin/focusout
 		var handler = function( event ) {
 				jQuery.event.simulate( fix, event.target, jQuery.event.fix( event ), true );
@@ -752,7 +733,6 @@ if ( !support.focusinBubbles ) {
 				if ( !attaches ) {
 					doc.removeEventListener( orig, handler, true );
 					data_priv.remove( doc, fix );
-
 				} else {
 					data_priv.access( doc, fix, attaches );
 				}
@@ -762,7 +742,6 @@ if ( !support.focusinBubbles ) {
 }
 
 jQuery.fn.extend({
-
 	on: function( types, selector, data, fn, /*INTERNAL*/ one ) {
 		var origFn, type;
 
