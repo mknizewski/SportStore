@@ -1,4 +1,5 @@
-﻿using SportStore.Web.Models.Employee;
+﻿using SportStore.Web.Infrastructure;
+using SportStore.Web.Models.Employee;
 using System.Web.Mvc;
 
 namespace SportStore.Web.Controllers
@@ -7,14 +8,20 @@ namespace SportStore.Web.Controllers
     /// Autor:  Mateusz Kniżewski
     /// Opis:   Kontroler pracowników
     /// Data:   20.11.15
-    /// </summary>
+    /// </summary>   
+    [RedirectClient]
     public class EmployeeController : Controller
     {
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         // GET: Employee
         [HttpGet]
         public ActionResult Login()
         {
-            return View();
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
@@ -24,6 +31,12 @@ namespace SportStore.Web.Controllers
         }
 
         public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(RegisterModel registerModel)
         {
             return View();
         }

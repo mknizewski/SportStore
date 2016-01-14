@@ -5,3 +5,4 @@ INSERT INTO _dict_shops(Name, InsertTime) VALUES ('Brukowa 31, Augustów', GETDA
 INSERT INTO _dict_shops(Name, InsertTime) VALUES ('Świerkowa 3, Olsztyn', GETDATE());
 INSERT INTO _dict_shops(Name, InsertTime) VALUES ('Wojska Polskiego 19, Gdańsk', GETDATE());
 INSERT INTO _dict_shops(Name, InsertTime) VALUES ('Lipowa 49, Warszawa', GETDATE());
+INSERT INTO _dict_shops(Name, InsertTime) VALUES ('Internet', GETDATE());
