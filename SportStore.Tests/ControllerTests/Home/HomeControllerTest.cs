@@ -16,11 +16,12 @@ namespace SportStore.Tests.ControllerTests.Home
         {
             //przygotowanie
             Mock<INewsletterHelper> mock = new Mock<INewsletterHelper>();
+            Mock<ICatalogHelper> mockK = new Mock<ICatalogHelper>();
             mock.Setup(x => x.GetNewsletterModel()).Returns(new NewsletterModel()
             {
                 TypeOfNews = FillTypeOfNews()
             });
-            HomeController homeController = new HomeController(mock.Object);
+            HomeController homeController = new HomeController(mock.Object, mockK.Object);
             int iterator = 3;
 
             //działanie

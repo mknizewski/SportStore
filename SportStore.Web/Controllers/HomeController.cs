@@ -1,5 +1,7 @@
-﻿using SportStore.Web.HtmlHelpers.Classes;
+﻿using SportStore.Domain.Concrete;
+using SportStore.Web.HtmlHelpers.Classes;
 using SportStore.Web.HtmlHelpers.Interfaces;
+using SportStore.Web.Models.Client;
 using SportStore.Web.Models.Home;
 using System.Web.Mvc;
 
@@ -13,10 +15,12 @@ namespace SportStore.Web.Controllers
     public class HomeController : Controller
     {
         private INewsletterHelper _newsletterHelper;
+        private ICatalogHelper _catalogRepository;
 
-        public HomeController(INewsletterHelper newsletterHelper)
+        public HomeController(INewsletterHelper newsletterHelper, ICatalogHelper catalogRepository)
         {
             _newsletterHelper = newsletterHelper;
+            _catalogRepository = catalogRepository;
         }
 
         #region Metody Kontrolera
@@ -28,7 +32,7 @@ namespace SportStore.Web.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            return View(_catalogRepository.GetIndexModel());
         }
 
         /// <summary>
@@ -67,6 +71,41 @@ namespace SportStore.Web.Controllers
         public ViewResult Cart(Cart cart)
         {
             return View(cart);
+        }
+
+        public ViewResult AboutUs()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Contact()
+        {
+            var model = new ContactModel();
+
+            if (Session["Client"] != null)
+            {
+                model.Email = (Session["Client"] as AccountModel).Login;
+                model.Id_Client = (Session["Client"] as AccountModel).Id;
+            }
+
+            ViewBag.Shops = new EFDbContext().DictShops;
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Contact(ContactModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Alert.SetAlert(AlertStatus.Succes, "Dziękujemy za wiadomość! Postaramy się odpowiedzieć w jak najszybszym tempie!");
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return Contact();
+            }
         }
 
         #endregion Metody Kontrolera

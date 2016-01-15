@@ -25,6 +25,7 @@ namespace SportStore.Domain.Abstract
 
         //CURD zamowienia
         int AddOrder(orders order);
+
         void AddOrderDetails(IEnumerable<order_details> orderDetails);
 
         void EditOrder();
@@ -32,6 +33,7 @@ namespace SportStore.Domain.Abstract
         void DeleteOrder(int orderId);
 
         int GetIdOrder(orders model);
+
         void GetOrderById(int orderId);
 
         IEnumerable<orders> GetOrdersByClientId(int clientId);

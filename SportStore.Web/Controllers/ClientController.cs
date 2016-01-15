@@ -1,4 +1,5 @@
-﻿using SportStore.Web.HtmlHelpers.Classes;
+﻿using Rotativa;
+using SportStore.Web.HtmlHelpers.Classes;
 using SportStore.Web.HtmlHelpers.Interfaces;
 using SportStore.Web.Infrastructure;
 using SportStore.Web.Infrastructure.Binders;
@@ -98,6 +99,33 @@ namespace SportStore.Web.Controllers
 
         [Authorize]
         [ClientAuthentication]
+        [HttpPost]
+        public ActionResult EditDeliveryData(AccountModel model)
+        {
+            _accountManagmentHelper.ChangeDeliveryData(model);
+            var Client = _loginHelper.GetClient(model.Login);
+            this.Session["Client"] = Client;
+
+            Alert.SetAlert(AlertStatus.Info, "Wprowadzono zmiany");
+
+            return RedirectToAction("AccountManagment");
+        }
+
+        [Authorize]
+        [ClientAuthentication]
+        [HttpPost]
+        public ActionResult ChangeClientPassword(int Id, string oldPassword, string newPassword)
+        {
+            if (_accountManagmentHelper.ChangePassword(Id, oldPassword, newPassword))
+                Alert.SetAlert(AlertStatus.Succes, "Poprawnie zmieniono hasło dostępu!");
+            else
+                Alert.SetAlert(AlertStatus.Danger, "Podane stare hasło nie jest poprawne!");
+
+            return RedirectToAction("AccountManagment");
+        }
+
+        [Authorize]
+        [ClientAuthentication]
         public ActionResult Notyfications()
         {
             var id = (Session["Client"] as AccountModel).Id;
@@ -185,9 +213,28 @@ namespace SportStore.Web.Controllers
 
         [Authorize]
         [ClientAuthentication]
-        public ActionResult OrderDess()
+        public ActionResult OrderDess(int orderId)
         {
-            return View();
+            return View(_orderHelper.GetPDF(orderId));
+        }
+
+        [Authorize]
+        [ClientAuthentication]
+        [HttpGet]
+        public ActionResult Invoice(int orderId)
+        {
+            return View(_orderHelper.GetPDF(orderId));
+        }
+
+        [Authorize]
+        [ClientAuthentication]
+        public ActionResult PDF(int orderID)
+        {
+            return new ActionAsPdf("Invoice", new { orderId = orderID })
+            {
+                PageSize = Rotativa.Options.Size.A4,
+                FileName = "FV-SS-" + orderID + ".pdf"
+            };
         }
     }
 }

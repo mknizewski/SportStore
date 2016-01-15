@@ -135,7 +135,7 @@
                 caption = '<span class="' + self.clearCaptionClass + '">' + self.clearCaption + '</span>';
                 val = self.clearValue;
                 width = self.getWidthFromValue(val);
-                out = {caption: caption, width: width, val: val};
+                out = { caption: caption, width: width, val: val };
                 self.toggleHover(out);
                 self.$element.trigger('rating.hover', [val, caption, 'clear']);
             });
@@ -259,7 +259,7 @@
             self.setStars();
             self.listen();
             if (self.showClear) {
-                self.$clear.attr({"class": self.getClearClass()});
+                self.$clear.attr({ "class": self.getClearClass() });
             }
             starVal = $el.val();
             starWidth = self.getWidthFromValue(starVal);
@@ -334,7 +334,7 @@
             css = self.getClearClass();
             if (!isEmpty(self.$clearElement)) {
                 addCss(self.$clearElement, css);
-                self.$clearElement.attr({"title": self.clearButtonTitle}).html(self.clearButton);
+                self.$clearElement.attr({ "title": self.clearButtonTitle }).html(self.clearButton);
                 return '';
             }
             return '<div class="' + css + '" title="' + self.clearButtonTitle + '">' + self.clearButton + '</div>';
@@ -401,7 +401,7 @@
                 width = 100 - width;
             }
             width += '%';
-            return {caption: caption, width: width, val: val};
+            return { caption: caption, width: width, val: val };
         },
         setStars: function (pos) {
             var self = this, out = arguments.length ? self.calculate(pos) : self.calculate();

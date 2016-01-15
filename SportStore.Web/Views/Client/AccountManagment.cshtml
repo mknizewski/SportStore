@@ -14,12 +14,11 @@
                     <div class="panel-heading">Dane personalne</div>
                     <div class="panel-body">
 
-                        <form role="form">
                             <div class="form-horizontal">
                                 <div class="form-group">
                                     <label for="email" class="col-md-2">Login:</label>
                                     <div class="col-md-10">
-                                        <input type="email" class="form-control" id="email" value="@Model.Login" readonly />
+                                        @Html.EditorFor(x => x.Login, new { htmlAttributes = new { @class = "form-control", @id = "email", @disabled = "true" } })
                                         <span class="help-block">Twój login do serwisu SportStore</span>
                                     </div>
                                 </div>
@@ -29,7 +28,7 @@
                                 <div class="form-group">
                                     <label for="name" class="col-md-2">Imię:</label>
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control" id="name" value="@Model.Name" />
+                                        @Html.EditorFor(x => x.Name, new { htmlAttributes = new { @class = "form-control", @id = "name", @type = "text" } })
                                         <span class="help-block">Twoje imię</span>
                                     </div>
                                 </div>
@@ -39,7 +38,7 @@
                                 <div class="form-group">
                                     <label for="surname" class="col-md-2">Nazwisko:</label>
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control" id="surname" value="@Model.Surname" />
+                                        @Html.EditorFor(x => x.Surname, new { htmlAttributes = new { @class = "form-control", @id = "surname", @type = "text" }})
                                         <span class="help-block">Twoje nazwisko</span>
                                     </div>
                                 </div>
@@ -55,10 +54,7 @@
                                 </div>
                             </div>
 
-                            <button class="btn btn-success" style="float: right;">Zapisz zmiany</button>
-                        </form>
-
-                        <button class="btn btn-primary" style="float: right; margin-right: 10px;">Zmiana hasła</button>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#changePassword" style="float: right; margin-right: 10px;">Zmiana hasła</button>
                     </div>
                 </div>
 
@@ -66,12 +62,17 @@
                     <div class="panel-heading">Dane wysyłkowe</div>
                     <div class="panel-body">
 
-                        <form role="form">
+                        @using (Html.BeginForm("EditDeliveryData", "Client", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.HiddenFor(x => x.Login)
+                            @Html.HiddenFor(x => x.Id)
+
                             <div class="form-horizontal">
                                 <div class="form-group">
                                     <label for="street" class="col-md-2">Ulica:</label>
                                     <div class="col-md-10">
-                                        <input type="text" id="street" class="form-control" value="@Model.Street" />
+                                        @Html.EditorFor(x => x.Street, new { htmlAttributes = new { @class = "form-control", @id = "street", @type = "text" }})
                                         <span class="help-block">Ulica podana przy rejestracji</span>
                                     </div>
                                 </div>
@@ -81,7 +82,7 @@
                                 <div class="form-group">
                                     <label for="postalcode" class="col-md-2">Kod pocztowy:</label>
                                     <div class="col-md-10">
-                                        <input type="text" id="postalcode" class="form-control" value="@Model.PostalCode" />
+                                        @Html.EditorFor(x => x.PostalCode, new { htmlAttributes = new { @class = "form-control", @id = "postalcode", @type = "text" }})
                                         <span class="help-block">Kod pocztowy podany przy rejestracji</span>
                                     </div>
                                 </div>
@@ -91,14 +92,14 @@
                                 <div class="form-group">
                                     <label for="city" class="col-md-2">Miasto:</label>
                                     <div class="col-md-10">
-                                        <input type="text" id="city" class="form-control" value="@Model.City" />
+                                        @Html.EditorFor(x => x.City, new { htmlAttributes = new { @class = "form-control"}, @id = "city", @type = "text"})
                                         <span class="help-block">Miasto podane przy rejestracji</span>
                                     </div>
                                 </div>
                             </div>
 
-                            <button class="btn btn-success" style="float:right;">Zapisz zmiany</button>
-                        </form>
+                            <button type="submit" class="btn btn-success" style="float:right;">Zapisz zmiany</button>
+                        }
                     </div>
                 </div>
             </div>
@@ -147,3 +148,60 @@
         </div>
     </div>
 </div>
+
+@*Modal zmiany hasła*@
+<div class="modal fade" id="changePassword" role="dialog" style="font-family: 'Open Sans', Arial;">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Zmiana hasła do serwisu</h4>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("ChangeClientPassword", "Client", FormMethod.Post))
+                {
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="oldPassword" class="control-label col-md-3">Stare hasło:</label>
+                            <div class="col-md-9">
+                                @Html.Hidden("Id", Model.Id)
+                                @Html.Editor("oldPassword", "oldPassword", "oldPassword", new { htmlAttributes = new { @placeholder = "Stare hasło", @class = "form-control", @id = "oldPassword", @type = "password" }})
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="newPassword" class="control-label col-md-3">Nowe hasło:</label>
+                            <div class="col-md-9">
+                                @Html.Editor("newPassword", "newPassword", "newPassword", new { htmlAttributes = new { @placeholder = "Nowe hasło", @class = "form-control", @id = "newPassword", @type = "password" } })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-horizontal" style="margin-bottom: 25px;">
+                        <div class="form-group">
+                            <label for="comparePassword" class="control-label col-md-3">Powtórz hasło:</label>
+                            <div class="col-md-9">
+                                @Html.Editor("comparePassword", "comparePassword", "comparePassword", new { htmlAttributes = new { @placeholder = "Powtórz hasło", @class = "form-control", @id = "comparePassword", @type = "password" } })
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="buttonChange" type="submit" class="btn btn-primary" style="float:right; margin-top: -25px;">Zmień hasło</button>
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" style="float:left;" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    function comparePasword()
+    {
+
+    }
+</script>

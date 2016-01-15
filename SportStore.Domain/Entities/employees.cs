@@ -17,7 +17,7 @@ namespace SportStore.Domain.Entities
         public string Password { get; set; }
 
         [Key, ForeignKey("Shop")]
-        public int Id_Shop { get; set; }
+        public int? Id_Shop { get; set; }
 
         [Key, ForeignKey("Rule")]
         public int Id_Rule { get; set; }

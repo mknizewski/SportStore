@@ -20,8 +20,8 @@ namespace SportStore.Web.HtmlHelpers.Classes
 
         void IOrderHelper.AddOrder(OrderModel model)
         {
-            var adress = model.Client.Name + " " + model.Client.Surname 
-                + ";" + model.Client.Street + ";" + model.Client.PostalCode 
+            var adress = model.Client.Name + " " + model.Client.Surname
+                + ";" + model.Client.Street + ";" + model.Client.PostalCode
                 + ";" + model.Client.City;
 
             var order = new orders
@@ -79,6 +79,25 @@ namespace SportStore.Web.HtmlHelpers.Classes
         IEnumerable<orders> IOrderHelper.GetOrdersByClientId(int clientId)
         {
             var model = _ordersRepository.GetOrdersByClientId(clientId);
+
+            return model;
+        }
+
+        OrderPDFModel IOrderHelper.GetPDF(int orderId)
+        {
+            var order = _ordersRepository.Orders
+                .Where(x => x.Id.Equals(orderId))
+                .FirstOrDefault();
+
+            var orderDetails = _ordersRepository.OrderDetails
+                .Where(x => x.Id_Order.Equals(orderId))
+                .ToArray();
+
+            var model = new OrderPDFModel
+            {
+                Order = order,
+                OrderDetails = orderDetails
+            };
 
             return model;
         }
