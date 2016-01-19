@@ -36,6 +36,7 @@ namespace SportStore.Web
             routes.MapRoute("", "Sklep/Zamowienie", new { controller = "Client", action = "OrderDetails" });
             routes.MapRoute("", "Sklep/Zdjecie/{array}/{mimeType}", new { controller = "Catalog", action = "GetImageByByte", array = UrlParameter.Optional, mimeType = UrlParameter.Optional });
 
+
             routes.MapRoute("", "Sklep/Rejestracja", new { controller = "Home", action = "Register" });
             routes.MapRoute("", "Sklep/Newsletter", new { controller = "Home", action = "SaveNewsletter" });
             routes.MapRoute("", "Sklep/Wyszukiwarka", new { controller = "Search", action = "GlobalSearch" });
@@ -44,7 +45,10 @@ namespace SportStore.Web
             routes.MapRoute("", "Sklep/Onas", new { controller = "Home", action = "AboutUs" });
             routes.MapRoute("", "Sklep/Kontakt", new { controller = "Home", action = "Contact" });
 
+            routes.MapRoute("", "Pracownik/Konto/Katalogi/Edycja", new { controller = "Employee", action = "CatalogEdit", id = UrlParameter.Optional, name = UrlParameter.Optional });
             routes.MapRoute("", "Pracownik/Logowanie", new { controller = "Employee", action = "Login" });
+            routes.MapRoute("", "Pracownik/Konto/Katalogi", new { controller = "Employee", action = "CatalogManagment" });
+            routes.MapRoute("", "Pracownik/Konto/Wyloguj", new { controller = "Employee", action = "Logout" });
             routes.MapRoute("", "Pracownik/Rejestracja", new { controller = "Employee", action = "Register" });
             routes.MapRoute("", "Pracownik/Konto", new { controller = "Employee", action = "Index" });
 

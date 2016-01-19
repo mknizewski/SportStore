@@ -994,6 +994,7 @@
     <Compile Include="HtmlHelpers\Classes\Cart.cs" />
     <Compile Include="HtmlHelpers\Classes\CartLine.cs" />
     <Compile Include="HtmlHelpers\Classes\CatalogsHelper.cs" />
+    <Compile Include="HtmlHelpers\Classes\EmployeesHelper.cs" />
     <Compile Include="HtmlHelpers\Classes\GlobalSearchHelper.cs" />
     <Compile Include="HtmlHelpers\Classes\ImageHelper.cs" />
     <Compile Include="HtmlHelpers\Classes\LoginHelper.cs" />
@@ -1006,6 +1007,7 @@
     <Compile Include="HtmlHelpers\Classes\RegisterHelper.cs" />
     <Compile Include="HtmlHelpers\Interfaces\IAccountManagmentHelper.cs" />
     <Compile Include="HtmlHelpers\Interfaces\ICatalogsHelper.cs" />
+    <Compile Include="HtmlHelpers\Interfaces\IEmployeesHelper.cs" />
     <Compile Include="HtmlHelpers\Interfaces\IGlobalSearchHelper.cs" />
     <Compile Include="HtmlHelpers\Interfaces\ILoginHelper.cs" />
     <Compile Include="HtmlHelpers\Interfaces\INewsletterHelper.cs" />
@@ -1018,6 +1020,7 @@
     <Compile Include="Infrastructure\Binders\CartModelBinder.cs" />
     <Compile Include="Infrastructure\Binders\MultipleButtonAttribute.cs" />
     <Compile Include="Infrastructure\ClientAuthentication.cs" />
+    <Compile Include="Infrastructure\EmployeeAuthentication.cs" />
     <Compile Include="Infrastructure\NinjectDepedencyResolver.cs" />
     <Compile Include="Models\Catalog\ItemModel.cs" />
     <Compile Include="Models\Catalog\OpinionModel.cs" />
@@ -1068,6 +1071,7 @@
     <Content Include="Views\Employee\Register.cshtml" />
     <Content Include="Views\Shared\_EmployeeLayout.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\Employee\CatalogManagment.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,153 @@
+﻿@model IEnumerable<SportStore.Domain.Entities._dict_catalogs>
+    @{
+        ViewBag.Title = "Zarządzanie katalogiem";
+        Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+    }
+
+<link href="~/Content/SbAdmin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet" />
+<link href="~/Content/SbAdmin/bower_components/datatables-responsive/css/responsive.dataTables.scss" rel="stylesheet" />
+<script src="~/Content/SbAdmin/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+<script src="~/Content/SbAdmin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+    <div id="alert" style="margin-top: 10px;">
+
+    </div>
+    <div class="panel panel-default" style="margin-top: 10px;">
+        <div class="panel-heading">
+            Katalogi
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div class="dataTable_wrapper">
+                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Katalog</th>
+                            <th>Data wstawienia</th>
+                            <th>Data modyfikacji</th>
+                            <th>Edycja</th>
+                            <th>Usuń</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ 
+                            foreach(var item in Model)
+                            {
+                                <tr id="@item.Id">
+                                    <td class="center">@item.Id</td>
+                                    <td>@item.Name</td>
+                                    <td>@item.InsertTime.ToString("dd MMMM yyyy H:mm")</td>
+                                    @if (item.UpdateTime.HasValue)
+                                    {
+                                        <td>@item.UpdateTime.Value.ToString("dd MMMM yyyy H:mm")</td>
+                                    }
+                                    else
+                                    {
+                                        <td class="center">-</td>
+                                    }
+                                    <td class="align-center">
+                                        <button class="btn btn-primary" onclick="editRow(@item.Id, this)" value="@item.Id">Edycja</button>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-primary" value="@item.Id">Usuń</button>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        <!-- /.panel-body -->
+    </div>
+
+<script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+                responsive: true
+        });
+    });
+
+    function editRow(id, btn)
+    {
+        var td = document.getElementById(id);
+        var cellValue = td.cells[1].innerHTML;
+
+        td.deleteCell(1);
+        var x = td.insertCell(1);
+
+        btn.textContent = "Zapisz";
+        
+        var bckBtn = document.createElement("button");
+        var inputItem = document.createElement("input");
+
+        inputItem.type = "text";
+        inputItem.value = cellValue;
+        inputItem.className = "form-control";
+
+        x.appendChild(inputItem);
+       
+        bckBtn.className = "btn btn-primary";
+        bckBtn.onclick = function () {
+            undoRow(td, cellValue, bckBtn, btn);
+        };
+        bckBtn.textContent = "Cofnij";
+        td.cells[4].appendChild(bckBtn);
+
+        btn.onclick = function () {
+            writeRow(id, inputItem, td, bckBtn, btn);
+        };
+    }
+
+    function undoRow(td, celVal, btnBack, btn)
+    {
+        td.deleteCell(1);
+        var x = td.insertCell(1);
+
+        x.innerHTML = celVal;
+        td.cells[4].removeChild(btnBack);
+
+        btn.textContent = "Edycja";
+        btn.onclick = function () {
+            editRow(td.id, btn);
+        };
+    }
+
+    function writeRow(id, input, td, btnBack, btn)
+    {
+        var name = input.value;
+
+        $.ajax({
+            url: 'Katalogi/Edycja',
+            dataType: 'json',
+            data: { id: id, name: name },
+            success: function (data) {
+                var x = document.getElementById("alert");
+                x.className = "alert alert-success alert-dismissable";
+                x.textContent = "";
+                var text = document.createTextNode("Poprawnie wprowadzono zmiany!");
+                x.appendChild(text);
+
+                var button = document.createElement("button");
+                button.textContent = "X";
+                button.type = "button";
+                button.className = "close";
+                button.onclick = function () {
+                    hideAlert();
+                };
+                x.appendChild(button);
+
+                $('#alert').show();
+
+                undoRow(td, name, btnBack, btn);
+            },
+            failure: function () { }
+        });
+    }
+
+    function hideAlert()
+    {
+        $('#alert').hide();
+    }
+</script>

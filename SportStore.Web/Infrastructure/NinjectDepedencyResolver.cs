@@ -48,6 +48,9 @@ namespace SportStore.Web.Infrastructure
             _iKernel.Bind<IGlobalSearchHelper>().To<GlobalSearchHelper>();
             _iKernel.Bind<IOrdersRepository>().To<OrdersRepository>();
             _iKernel.Bind<IOrderHelper>().To<OrderHelper>();
+            _iKernel.Bind<IEmployeeRepository>().To<EmployeeRepository>();
+            _iKernel.Bind<IEmployeesHelper>().To<EmployeesHelper>();
+            _iKernel.Bind<IDictionaryRepository>().To<DictionaryRepository>();
         }
     }
 }

@@ -52,6 +52,8 @@
   <ItemGroup>
     <Compile Include="Abstract\ICatalogsRepository.cs" />
     <Compile Include="Abstract\IClientRepository.cs" />
+    <Compile Include="Abstract\IDictionaryRepository.cs" />
+    <Compile Include="Abstract\IEmployeeRepository.cs" />
     <Compile Include="Abstract\INewsletterRepository.cs" />
     <Compile Include="Abstract\IOrdersRepository.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
@@ -87,6 +89,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Respositories\CatalogsRepository.cs" />
     <Compile Include="Respositories\ClientsRepository.cs" />
+    <Compile Include="Respositories\DictionaryRepository.cs" />
+    <Compile Include="Respositories\EmployeeRepository.cs" />
     <Compile Include="Respositories\NewsletterRespository.cs" />
     <Compile Include="Respositories\OrdersRepository.cs" />
     <Compile Include="SqlFiles\HelperClass.cs" />
