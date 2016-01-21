@@ -3,6 +3,8 @@ using SportStore.Domain.Concrete;
 using SportStore.Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
 
 namespace SportStore.Domain.Respositories
 {
@@ -140,7 +142,19 @@ namespace SportStore.Domain.Respositories
             }
         }
 
-        public void ChangeCatalogName(int id, string newName)
+        void IDictionaryRepository.AddCatalog(string catalog)
+        {
+            var catalogToDb = new _dict_catalogs
+            {
+                Name = catalog,
+                InsertTime = DateTime.Now
+            };
+
+            _context.DictCatalogs.Add(catalogToDb);
+            _context.SaveChanges();
+        }
+
+        void IDictionaryRepository.ChangeCatalogName(int id, string newName)
         {
             var item = _context.DictCatalogs.Find(id);
 
@@ -148,6 +162,24 @@ namespace SportStore.Domain.Respositories
             item.UpdateTime = DateTime.Now;
 
             _context.SaveChanges();
+        }
+
+        bool IDictionaryRepository.DeleteCatalog(int id)
+        {
+            var catalog = _context.DictCatalogs.Find(id);
+            var item = _context.Items
+                .Where(x => x.Id_Category == id)
+                .ToList();
+
+            if (item.Count == 0)
+            {
+                _context.DictCatalogs.Remove(catalog);
+                _context.SaveChanges();
+
+                return true;
+            }
+
+            return false;
         }
     }
 }

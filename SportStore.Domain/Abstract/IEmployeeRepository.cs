@@ -12,6 +12,7 @@ namespace SportStore.Domain.Abstract
         IEnumerable<employees> Employees { get; set; }
         IEnumerable<employee_notyfications> EmployeeNotyfications { get; set; }
         IEnumerable<genereted_register_keys> GeneretedRegisterKeys { get; set; }
+        IEnumerable<items> Items { get; set; }
 
         employees GetEmployeeModel(int id);
         bool CheckRegisterKey(decimal key);

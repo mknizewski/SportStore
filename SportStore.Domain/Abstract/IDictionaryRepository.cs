@@ -1,9 +1,5 @@
 ﻿using SportStore.Domain.Entities;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SportStore.Domain.Abstract
 {
@@ -21,5 +17,7 @@ namespace SportStore.Domain.Abstract
         IEnumerable<_dict_status_orders> DictStatusOrders { get; set; }
 
         void ChangeCatalogName(int id, string newName);
+        void AddCatalog(string catalog);
+        bool DeleteCatalog(int id);
     }
 }

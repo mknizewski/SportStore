@@ -1,0 +1,167 @@
+﻿@model SportStore.Web.Models.Employee.ItemModel
+@{
+    ViewBag.Title = "Edycja produktu";
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+
+    var catalogs = ViewBag.Catalogs as IEnumerable<SelectListItem>;
+}
+
+<link href="~/Content/SbAdmin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet" />
+<link href="~/Content/SbAdmin/bower_components/datatables-responsive/css/responsive.dataTables.scss" rel="stylesheet" />
+<script src="~/Content/SbAdmin/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+<script src="~/Content/SbAdmin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+
+@using (Html.BeginForm())
+{
+    <div class="panel panel-default" style="margin-top: 15px;">
+        <div class="panel-heading">
+            Edycja produktu
+        </div>
+        <div class="panel-body">
+            <div class="row" style="margin-top: 15px;">
+                <div class="col-xs-6">
+
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            Produkt
+                        </div>
+                        <div class="panel-body">
+
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="title" class="col-md-2">Nazwa:</label>
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(x => x.Item.Title, new { htmlAttributes = new { @class = "form-control", @id = "title" } })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="price" class="col-md-2">Cena:</label>
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(x => x.Item.Price, new { htmlAttributes = new { @class = "form-control", @id = "price" } })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="category" class="col-md-2">Kategoria:</label>
+                                    <div class="col-md-10">
+                                        @Html.DropDownListFor(x => x.SelectedCategory, catalogs, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="desc" class="col-md-2">Opis</label>
+                                    <div class="col-md-10">
+                                        @Html.TextAreaFor(x => x.Item.Description.Name, new { @cols = 10, @rows = 10, @class = "form-control", @id = "desc" })
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            Zdjęcia
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-striped table-hover">
+                                <tbody>
+                                    @foreach(var item in Model.Pictures)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.Image(item.PictureData)
+                                                <button type="button" class="btn btn-primary"style="float:right;">Zamień</button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-xs-6">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            Ilość produktów w sklepach
+                        </div>
+                        <div class="panel-body">
+                            <div class="dataTable_wrapper">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>Sklep</th>
+                                            <th>Ilość</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @for (int i = 0; i < Model.Quantity.Count; i++)
+                                        {
+                                            <tr>   
+                                                <td>
+                                                    @Html.HiddenFor(x => Model.Quantity[i].Id)
+                                                    @Html.HiddenFor(x => Model.Quantity[i].Id_Shop)
+                                                    @Html.HiddenFor(x => Model.Quantity[i].Shop)
+                                                    @Html.DisplayFor(x => Model.Quantity[i].Shop.Name)
+                                                </td>
+                                                <td>
+                                                    @Html.EditorFor(x => Model.Quantity[i].Quantity)
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            Detale
+                            <button type="button" class="btn btn-success" style="float:right; margin-top:-7px;">Nowy</button>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-responsive">
+                                <tbody>
+                                    @foreach (var item in Model.DetailsItem)
+                                    {
+                                        <tr>
+                                            <td>@item</td>
+                                            <td>
+                                                <button type="button" class="btn btn-primary">Edycja</button>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger">Usuń</button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button style="float:right; margin-left:10px;" type="button" class="btn btn-primary">Cofnij</button>
+            <button style="float:right;" type="submit" class="btn btn-success">Zapisz zmiany</button>
+
+        </div>
+    </div>
+}
+
+<script>
+    $(document).ready(function () {
+        $('#dataTables-example').DataTable({
+            responsive: true
+        });
+    });
+</script>

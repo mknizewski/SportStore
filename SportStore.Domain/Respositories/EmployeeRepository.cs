@@ -51,6 +51,18 @@ namespace SportStore.Domain.Respositories
             }
         }
 
+        IEnumerable<items> IEmployeeRepository.Items
+        {
+            get
+            {
+                return _context.Items;
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
 
         bool IEmployeeRepository.CheckRegisterKey(decimal key)
         {

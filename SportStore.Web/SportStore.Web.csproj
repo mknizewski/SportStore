@@ -1031,6 +1031,7 @@
     <Compile Include="Models\Client\NotyficationsClientModel.cs" />
     <Compile Include="Models\Client\OrderModel.cs" />
     <Compile Include="Models\Client\OrderPDFModel.cs" />
+    <Compile Include="Models\Employee\ItemModel.cs" />
     <Compile Include="Models\Employee\LoginModel.cs" />
     <Compile Include="Models\Employee\RegisterModel.cs" />
     <Compile Include="Models\Home\Alert.cs" />
@@ -1072,6 +1073,8 @@
     <Content Include="Views\Shared\_EmployeeLayout.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Employee\CatalogManagment.cshtml" />
+    <Content Include="Views\Employee\ItemsManagment.cshtml" />
+    <Content Include="Views\Employee\ItemsEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

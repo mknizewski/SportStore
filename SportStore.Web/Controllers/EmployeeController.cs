@@ -2,8 +2,12 @@
 using SportStore.Web.HtmlHelpers.Interfaces;
 using SportStore.Web.Infrastructure;
 using SportStore.Web.Models.Employee;
+using System.Net;
+using System.Net.Mime;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace SportStore.Web.Controllers
 {
@@ -99,6 +103,66 @@ namespace SportStore.Web.Controllers
             _dictionaryRepository.ChangeCatalogName(id, name);
 
             return Json(new { succes = true, responseText = "Poprawnie wprowadzono zmiany" }, JsonRequestBehavior.AllowGet);
+        }
+
+        [Authorize]
+        [EmployeeAuthentication]
+        public ActionResult CatalogAdd(string catalogName)
+        {
+            _dictionaryRepository.AddCatalog(catalogName);
+
+            return Json(new { succes = true, data = "Poprawnie dodano " + catalogName }, JsonRequestBehavior.AllowGet);
+        }
+
+        [Authorize]
+        [EmployeeAuthentication]
+        public ActionResult CatalogDelete(int id)
+        { 
+            if (_dictionaryRepository.DeleteCatalog(id))
+            {
+                return Json(new { succes = true, data = "" }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Content("", MediaTypeNames.Text.Plain);
+            }
+        }
+
+        [Authorize]
+        [EmployeeAuthentication]
+        public ActionResult ItemsManagment()
+        {
+            return View(_employeesHelper.GetItems());
+        }
+
+        [Authorize]
+        [EmployeeAuthentication]
+        [HttpGet]
+        public ActionResult ItemsEdit(int id)
+        {
+            var catalogs = _dictionaryRepository.DictCatalogs;
+            var list = new List<SelectListItem>();
+
+            foreach (var item in catalogs)
+            {
+                list.Add(new SelectListItem
+                {
+                    Text = item.Name,
+                    Value = item.Id.ToString()
+                });
+            }
+
+            ViewBag.Catalogs = list;
+            return View(_employeesHelper.GetItemById(id));
+        }
+
+        [Authorize]
+        [EmployeeAuthentication]
+        [HttpPost]
+        public ActionResult ItemsEdit(ItemModel model)
+        {
+            return View(ModelState);
         }
     }
 }

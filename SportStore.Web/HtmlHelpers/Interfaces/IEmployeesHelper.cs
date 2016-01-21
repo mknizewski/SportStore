@@ -13,5 +13,7 @@ namespace SportStore.Web.HtmlHelpers.Interfaces
         bool CheckLogin(LoginModel model);
         employees GetEmployeeModel(LoginModel model);
         bool RegisterEmployee(RegisterModel model);
+        IEnumerable<items> GetItems();
+        ItemModel GetItemById(int id);
     }
 }

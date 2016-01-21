@@ -4,16 +4,20 @@ using SportStore.Web.HtmlHelpers.Interfaces;
 using SportStore.Web.Models.Employee;
 using System;
 using System.Linq;
+using System.Collections.Generic;
+using SportStore.Web.Models.Catalog;
 
 namespace SportStore.Web.HtmlHelpers.Classes
 {
     public class EmployeesHelper : IEmployeesHelper
     {
         private IEmployeeRepository _employeeRepository { get; set; }
+        private ICatalogsRepository _catalogRepository { get; set; }
 
-        public EmployeesHelper(IEmployeeRepository employeeRepository)
+        public EmployeesHelper(IEmployeeRepository employeeRepository, ICatalogsRepository catalogRespository)
         {
             _employeeRepository = employeeRepository;
+            _catalogRepository = catalogRespository;
         }
 
         bool IEmployeesHelper.CheckLogin(LoginModel model)
@@ -71,6 +75,41 @@ namespace SportStore.Web.HtmlHelpers.Classes
                 }
             }
             return false;
+        }
+
+        IEnumerable<items> IEmployeesHelper.GetItems()
+        {
+            return _employeeRepository.Items;
+        }
+
+        Models.Employee.ItemModel IEmployeesHelper.GetItemById(int id)
+        {
+            var item = _catalogRepository.Items
+                .Where(x => x.Id == id)
+                .FirstOrDefault();
+
+            var itemPictures = _catalogRepository.ItemsPicture
+                .Where(x => x.Id_Item == id);
+
+            var itemQuantity = _catalogRepository.ItemsQuantity
+                .Where(x => x.Id_Item == id);
+
+            var itemDetails = _catalogRepository.ItemsDetails
+                .Where(x => x.Id_Item == id)
+                .FirstOrDefault();
+
+            var itemDetailsSplit = itemDetails.Name.Split(new char[] { ';' });
+
+            var modelToSend = new Models.Employee.ItemModel
+            {
+                Item = item,
+                DetailsItem = itemDetailsSplit.ToList(),
+                Pictures = itemPictures.ToList(),
+                Quantity = itemQuantity.ToList(),
+                SelectedCategory = item.Id_Category
+            };
+
+            return modelToSend;
         }
     }
 }

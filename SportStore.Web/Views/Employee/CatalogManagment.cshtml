@@ -49,7 +49,7 @@
                                         <button class="btn btn-primary" onclick="editRow(@item.Id, this)" value="@item.Id">Edycja</button>
                                     </td>
                                     <td>
-                                        <button class="btn btn-primary" value="@item.Id">Usuń</button>
+                                        <button class="btn btn-danger" onclick="deleteCatalog(@item.Id)">Usuń</button>
                                     </td>
                                 </tr>
                             }
@@ -57,15 +57,44 @@
                     </tbody>
                 </table>
             </div>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Dodaj nowy katalog</button>
             <!-- /.table-responsive -->
         </div>
         <!-- /.panel-body -->
     </div>
 
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Wprowadź nowy katalog do systemu</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal" id="modal-grp">
+                    <div class="form-group">
+                        <label for="catalogName" class="col-md-2">Nazwa katalogu:</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="catalogName" placeholder="Nowy katalog" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+                <button type="button" onclick="addCatalog()" class="btn btn-primary">Zastosuj</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
 <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
-                responsive: true
+            responsive: true
         });
     });
 
@@ -78,6 +107,7 @@
         var x = td.insertCell(1);
 
         btn.textContent = "Zapisz";
+        btn.className = "btn btn-success";
         
         var bckBtn = document.createElement("button");
         var inputItem = document.createElement("input");
@@ -109,6 +139,7 @@
         td.cells[4].removeChild(btnBack);
 
         btn.textContent = "Edycja";
+        btn.className = "btn btn-primary";
         btn.onclick = function () {
             editRow(td.id, btn);
         };
@@ -149,5 +180,62 @@
     function hideAlert()
     {
         $('#alert').hide();
+    }
+
+    function addCatalog()
+    {
+        var input = document.getElementById("catalogName");
+
+        $.ajax({
+            url: 'Katalogi/Dodaj',
+            dataType: 'json',
+            data: { catalogName: input.value },
+            success: function (data) {
+
+                var modal = document.getElementById("modal-grp");
+                var text = document.createElement("p");
+                text.innerHTML = "Poprawnie dodano katalog!";
+                text.style.color = "green";
+                modal.appendChild(text);
+                
+                var time = setTimeout(function () { location.reload() }, 1500);
+            },
+            failure: function () { }
+        });
+    }
+
+    function deleteCatalog(id)
+    {
+        var conf = confirm("Czy na pewno chcesz usunąć katalog?");
+
+        if (conf == true)
+        {
+            $.ajax({
+                url: 'Katalogi/Usun',
+                dataType: 'json',
+                data: { id: id },
+                success: function (data) {
+                    location.reload();
+                },
+                error: function (data) {
+                    var x = document.getElementById("alert");
+                    x.className = "alert alert-danger alert-dismissable";
+                    x.textContent = "";
+                    var text = document.createTextNode("Katalog nie może zostać usunięty ponieważ posiada podpięte przedmioty!");
+                    x.appendChild(text);
+
+                    var button = document.createElement("button");
+                    button.textContent = "X";
+                    button.type = "button";
+                    button.className = "close";
+                    button.onclick = function () {
+                        hideAlert();
+                    };
+                    x.appendChild(button);
+
+                    $('#alert').show();
+                }
+            });
+        }
     }
 </script>
