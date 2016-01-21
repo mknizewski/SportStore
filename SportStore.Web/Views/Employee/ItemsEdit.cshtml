@@ -73,12 +73,14 @@
                         <div class="panel-body">
                             <table class="table table-striped table-hover">
                                 <tbody>
-                                    @foreach(var item in Model.Pictures)
+                                    @for (int i = 0; i < Model.Pictures.Count; i++)
                                     {
                                         <tr>
                                             <td>
-                                                @Html.Image(item.PictureData)
-                                                <button type="button" class="btn btn-primary"style="float:right;">Zamień</button>
+                                                @Html.HiddenFor(x => Model.Pictures[i].Id)
+                                                @Html.HiddenFor(x => Model.Pictures[i].PictureData)
+                                                @Html.Image(Model.Pictures[i].PictureData)
+                                                <input type="file" class="form-control" value="Prześlij" />
                                             </td>
                                         </tr>
                                     }
@@ -110,11 +112,10 @@
                                                 <td>
                                                     @Html.HiddenFor(x => Model.Quantity[i].Id)
                                                     @Html.HiddenFor(x => Model.Quantity[i].Id_Shop)
-                                                    @Html.HiddenFor(x => Model.Quantity[i].Shop)
                                                     @Html.DisplayFor(x => Model.Quantity[i].Shop.Name)
                                                 </td>
                                                 <td>
-                                                    @Html.EditorFor(x => Model.Quantity[i].Quantity)
+                                                    @Html.EditorFor(x => Model.Quantity[i].Quantity, new { htmlAttributes = new { @class = "form-control"} })
                                                 </td>
                                             </tr>
                                         }
@@ -132,12 +133,11 @@
                         <div class="panel-body">
                             <table class="table table-responsive">
                                 <tbody>
-                                    @foreach (var item in Model.DetailsItem)
+                                    @for (int i = 0; i < Model.DetailsItem.Count; i++)
                                     {
                                         <tr>
-                                            <td>@item</td>
                                             <td>
-                                                <button type="button" class="btn btn-primary">Edycja</button>
+                                                @Html.EditorFor(x => Model.DetailsItem[i], new { htmlAttributes = new { @class = "form-control" } })
                                             </td>
                                             <td>
                                                 <button type="button" class="btn btn-danger">Usuń</button>

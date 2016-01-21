@@ -162,7 +162,7 @@ namespace SportStore.Web.Controllers
         [HttpPost]
         public ActionResult ItemsEdit(ItemModel model)
         {
-            return View(ModelState);
+            return RedirectToAction("ItemsEdit", new { @id = model.Item.Id });
         }
     }
 }
