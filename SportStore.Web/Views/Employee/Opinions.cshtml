@@ -1,6 +1,6 @@
-﻿@model IEnumerable<SportStore.Domain.Entities.items>
+﻿@model IEnumerable<SportStore.Domain.Entities.items_opinions>
 @{
-    ViewBag.Title = "Zarządzanie produktami";
+    ViewBag.Title = "Opinie produktów";
     Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
 }
 
@@ -11,7 +11,7 @@
 
 <div class="panel panel-default" style="margin-top: 10px;">
     <div class="panel-heading">
-        Produkty
+        Opinie o produktach
     </div>
     <!-- /.panel-heading -->
     <div class="panel-body">
@@ -20,27 +20,34 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Przedmiot</th>
-                        <th>Kategoria</th>
-                        <th>Cena</th>
-                        <th>Edycja</th>
+                        <th>Opinia</th>
+                        <th>Gwiazdki</th>
+                        <th>Produkt</th>
+                        <th>Autor</th>
                         <th>Usuń</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @{
+                    @{ 
                         foreach (var item in Model)
                         {
                             <tr>
                                 <td>@item.Id</td>
-                                <td>@item.Title</td>
-                                <td>@item.Category.Name</td>
-                                <td>@item.Price.ToString("c")</td>
+                                <td>@item.Opinion</td>
+                                <td>@((int)item.Rate)</td>
+                                <td>@item.Item.Title</td>
+                                @{
+                                    if (item.Id_Client != null)
+                                    {
+                                        <td> @item.Client.Name @item.Client.Surname</td>
+                                    }
+                                    else
+                                    {
+                                        <td>Anonimowy</td>
+                                    }
+                                }
                                 <td>
-                                    @Html.ActionLink("Edycja", "ItemsEdit", "Employee", new { id = item.Id }, new { @class = "btn btn-primary" })
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Usuń</button>
+                                    @Html.ActionLink("Usuń", "DeleteOpinion", new { id = item.Id}, new { @class = "btn btn-danger"})
                                 </td>
                             </tr>
                         }
@@ -48,7 +55,6 @@
                 </tbody>
             </table>
         </div>
-        <a href='@Url.Action("ItemAdd")' class="btn btn-success" >Dodaj nowy produkt</a>
         <!-- /.table-responsive -->
     </div>
     <!-- /.panel-body -->
@@ -60,3 +66,4 @@
         });
     });
 </script>
+

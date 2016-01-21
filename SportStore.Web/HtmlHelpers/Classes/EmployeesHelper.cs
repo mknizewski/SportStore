@@ -6,6 +6,8 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using SportStore.Web.Models.Catalog;
+using System.Web;
+using System.Text;
 
 namespace SportStore.Web.HtmlHelpers.Classes
 {
@@ -110,6 +112,168 @@ namespace SportStore.Web.HtmlHelpers.Classes
             };
 
             return modelToSend;
+        }
+
+        void IEmployeesHelper.EditProduct(Models.Employee.ItemModel model, HttpFileCollectionBase files)
+        {
+            //item
+            var item = new items
+            {
+                Id = model.Item.Id,
+                Title = model.Item.Title,
+                Id_Category = model.SelectedCategory,
+                Description = model.Item.Description,
+                Id_Description = model.Item.Id_Description,
+                Price = model.Item.Price
+            };
+
+            //item details
+            StringBuilder stringBulider = new StringBuilder();
+            for (int i = 0; i < model.DetailsItem.Count; i++)
+            {
+                if (!String.IsNullOrEmpty(model.DetailsItem[i]))
+                {
+                    stringBulider.Append(model.DetailsItem[i]);
+                    stringBulider.Append(";");
+                }
+            }
+            stringBulider.Remove(stringBulider.Length - 1, 1);
+            var itemDetails = new _dict_items_details
+            {
+                Id_Item = model.Item.Id,
+                Name = stringBulider.ToString()
+            };
+
+            //item quantity
+            List<items_quantity> itemQuantity = new List<items_quantity>();
+            foreach(var quantity in model.Quantity)
+            {
+                itemQuantity.Add(
+                    new items_quantity
+                    {
+                        Id = quantity.Id,
+                        Id_Shop = quantity.Id_Shop,
+                        Quantity = quantity.Quantity    
+                });
+            }
+
+            //item pictures
+            List<items_picutures> itemPictures = new List<items_picutures>();
+            foreach(string file in files)
+            {
+                if (files[file].ContentType.Equals("image/jpeg"))
+                {
+                    var picture = new items_picutures();
+
+                    picture.PictureMimeType = files[file].ContentType;
+                    picture.PictureData = new byte[files[file].ContentLength];
+
+                    files[file].InputStream.Read(picture.PictureData, 0, files[file].ContentLength);
+
+                    var ids = file.Split(new char[] { '-' });
+                    picture.Id = int.Parse(ids[1]);
+
+                    itemPictures.Add(picture);
+                }
+            }
+
+            _employeeRepository.EditProduct(item, itemPictures, itemDetails, itemQuantity);
+        }
+
+        Models.Employee.ItemModel IEmployeesHelper.GetEmptyItem()
+        {
+            var itemModel = new Models.Employee.ItemModel();
+
+            var shops = _employeeRepository.DictShops
+                .Select(x => x)
+                .ToList();
+
+            var quanList = new List<items_quantity>();
+            foreach (var item in shops)
+            {
+                var q = new items_quantity();
+
+                q.Id_Shop = item.Id;
+                q.Quantity = 0;
+                q.Shop = item;
+
+                quanList.Add(q);
+            }
+
+            itemModel.Quantity = quanList;
+            itemModel.DetailsItem = new List<string>();
+
+            return itemModel;
+        }
+
+        void IEmployeesHelper.AddProduct(Models.Employee.ItemModel model, List<HttpPostedFileBase> files)
+        {
+            //items
+            var product = new items
+            {
+                Title = model.Item.Title,
+                Price = model.Item.Price,
+                Id_Category = model.SelectedCategory,
+                Description = model.Item.Description
+            };
+
+            //item details
+            StringBuilder stringBulider = new StringBuilder();
+            for (int i = 0; i < model.DetailsItem.Count; i++)
+            {
+                if (!String.IsNullOrEmpty(model.DetailsItem[i]))
+                {
+                    stringBulider.Append(model.DetailsItem[i]);
+                    stringBulider.Append(";");
+                }
+            }
+            stringBulider.Remove(stringBulider.Length - 1, 1);
+            var itemDetails = new _dict_items_details
+            {
+                Name = stringBulider.ToString()
+            };
+
+            //item quantity
+            List<items_quantity> itemQuantity = new List<items_quantity>();
+            foreach (var quantity in model.Quantity)
+            {
+                itemQuantity.Add(
+                    new items_quantity
+                    {
+                        Id_Shop = quantity.Id_Shop,
+                        Quantity = quantity.Quantity
+                    });
+            }
+
+            //item pictures
+            List<items_picutures> itemPictures = new List<items_picutures>();
+            foreach (var file in files)
+            {
+                if (file.ContentType.Equals("image/jpeg"))
+                {
+                    var picture = new items_picutures();
+                    picture.PictureMimeType = file.ContentType;
+                    picture.PictureData = new byte[file.ContentLength];
+                    
+                    file.InputStream.Read(picture.PictureData, 0, file.ContentLength);
+
+                    itemPictures.Add(picture);
+                }
+            }
+
+            _employeeRepository.AddProduct(product, itemPictures, itemDetails, itemQuantity);
+        }
+
+        IEnumerable<items_opinions> IEmployeesHelper.GetOpinions()
+        {
+            return _employeeRepository
+                .ItemsOpinions
+                .Select(x => x);
+        }
+
+        void IEmployeesHelper.DeleteOpinion(int id)
+        {
+            _employeeRepository.DeleteOpinion(id);
         }
     }
 }

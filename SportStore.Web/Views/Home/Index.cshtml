@@ -115,7 +115,6 @@
                             <h4>
                                 <a href='@Url.Action("ItemDescription", "Catalog", new { productId = item.Item.Id, catalogId = item.Item.Id_Category })'>@item.Item.Title</a>
                             </h4>
-                            <p>@item.Item.Description.Name.Substring(0, 50)...</p>
                         </div>
                         <div class="ratings">
                             <p class="pull-right">@item.Opinions.Count() recenzji</p>

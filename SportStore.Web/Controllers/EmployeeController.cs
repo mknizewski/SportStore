@@ -8,6 +8,8 @@ using System.Web.Mvc;
 using System.Web.Security;
 using System.Linq;
 using System.Collections.Generic;
+using System.Web;
+using SportStore.Web.HtmlHelpers.Classes;
 
 namespace SportStore.Web.Controllers
 {
@@ -162,7 +164,59 @@ namespace SportStore.Web.Controllers
         [HttpPost]
         public ActionResult ItemsEdit(ItemModel model)
         {
-            return RedirectToAction("ItemsEdit", new { @id = model.Item.Id });
+            _employeesHelper.EditProduct(model, Request.Files);
+            TempData["Alert"] = EmployeeAlert.SetAlert(EmployyeAlerts.Succes, "Poprawnie zmodyfikowano produkt!");
+
+            return RedirectToAction("ItemsManagment");
+        }
+
+        [Authorize]
+        [EmployeeAuthentication]
+        public ActionResult ItemAdd()
+        {
+            var catalogs = _dictionaryRepository.DictCatalogs;
+            var list = new List<SelectListItem>();
+
+            foreach (var item in catalogs)
+            {
+                list.Add(new SelectListItem
+                {
+                    Text = item.Name,
+                    Value = item.Id.ToString()
+                });
+            }
+
+            ViewBag.Catalogs = list;
+
+            return View(_employeesHelper.GetEmptyItem());
+        }
+
+        [Authorize]
+        [EmployeeAuthentication]
+        [HttpPost]
+        public ActionResult ItemAdd(ItemModel model, List<HttpPostedFileBase> fileUpload)
+        {
+            _employeesHelper.AddProduct(model, fileUpload);
+            TempData["Alert"] = EmployeeAlert.SetAlert(EmployyeAlerts.Succes, "Poprawnie dodano produkt!");
+
+            return RedirectToAction("ItemsManagment");
+        }
+
+        [Authorize]
+        [EmployeeAuthentication]
+        public ActionResult Opinions()
+        {
+            return View(_employeesHelper.GetOpinions());
+        }
+
+        [Authorize]
+        [EmployeeAuthentication]
+        public ActionResult DeleteOpinion(int id)
+        {
+            _employeesHelper.DeleteOpinion(id);
+            TempData["Alert"] = EmployeeAlert.SetAlert(EmployyeAlerts.Succes, "Poprawnie usunięto opinię!");
+
+            return RedirectToAction("Opinions");
         }
     }
 }

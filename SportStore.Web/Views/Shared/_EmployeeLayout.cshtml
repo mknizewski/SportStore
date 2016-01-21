@@ -301,7 +301,7 @@
                                         <a href='@Url.Action("ItemsManagment")'>Zarządzanie produktami</a>
                                     </li>
                                     <li>
-                                        <a href="#">Opinie</a>
+                                        <a href='@Url.Action("Opinions")'>Opinie</a>
                                     </li>
                                 </ul>
                             </li>
@@ -355,6 +355,17 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
+                            @{
+                                if (TempData["Alert"] != null)
+                                {
+                                    var alert = TempData["Alert"] as SportStore.Web.HtmlHelpers.Classes.EmployeeAlert;
+
+                                    <div style="margin-top:15px;" class="alert @alert.Alert alert-dismissable">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                        @alert.Message
+                                    </div>
+                                }
+                            }
                             @RenderBody()
                         </div>
                         <!-- /.col-lg-12 -->

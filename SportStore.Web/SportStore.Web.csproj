@@ -994,6 +994,7 @@
     <Compile Include="HtmlHelpers\Classes\Cart.cs" />
     <Compile Include="HtmlHelpers\Classes\CartLine.cs" />
     <Compile Include="HtmlHelpers\Classes\CatalogsHelper.cs" />
+    <Compile Include="HtmlHelpers\Classes\EmployeeAlert.cs" />
     <Compile Include="HtmlHelpers\Classes\EmployeesHelper.cs" />
     <Compile Include="HtmlHelpers\Classes\GlobalSearchHelper.cs" />
     <Compile Include="HtmlHelpers\Classes\ImageHelper.cs" />
@@ -1075,6 +1076,8 @@
     <Content Include="Views\Employee\CatalogManagment.cshtml" />
     <Content Include="Views\Employee\ItemsManagment.cshtml" />
     <Content Include="Views\Employee\ItemsEdit.cshtml" />
+    <Content Include="Views\Employee\ItemAdd.cshtml" />
+    <Content Include="Views\Employee\Opinions.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
