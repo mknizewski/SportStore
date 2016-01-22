@@ -289,5 +289,35 @@ namespace SportStore.Web.HtmlHelpers.Classes
 
             return registerKey;
         }
+
+        IEnumerable<genereted_register_keys> IEmployeesHelper.GetRegisterKeys()
+        {
+            return _employeeRepository.GeneretedRegisterKeys;
+        }
+
+        void IEmployeesHelper.DeleteKey(int id)
+        {
+            _employeeRepository.DeleteKey(id);
+        }
+
+        IEnumerable<clients> IEmployeesHelper.GetClients()
+        {
+            return  _employeeRepository.Clients;
+        }
+
+        clients IEmployeesHelper.GetClientById(int id)
+        {
+            return _employeeRepository.GetClientById(id);
+        }
+
+        bool IEmployeesHelper.TryDeleteClient(int id)
+        {
+            var result = _employeeRepository.TryDeleteClient(id);
+
+            if (result)
+                return true;
+            else
+                return false;
+        }
     }
 }

@@ -221,11 +221,62 @@ namespace SportStore.Web.Controllers
 
         [Authorize]
         [EmployeeAuthentication]
+        [OnlyAdmin]
         public ActionResult GenerateRegisterKey()
         {
             int generateCode = _employeesHelper.GenerateKey();
 
             return Json(generateCode, JsonRequestBehavior.AllowGet);
+        }
+
+        [Authorize]
+        [EmployeeAuthentication]
+        [OnlyAdmin]
+        public ActionResult RegisterKeys()
+        {
+            return View(_employeesHelper.GetRegisterKeys());
+        }
+
+        [Authorize]
+        [EmployeeAuthentication]
+        [OnlyAdmin]
+        public ActionResult DeleteKey(int id)
+        {
+            _employeesHelper.DeleteKey(id);
+            TempData["Alert"] = EmployeeAlert.SetAlert(EmployyeAlerts.Succes, "Poprawnie usunięto kod!");
+
+            return RedirectToAction("RegisterKeys");
+        }
+
+        [Authorize]
+        [EmployeeAuthentication]
+        [OnlyAdmin]
+        public ActionResult ClientManagment()
+        {
+            return View(_employeesHelper.GetClients());
+        }
+
+        [Authorize]
+        [EmployeeAuthentication]
+        [OnlyAdmin]
+        public ActionResult ClientDetail(int id)
+        {
+            return View(_employeesHelper.GetClientById(id));
+        }
+
+        [Authorize]
+        [EmployeeAuthentication]
+        [OnlyAdmin]
+        public ActionResult ClientDelete(int id)
+        {
+            var result = _employeesHelper.TryDeleteClient(id);
+
+            if (result)
+                TempData["Alert"] = EmployeeAlert.SetAlert(EmployyeAlerts.Succes, "Poprawnie usunięto klienta!");
+            else
+                TempData["Alert"] = EmployeeAlert.SetAlert(EmployyeAlerts.Danger, "Brak możliwości usunięcia! Klient posiada aktywne zamówienia!");
+
+            return RedirectToAction("ClientManagment");
         }
     }
 }

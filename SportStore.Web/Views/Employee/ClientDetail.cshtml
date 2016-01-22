@@ -1,0 +1,118 @@
+﻿@model SportStore.Domain.Entities.clients
+@{
+    ViewBag.Title = "Profil klienta";
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+}
+
+<div style="margin-top:15px;" class="panel panel-default">
+    <div class="panel-heading">
+        Profil - @Model.Email
+    </div>
+    <div class="panel-heading">
+
+        <div class="row">
+            
+            <div class="col-xs-6">
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        Dane personalne
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="name" class="col-md-2">Imię:</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(x => x.Name, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @id = "name" } })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="surname" class="col-md-2">Nazwisko:</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(x => x.Surname, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @id = "surname" } })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="email" class="col-md-2">E-mail:</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(x => x.Email, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @id = "email" } })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="role" class="col-md-2">Rola:</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(x => x.Rule.Name, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @id = "role" } })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="brith" class="col-md-2">Data urodzenia:</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(x => x.DateOfBrith, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @id = "brith" } })
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-xs-6">
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        Dane wysyłkowe
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="street" class="col-md-2">Ulica:</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(x => x.Street, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @id = "street" } })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="city" class="col-md-2">Miasto:</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(x => x.City.Name, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @id = "city" } })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="postalCode" class="col-md-2">Ulica:</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(x => x.PostalCode, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @id = "postalCode" } })
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <a href='@Url.Action("ClientManagment")' style="float:right; margin-top:-35px;" class="btn btn-primary">Cofnij</a>
+
+    </div>
+</div>
+

@@ -13,6 +13,19 @@ namespace SportStore.Domain.Respositories
     {
         private EFDbContext _context = new EFDbContext();
 
+        IEnumerable<clients> IEmployeeRepository.Clients
+        {
+            get
+            {
+                return _context.Clients;
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         IEnumerable<_dict_shops> IEmployeeRepository.DictShops
         {
             get
@@ -91,6 +104,19 @@ namespace SportStore.Domain.Respositories
             }
         }
 
+        IEnumerable<genereted_register_keys> IEmployeeRepository.RegisterKeys
+        {
+            get
+            {
+                return _context.GeneretedRegisterKeys;
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         void IEmployeeRepository.AddProduct(items item, List<items_picutures> itemPictures, _dict_items_details itemDetails, List<items_quantity> itemQuantity)
         {
             var desc = new _dict_description_items();
@@ -124,6 +150,14 @@ namespace SportStore.Domain.Respositories
         bool IEmployeeRepository.CheckRegisterKey(decimal key)
         {
             throw new NotImplementedException();
+        }
+
+        void IEmployeeRepository.DeleteKey(int id)
+        {
+            var dbItem = _context.GeneretedRegisterKeys.Find(id);
+
+            _context.GeneretedRegisterKeys.Remove(dbItem);
+            _context.SaveChanges();
         }
 
         void IEmployeeRepository.DeleteOpinion(int id)
@@ -178,6 +212,13 @@ namespace SportStore.Domain.Respositories
             }
         }
 
+        clients IEmployeeRepository.GetClientById(int id)
+        {
+            var dbItem = _context.Clients.Find(id);
+
+            return dbItem;
+        }
+
         employees IEmployeeRepository.GetEmployeeModel(int id)
         {
             return _context.Employees
@@ -199,6 +240,75 @@ namespace SportStore.Domain.Respositories
             _context.SaveChanges();
         }
 
+        bool IEmployeeRepository.TryDeleteClient(int id)
+        {
+            var client = _context.Clients.Find(id);
+            var orders = _context.Orders
+                .Where(x => x.Id_Client == id)
+                .ToList();
+            var ordersToDelete = new List<orders>();
+            var ordersDetailsToDelete = new List<order_details>();
+            var ordersComplaintsToDelete = new List<order_complaints>();
+
+            if (orders.Count != 0)
+            {
+                foreach (var item in orders)
+                {
+                    if (item.Id_Status == 3)
+                    {
+                        ordersToDelete.Add(item);
+
+                        _context.OrderDetails
+                        .Where(x => x.Id_Order == item.Id)
+                        .ToList()
+                        .ForEach(x => ordersDetailsToDelete.Add(x));
+
+                        _context.OrderComplaints
+                            .Where(x => x.Id_Order == item.Id)
+                            .ToList()
+                            .ForEach(x => ordersComplaintsToDelete.Add(x));
+                    }
+                }
+
+                if (ordersToDelete.Count != 0)
+                {
+                    var clientNotyfications = _context.ClientNotyfications
+                    .Where(x => x.Id_Client == id)
+                    .ToList();
+
+                    //proces usuwania zamówień
+                    ordersComplaintsToDelete.ForEach(x => _context.OrderComplaints.Remove(x));
+                    ordersDetailsToDelete.ForEach(x => _context.OrderDetails.Remove(x));
+                    ordersToDelete.ForEach(x => _context.Orders.Remove(x));
+
+                    //proces usuwania notyfikacji i klienta
+                    clientNotyfications.ForEach(x => _context.ClientNotyfications.Remove(x));
+                    _context.Clients.Remove(client);
+
+                    //zapisanie zmian
+                    _context.SaveChanges();
+
+                    return true;
+                }
+            }
+            else
+            {
+                var clientNotyfications = _context.ClientNotyfications
+                    .Where(x => x.Id_Client == id)
+                    .ToList();
+
+                //proces usuwania notyfikacji i klienta
+                clientNotyfications.ForEach(x => _context.ClientNotyfications.Remove(x));
+                _context.Clients.Remove(client);
+
+                //zapisanie zmian
+                _context.SaveChanges();
+
+                return true;
+            }
+
+            return false;
+        }
 
         bool IEmployeeRepository.TrySaveGenerateKey(int code)
         {

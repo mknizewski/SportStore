@@ -8,7 +8,7 @@ namespace SportStore.Web.HtmlHelpers.Classes
         public static byte[] NoImageArray { get; set; }
 
         //TODO: Zmienić na resouces!
-        private static Image _noImage = Image.FromFile(@"D:\Projekty\SportStore\branches\release0.2\SportStore.Web\Content\Images\no-image.png");
+        private static Image _noImage = Image.FromFile(@"F:\Projekty\SportStore\branches\release0.2\SportStore.Web\Content\Images\no-image.png");
 
         public static void GetNoImage()
         {

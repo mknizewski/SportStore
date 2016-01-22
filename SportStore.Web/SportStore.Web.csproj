@@ -1023,6 +1023,7 @@
     <Compile Include="Infrastructure\ClientAuthentication.cs" />
     <Compile Include="Infrastructure\EmployeeAuthentication.cs" />
     <Compile Include="Infrastructure\NinjectDepedencyResolver.cs" />
+    <Compile Include="Infrastructure\OnlyAdmin.cs" />
     <Compile Include="Models\Catalog\ItemModel.cs" />
     <Compile Include="Models\Catalog\OpinionModel.cs" />
     <Compile Include="Models\Catalog\ProductsListViewModel.cs" />
@@ -1078,6 +1079,9 @@
     <Content Include="Views\Employee\ItemsEdit.cshtml" />
     <Content Include="Views\Employee\ItemAdd.cshtml" />
     <Content Include="Views\Employee\Opinions.cshtml" />
+    <Content Include="Views\Employee\RegisterKeys.cshtml" />
+    <Content Include="Views\Employee\ClientManagment.cshtml" />
+    <Content Include="Views\Employee\ClientDetail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

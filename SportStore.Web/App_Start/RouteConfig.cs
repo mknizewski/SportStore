@@ -36,7 +36,6 @@ namespace SportStore.Web
             routes.MapRoute("", "Sklep/Zamowienie", new { controller = "Client", action = "OrderDetails" });
             routes.MapRoute("", "Sklep/Zdjecie/{array}/{mimeType}", new { controller = "Catalog", action = "GetImageByByte", array = UrlParameter.Optional, mimeType = UrlParameter.Optional });
 
-
             routes.MapRoute("", "Sklep/Rejestracja", new { controller = "Home", action = "Register" });
             routes.MapRoute("", "Sklep/Newsletter", new { controller = "Home", action = "SaveNewsletter" });
             routes.MapRoute("", "Sklep/Wyszukiwarka", new { controller = "Search", action = "GlobalSearch" });
@@ -48,6 +47,13 @@ namespace SportStore.Web
             routes.MapRoute("", "Pracownik/Konto/Katalogi/Edycja", new { controller = "Employee", action = "CatalogEdit", id = UrlParameter.Optional, name = UrlParameter.Optional });
             routes.MapRoute("", "Pracownik/Konto/Katalogi/Usun", new { controller = "Employee", action = "CatalogDelete", id = UrlParameter.Optional });
             routes.MapRoute("", "Pracownik/Konto/Katalogi/Dodaj", new { controller = "Employee", action = "CatalogAdd", catalogName = UrlParameter.Optional });
+
+            routes.MapRoute("", "Pracownik/Konto/Klienci/p/{id}", new { controller = "Employee", action = "ClientDetail", id = UrlParameter.Optional });
+            routes.MapRoute("", "Pracownik/Konto/Klienci/Usun/{id}", new { controller = "Employee", action = "ClientDelete", id = UrlParameter.Optional });
+            routes.MapRoute("", "Pracownik/Konto/Klienci", new { controller = "Employee", action = "ClientManagment" });
+
+            routes.MapRoute("", "Pracownik/Konto/Kody/Usun/{id}", new { controller = "Employee", action = "DeleteKey", id = UrlParameter.Optional });
+            routes.MapRoute("", "Pracownik/Konto/Kody", new { controller = "Employee", action = "RegisterKeys" });
 
             routes.MapRoute("", "Pracownik/Konto/Produkty/Opinie/Usun/{id}", new { controller = "Employee", action = "DeleteOpinion", id = UrlParameter.Optional });
             routes.MapRoute("", "Pracownik/Konto/Produkty/Opinie", new { controller = "Employee", action = "Opinions" });
