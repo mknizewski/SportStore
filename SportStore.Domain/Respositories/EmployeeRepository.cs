@@ -198,5 +198,31 @@ namespace SportStore.Domain.Respositories
 
             _context.SaveChanges();
         }
+
+
+        bool IEmployeeRepository.TrySaveGenerateKey(int code)
+        {
+            var codes = _context.GeneretedRegisterKeys
+                .Where(x => x.RegisterPin == code)
+                .Select(x =>x)
+                .FirstOrDefault();
+
+            if (codes == null)
+            {
+                var newCode = new genereted_register_keys 
+                {
+                    ExpirationDate = DateTime.Now.AddDays(7.0),
+                    RegisterPin = code,
+                    IsUsed = false
+                };
+
+                _context.GeneretedRegisterKeys.Add(newCode);
+                _context.SaveChanges();
+
+                return true;
+            }
+
+            return false;
+        }
     }
 }

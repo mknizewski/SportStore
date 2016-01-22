@@ -275,5 +275,19 @@ namespace SportStore.Web.HtmlHelpers.Classes
         {
             _employeeRepository.DeleteOpinion(id);
         }
+
+
+        int IEmployeesHelper.GenerateKey()
+        {
+            Random rand = new Random();
+            int registerKey;
+            do
+            {
+                registerKey = rand.Next(1000, 9999);
+            }
+            while (!_employeeRepository.TrySaveGenerateKey(registerKey));
+
+            return registerKey;
+        }
     }
 }

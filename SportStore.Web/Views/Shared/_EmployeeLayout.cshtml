@@ -335,7 +335,7 @@
                                         <a href="tables.html"><i class="fa fa-key fa-fw"></i>Kody rejestracyjne<span class="fa arrow"></span></a>
                                         <ul class="nav nav-second-level">
                                             <li>
-                                                <a href="#">Generuj</a>
+                                                <a href="#" data-toggle="modal" data-target="#myModal" id="generateKey">Generuj</a>
                                             </li>
                                             <li>
                                                 <a href="#">Wyświetl</a>
@@ -378,5 +378,54 @@
         </div>
         <!-- /#wrapper -->
     </div>
+
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Kod rejestracyjny</h4>
+                </div>
+                <div class="modal-body" id="key">
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#generateKey").click(function () {
+
+                $.ajax({
+                    contentType: 'application/json; charset=utf-8',
+                    url: 'Konto/GenerujKey',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        
+                        var modalBody = document.getElementById("key");
+                        var code = data;
+
+                        var p = document.createElement("p");
+                        p.textContent = "Wygenerowany kod rejestracyjny: " + code;
+                        modalBody.appendChild(p);
+                    },
+                    failure: function () { }
+                });
+
+            });
+        });
+
+    </script>
+
 </body>
 </html>

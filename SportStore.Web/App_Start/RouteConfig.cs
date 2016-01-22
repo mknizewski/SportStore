@@ -56,6 +56,7 @@ namespace SportStore.Web
             routes.MapRoute("", "Pracownik/Konto/Produkty/{id}", new { controller = "Employee", action = "ItemsEdit", id = UrlParameter.Optional });
 
             routes.MapRoute("", "Pracownik/Logowanie", new { controller = "Employee", action = "Login" });
+            routes.MapRoute("", "Pracownik/Konto/GenerujKey", new { controller = "Employee", action = "GenerateRegisterKey"});
             routes.MapRoute("", "Pracownik/Konto/Katalogi", new { controller = "Employee", action = "CatalogManagment" });
             routes.MapRoute("", "Pracownik/Konto/Wyloguj", new { controller = "Employee", action = "Logout" });
             routes.MapRoute("", "Pracownik/Rejestracja", new { controller = "Employee", action = "Register" });

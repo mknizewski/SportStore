@@ -218,5 +218,14 @@ namespace SportStore.Web.Controllers
 
             return RedirectToAction("Opinions");
         }
+
+        [Authorize]
+        [EmployeeAuthentication]
+        public ActionResult GenerateRegisterKey()
+        {
+            int generateCode = _employeesHelper.GenerateKey();
+
+            return Json(generateCode, JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -19,6 +19,7 @@ namespace SportStore.Web.HtmlHelpers.Interfaces
         void AddProduct(ItemModel model, List<HttpPostedFileBase> files);
         void EditProduct(ItemModel model, HttpFileCollectionBase files);
         void DeleteOpinion(int id);
+        int GenerateKey();
         IEnumerable<items_opinions> GetOpinions();
         ItemModel GetEmptyItem();
     }

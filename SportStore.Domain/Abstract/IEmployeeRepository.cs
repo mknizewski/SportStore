@@ -16,6 +16,7 @@ namespace SportStore.Domain.Abstract
         IEnumerable<items_opinions> ItemsOpinions { get; set; }
         IEnumerable<_dict_shops> DictShops { get; set;}
 
+        bool TrySaveGenerateKey(int code);
         employees GetEmployeeModel(int id);
         void DeleteOpinion(int id);
         bool CheckRegisterKey(decimal key);
