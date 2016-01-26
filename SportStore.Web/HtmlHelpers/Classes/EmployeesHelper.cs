@@ -319,5 +319,45 @@ namespace SportStore.Web.HtmlHelpers.Classes
             else
                 return false;
         }
+
+        IEnumerable<employees> IEmployeesHelper.GetEmployees()
+        {
+            return _employeeRepository.Employees;
+        }
+
+        void IEmployeesHelper.MakeAdmin(int id)
+        {
+            _employeeRepository.MakeAdmin(id);
+        }
+
+        void IEmployeesHelper.DeleteAdmin(int id)
+        {
+            _employeeRepository.DeleteAdmin(id);
+        }
+
+        DonautChartModel IEmployeesHelper.GetStatistic()
+        {
+            var dbData = _employeeRepository.GetStats();
+
+            DonautChartModel model = new DonautChartModel
+            {
+                NewComment = dbData[0],
+                NewOrders = dbData[1],
+                NewNewsletters = dbData[2],
+                UnusedKeys = dbData[3]
+            };
+
+            return model;
+        }
+
+        IEnumerable<orders> IEmployeesHelper.GetOrders()
+        {
+            return _employeeRepository.Orders;
+        }
+
+        void IEmployeesHelper.ChangeOrderStatus(int orderId, int statusId)
+        {
+            _employeeRepository.changeOrderStatus(orderId, statusId);
+        }
     }
 }

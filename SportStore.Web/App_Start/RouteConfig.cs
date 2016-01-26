@@ -48,6 +48,16 @@ namespace SportStore.Web
             routes.MapRoute("", "Pracownik/Konto/Katalogi/Usun", new { controller = "Employee", action = "CatalogDelete", id = UrlParameter.Optional });
             routes.MapRoute("", "Pracownik/Konto/Katalogi/Dodaj", new { controller = "Employee", action = "CatalogAdd", catalogName = UrlParameter.Optional });
 
+            routes.MapRoute("", "Pracownik/Konto/Zamowienia/Status", new { controller = "Employee", action = "ChangeOrderStatus", id = UrlParameter.Optional, newStatus = UrlParameter.Optional });
+            routes.MapRoute("", "Pracownik/Konto/Zamowienia/o/{id}", new { controller = "Employee", action = "OrderDetail", id = UrlParameter.Optional });
+            routes.MapRoute("", "Pracownik/Konto/Zamowienia", new { controller = "Employee", action = "OrderManagment" });
+
+            routes.MapRoute("", "Pracownik/Konto/Statystki", new { controller = "Employee", action = "Stats" });
+
+            routes.MapRoute("", "Pracownik/Konto/Pracownicy/Mianuj/{id}", new { controller = "Employee", action = "MakeAdmin" });
+            routes.MapRoute("", "Pracownik/Konto/Pracownicy/Degraduj/{id}", new { controller = "Employee", action = "DeleteAdmin" });
+            routes.MapRoute("", "Pracownik/Konto/Pracownicy", new { controller = "Employee", action = "EmployeeManagment" });
+
             routes.MapRoute("", "Pracownik/Konto/Klienci/p/{id}", new { controller = "Employee", action = "ClientDetail", id = UrlParameter.Optional });
             routes.MapRoute("", "Pracownik/Konto/Klienci/Usun/{id}", new { controller = "Employee", action = "ClientDelete", id = UrlParameter.Optional });
             routes.MapRoute("", "Pracownik/Konto/Klienci", new { controller = "Employee", action = "ClientManagment" });

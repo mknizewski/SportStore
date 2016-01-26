@@ -17,7 +17,12 @@ namespace SportStore.Domain.Abstract
         IEnumerable<items_opinions> ItemsOpinions { get; set; }
         IEnumerable<_dict_shops> DictShops { get; set;}
         IEnumerable<genereted_register_keys> RegisterKeys { get; set; }
+        IEnumerable<orders> Orders { get; set; }
 
+        void changeOrderStatus(int orderId, int statusId);
+        int[] GetStats();
+        void MakeAdmin(int id);
+        void DeleteAdmin(int id);
         bool TryDeleteClient(int id);
         void DeleteKey(int id);
         bool TrySaveGenerateKey(int code);

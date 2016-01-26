@@ -133,7 +133,7 @@ namespace SportStore.Domain.Respositories
         {
             get
             {
-                throw new NotImplementedException();
+               return _context.DictStatusOrders;
             }
 
             set

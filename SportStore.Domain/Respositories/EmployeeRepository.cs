@@ -104,6 +104,19 @@ namespace SportStore.Domain.Respositories
             }
         }
 
+        IEnumerable<orders> IEmployeeRepository.Orders
+        {
+            get
+            {
+                return _context.Orders;
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         IEnumerable<genereted_register_keys> IEmployeeRepository.RegisterKeys
         {
             get
@@ -147,9 +160,25 @@ namespace SportStore.Domain.Respositories
             _context.SaveChanges();
         }
 
+        void IEmployeeRepository.changeOrderStatus(int orderId, int statusId)
+        {
+            var item = _context.Orders.Find(orderId);
+            item.Id_Status = statusId;
+
+            _context.SaveChanges();
+        }
+
         bool IEmployeeRepository.CheckRegisterKey(decimal key)
         {
             throw new NotImplementedException();
+        }
+
+        void IEmployeeRepository.DeleteAdmin(int id)
+        {
+            var item = _context.Employees.Find(id);
+
+            item.Id_Rule = (int)Rules.Employee;
+            _context.SaveChanges();
         }
 
         void IEmployeeRepository.DeleteKey(int id)
@@ -224,6 +253,42 @@ namespace SportStore.Domain.Respositories
             return _context.Employees
                 .Where(x => x.Id.Equals(id))
                 .FirstOrDefault();
+        }
+
+        int[] IEmployeeRepository.GetStats()
+        {
+            var lastMonth = DateTime.Now.AddMonths(-1);
+            int newComments = _context.ItemsOpinions
+                .Where(x => x.InsertTime > lastMonth)
+                .Count();
+
+            int newOrders = _context.Orders
+                .Where(x => x.InsertTime > lastMonth)
+                .Count();
+
+            int newNewsletter = _context.Newsletter
+                .Where(x => x.InsertTime > lastMonth)
+                .Count();
+
+            int unusedKeys = _context.GeneretedRegisterKeys
+                .Where(x => x.IsUsed == false)
+                .Count();
+
+            int[] returnData = new int[4];
+            returnData[0] = newComments;
+            returnData[1] = newOrders;
+            returnData[2] = newNewsletter;
+            returnData[3] = unusedKeys;
+
+            return returnData;
+        }
+
+        void IEmployeeRepository.MakeAdmin(int id)
+        {
+            var item = _context.Employees.Find(id);
+
+            item.Id_Rule = (int)Rules.Admin;
+            _context.SaveChanges();
         }
 
         void IEmployeeRepository.RegisterEmployee(employees model)

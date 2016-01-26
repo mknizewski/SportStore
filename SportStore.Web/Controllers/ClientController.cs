@@ -195,8 +195,8 @@ namespace SportStore.Web.Controllers
                 var cart = Session["Cart"] as Cart;
                 cart.Clear();
 
-                Alert.SetAlert(AlertStatus.Succes, "Poprawnie złożono zamówienie! Status zamówienia można sprawdzić w sekcji Zamówienia");
-                return RedirectToAction("AccountManagment");
+                Alert.SetAlert(AlertStatus.Succes, "Poprawnie złożono zamówienie!");
+                return RedirectToAction("OrdersList");
             }
             else
                 return View(model);

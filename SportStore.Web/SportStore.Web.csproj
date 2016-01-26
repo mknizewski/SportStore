@@ -1033,6 +1033,7 @@
     <Compile Include="Models\Client\NotyficationsClientModel.cs" />
     <Compile Include="Models\Client\OrderModel.cs" />
     <Compile Include="Models\Client\OrderPDFModel.cs" />
+    <Compile Include="Models\Employee\DonautChartModel.cs" />
     <Compile Include="Models\Employee\ItemModel.cs" />
     <Compile Include="Models\Employee\LoginModel.cs" />
     <Compile Include="Models\Employee\RegisterModel.cs" />
@@ -1082,6 +1083,10 @@
     <Content Include="Views\Employee\RegisterKeys.cshtml" />
     <Content Include="Views\Employee\ClientManagment.cshtml" />
     <Content Include="Views\Employee\ClientDetail.cshtml" />
+    <Content Include="Views\Employee\EmployeeManagment.cshtml" />
+    <Content Include="Views\Employee\Stats.cshtml" />
+    <Content Include="Views\Employee\OrderManagment.cshtml" />
+    <Content Include="Views\Employee\OrderDetail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

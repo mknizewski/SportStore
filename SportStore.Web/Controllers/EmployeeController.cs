@@ -10,6 +10,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Web;
 using SportStore.Web.HtmlHelpers.Classes;
+using SportStore.Domain.Entities;
 
 namespace SportStore.Web.Controllers
 {
@@ -23,10 +24,12 @@ namespace SportStore.Web.Controllers
     {
         private IEmployeesHelper _employeesHelper { get; set; }
         private IDictionaryRepository _dictionaryRepository { get; set; }
-        public EmployeeController(IEmployeesHelper employeesHelper, IDictionaryRepository dictionaryRepository)
+        private IOrderHelper _orderHelper { get; set; }
+        public EmployeeController(IEmployeesHelper employeesHelper, IDictionaryRepository dictionaryRepository, IOrderHelper orderHelper)
         {
             _employeesHelper = employeesHelper;
             _dictionaryRepository = dictionaryRepository;
+            _orderHelper = orderHelper;
         }
 
         [Authorize]
@@ -277,6 +280,88 @@ namespace SportStore.Web.Controllers
                 TempData["Alert"] = EmployeeAlert.SetAlert(EmployyeAlerts.Danger, "Brak możliwości usunięcia! Klient posiada aktywne zamówienia!");
 
             return RedirectToAction("ClientManagment");
+        }
+
+        [Authorize]
+        [EmployeeAuthentication]
+        [OnlyAdmin]
+        public ActionResult EmployeeManagment()
+        {
+            return View(_employeesHelper.GetEmployees());
+        }
+
+        [Authorize]
+        [EmployeeAuthentication]
+        [OnlyAdmin]
+        public ActionResult MakeAdmin(int id)
+        {
+            _employeesHelper.MakeAdmin(id);
+            TempData["Alert"] = EmployeeAlert.SetAlert(EmployyeAlerts.Succes, "Poprawnie nadano uprawnienia!");
+
+            return RedirectToAction("EmployeeManagment");
+        }
+
+        [Authorize]
+        [EmployeeAuthentication]
+        [OnlyAdmin]
+        public ActionResult DeleteAdmin(int id)
+        {
+            var session = Session["Employee"] as employees;
+
+            if (session.Id == id)
+            {
+                TempData["Alert"] = EmployeeAlert.SetAlert(EmployyeAlerts.Danger, "Nie możesz sam sobie odebrać uprawnień!");
+            }
+            else
+            {
+                _employeesHelper.DeleteAdmin(id);
+                TempData["Alert"] = EmployeeAlert.SetAlert(EmployyeAlerts.Succes, "Poprawnie odebrano uprawnienia!");
+            }
+
+            return RedirectToAction("EmployeeManagment");
+        }
+
+        [Authorize]
+        [EmployeeAuthentication]
+        public ActionResult Stats()
+        {
+            return View(_employeesHelper.GetStatistic());
+        }
+
+        [Authorize]
+        [EmployeeAuthentication]
+        public ActionResult OrderManagment()
+        {
+            var dictStatus = _dictionaryRepository.DictStatusOrders;
+            var list = new List<SelectListItem>();
+
+            foreach (var item in dictStatus)
+            {
+                list.Add(new SelectListItem
+                {
+                    Text = item.Name,
+                    Value = item.Id.ToString()
+                });
+            }
+
+            ViewBag.Status = list;
+            return View(_employeesHelper.GetOrders());
+        }
+        [Authorize]
+        [EmployeeAuthentication]
+        public ActionResult OrderDetail(int id)
+        {
+            return View(_orderHelper.GetPDF(id));
+        }
+
+        [Authorize]
+        [EmployeeAuthentication]
+        public ActionResult ChangeOrderStatus(int id, int newStatus)
+        {
+            _employeesHelper.ChangeOrderStatus(id, newStatus);
+            TempData["Alert"] = EmployeeAlert.SetAlert(EmployyeAlerts.Succes, "Poprawnie zmieniono status!");
+
+            return Json(new { success = true, data = "" }, JsonRequestBehavior.AllowGet);
         }
     }
 }

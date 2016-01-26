@@ -18,6 +18,12 @@ namespace SportStore.Web.HtmlHelpers.Interfaces
         IEnumerable<items> GetItems();
         IEnumerable<genereted_register_keys> GetRegisterKeys();
         IEnumerable<clients> GetClients();
+        IEnumerable<employees> GetEmployees();
+        IEnumerable<orders> GetOrders();
+        void ChangeOrderStatus(int orderId, int statusId);
+        void MakeAdmin(int id);
+        void DeleteAdmin(int id);
+        DonautChartModel GetStatistic();
         clients GetClientById(int id);
         ItemModel GetItemById(int id);
         void AddProduct(ItemModel model, List<HttpPostedFileBase> files);

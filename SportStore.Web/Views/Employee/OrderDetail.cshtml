@@ -1,0 +1,120 @@
+﻿@model SportStore.Web.Models.Client.OrderPDFModel
+@{
+    ViewBag.Title = "Zamówienie FV-SS-" + Model.Order.Id;
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+}
+
+<div style="margin-top:15px;" class="panel panel-default">
+    <div class="panel-heading">
+        Zamówienie nr: FV-SS-@Model.Order.Id
+    </div>
+    <div class="panel-heading">
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading">Opcje dostawy</div>
+                    <div class="panel-body">
+
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="type" class="control-label col-md-2">Typ:</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(x => x.Order.OrderDelivery.Name, new { htmlAttributes = new { @class = "form-control", @type = "text", @id = "type", @disabled = true } })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="priceDelivery" class="control-label col-md-2">Koszt:</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(x => x.Order.OrderDelivery.Price, new { htmlAttributes = new { @class = "form-control", @type = "text", @id = "priceDelivery", @disabled = true } })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-info">
+                    <div class="panel-heading">Status</div>
+                    <div class="panel-body">
+
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="status" class="control-label col-md-2">Status zamówienia:</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(x => x.Order.OrderStatus.Name, new { htmlAttributes = new { @class = "form-control", @type = "text", @id = "status", @disabled = true } })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-success">
+                    <div class="panel-heading">Adres dostawy</div>
+                    <div class="panel-body">
+                        <table>
+                            <tbody>
+                                @{
+                                    var adSplit = Model.Order.AdressToDelivery.Split(new char[] { ';' });
+
+                                    foreach (var item in adSplit)
+                                    {
+                                        <tr>
+                                            <td>@item</td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                        <div class="row" style="margin-top: 139px;">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">Zamówienie nr: @Model.Order.Id <button style="float: right; margin-top: -7px;" id="edit" type="submit" value="Edytuj" class="btn btn-default">Edytuj</button> </div>
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th role="rowheader">#</th>
+                            <th>Przedmiot</th>
+                            <th>Ilość</th>
+                            <th>Cena</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            var i = 1;
+
+                            foreach (var item in Model.OrderDetails)
+                            {
+                                <tr>
+                                    <th>@i</th>
+                                    <td>@item.Item.Title</td>
+                                    <td>@item.Quantity</td>
+                                    <td>
+                                        @{
+                                        var price = item.Quantity * item.Item.Price;
+                                    }
+                                    @price.ToString("c")
+                                </td>
+                            </tr>
+
+                                            i++;
+                                        }
+                        }
+                    </tbody>
+                </table>
+                <p style="float:right;">Do zapłaty: <b>@Model.Order.ToPay.ToString("c")</b></p>
+                <a href='@Url.Action("OrderManagment")' class="btn btn-primary" style="margin-top:35px;">Powrót</a>
+            </div>
+        </div>
+
+    </div>
+</div>
