@@ -14,7 +14,7 @@ namespace SportStore.Domain.Entities
         public int RegisterPin { get; set; }
 
         [DefaultValue(false)]
-        private bool IsUsed { get; set; }
+        public bool IsUsed { get; set; }
 
         public DateTime ExpirationDate { get; set; }
     }

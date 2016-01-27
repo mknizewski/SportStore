@@ -1,0 +1,69 @@
+﻿@model IEnumerable<SportStore.Domain.Entities.items_opinions>
+@{
+    ViewBag.Title = "Opinie produktów";
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+}
+
+<link href="~/Content/SbAdmin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet" />
+<link href="~/Content/SbAdmin/bower_components/datatables-responsive/css/responsive.dataTables.scss" rel="stylesheet" />
+<script src="~/Content/SbAdmin/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+<script src="~/Content/SbAdmin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+
+<div class="panel panel-default" style="margin-top: 10px;">
+    <div class="panel-heading">
+        Opinie o produktach
+    </div>
+    <!-- /.panel-heading -->
+    <div class="panel-body">
+        <div class="dataTable_wrapper">
+            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Opinia</th>
+                        <th>Gwiazdki</th>
+                        <th>Produkt</th>
+                        <th>Autor</th>
+                        <th>Usuń</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ 
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.Opinion</td>
+                                <td>@((int)item.Rate)</td>
+                                <td>@item.Item.Title</td>
+                                @{
+                                    if (item.Id_Client != null)
+                                    {
+                                        <td> @item.Client.Name @item.Client.Surname</td>
+                                    }
+                                    else
+                                    {
+                                        <td>Anonimowy</td>
+                                    }
+                                }
+                                <td>
+                                    @Html.ActionLink("Usuń", "DeleteOpinion", new { id = item.Id}, new { @class = "btn btn-danger"})
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!-- /.table-responsive -->
+    </div>
+    <!-- /.panel-body -->
+</div>
+<script>
+    $(document).ready(function () {
+        $('#dataTables-example').DataTable({
+            responsive: true
+        });
+    });
+</script>
+

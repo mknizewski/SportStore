@@ -44,7 +44,40 @@ namespace SportStore.Web
             routes.MapRoute("", "Sklep/Onas", new { controller = "Home", action = "AboutUs" });
             routes.MapRoute("", "Sklep/Kontakt", new { controller = "Home", action = "Contact" });
 
+            routes.MapRoute("", "Pracownik/Konto/Katalogi/Edycja", new { controller = "Employee", action = "CatalogEdit", id = UrlParameter.Optional, name = UrlParameter.Optional });
+            routes.MapRoute("", "Pracownik/Konto/Katalogi/Usun", new { controller = "Employee", action = "CatalogDelete", id = UrlParameter.Optional });
+            routes.MapRoute("", "Pracownik/Konto/Katalogi/Dodaj", new { controller = "Employee", action = "CatalogAdd", catalogName = UrlParameter.Optional });
+
+            routes.MapRoute("", "Pracownik/Konto/Zamowienia/Usun/{id}", new { controller = "Employee", action = "DeleteOrder", id = UrlParameter.Optional });
+            routes.MapRoute("", "Pracownik/Konto/Zamowienia/Status", new { controller = "Employee", action = "ChangeOrderStatus", id = UrlParameter.Optional, newStatus = UrlParameter.Optional });
+            routes.MapRoute("", "Pracownik/Konto/Zamowienia/o/{id}", new { controller = "Employee", action = "OrderDetail", id = UrlParameter.Optional });
+            routes.MapRoute("", "Pracownik/Konto/Zamowienia", new { controller = "Employee", action = "OrderManagment" });
+
+            routes.MapRoute("", "Pracownik/Konto/Statystki", new { controller = "Employee", action = "Stats" });
+
+            routes.MapRoute("", "Pracownik/Konto/Pracownicy/Usun/{id}", new { controller = "Employee", action = "DeleteEmployee", id = UrlParameter.Optional });
+            routes.MapRoute("", "Pracownik/Konto/Pracownicy/Mianuj/{id}", new { controller = "Employee", action = "MakeAdmin" });
+            routes.MapRoute("", "Pracownik/Konto/Pracownicy/Degraduj/{id}", new { controller = "Employee", action = "DeleteAdmin" });
+            routes.MapRoute("", "Pracownik/Konto/Pracownicy", new { controller = "Employee", action = "EmployeeManagment" });
+
+            routes.MapRoute("", "Pracownik/Konto/Klienci/p/{id}", new { controller = "Employee", action = "ClientDetail", id = UrlParameter.Optional });
+            routes.MapRoute("", "Pracownik/Konto/Klienci/Usun/{id}", new { controller = "Employee", action = "ClientDelete", id = UrlParameter.Optional });
+            routes.MapRoute("", "Pracownik/Konto/Klienci", new { controller = "Employee", action = "ClientManagment" });
+
+            routes.MapRoute("", "Pracownik/Konto/Kody/Usun/{id}", new { controller = "Employee", action = "DeleteKey", id = UrlParameter.Optional });
+            routes.MapRoute("", "Pracownik/Konto/Kody", new { controller = "Employee", action = "RegisterKeys" });
+
+            routes.MapRoute("", "Pracownik/Konto/Produkty/Usun/{id}", new { controller= "Employee", action = "DeleteItem", id = UrlParameter.Optional });
+            routes.MapRoute("", "Pracownik/Konto/Produkty/Opinie/Usun/{id}", new { controller = "Employee", action = "DeleteOpinion", id = UrlParameter.Optional });
+            routes.MapRoute("", "Pracownik/Konto/Produkty/Opinie", new { controller = "Employee", action = "Opinions" });
+            routes.MapRoute("", "Pracownik/Konto/Produkty", new { controller = "Employee", action = "ItemsManagment" });
+            routes.MapRoute("", "Pracownik/Konto/Produkty/Dodaj", new { controller = "Employee", action = "ItemAdd" });
+            routes.MapRoute("", "Pracownik/Konto/Produkty/{id}", new { controller = "Employee", action = "ItemsEdit", id = UrlParameter.Optional });
+
             routes.MapRoute("", "Pracownik/Logowanie", new { controller = "Employee", action = "Login" });
+            routes.MapRoute("", "Pracownik/Konto/GenerujKey", new { controller = "Employee", action = "GenerateRegisterKey"});
+            routes.MapRoute("", "Pracownik/Konto/Katalogi", new { controller = "Employee", action = "CatalogManagment" });
+            routes.MapRoute("", "Pracownik/Konto/Wyloguj", new { controller = "Employee", action = "Logout" });
             routes.MapRoute("", "Pracownik/Rejestracja", new { controller = "Employee", action = "Register" });
             routes.MapRoute("", "Pracownik/Konto", new { controller = "Employee", action = "Index" });
 

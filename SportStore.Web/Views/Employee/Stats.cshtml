@@ -1,0 +1,69 @@
+﻿@model SportStore.Web.Models.Employee.DonautChartModel
+@{
+    ViewBag.Title = "Statystyki";
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+}
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
+<div style="margin-top: 15px;" class="panel panel-default">
+    <div class="panel-heading">
+        Statystyki
+    </div>
+    <div class="panel-body">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Statystki z bieżącego miesiąca - wykres kołowy
+            </div>
+            <div class="panel-body">
+                <div id="donaut"></div>
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Statystki z bieżącego miesiąca - wykres dyskretny
+            </div>
+            <div class="panel-body">
+                <div id="bar"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    var newComment = @Model.NewComment;
+    var newOrders = @Model.NewOrders;
+    var newNews = @Model.NewNewsletters;
+    var keys = @Model.UnusedKeys;
+
+    Morris.Donut({
+        element: 'donaut',
+        data: [
+          { label: "Nowe komentarze", value: newComment },
+          { label: "Nowe zamówienia", value: newOrders },
+          { label: "Nowi subskrybenci", value: newNews },
+          { label: "Nieużyte klucze", value: keys }
+        ],
+        resize: 'true'
+    });
+
+    Morris.Bar({
+        element: 'bar',
+        data: [
+          { y: 'Nowe komentarze', a: newComment },
+          { y: 'Nowe zamówienia', a: newOrders, },
+          { y: 'Nowi subskrybenci', a: newNews },
+          { y: 'Nieużyte klucze', a: keys }
+        ],
+        resize: 'true',
+        xkey: 'y',
+        ykeys: ['a'],
+        labels: ['Wartość:']
+    });
+
+</script>

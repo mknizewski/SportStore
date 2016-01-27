@@ -51,7 +51,7 @@ namespace SportStore.Web.Controllers
         /// <param name="newsletter">obiekt typu newsletter</param>
         /// <returns>Widok NewsletterThanks</returns>
         [HttpPost]
-        public ViewResult SaveNewsletter(NewsletterModel newsletter)
+        public ActionResult SaveNewsletter(NewsletterModel newsletter)
         {
             if (ModelState.IsValid)
             {
@@ -59,7 +59,7 @@ namespace SportStore.Web.Controllers
                 {
                     ViewBag.Email = newsletter.Email;
                     Alert.SetAlert(AlertStatus.Succes, "Poprawnie zapisano do newslettera!");
-                    return View("Index");
+                    return RedirectToAction("Index");
                 }
                 else
                     return View(_newsletterHelper.GetNewsletterModel());

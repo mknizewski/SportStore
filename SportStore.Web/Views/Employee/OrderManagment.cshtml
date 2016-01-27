@@ -1,0 +1,126 @@
+﻿@model IEnumerable<SportStore.Domain.Entities.orders>
+@{
+    ViewBag.Title = "Zarządzanie zamówieniami";
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+
+    var dictOrder = ViewBag.Status as IEnumerable<SelectListItem>;
+}
+
+<link href="~/Content/SbAdmin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet" />
+<link href="~/Content/SbAdmin/bower_components/datatables-responsive/css/responsive.dataTables.scss" rel="stylesheet" />
+<script src="~/Content/SbAdmin/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+<script src="~/Content/SbAdmin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+<div id="alert" style="margin-top: 10px;">
+
+</div>
+<div class="panel panel-default" style="margin-top: 10px;">
+    <div class="panel-heading">
+        Zamówienia
+    </div>
+    <!-- /.panel-heading -->
+    <div class="panel-body">
+        <div class="dataTable_wrapper">
+            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Klient</th>
+                        <th>Data zamówienia</th>
+                        <th>Status</th>
+                        <th>Należność</th>
+                        <th>Szczegóły</th>
+                        <th>Zmień status</th>
+                        <th>Usuń</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ 
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.Client.Name @item.Client.Surname</td>
+                                <td>@item.InsertTime.ToString("dd-MM-yyyy")</td>
+                                <td>@item.OrderStatus.Name</td>
+                                <td>@item.ToPay.ToString("c")</td>
+                                <td>
+                                    <a href='@Url.Action("OrderDetail", new { id = item.Id })' class="btn btn-primary">Szczegóły</a>
+                                </td>
+                                <td>
+                                    <a href="#" onclick="changeVar(@item.Id)" data-toggle="modal" data-target="#myModal" class="btn btn-success">Zmień</a>
+                                </td>
+                                <td>
+                                    <a href='@Url.Action("DeleteOrder", new { id = item.Id })' class="btn btn-danger">Usuń</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!-- /.table-responsive -->
+    </div>
+    <!-- /.panel-body -->
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Wprowadź nowy status</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal" id="modal-grp">
+                    <div class="form-group">
+                        <label for="catalogName" class="col-md-2">Status:</label>
+                        <div class="col-md-10">
+                            @Html.DropDownList("newStatus", dictOrder, "Wybierz status", new { @id = "status-list", @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+                <button type="button" onclick="changeStatus()" class="btn btn-primary">Zastosuj</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<script>
+
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+            responsive: true
+        });
+    });
+
+    var selectedId;
+
+    function changeVar(id)
+    {
+        selectedId = id;
+    }
+
+    function changeStatus()
+    {
+        var list = document.getElementById("status-list");
+        var listValue = list.value;
+
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            url: '@Url.Action("ChangeOrderStatus")',
+            type: 'GET',
+            dataType: 'text',
+            data: { 'id': selectedId, 'newStatus': listValue },
+            success: function (data) {
+                location.reload();
+            },
+            failure: function () { }
+        });
+    }
+
+</script>

@@ -30,6 +30,6 @@ namespace SportStore.Web.Models.Employee
         public string RepeatPassword { get; set; }
 
         [Required(ErrorMessage = "To pole jest wymagane")]
-        public decimal RegisterKey { get; set; }
+        public int RegisterKey { get; set; }
     }
 }
