@@ -207,6 +207,16 @@ namespace SportStore.Web.Controllers
 
         [Authorize]
         [EmployeeAuthentication]
+        public ActionResult DeleteItem(int id)
+        {
+            _employeesHelper.DeleteItem(id);
+            TempData["Alert"] = EmployeeAlert.SetAlert(EmployyeAlerts.Succes, "Poprawnie usunięto produkt!");
+
+            return RedirectToAction("ItemsManagment");
+        }
+
+        [Authorize]
+        [EmployeeAuthentication]
         public ActionResult Opinions()
         {
             return View(_employeesHelper.GetOpinions());
@@ -293,6 +303,26 @@ namespace SportStore.Web.Controllers
         [Authorize]
         [EmployeeAuthentication]
         [OnlyAdmin]
+        public ActionResult DeleteEmployee(int id)
+        {
+            var seesion = Session["Employee"] as employees;
+
+            if (seesion.Id == id)
+            {
+                TempData["Alert"] = EmployeeAlert.SetAlert(EmployyeAlerts.Danger, "Nie możesz usunąć samego siebie!");
+            }
+            else
+            {
+                _employeesHelper.DeleteEmployee(id);
+                TempData["Alert"] = EmployeeAlert.SetAlert(EmployyeAlerts.Succes, "Poprawnie usunięto pracownika!");
+            }
+
+            return RedirectToAction("EmployeeManagment");
+        }
+
+        [Authorize]
+        [EmployeeAuthentication]
+        [OnlyAdmin]
         public ActionResult MakeAdmin(int id)
         {
             _employeesHelper.MakeAdmin(id);
@@ -347,6 +377,17 @@ namespace SportStore.Web.Controllers
             ViewBag.Status = list;
             return View(_employeesHelper.GetOrders());
         }
+
+        [Authorize]
+        [EmployeeAuthentication]
+        public ActionResult DeleteOrder(int id)
+        {
+            _employeesHelper.DeleteOrder(id);
+            TempData["Alert"] = EmployeeAlert.SetAlert(EmployyeAlerts.Succes, "Poprawnie usnięto zamówienie!");
+
+            return RedirectToAction("OrderManagment");
+        }
+
         [Authorize]
         [EmployeeAuthentication]
         public ActionResult OrderDetail(int id)

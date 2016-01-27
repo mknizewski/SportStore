@@ -359,5 +359,20 @@ namespace SportStore.Web.HtmlHelpers.Classes
         {
             _employeeRepository.changeOrderStatus(orderId, statusId);
         }
+
+        void IEmployeesHelper.DeleteEmployee(int id)
+        {
+            _employeeRepository.DeleteEmployee(id);
+        }
+
+        void IEmployeesHelper.DeleteOrder(int orderId)
+        {
+            _employeeRepository.DeleteOrder(orderId);
+        }
+
+        void IEmployeesHelper.DeleteItem(int id)
+        {
+            _employeeRepository.DeleteItem(id);
+        }
     }
 }

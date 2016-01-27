@@ -181,6 +181,39 @@ namespace SportStore.Domain.Respositories
             _context.SaveChanges();
         }
 
+        void IEmployeeRepository.DeleteEmployee(int id)
+        {
+            var item = _context.Employees.Find(id);
+
+            _context.Employees.Remove(item);
+            _context.SaveChanges();
+        }
+
+        void IEmployeeRepository.DeleteItem(int id)
+        {
+            var product = _context.Items.Find(id);
+            var itemDetails = _context.DictItemsDetails.Where(x => x.Id_Item == id).FirstOrDefault();
+            var itemPictures = _context.ItemsPictures.Where(x => x.Id_Item == id).ToList();
+            var itemOpinions = _context.ItemsOpinions.Where(x => x.Id_Item == id).ToList();
+            var descriptionItem = _context.DictDescriptionItems.Where(x => x.Id == product.Id_Description).FirstOrDefault();
+
+            foreach (var item in itemPictures)
+            {
+                _context.ItemsPictures.Remove(item);
+            }
+
+            foreach (var item in itemOpinions)
+            {
+                _context.ItemsOpinions.Remove(item);
+            }
+
+            _context.DictDescriptionItems.Remove(descriptionItem);
+            _context.DictItemsDetails.Remove(itemDetails);
+            _context.Items.Remove(product);
+
+            _context.SaveChanges();
+        }
+
         void IEmployeeRepository.DeleteKey(int id)
         {
             var dbItem = _context.GeneretedRegisterKeys.Find(id);
@@ -195,6 +228,21 @@ namespace SportStore.Domain.Respositories
 
             _context.ItemsOpinions.Remove(dbItem);
             _context.SaveChanges();
+        }
+
+        void IEmployeeRepository.DeleteOrder(int orderId)
+        {
+            var order = _context.Orders.Where(x => x.Id == orderId).FirstOrDefault();
+            var orderDetails = _context.OrderDetails.Where(x => x.Id_Order == orderId).ToList();
+            var orderComplaints = _context.OrderComplaints.Where(x => x.Id_Order == orderId).FirstOrDefault();
+
+            foreach (var item in orderDetails)
+            {
+                _context.OrderDetails.Remove(item);
+            }
+
+            _context.OrderComplaints.Remove(orderComplaints);
+            _context.Orders.Remove(order);
         }
 
         void IEmployeeRepository.EditProduct(items item, List<items_picutures> itemPictures, _dict_items_details itemDetial, List<items_quantity> itemQuantity)

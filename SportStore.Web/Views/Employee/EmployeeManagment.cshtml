@@ -50,7 +50,7 @@
                                 }
                             </td>
                             <td>
-                                <a href='#' class="btn btn-danger">Usuń</a>
+                                <a href='@Url.Action("DeleteEmployee", new { id = item.Id })' class="btn btn-danger">Usuń</a>
                             </td>
                         </tr>
                     }

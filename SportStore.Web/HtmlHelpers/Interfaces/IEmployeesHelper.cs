@@ -20,6 +20,9 @@ namespace SportStore.Web.HtmlHelpers.Interfaces
         IEnumerable<clients> GetClients();
         IEnumerable<employees> GetEmployees();
         IEnumerable<orders> GetOrders();
+        void DeleteItem(int id);
+        void DeleteOrder(int orderId);
+        void DeleteEmployee(int id);
         void ChangeOrderStatus(int orderId, int statusId);
         void MakeAdmin(int id);
         void DeleteAdmin(int id);

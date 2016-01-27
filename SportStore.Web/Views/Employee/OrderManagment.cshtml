@@ -50,7 +50,7 @@
                                     <a href="#" onclick="changeVar(@item.Id)" data-toggle="modal" data-target="#myModal" class="btn btn-success">Zmień</a>
                                 </td>
                                 <td>
-                                    <a href="#" class="btn btn-danger">Usuń</a>
+                                    <a href='@Url.Action("DeleteOrder", new { id = item.Id })' class="btn btn-danger">Usuń</a>
                                 </td>
                             </tr>
                         }

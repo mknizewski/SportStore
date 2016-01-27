@@ -40,7 +40,7 @@
                                     @Html.ActionLink("Edycja", "ItemsEdit", "Employee", new { id = item.Id }, new { @class = "btn btn-primary" })
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-danger">Usuń</button>
+                                    <a href='@Url.Action("DeleteItem", new { id = item.Id })' type="button" class="btn btn-danger">Usuń</a>
                                 </td>
                             </tr>
                         }

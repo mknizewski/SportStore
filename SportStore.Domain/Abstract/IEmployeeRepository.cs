@@ -19,6 +19,9 @@ namespace SportStore.Domain.Abstract
         IEnumerable<genereted_register_keys> RegisterKeys { get; set; }
         IEnumerable<orders> Orders { get; set; }
 
+        void DeleteItem(int id);
+        void DeleteOrder(int orderId);
+        void DeleteEmployee(int id);
         void changeOrderStatus(int orderId, int statusId);
         int[] GetStats();
         void MakeAdmin(int id);
