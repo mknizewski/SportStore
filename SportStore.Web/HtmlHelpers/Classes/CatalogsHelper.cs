@@ -15,7 +15,7 @@ namespace SportStore.Web.HtmlHelpers.Classes
     /// Opis:   Klasa pomocniczna do przegladania produktów
     /// Data:   26.11.15
     /// </summary>
-    public class CatalogsHelper : ICatalogHelper
+    public class CatalogsHelper : ICatalogHelper, IDisposable
     {
         public ICatalogsRepository _catalogRepository;
         private static int _pageSize = 9; // defaultowo 9
@@ -205,6 +205,12 @@ namespace SportStore.Web.HtmlHelpers.Classes
             model.TopRated = topRatedList;
 
             return model;
+        }
+
+        public void Dispose()
+        {
+            _catalogRepository.Dispose();
+            _catalogRepository = null;
         }
     }
 }

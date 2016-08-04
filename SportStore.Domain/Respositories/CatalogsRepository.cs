@@ -11,7 +11,7 @@ namespace SportStore.Domain.Respositories
     /// Opis:   Klasa logiki bazodanowej katalogów produktów
     /// Data:   15.11.15
     /// </summary>
-    public class CatalogsRepository : ICatalogsRepository
+    public class CatalogsRepository : ICatalogsRepository, IDisposable
     {
         private EFDbContext _context = new EFDbContext();
 
@@ -119,6 +119,12 @@ namespace SportStore.Domain.Respositories
         void ICatalogsRepository.DeleteOpinion(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public void Dispose()
+        {
+            _context.Dispose();
+            _context = null;
         }
 
         IEnumerable<Entities._dict_items_details> ICatalogsRepository.ItemsDetails

@@ -33,5 +33,7 @@ namespace SportStore.Domain.Abstract
         void EditOpinion(items_opinions newOpinion);
 
         void DeleteOpinion(int id);
+
+        void Dispose();
     }
 }

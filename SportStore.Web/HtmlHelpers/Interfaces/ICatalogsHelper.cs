@@ -29,5 +29,7 @@ namespace SportStore.Web.HtmlHelpers.Interfaces
         items GetItemById(int productId);
 
         int GetQuantityItemById(int productId);
+
+        void Dispose();
     }
 }

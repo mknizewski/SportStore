@@ -100,5 +100,13 @@ namespace SportStore.Web.Controllers
 
             return Json("");
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            _catalogsHelper.Dispose();
+            _catalogsHelper = null;
+
+            base.Dispose(disposing);
+        }
     }
 }
